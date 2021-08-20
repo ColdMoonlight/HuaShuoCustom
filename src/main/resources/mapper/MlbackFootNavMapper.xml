@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackFootNavMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackFootNav">
+    <id column="footnav_id" jdbcType="INTEGER" property="footnavId" />
+    <result column="footnav_seo" jdbcType="VARCHAR" property="footnavSeo" />
+    <result column="footnav_name" jdbcType="VARCHAR" property="footnavName" />
+    <result column="footnav_hang" jdbcType="INTEGER" property="footnavHang" />
+    <result column="footnav_lie" jdbcType="INTEGER" property="footnavLie" />
+    <result column="footnav_clicktype" jdbcType="INTEGER" property="footnavClickType" />
+    <result column="footnav_clickurl" jdbcType="VARCHAR" property="footnavClickUrl" />
+    <result column="footnav_createTime" jdbcType="VARCHAR" property="footnavCreatetime" />
+    <result column="footnav_motifyTime" jdbcType="VARCHAR" property="footnavMotifytime" />
+    <result column="footnav_ifIncome" jdbcType="INTEGER" property="footnavIfincome" />
+    <result column="footnav_ifShow" jdbcType="INTEGER" property="footnavIfshow" />
+    <result column="footnav_superCate_id" jdbcType="INTEGER" property="footnavSuperCateId" />
+    <result column="footnav_superCate_name" jdbcType="VARCHAR" property="footnavSuperCateName" />
+
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.atguigu.bean.MlbackFootNav">
+    <result column="footnav_desc" jdbcType="LONGVARCHAR" property="footnavDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    footnav_id, footnav_seo, footnav_name, footnav_hang, footnav_lie, footnav_clicktype, footnav_clickurl, footnav_superCate_id, footnav_superCate_name,
+    footnav_createTime, footnav_motifyTime, footnav_ifIncome, footnav_ifShow
+  </sql>
+  <sql id="Blob_Column_List">
+    footnav_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_mlback_footnav
+    where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackFootNav">
+    insert into tb_mlback_footnav (footnav_id, footnav_seo, footnav_name, footnav_hang, 
+      footnav_lie, footnav_clicktype, footnav_clickurl, footnav_superCate_id, footnav_superCate_name, 
+      footnav_createTime, footnav_motifyTime, footnav_ifIncome, 
+      footnav_ifShow, footnav_desc)
+    values (#{footnavId,jdbcType=INTEGER}, #{footnavSeo,jdbcType=VARCHAR}, #{footnavName,jdbcType=VARCHAR}, #{footnavHang,jdbcType=INTEGER}, 
+      #{footnavLie,jdbcType=INTEGER}, #{footnavClickType,jdbcType=INTEGER}, #{footnavClickUrl,jdbcType=VARCHAR}, #{footnavSuperCateId,jdbcType=INTEGER}, #{footnavSuperCateName,jdbcType=VARCHAR},
+      #{footnavCreatetime,jdbcType=VARCHAR}, #{footnavMotifytime,jdbcType=VARCHAR}, #{footnavIfincome,jdbcType=INTEGER}, 
+      #{footnavIfshow,jdbcType=INTEGER}, #{footnavDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.atguigu.bean.MlbackFootNav">
+    update tb_mlback_footnav
+    set footnav_name = #{footnavName,jdbcType=VARCHAR},
+      footnav_seo = #{footnavSeo,jdbcType=VARCHAR},
+      footnav_hang = #{footnavHang,jdbcType=INTEGER},
+      footnav_lie = #{footnavLie,jdbcType=INTEGER},
+      footnav_clicktype = #{footnavClickType,jdbcType=INTEGER},
+      footnav_clickurl = #{footnavClickUrl,jdbcType=VARCHAR},
+      footnav_createTime = #{footnavCreatetime,jdbcType=VARCHAR},
+      footnav_motifyTime = #{footnavMotifytime,jdbcType=VARCHAR},
+      footnav_ifIncome = #{footnavIfincome,jdbcType=INTEGER},
+      footnav_ifShow = #{footnavIfshow,jdbcType=INTEGER},
+      footnav_desc = #{footnavDesc,jdbcType=LONGVARCHAR},
+      footnav_superCate_id = #{footnavSuperCateId,jdbcType=INTEGER}, 
+      footnav_superCate_name = #{footnavSuperCateName,jdbcType=VARCHAR}
+    where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackFootNav">
+    update tb_mlback_footnav
+    set footnav_name = #{footnavName,jdbcType=VARCHAR},
+      footnav_seo = #{footnavSeo,jdbcType=VARCHAR},
+      footnav_hang = #{footnavHang,jdbcType=INTEGER},
+      footnav_lie = #{footnavLie,jdbcType=INTEGER},
+      footnav_clicktype = #{footnavClickType,jdbcType=INTEGER},
+      footnav_clickurl = #{footnavClickUrl,jdbcType=VARCHAR},
+      footnav_createTime = #{footnavCreatetime,jdbcType=VARCHAR},
+      footnav_motifyTime = #{footnavMotifytime,jdbcType=VARCHAR},
+      footnav_ifIncome = #{footnavIfincome,jdbcType=INTEGER},
+      footnav_ifShow = #{footnavIfshow,jdbcType=INTEGER},
+      footnav_superCate_id = #{footnavSuperCateId,jdbcType=INTEGER}, 
+      footnav_superCate_name = #{footnavSuperCateName,jdbcType=VARCHAR}
+    where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="footnavId" parameterType="com.atguigu.bean.MlbackFootNav">
+    insert into tb_mlback_footnav
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="footnavId != null">
+        footnav_id,
+      </if>
+      <if test="footnavSeo != null">
+        footnav_seo,
+      </if>
+      <if test="footnavName != null">
+        footnav_name,
+      </if>
+      <if test="footnavHang != null">
+        footnav_hang,
+      </if>
+      <if test="footnavLie != null">
+        footnav_lie,
+      </if>
+      <if test="footnavClickType != null">
+        footnav_clicktype,
+      </if>
+      <if test="footnavClickUrl != null">
+        footnav_clickurl,
+      </if>
+      <if test="footnavCreatetime != null">
+        footnav_createTime,
+      </if>
+      <if test="footnavMotifytime != null">
+        footnav_motifyTime,
+      </if>
+      <if test="footnavIfincome != null">
+        footnav_ifIncome,
+      </if>
+      <if test="footnavIfshow != null">
+        footnav_ifShow,
+      </if>
+      <if test="footnavDesc != null">
+        footnav_desc,
+      </if>
+      <if test="footnavSuperCateId != null">
+        footnav_superCate_id,
+      </if>
+      <if test="footnavSuperCateName != null">
+        footnav_superCate_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="footnavId != null">
+        #{footnavId,jdbcType=INTEGER},
+      </if>
+      <if test="footnavSeo != null">
+        #{footnavSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavName != null">
+        #{footnavName,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavHang != null">
+        #{footnavHang,jdbcType=INTEGER},
+      </if>
+      <if test="footnavLie != null">
+        #{footnavLie,jdbcType=INTEGER},
+      </if>
+      <if test="footnavClickType != null">
+        #{footnavClickType,jdbcType=INTEGER},
+      </if>
+      <if test="footnavClickUrl != null">
+        #{footnavClickUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavCreatetime != null">
+        #{footnavCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavMotifytime != null">
+        #{footnavMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavIfincome != null">
+        #{footnavIfincome,jdbcType=INTEGER},
+      </if>
+      <if test="footnavIfshow != null">
+        #{footnavIfshow,jdbcType=INTEGER},
+      </if>
+      <if test="footnavDesc != null">
+        #{footnavDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="footnavSuperCateId != null">
+        #{footnavSuperCateId,jdbcType=INTEGER},
+      </if>
+      <if test="footnavSuperCateName != null">
+        #{footnavSuperCateName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_footnav
+    where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackFootNav">
+    update tb_mlback_footnav
+    <set>
+      <if test="footnavSeo != null">
+        footnav_seo = #{footnavSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavName != null">
+        footnav_name = #{footnavName,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavHang != null">
+        footnav_hang = #{footnavHang,jdbcType=INTEGER},
+      </if>
+      <if test="footnavLie != null">
+        footnav_lie = #{footnavLie,jdbcType=INTEGER},
+      </if>
+      <if test="footnavClickType != null">
+        footnav_clicktype = #{footnavClickType,jdbcType=INTEGER},
+      </if>
+      <if test="footnavClickUrl != null">
+		footnav_clickurl = #{footnavClickUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavCreatetime != null">
+        footnav_createTime = #{footnavCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavMotifytime != null">
+        footnav_motifyTime = #{footnavMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="footnavIfincome != null">
+        footnav_ifIncome = #{footnavIfincome,jdbcType=INTEGER},
+      </if>
+      <if test="footnavIfshow != null">
+        footnav_ifShow = #{footnavIfshow,jdbcType=INTEGER},
+      </if>
+      <if test="footnavDesc != null">
+        footnav_desc = #{footnavDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="footnavSuperCateId != null">
+      	footnav_superCate_id = #{footnavSuperCateId,jdbcType=INTEGER}, 
+      </if>
+      <if test="footnavSuperCateName != null">
+      	footnav_superCate_name = #{footnavSuperCateName,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackFootNavOneAllById使用中 -->
+  <select id="selectMlbackFootNavOneAllById" parameterType="com.atguigu.bean.MlbackFootNav" resultMap="BaseResultMap">
+    select footnav_id, footnav_seo, footnav_name, footnav_hang, footnav_lie, footnav_clicktype, footnav_clickurl, footnav_createTime, footnav_motifyTime, 
+    footnav_superCate_id, footnav_superCate_name, footnav_desc,footnav_ifIncome,footnav_ifshow
+    from tb_mlback_footnav where footnav_id = #{footnavId,jdbcType=INTEGER}
+  </select>
+<!-- selectMlbackFootNavGetAll使用中 -->
+  <select id="selectMlbackFootNavGetAll" parameterType="com.atguigu.bean.MlbackFootNav" resultMap="BaseResultMap">
+    select footnav_id, footnav_seo, footnav_name, footnav_hang, footnav_lie,footnav_clicktype, footnav_clickurl, 
+      footnav_createTime, footnav_motifyTime, footnav_superCate_id, footnav_superCate_name, footnav_ifIncome, footnav_ifShow
+    from tb_mlback_footnav order by footnav_lie desc, footnav_hang desc,footnav_id desc
+  </select>
+  <!-- selectMlbackFootNavAllSimpleIfShow使用中 -->
+  <select id="selectMlbackFootNavAllSimpleIfShow" parameterType="com.atguigu.bean.MlbackFootNav" resultMap="BaseResultMap">
+    select footnav_id, footnav_seo, footnav_name, footnav_hang, footnav_lie, footnav_clicktype, footnav_clickurl, footnav_superCate_id, footnav_superCate_name, footnav_ifIncome,footnav_ifShow
+    from tb_mlback_footnav where footnav_ifShow = #{footnavIfshow,jdbcType=INTEGER} order by footnav_lie, footnav_hang,footnav_id
+  </select>
+  <!-- selectMlbackFootNavBackSearch -->
+  <select id="selectMlbackFootNavBackSearch" parameterType="com.atguigu.bean.MlbackFootNav" resultMap="BaseResultMap">
+  	select 
+  	footnav_id, footnav_seo,footnav_name, footnav_hang, footnav_lie, footnav_clicktype,footnav_clickurl, 
+    footnav_superCate_id, footnav_superCate_name, footnav_ifIncome,footnav_ifshow
+  	from tb_mlback_footnav 
+  	where footnav_name like concat(concat("%",#{footnavName}),"%")
+     <if test="footnavSuperCateId != null">
+     	and footnav_superCate_id = #{footnavSuperCateId,jdbcType=INTEGER}
+     </if>
+    order by footnav_lie desc, footnav_hang desc,footnav_id desc
+  </select>
+  <!-- 使用中selectMlbackFootNavBySeo -->
+  <select id="selectMlbackFootNavBySeo" parameterType="com.atguigu.bean.MlbackFootNav" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_footnav
+    where footnav_seo = #{footnavSeo,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

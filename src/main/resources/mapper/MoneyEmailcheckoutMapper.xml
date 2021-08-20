@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MoneyEmailcheckoutMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MoneyEmailcheckout">
+    <id column="emailcheckout_id" jdbcType="INTEGER" property="emailcheckoutId" />
+    <result column="emailcheckout_payid" jdbcType="INTEGER" property="emailcheckoutPayid" />
+    <result column="emailcheckout_orderid" jdbcType="INTEGER" property="emailcheckoutOrderid" />
+    <result column="emailcheckout_ordername" jdbcType="VARCHAR" property="emailcheckoutOrdername" />
+    <result column="emailcheckout_sendType" jdbcType="VARCHAR" property="emailcheckoutSendtype" />
+    <result column="emailcheckout_createTime" jdbcType="VARCHAR" property="emailcheckoutCreatetime" />
+    <result column="emailcheckout_motifyTime" jdbcType="VARCHAR" property="emailcheckoutMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    emailcheckout_id, emailcheckout_payid, emailcheckout_orderid, emailcheckout_ordername, 
+    emailcheckout_sendType, emailcheckout_createTime, emailcheckout_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_money_emailcheckout
+    where emailcheckout_id = #{emailcheckoutId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MoneyEmailcheckout">
+    insert into tb_money_emailcheckout (emailcheckout_id, emailcheckout_payid, 
+      emailcheckout_orderid, emailcheckout_ordername, 
+      emailcheckout_sendType, emailcheckout_createTime, 
+      emailcheckout_motifyTime)
+    values (#{emailcheckoutId,jdbcType=INTEGER}, #{emailcheckoutPayid,jdbcType=INTEGER}, 
+      #{emailcheckoutOrderid,jdbcType=INTEGER}, #{emailcheckoutOrdername,jdbcType=VARCHAR}, 
+      #{emailcheckoutSendtype,jdbcType=VARCHAR}, #{emailcheckoutCreatetime,jdbcType=VARCHAR}, 
+      #{emailcheckoutMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MoneyEmailcheckout">
+    update tb_money_emailcheckout
+    set emailcheckout_payid = #{emailcheckoutPayid,jdbcType=INTEGER},
+      emailcheckout_orderid = #{emailcheckoutOrderid,jdbcType=INTEGER},
+      emailcheckout_ordername = #{emailcheckoutOrdername,jdbcType=VARCHAR},
+      emailcheckout_sendType = #{emailcheckoutSendtype,jdbcType=VARCHAR},
+      emailcheckout_createTime = #{emailcheckoutCreatetime,jdbcType=VARCHAR},
+      emailcheckout_motifyTime = #{emailcheckoutMotifytime,jdbcType=VARCHAR}
+    where emailcheckout_id = #{emailcheckoutId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="emailcheckoutId" parameterType="com.atguigu.bean.MoneyEmailcheckout">
+    insert into tb_money_emailcheckout
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emailcheckoutId != null">
+        emailcheckout_id,
+      </if>
+      <if test="emailcheckoutPayid != null">
+        emailcheckout_payid,
+      </if>
+      <if test="emailcheckoutOrderid != null">
+        emailcheckout_orderid,
+      </if>
+      <if test="emailcheckoutOrdername != null">
+        emailcheckout_ordername,
+      </if>
+      <if test="emailcheckoutSendtype != null">
+        emailcheckout_sendType,
+      </if>
+      <if test="emailcheckoutCreatetime != null">
+        emailcheckout_createTime,
+      </if>
+      <if test="emailcheckoutMotifytime != null">
+        emailcheckout_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emailcheckoutId != null">
+        #{emailcheckoutId,jdbcType=INTEGER},
+      </if>
+      <if test="emailcheckoutPayid != null">
+        #{emailcheckoutPayid,jdbcType=INTEGER},
+      </if>
+      <if test="emailcheckoutOrderid != null">
+        #{emailcheckoutOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="emailcheckoutOrdername != null">
+        #{emailcheckoutOrdername,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutSendtype != null">
+        #{emailcheckoutSendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutCreatetime != null">
+        #{emailcheckoutCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutMotifytime != null">
+        #{emailcheckoutMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_money_emailcheckout
+    where emailcheckout_id = #{emailcheckoutId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MoneyEmailcheckout">
+    update tb_money_emailcheckout
+    <set>
+      <if test="emailcheckoutPayid != null">
+        emailcheckout_payid = #{emailcheckoutPayid,jdbcType=INTEGER},
+      </if>
+      <if test="emailcheckoutOrderid != null">
+        emailcheckout_orderid = #{emailcheckoutOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="emailcheckoutOrdername != null">
+        emailcheckout_ordername = #{emailcheckoutOrdername,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutSendtype != null">
+        emailcheckout_sendType = #{emailcheckoutSendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutCreatetime != null">
+        emailcheckout_createTime = #{emailcheckoutCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emailcheckoutMotifytime != null">
+        emailcheckout_motifyTime = #{emailcheckoutMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where emailcheckout_id = #{emailcheckoutId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMoneyEmailcheckoutByPayId -->
+  <select id="selectMoneyEmailcheckoutByPayId" parameterType="com.atguigu.bean.MoneyEmailcheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_emailcheckout 
+    where emailcheckout_payid = #{emailcheckoutPayid,jdbcType=INTEGER}
+  </select>
+  <!-- selectMoneyEmailcheckoutByPayOId -->
+  <select id="selectMoneyEmailcheckoutByPayOId" parameterType="com.atguigu.bean.MoneyEmailcheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_emailcheckout 
+    where emailcheckout_orderid = #{emailcheckoutOrderid,jdbcType=INTEGER}
+  </select>
+  <!-- selectMoneyEmailcheckoutByPayOnameAndOid -->
+  <select id="selectMoneyEmailcheckoutByPayOnameAndOid" parameterType="com.atguigu.bean.MoneyEmailcheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_emailcheckout 
+    where emailcheckout_ordername = #{emailcheckoutOrdername,jdbcType=VARCHAR} and emailcheckout_orderid >= #{emailcheckoutOrderid,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

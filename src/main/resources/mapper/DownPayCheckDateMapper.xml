@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.DownPayCheckDateMapper">
+  <resultMap id="DownPayCheckResultMap" type="com.atguigu.bean.DownPayCheckDate">
+    <id column="payInfo_id" jdbcType="INTEGER" property="payinfoId" />
+    <result column="payInfo_oid" jdbcType="INTEGER" property="payinfoOid" />
+    <result column="payInfo_money" jdbcType="DECIMAL" property="payinfoMoney" />
+    <result column="payInfo_status" jdbcType="INTEGER" property="payinfoStatus" />
+    <result column="payInfo_createTime" jdbcType="VARCHAR" property="payinfoCreatetime" />
+    <result column="payInfo_motifyTime" jdbcType="VARCHAR" property="payinfoMotifytime" />
+    <association property="mlfrontOrder" column="order_id" javaType="com.atguigu.bean.MlfrontOrder">
+    	<id column="order_id" jdbcType="INTEGER" property="orderId" />
+    	<result column="order_orderItemIdStr" jdbcType="VARCHAR" property="orderOrderitemidstr" />
+    	<result column="order_addressinfo_id" jdbcType="INTEGER" property="orderAddressinfoId" />
+    </association>
+    <association property="mlfrontAddress" column="address_id" javaType="com.atguigu.bean.MlfrontAddress">
+    	<id column="address_id" jdbcType="INTEGER" property="addressId" />
+    	<result column="address_email" jdbcType="VARCHAR" property="addressEmail" />
+    	<result column="address_telephone" jdbcType="VARCHAR" property="addressTelephone" />
+    	<result column="address_userFirstName" jdbcType="VARCHAR" property="addressUserfirstname" />
+    	<result column="address_userLastName" jdbcType="VARCHAR" property="addressUserlastname" />
+    </association>
+    <association property="mlfrontOrderItem" column="orderItem_id" javaType="com.atguigu.bean.MlfrontOrderItem">
+    	<id column="orderItem_id" jdbcType="INTEGER" property="orderitemId" />
+    	<result column="orderItem_pSeo" jdbcType="VARCHAR" property="orderitemPseo" />
+    	<result column="orderItem_pSku_name" jdbcType="VARCHAR" property="orderitemPskuName" />
+    	<result column="orderItem_product_originalPrice" jdbcType="DECIMAL" property="orderitemProductOriginalprice" />
+    	<result column="orderItem_pSku_moneyStr" jdbcType="VARCHAR" property="orderitemPskuMoneystr" />
+    	<result column="orderItem_product_accoff" jdbcType="INTEGER" property="orderitemProductAccoff" />
+    </association>
+  </resultMap>
+
+  <!-- selectHighPayIFList使用中 -->
+  <select id="selectHighPayCheckList" parameterType="com.atguigu.bean.DownPayCheckDate" resultMap="DownPayCheckResultMap">
+   SELECT 
+	tbpay.payInfo_id,tbpay.payInfo_oid,tbpay.payInfo_money,tbpay.payInfo_status,tbpay.payInfo_createTime, 
+	tborder.order_id ,tborder.order_orderItemIdStr,tborder.order_addressinfo_id,
+	tbaddre.address_id,tbaddre.address_email,tbaddre.address_telephone,tbaddre.address_userFirstName,tbaddre.address_userLastName,
+	tbordItem.orderItem_id,tbordItem.orderItem_pSeo,tbordItem.orderItem_pSku_name,tbordItem.orderItem_product_originalPrice, 
+	tbordItem.orderItem_pSku_moneyStr, tbordItem.orderItem_product_accoff 
+	FROM 
+	tb_mlfront_payinfo as tbpay,
+	tb_mlfront_order as tborder,
+	tb_mlfront_orderitem as tbordItem,
+	tb_mlfront_address as tbaddre 
+	WHERE tbpay.payInfo_createTime BETWEEN #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR} 
+	<if test="payinfoStatus != null">
+     AND tbpay.payInfo_status = #{payinfoStatus,jdbcType=INTEGER} 
+    </if>
+	 AND tbpay.payInfo_oid = tborder.order_id AND tborder.order_id = tbordItem.order_id AND tborder.order_addressinfo_id=tbaddre.address_id 
+	 ORDER BY tbpay.payInfo_id desc
+  </select>
+  
+</mapper>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackCountdownMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackCountdown">
+    <id column="countDown_id" jdbcType="INTEGER" property="countdownId" />
+    <result column="countDown_title" jdbcType="VARCHAR" property="countdownTitle" />
+    <result column="countDown_status" jdbcType="INTEGER" property="countdownStatus" />
+    <result column="countDown_description" jdbcType="VARCHAR" property="countdownDescription" />
+    <result column="countDown_startTime" jdbcType="VARCHAR" property="countdownStarttime" />
+    <result column="countDown_endTime" jdbcType="VARCHAR" property="countdownEndtime" />
+    <result column="countDown_createTime" jdbcType="VARCHAR" property="countdownCreatetime" />
+    <result column="countDown_motifyTime" jdbcType="VARCHAR" property="countdownMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    countDown_id, countDown_title, countDown_status, countDown_description, countDown_startTime, countDown_endTime, 
+    countDown_createTime, countDown_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlblack_countdown
+    where countDown_id = #{countdownId,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackCountdown">
+    insert into tb_mlblack_countdown (countDown_id, countDown_title, countDown_status, countDown_description, 
+      countDown_startTime, countDown_endTime, countDown_createTime, 
+      countDown_motifyTime)
+    values (#{countdownId,jdbcType=INTEGER}, #{countdownTitle,jdbcType=VARCHAR}, #{countdownStatus,jdbcType=INTEGER}, #{countdownDescription,jdbcType=VARCHAR}, 
+      #{countdownStarttime,jdbcType=VARCHAR}, #{countdownEndtime,jdbcType=VARCHAR}, #{countdownCreatetime,jdbcType=VARCHAR}, 
+      #{countdownMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackCountdown">
+    update tb_mlblack_countdown
+    set countDown_title = #{countdownTitle,jdbcType=VARCHAR},
+	  countDown_status = #{countdownStatus,jdbcType=INTEGER},
+      countDown_description = #{countdownDescription,jdbcType=VARCHAR},
+      countDown_startTime = #{countdownStarttime,jdbcType=VARCHAR},
+      countDown_endTime = #{countdownEndtime,jdbcType=VARCHAR},
+      countDown_createTime = #{countdownCreatetime,jdbcType=VARCHAR},
+      countDown_motifyTime = #{countdownMotifytime,jdbcType=VARCHAR}
+    where countDown_id = #{countdownId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="countdownId" parameterType="com.atguigu.bean.MlbackCountdown">
+    insert into tb_mlblack_countdown
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countdownId != null">
+        countDown_id,
+      </if>
+      <if test="countdownTitle != null">
+        countDown_title,
+      </if>
+      <if test="countdownStatus != null">
+      	countDown_status ,
+      </if>
+      <if test="countdownDescription != null">
+        countDown_description,
+      </if>
+      <if test="countdownStarttime != null">
+        countDown_startTime,
+      </if>
+      <if test="countdownEndtime != null">
+        countDown_endTime,
+      </if>
+      <if test="countdownCreatetime != null">
+        countDown_createTime,
+      </if>
+      <if test="countdownMotifytime != null">
+        countDown_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countdownId != null">
+        #{countdownId,jdbcType=INTEGER},
+      </if>
+      <if test="countdownTitle != null">
+        #{countdownTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownStatus != null">
+        #{countdownStatus,jdbcType=INTEGER},
+      </if>
+      <if test="countdownDescription != null">
+        #{countdownDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownStarttime != null">
+        #{countdownStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownEndtime != null">
+        #{countdownEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownCreatetime != null">
+        #{countdownCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownMotifytime != null">
+        #{countdownMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlblack_countdown
+    where countDown_id = #{countdownId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackCountdown">
+    update tb_mlblack_countdown
+    <set>
+      <if test="countdownTitle != null">
+        countDown_title = #{countdownTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownStatus != null">
+      	countDown_status = #{countdownStatus,jdbcType=INTEGER},
+      </if>
+      <if test="countdownDescription != null">
+        countDown_description = #{countdownDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownStarttime != null">
+        countDown_startTime = #{countdownStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownEndtime != null">
+        countDown_endTime = #{countdownEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownCreatetime != null">
+        countDown_createTime = #{countdownCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="countdownMotifytime != null">
+        countDown_motifyTime = #{countdownMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where countDown_id = #{countdownId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- selectMlbackCountdownGetAll -->
+  <select id="selectMlbackCountdownGetAll" parameterType="com.atguigu.bean.MlbackCountdown" resultMap="BaseResultMap">
+    select * 
+    from tb_mlblack_countdown order by countDown_id
+  </select>
+  
+  <!-- selectMlbackCountdownById -->
+  <select id="selectMlbackCountdownById" parameterType="com.atguigu.bean.MlbackCountdown" resultMap="BaseResultMap">
+    select * 
+    from tb_mlblack_countdown where countDown_id = #{countdownId,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

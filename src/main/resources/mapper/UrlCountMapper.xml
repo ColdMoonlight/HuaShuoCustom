@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.UrlCountMapper">
+  <resultMap id="UrlCountResultMap" type="com.atguigu.bean.UrlCount">
+    <result column="url_string" jdbcType="VARCHAR" property="UrlString" />
+    <result column="url_string_num" jdbcType="VARCHAR" property="UrlStringNum" />
+    <result column="addcartViewDetail_createTime" jdbcType="VARCHAR" property="searchStartTime" />
+    <result column="addcartViewDetail_motifyTime" jdbcType="VARCHAR" property="searchEndTime" />
+  </resultMap>
+  
+  <!-- selectCartUrlCountByTime使用中 -->
+  <select id="selectCartUrlCountByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT addcartViewDetail_proseo as url_string , COUNT(addcartViewDetail_proseo) as url_string_num
+	from tb_mlback_addcartviewdetail 
+	WHERE addcartViewDetail_createTime BETWEEN #{searchStartTime,jdbcType=VARCHAR} and #{searchEndTime,jdbcType=VARCHAR} 
+	GROUP BY addcartViewDetail_proseo ORDER BY COUNT(addcartViewDetail_proseo) DESC
+  </select>
+  
+  <!-- selectCheckoutUrlCountByTime使用中 -->
+  <select id="selectCheckoutUrlCountByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT addcheakoutviewDetail_proseo as url_string , COUNT(addcheakoutviewDetail_proseo) as url_string_num
+	from tb_mlback_addcheakoutviewdetail 
+	WHERE addcheakoutviewDetail_createTime BETWEEN #{searchStartTime,jdbcType=VARCHAR} and #{searchEndTime,jdbcType=VARCHAR} 
+	GROUP BY addcheakoutviewDetail_proseo ORDER BY COUNT(addcheakoutviewDetail_proseo) DESC
+  </select>
+  
+  <!-- selectSearchUrlCountByTime使用中 -->
+  <select id="selectSearchUrlCountByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT search_content as url_string , COUNT(search_content) as url_string_num
+	from tb_mlback_search 
+	WHERE search_createTime BETWEEN #{searchStartTime,jdbcType=VARCHAR} and #{searchEndTime,jdbcType=VARCHAR} 
+	GROUP BY search_content ORDER BY COUNT(search_content) DESC
+  </select>
+  
+  <!-- selectCouponCountByTime使用中 -->
+  <select id="selectCouponCountByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT 
+	tborder.order_coupon_code as url_string , COUNT(tborder.order_coupon_code) as url_string_num
+	FROM 
+	tb_mlfront_payinfo as tbpay,
+	tb_mlfront_order as tborder,
+	tb_paypal_shippingaddress as tbpayadd 
+	WHERE 
+	tbpay.payInfo_oid = tborder.order_id AND tbpay.payInfo_id = tbpayadd.shippingAddress_payInfoid  
+	AND (tbpay.payInfo_status !=0) AND (tborder.order_coupon_code !='')and 
+	payInfo_createTime BETWEEN #{searchStartTime,jdbcType=VARCHAR} and #{searchEndTime,jdbcType=VARCHAR} 
+	GROUP BY tborder.order_coupon_code ORDER BY COUNT(tborder.order_coupon_code) DESC
+  </select>
+  
+  <!-- selectMoreBuyCountByTime使用中 -->
+  <select id="selectMoreBuyCountByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT 
+	COUNT(tpay.payInfo_id) as url_string_num 
+	from 
+	tb_mlfront_payinfo as tpay,
+	tb_paypal_shippingaddress as tpayadd
+	WHERE tpayadd.shippingAddress_ifFirstBuy = 1
+	AND tpay.payInfo_createTime BETWEEN #{searchStartTime,jdbcType=VARCHAR} and #{searchEndTime,jdbcType=VARCHAR} AND tpay.payInfo_status !=0 
+	AND tpay.payInfo_id = tpayadd.shippingAddress_payInfoid
+  </select>
+  
+  <!-- selectMoreBuyCountFromAddressByTime使用中 -->
+  <select id="selectMoreBuyCountFromAddressByTime" parameterType="com.atguigu.bean.UrlCount" resultMap="UrlCountResultMap">
+	SELECT 
+	COUNT(tpay.payInfo_id) as url_string_num 
+	from 
+	tb_mlfront_payinfo as tpay,
+	tb_mlfront_order as torder,
+	tb_mlfront_address as taddr
+	WHERE tpay.payInfo_oid = torder.order_id AND torder.order_addressinfo_id = taddr.address_id
+	AND taddr.address_email=#{UrlString,jdbcType=VARCHAR}
+	AND tpay.payInfo_status !=0 
+  </select>
+  
+</mapper>

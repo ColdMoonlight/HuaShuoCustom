@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.CouponAnalysisDateMapper">
+  <resultMap id="CouponAnalysisDateResultMap" type="com.atguigu.bean.CouponAnalysisDate">
+    <id column="payInfo_id" jdbcType="INTEGER" property="payinfoId" />
+    <result column="payInfo_oid" jdbcType="INTEGER" property="payinfoOid" />
+    <result column="payInfo_money" jdbcType="DECIMAL" property="payinfoMoney" />
+    <result column="payInfo_status" jdbcType="INTEGER" property="payinfoStatus" />
+    <result column="payInfo_createTime" jdbcType="VARCHAR" property="payinfoCreatetime" />
+    <result column="payInfo_motifyTime" jdbcType="VARCHAR" property="payinfoMotifytime" />
+    <association property="mlfrontOrder" column="order_id" javaType="com.atguigu.bean.MlfrontOrder">
+    	<id column="order_id" jdbcType="INTEGER" property="orderId" />
+    	<result column="order_coupon_code" jdbcType="VARCHAR" property="orderCouponCode" />
+    	<result column="order_addressinfo_id" jdbcType="INTEGER" property="orderAddressinfoId" />
+    </association>
+    <association property="mlPaypalShipAddress" column="shippingAddress_id" javaType="com.atguigu.bean.MlPaypalShipAddress">
+    	<id column="shippingAddress_id" jdbcType="INTEGER" property="shippingaddressId" />
+    	<result column="shippingAddress_email" jdbcType="VARCHAR" property="shippingaddressEmail" />
+    	<result column="shippingAddress_recipient_name" jdbcType="VARCHAR" property="shippingaddressRecipientName" />
+    </association>
+  </resultMap>
+
+  <!-- selectCouponAnalysisList使用中 -->
+  <select id="selectCouponAnalysisList" parameterType="com.atguigu.bean.CouponAnalysisDate" resultMap="CouponAnalysisDateResultMap">
+   SELECT 
+	tbpay.payInfo_id,tbpay.payInfo_oid,tbpay.payInfo_money,tbpay.payInfo_status,tbpay.payInfo_createTime, 
+	tborder.order_id ,tborder.order_addressinfo_id,
+	tborder.order_coupon_code,
+	tbpayadd.shippingAddress_id,tbpayadd.shippingAddress_email,tbpayadd.shippingAddress_recipient_name 
+	FROM 
+	tb_mlfront_payinfo as tbpay,
+	tb_mlfront_order as tborder,
+	tb_paypal_shippingaddress as tbpayadd 
+	WHERE tbpay.payInfo_createTime BETWEEN #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR} 
+	AND (tbpay.payInfo_status !=0)
+	<if test="SearchCouponCode != null">
+     AND tborder.order_coupon_code = #{SearchCouponCode,jdbcType=VARCHAR} 
+    </if>
+	 AND tbpay.payInfo_oid = tborder.order_id AND tbpay.payInfo_id = tbpayadd.shippingAddress_payInfoid 
+	 ORDER BY tbpay.payInfo_id DESC
+  </select>
+  
+</mapper>

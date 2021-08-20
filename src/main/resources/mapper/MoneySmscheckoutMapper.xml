@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MoneySmscheckoutMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MoneySmscheckout">
+    <id column="smscheckout_id" jdbcType="INTEGER" property="smscheckoutId" />
+    <result column="smscheckout_payid" jdbcType="INTEGER" property="smscheckoutPayid" />
+    <result column="smscheckout_orderid" jdbcType="INTEGER" property="smscheckoutOrderid" />
+    <result column="smscheckout_ordername" jdbcType="VARCHAR" property="smscheckoutOrdername" />
+    <result column="smscheckout_sendType" jdbcType="VARCHAR" property="smscheckoutSendtype" />
+    <result column="smscheckout_createTime" jdbcType="VARCHAR" property="smscheckoutCreatetime" />
+    <result column="smscheckout_motifyTime" jdbcType="VARCHAR" property="smscheckoutMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    smscheckout_id, smscheckout_payid, smscheckout_orderid, smscheckout_ordername, smscheckout_sendType, 
+    smscheckout_createTime, smscheckout_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_money_smscheckout
+    where smscheckout_id = #{smscheckoutId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MoneySmscheckout">
+    insert into tb_money_smscheckout (smscheckout_id, smscheckout_payid, 
+      smscheckout_orderid, smscheckout_ordername, 
+      smscheckout_sendType, smscheckout_createTime, 
+      smscheckout_motifyTime)
+    values (#{smscheckoutId,jdbcType=INTEGER}, #{smscheckoutPayid,jdbcType=INTEGER}, 
+      #{smscheckoutOrderid,jdbcType=INTEGER}, #{smscheckoutOrdername,jdbcType=VARCHAR}, 
+      #{smscheckoutSendtype,jdbcType=VARCHAR}, #{smscheckoutCreatetime,jdbcType=VARCHAR}, 
+      #{smscheckoutMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MoneySmscheckout">
+    update tb_money_smscheckout
+    set smscheckout_payid = #{smscheckoutPayid,jdbcType=INTEGER},
+      smscheckout_orderid = #{smscheckoutOrderid,jdbcType=INTEGER},
+      smscheckout_ordername = #{smscheckoutOrdername,jdbcType=VARCHAR},
+      smscheckout_sendType = #{smscheckoutSendtype,jdbcType=VARCHAR},
+      smscheckout_createTime = #{smscheckoutCreatetime,jdbcType=VARCHAR},
+      smscheckout_motifyTime = #{smscheckoutMotifytime,jdbcType=VARCHAR}
+    where smscheckout_id = #{smscheckoutId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="smscheckoutId" parameterType="com.atguigu.bean.MoneySmscheckout">
+    insert into tb_money_smscheckout
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="smscheckoutId != null">
+        smscheckout_id,
+      </if>
+      <if test="smscheckoutPayid != null">
+        smscheckout_payid,
+      </if>
+      <if test="smscheckoutOrderid != null">
+        smscheckout_orderid,
+      </if>
+      <if test="smscheckoutOrdername != null">
+        smscheckout_ordername,
+      </if>
+      <if test="smscheckoutSendtype != null">
+        smscheckout_sendType,
+      </if>
+      <if test="smscheckoutCreatetime != null">
+        smscheckout_createTime,
+      </if>
+      <if test="smscheckoutMotifytime != null">
+        smscheckout_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="smscheckoutId != null">
+        #{smscheckoutId,jdbcType=INTEGER},
+      </if>
+      <if test="smscheckoutPayid != null">
+        #{smscheckoutPayid,jdbcType=INTEGER},
+      </if>
+      <if test="smscheckoutOrderid != null">
+        #{smscheckoutOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="smscheckoutOrdername != null">
+        #{smscheckoutOrdername,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutSendtype != null">
+        #{smscheckoutSendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutCreatetime != null">
+        #{smscheckoutCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutMotifytime != null">
+        #{smscheckoutMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_money_smscheckout
+    where smscheckout_id = #{smscheckoutId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->  
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MoneySmscheckout">
+    update tb_money_smscheckout
+    <set>
+      <if test="smscheckoutPayid != null">
+        smscheckout_payid = #{smscheckoutPayid,jdbcType=INTEGER},
+      </if>
+      <if test="smscheckoutOrderid != null">
+        smscheckout_orderid = #{smscheckoutOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="smscheckoutOrdername != null">
+        smscheckout_ordername = #{smscheckoutOrdername,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutSendtype != null">
+        smscheckout_sendType = #{smscheckoutSendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutCreatetime != null">
+        smscheckout_createTime = #{smscheckoutCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="smscheckoutMotifytime != null">
+        smscheckout_motifyTime = #{smscheckoutMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where smscheckout_id = #{smscheckoutId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMoneySmscheckoutByPayId -->
+  <select id="selectMoneySmscheckoutByPayId" parameterType="com.atguigu.bean.MoneySmscheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_smscheckout 
+    where smscheckout_payid = #{smscheckoutPayid,jdbcType=INTEGER}
+  </select>
+  <!-- selectMoneySmscheckoutByPayOId -->
+  <select id="selectMoneySmscheckoutByPayOId" parameterType="com.atguigu.bean.MoneySmscheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_smscheckout 
+    where smscheckout_orderid = #{smscheckoutOrderid,jdbcType=INTEGER}
+  </select>
+  <!-- selectMoneySmscheckoutByPayOnameAndOid -->
+  <select id="selectMoneySmscheckoutByPayOnameAndOid" parameterType="com.atguigu.bean.MoneySmscheckout" resultMap="BaseResultMap">
+    select *
+    from tb_money_smscheckout 
+    where smscheckout_ordername = #{smscheckoutOrdername,jdbcType=VARCHAR} and smscheckout_orderid >= #{smscheckoutOrderid,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

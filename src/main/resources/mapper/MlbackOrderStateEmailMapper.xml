@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackOrderStateEmailMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackOrderStateEmail">
+    <id column="orderStateEmail_id" jdbcType="INTEGER" property="orderstateemailId" />
+    <result column="orderStateEmail_name" jdbcType="VARCHAR" property="orderstateemailName" />
+    <result column="orderStateEmail_one" jdbcType="VARCHAR" property="orderstateemailOne" />
+    <result column="orderStateEmail_two" jdbcType="VARCHAR" property="orderstateemailTwo" />
+    <result column="orderStateEmail_three" jdbcType="VARCHAR" property="orderstateemailThree" />
+    <result column="orderStateEmail_four" jdbcType="VARCHAR" property="orderstateemailFour" />
+    <result column="orderStateEmail_five" jdbcType="VARCHAR" property="orderstateemailFive" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderStateEmail_id, orderStateEmail_name, orderStateEmail_one, orderStateEmail_two, 
+    orderStateEmail_three, orderStateEmail_four, orderStateEmail_five
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_orderstateemail
+    where orderStateEmail_id = #{orderstateemailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_orderstateemail
+    where orderStateEmail_id = #{orderstateemailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackOrderStateEmail">
+    insert into tb_mlback_orderstateemail (orderStateEmail_id, orderStateEmail_name, 
+      orderStateEmail_one, orderStateEmail_two, 
+      orderStateEmail_three, orderStateEmail_four, 
+      orderStateEmail_five)
+    values (#{orderstateemailId,jdbcType=INTEGER}, #{orderstateemailName,jdbcType=VARCHAR}, 
+      #{orderstateemailOne,jdbcType=VARCHAR}, #{orderstateemailTwo,jdbcType=VARCHAR}, 
+      #{orderstateemailThree,jdbcType=VARCHAR}, #{orderstateemailFour,jdbcType=VARCHAR}, 
+      #{orderstateemailFive,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlbackOrderStateEmail">
+    insert into tb_mlback_orderstateemail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderstateemailId != null">
+        orderStateEmail_id,
+      </if>
+      <if test="orderstateemailName != null">
+        orderStateEmail_name,
+      </if>
+      <if test="orderstateemailOne != null">
+        orderStateEmail_one,
+      </if>
+      <if test="orderstateemailTwo != null">
+        orderStateEmail_two,
+      </if>
+      <if test="orderstateemailThree != null">
+        orderStateEmail_three,
+      </if>
+      <if test="orderstateemailFour != null">
+        orderStateEmail_four,
+      </if>
+      <if test="orderstateemailFive != null">
+        orderStateEmail_five,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderstateemailId != null">
+        #{orderstateemailId,jdbcType=INTEGER},
+      </if>
+      <if test="orderstateemailName != null">
+        #{orderstateemailName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailOne != null">
+        #{orderstateemailOne,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailTwo != null">
+        #{orderstateemailTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailThree != null">
+        #{orderstateemailThree,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailFour != null">
+        #{orderstateemailFour,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailFive != null">
+        #{orderstateemailFive,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackOrderStateEmail">
+    update tb_mlback_orderstateemail
+    <set>
+      <if test="orderstateemailName != null">
+        orderStateEmail_name = #{orderstateemailName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailOne != null">
+        orderStateEmail_one = #{orderstateemailOne,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailTwo != null">
+        orderStateEmail_two = #{orderstateemailTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailThree != null">
+        orderStateEmail_three = #{orderstateemailThree,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailFour != null">
+        orderStateEmail_four = #{orderstateemailFour,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstateemailFive != null">
+        orderStateEmail_five = #{orderstateemailFive,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderStateEmail_id = #{orderstateemailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackOrderStateEmail">
+    update tb_mlback_orderstateemail
+    set orderStateEmail_name = #{orderstateemailName,jdbcType=VARCHAR},
+      orderStateEmail_one = #{orderstateemailOne,jdbcType=VARCHAR},
+      orderStateEmail_two = #{orderstateemailTwo,jdbcType=VARCHAR},
+      orderStateEmail_three = #{orderstateemailThree,jdbcType=VARCHAR},
+      orderStateEmail_four = #{orderstateemailFour,jdbcType=VARCHAR},
+      orderStateEmail_five = #{orderstateemailFive,jdbcType=VARCHAR}
+    where orderStateEmail_id = #{orderstateemailId,jdbcType=INTEGER}
+  </update>
+    
+  <!-- selectMlbackOrderStateEmailById -->
+  <select id="selectMlbackOrderStateEmailById" parameterType="com.atguigu.bean.MlbackOrderStateEmail"  resultMap="BaseResultMap">
+    select *
+    from tb_mlback_orderstateemail
+    where orderStateEmail_id = #{orderstateemailId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlbackOrderStateEmailGetAll -->
+  <select id="selectMlbackOrderStateEmailGetAll" parameterType="com.atguigu.bean.MlbackOrderStateEmail"  resultMap="BaseResultMap">
+    select *
+    from tb_mlback_orderstateemail order by orderStateEmail_id desc
+  </select>
+  
+  <!-- selectMlbackOrderStateEmailByName -->
+  <select id="selectMlbackOrderStateEmailByName" parameterType="com.atguigu.bean.MlbackOrderStateEmail"  resultMap="BaseResultMap">
+    select *
+    from tb_mlback_orderstateemail where orderStateEmail_name = #{orderstateemailName,jdbcType=VARCHAR}
+  </select>
+</mapper>

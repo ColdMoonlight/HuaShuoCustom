@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontCartMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontCart">
+    <id column="cart_id" jdbcType="INTEGER" property="cartId" />
+    <result column="cart_uid" jdbcType="INTEGER" property="cartUid" />
+    <result column="cart_ip" jdbcType="VARCHAR" property="cartIp" />
+    <result column="cartItem_idStr" jdbcType="VARCHAR" property="cartitemIdstr" />
+    <result column="cart_status" jdbcType="INTEGER" property="cartStatus" />
+    <result column="cart_createTime" jdbcType="VARCHAR" property="cartCreatetime" />
+    <result column="cart_motifyTime" jdbcType="VARCHAR" property="cartMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cart_id, cart_uid, cart_ip, cartItem_idStr, cart_status, cart_createTime, cart_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontCart">
+    insert into tb_mlfront_cart (cart_id, cart_uid, cart_ip, 
+      cartItem_idStr, cart_status, cart_createTime, 
+      cart_motifyTime)
+    values (#{cartId,jdbcType=INTEGER}, #{cartUid,jdbcType=INTEGER}, #{cartIp,jdbcType=VARCHAR}, 
+      #{cartitemIdstr,jdbcType=VARCHAR}, #{cartStatus,jdbcType=INTEGER}, #{cartCreatetime,jdbcType=VARCHAR}, 
+      #{cartMotifytime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="cartId" useGeneratedKeys="true" parameterType="com.atguigu.bean.MlfrontCart">
+    insert into tb_mlfront_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        cart_id,
+      </if>
+      <if test="cartUid != null">
+        cart_uid,
+      </if>
+      <if test="cartIp != null">
+        cart_ip,
+      </if>
+      <if test="cartitemIdstr != null">
+        cartItem_idStr,
+      </if>
+      <if test="cartStatus != null">
+        cart_status,
+      </if>
+      <if test="cartCreatetime != null">
+        cart_createTime,
+      </if>
+      <if test="cartMotifytime != null">
+        cart_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        #{cartId,jdbcType=INTEGER},
+      </if>
+      <if test="cartUid != null">
+        #{cartUid,jdbcType=INTEGER},
+      </if>
+      <if test="cartIp != null">
+        #{cartIp,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemIdstr != null">
+        #{cartitemIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartStatus != null">
+        #{cartStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cartCreatetime != null">
+        #{cartCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cartMotifytime != null">
+        #{cartMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontCart">
+    update tb_mlfront_cart
+    <set>
+      <if test="cartUid != null">
+        cart_uid = #{cartUid,jdbcType=INTEGER},
+      </if>
+      <if test="cartIp != null">
+        cart_ip = #{cartIp,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemIdstr != null">
+        cartItem_idStr = #{cartitemIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartStatus != null">
+        cart_status = #{cartStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cartCreatetime != null">
+        cart_createTime = #{cartCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cartMotifytime != null">
+        cart_motifyTime = #{cartMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontCart">
+    update tb_mlfront_cart
+    set cart_uid = #{cartUid,jdbcType=INTEGER},
+      cart_ip = #{cartIp,jdbcType=VARCHAR},
+      cartItem_idStr = #{cartitemIdstr,jdbcType=VARCHAR},
+      cart_status = #{cartStatus,jdbcType=INTEGER},
+      cart_createTime = #{cartCreatetime,jdbcType=VARCHAR},
+      cart_motifyTime = #{cartMotifytime,jdbcType=VARCHAR}
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- selectMlfrontCartByDate使用中 -->
+  <select id="selectMlfrontCartByDate" parameterType="com.atguigu.bean.MlfrontCart" resultMap="BaseResultMap">
+    select cart_id, cart_createTime, cart_motifyTime
+    from tb_mlfront_cart where cart_createTime between #{cartMotifytime,jdbcType=VARCHAR} and #{cartCreatetime,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- selectAll使用中 -->
+  <select id="selectMlfrontCartGetAllHundred" parameterType="com.atguigu.bean.MlfrontCart" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cart order by cart_id desc limit 50
+  </select>
+  
+  <!-- selectMlfrontCartByIp使用中 -->
+  <select id="selectMlfrontCartByIp" parameterType="com.atguigu.bean.MlfrontCart" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cart where cart_ip = #{cartIp,jdbcType=VARCHAR} and cart_status = #{cartStatus,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlfrontCartByUidAndStatus使用中 -->
+  <select id="selectMlfrontCartByUidAndStatus" parameterType="com.atguigu.bean.MlfrontCart" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cart where cart_uid = #{cartUid,jdbcType=INTEGER} and cart_status = #{cartStatus,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlfrontCartByCartId -->
+  <select id="selectMlfrontCartByCartId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </select>
+</mapper>

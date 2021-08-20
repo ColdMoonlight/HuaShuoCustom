@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontProductQaMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontProductQa">
+    <id column="productQA_id" jdbcType="INTEGER" property="productqaId" />
+    <result column="productQA_product_ids" jdbcType="VARCHAR" property="productqaProductIds" />
+    <result column="productQA_question_ids" jdbcType="VARCHAR" property="productqaQuestionIds" />
+    <result column="productQA_name" jdbcType="VARCHAR" property="productqaName" />
+    <result column="productQA_createTime" jdbcType="VARCHAR" property="productqaCreatetime" />
+    <result column="productQA_modifyTime" jdbcType="VARCHAR" property="productqaModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    productQA_id, productQA_product_ids, productQA_question_ids, productQA_name, productQA_createTime, productQA_modifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_productqa
+    where productQA_id = #{productqaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_productqa
+    where productQA_id = #{productqaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontProductQa">
+    insert into tb_mlfront_productqa (productQA_id, productQA_product_ids, 
+      productQA_question_ids, productQA_name, productQA_createTime, productQA_modifyTime
+      )
+    values (#{productqaId,jdbcType=INTEGER}, #{productqaProductIds,jdbcType=VARCHAR}, 
+      #{productqaQuestionIds,jdbcType=VARCHAR}, #{productqaName,jdbcType=VARCHAR}, #{productqaCreatetime,jdbcType=VARCHAR}, #{productqaModifyTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontProductQa">
+    update tb_mlfront_productqa
+    set productQA_product_ids = #{productqaProductIds,jdbcType=VARCHAR},
+      productQA_question_ids = #{productqaQuestionIds,jdbcType=VARCHAR},
+      productQA_name = #{productqaName,jdbcType=VARCHAR},
+      productQA_createTime = #{productqaCreatetime,jdbcType=VARCHAR},
+      productQA_modifyTime = #{productqaModifyTime,jdbcType=VARCHAR}
+    where productQA_id = #{productqaId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="productqaId" parameterType="com.atguigu.bean.MlfrontProductQa">
+    insert into tb_mlfront_productqa
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productqaId != null">
+        productQA_id,
+      </if>
+      <if test="productqaProductIds != null">
+        productQA_product_ids,
+      </if>
+      <if test="productqaQuestionIds != null">
+        productQA_question_ids,
+      </if>
+      <if test="productqaName != null">
+        productQA_name,
+      </if>
+      <if test="productqaCreatetime != null">
+        productQA_createTime,
+      </if>
+      <if test="productqaModifyTime != null">
+        productQA_modifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productqaId != null">
+        #{productqaId,jdbcType=INTEGER},
+      </if>
+      <if test="productqaProductIds != null">
+        #{productqaProductIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaQuestionIds != null">
+        #{productqaQuestionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaName != null">
+        #{productqaName,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaCreatetime != null">
+        #{productqaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaModifyTime != null">
+        #{productqaModifyTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- selectCustomerWholesaleGetAll -->
+  <select id="selectMlfrontProductQaGetAll" parameterType="com.atguigu.bean.MlfrontProductQa" resultMap="BaseResultMap">
+    select * 
+    from tb_mlfront_productqa order by productQA_id desc
+  </select>
+  <!-- selectCustomerWholesaleById -->
+  <select id="selectMlfrontProductQaById" parameterType="com.atguigu.bean.MlfrontProductQa" resultMap="BaseResultMap">
+    select *  
+    from tb_mlfront_productqa where productQA_id = #{productqaId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontProductQa">
+    update tb_mlfront_productqa
+    <set>
+      <if test="productqaProductIds != null">
+        productQA_product_ids = #{productqaProductIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaQuestionIds != null">
+        productQA_question_ids = #{productqaQuestionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaName != null">
+        productQA_name = #{productqaName,jdbcType=VARCHAR},
+      </if>
+      <if test="productqaCreatetime != null">
+        productQA_createTime = #{productqaCreatetime,jdbcType=VARCHAR},
+      </if>
+       <if test="productqaModifyTime != null">
+        productQA_modifyTime = #{productqaModifyTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where productQA_id = #{productqaId,jdbcType=INTEGER}
+  </update>
+  
+
+</mapper>

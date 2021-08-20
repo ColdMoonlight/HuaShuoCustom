@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackPageAreaMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackPageArea">
+    <id column="pagearea_id" jdbcType="INTEGER" property="pageareaId" />
+    <result column="pagearea_seo" jdbcType="VARCHAR" property="pageareaSeo" />
+    <result column="pagearea_name" jdbcType="VARCHAR" property="pageareaName" />
+    <result column="pagearea_ascription" jdbcType="VARCHAR" property="pageareaAscription" />
+    <result column="pagearea_superCateId" jdbcType="INTEGER" property="pageareaSupercateid" />
+    <result column="pagearea_superCateName" jdbcType="VARCHAR" property="pageareaSupercatename" />
+    <result column="pagearea_status" jdbcType="INTEGER" property="pageareaStatus" />
+    <result column="pagearea_sort" jdbcType="INTEGER" property="pageareaSort" />
+    <result column="pagearea_pcstatus" jdbcType="INTEGER" property="pageareaPcstatus" />
+    <result column="pagearea_pcsort" jdbcType="INTEGER" property="pageareaPcsort" />
+    <result column="pagearea_type" jdbcType="INTEGER" property="pageareaType" />
+    <result column="pagearea_typeDetail" jdbcType="VARCHAR" property="pageareaTypedetail" />
+    <result column="pagearea_typeDetail_idStr" jdbcType="VARCHAR" property="pageareaTypedetailIdstr" />
+    <result column="pagearea_createTime" jdbcType="VARCHAR" property="pageareaCreatetime" />
+    <result column="pagearea_motifyTime" jdbcType="VARCHAR" property="pageareaMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pagearea_id, pagearea_seo, pagearea_name, pagearea_ascription, pagearea_superCateId, 
+    pagearea_superCateName, pagearea_status, pagearea_sort, pagearea_pcstatus, pagearea_pcsort, 
+    pagearea_type, pagearea_typeDetail, pagearea_typeDetail_idStr, pagearea_createTime, 
+    pagearea_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlblack_pagearea
+    where pagearea_id = #{pageareaId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackPageArea">
+    insert into tb_mlblack_pagearea (pagearea_id, pagearea_seo, pagearea_name, 
+      pagearea_ascription, pagearea_superCateId, 
+      pagearea_superCateName, pagearea_status, 
+      pagearea_sort, pagearea_pcstatus, pagearea_pcsort, 
+      pagearea_type, pagearea_typeDetail, pagearea_typeDetail_idStr, 
+      pagearea_createTime, pagearea_motifyTime)
+    values (#{pageareaId,jdbcType=INTEGER}, #{pageareaSeo,jdbcType=VARCHAR}, #{pageareaName,jdbcType=VARCHAR}, 
+      #{pageareaAscription,jdbcType=VARCHAR}, #{pageareaSupercateid,jdbcType=INTEGER}, 
+      #{pageareaSupercatename,jdbcType=VARCHAR}, #{pageareaStatus,jdbcType=INTEGER}, 
+      #{pageareaSort,jdbcType=INTEGER}, #{pageareaPcstatus,jdbcType=INTEGER}, #{pageareaPcsort,jdbcType=INTEGER}, 
+      #{pageareaType,jdbcType=INTEGER}, #{pageareaTypedetail,jdbcType=VARCHAR}, #{pageareaTypedetailIdstr,jdbcType=VARCHAR}, 
+      #{pageareaCreatetime,jdbcType=VARCHAR}, #{pageareaMotifytime,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackPageArea">
+    update tb_mlblack_pagearea
+    set pagearea_seo = #{pageareaSeo,jdbcType=VARCHAR},
+      pagearea_name = #{pageareaName,jdbcType=VARCHAR},
+      pagearea_ascription = #{pageareaAscription,jdbcType=VARCHAR},
+      pagearea_superCateId = #{pageareaSupercateid,jdbcType=INTEGER},
+      pagearea_superCateName = #{pageareaSupercatename,jdbcType=VARCHAR},
+      pagearea_status = #{pageareaStatus,jdbcType=INTEGER},
+      pagearea_sort = #{pageareaSort,jdbcType=INTEGER},
+      pagearea_pcstatus = #{pageareaPcstatus,jdbcType=INTEGER},
+      pagearea_pcsort = #{pageareaPcsort,jdbcType=INTEGER},
+      pagearea_type = #{pageareaType,jdbcType=INTEGER},
+      pagearea_typeDetail = #{pageareaTypedetail,jdbcType=VARCHAR},
+      pagearea_typeDetail_idStr = #{pageareaTypedetailIdstr,jdbcType=VARCHAR},
+      pagearea_createTime = #{pageareaCreatetime,jdbcType=VARCHAR},
+      pagearea_motifyTime = #{pageareaMotifytime,jdbcType=VARCHAR}
+    where pagearea_id = #{pageareaId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pageareaId" parameterType="com.atguigu.bean.MlbackPageArea">
+    insert into tb_mlblack_pagearea
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pageareaId != null">
+        pagearea_id,
+      </if>
+      <if test="pageareaSeo != null">
+        pagearea_seo,
+      </if>
+      <if test="pageareaName != null">
+        pagearea_name,
+      </if>
+      <if test="pageareaAscription != null">
+        pagearea_ascription,
+      </if>
+      <if test="pageareaSupercateid != null">
+        pagearea_superCateId,
+      </if>
+      <if test="pageareaSupercatename != null">
+        pagearea_superCateName,
+      </if>
+      <if test="pageareaStatus != null">
+        pagearea_status,
+      </if>
+      <if test="pageareaSort != null">
+        pagearea_sort,
+      </if>
+      <if test="pageareaPcstatus != null">
+        pagearea_pcstatus,
+      </if>
+      <if test="pageareaPcsort != null">
+        pagearea_pcsort,
+      </if>
+      <if test="pageareaType != null">
+        pagearea_type,
+      </if>
+      <if test="pageareaTypedetail != null">
+        pagearea_typeDetail,
+      </if>
+      <if test="pageareaTypedetailIdstr != null">
+        pagearea_typeDetail_idStr,
+      </if>
+      <if test="pageareaCreatetime != null">
+        pagearea_createTime,
+      </if>
+      <if test="pageareaMotifytime != null">
+        pagearea_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pageareaId != null">
+        #{pageareaId,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaSeo != null">
+        #{pageareaSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaName != null">
+        #{pageareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaAscription != null">
+        #{pageareaAscription,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaSupercateid != null">
+        #{pageareaSupercateid,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaSupercatename != null">
+        #{pageareaSupercatename,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaStatus != null">
+        #{pageareaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaSort != null">
+        #{pageareaSort,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaPcstatus != null">
+        #{pageareaPcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaPcsort != null">
+        #{pageareaPcsort,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaType != null">
+        #{pageareaType,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaTypedetail != null">
+        #{pageareaTypedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaTypedetailIdstr != null">
+        #{pageareaTypedetailIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaCreatetime != null">
+        #{pageareaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaMotifytime != null">
+        #{pageareaMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlblack_pagearea
+    where pagearea_id = #{pageareaId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackPageArea">
+    update tb_mlblack_pagearea
+    <set>
+      <if test="pageareaSeo != null">
+        pagearea_seo = #{pageareaSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaName != null">
+        pagearea_name = #{pageareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaAscription != null">
+        pagearea_ascription = #{pageareaAscription,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaSupercateid != null">
+        pagearea_superCateId = #{pageareaSupercateid,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaSupercatename != null">
+        pagearea_superCateName = #{pageareaSupercatename,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaStatus != null">
+        pagearea_status = #{pageareaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaSort != null">
+        pagearea_sort = #{pageareaSort,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaPcstatus != null">
+        pagearea_pcstatus = #{pageareaPcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaPcsort != null">
+        pagearea_pcsort = #{pageareaPcsort,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaType != null">
+        pagearea_type = #{pageareaType,jdbcType=INTEGER},
+      </if>
+      <if test="pageareaTypedetail != null">
+        pagearea_typeDetail = #{pageareaTypedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaTypedetailIdstr != null">
+        pagearea_typeDetail_idStr = #{pageareaTypedetailIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaCreatetime != null">
+        pagearea_createTime = #{pageareaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="pageareaMotifytime != null">
+        pagearea_motifyTime = #{pageareaMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pagearea_id = #{pageareaId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackPageAreaGetAll -->
+  <select id="selectMlbackPageAreaGetAll" parameterType="com.atguigu.bean.MlbackPageArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlblack_pagearea order by pagearea_id desc
+  </select>
+  <!-- selectMlbackPageAreaById -->
+  <select id="selectMlbackPageAreaById" parameterType="com.atguigu.bean.MlbackPageArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlblack_pagearea 
+    where pagearea_id = #{pageareaId,jdbcType=INTEGER}
+  </select>
+  <!-- 使用中selectHomepageByStatus -->
+  <select id="selectHomepageByStatus" parameterType="com.atguigu.bean.MlbackPageArea" resultMap="BaseResultMap">
+  	select
+  	pagearea_id, pagearea_seo, pagearea_name,pagearea_status, pagearea_sort,
+    pagearea_type, pagearea_typeDetail, pagearea_typeDetail_idStr
+  	from tb_mlblack_pagearea where pagearea_id>0 
+  	<if test="pageareaStatus != null">
+       and pagearea_status = #{pageareaStatus,jdbcType=INTEGER} 
+    </if>
+    order by pagearea_sort
+  </select>
+  <!-- 使用中selectHomepageByPcStatus -->
+  <select id="selectHomepageByPcStatus" parameterType="com.atguigu.bean.MlbackPageArea" resultMap="BaseResultMap">
+  	select
+  	pagearea_id, pagearea_seo, pagearea_name,pagearea_pcstatus, pagearea_pcsort, 
+    pagearea_type, pagearea_typeDetail, pagearea_typeDetail_idStr
+  	from tb_mlblack_pagearea where pagearea_id>0 
+  	<if test="pageareaPcstatus != null">
+      and pagearea_pcstatus = #{pageareaPcstatus,jdbcType=INTEGER}
+    </if>
+    order by pagearea_pcsort
+  </select>
+  <!-- 使用中selectMlbackPageAreaBackSearch -->
+  <select id="selectMlbackPageAreaBackSearch" parameterType="com.atguigu.bean.MlbackPageArea" resultMap="BaseResultMap">
+  	select
+  	pagearea_id, pagearea_seo, pagearea_name, pagearea_ascription, pagearea_superCateId, 
+    pagearea_superCateName, pagearea_status, pagearea_sort, pagearea_pcstatus, pagearea_pcsort, 
+    pagearea_type, pagearea_typeDetail
+  	from tb_mlblack_pagearea 
+    where pagearea_name like concat(concat("%",#{pageareaName}),"%")
+     <if test="pageareaSupercateid != null">
+     	and pagearea_superCateId = #{pageareaSupercateid,jdbcType=INTEGER}
+     </if>
+    order by pagearea_id desc
+  </select>
+  
+</mapper>

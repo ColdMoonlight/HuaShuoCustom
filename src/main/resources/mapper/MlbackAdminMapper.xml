@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackAdminMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackAdmin">
+    <constructor>
+      <idArg column="admin_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="admin_accName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="admin_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="admin_operaterName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="admin_power" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="admin_power_item_str" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_accName, admin_password, admin_operaterName, admin_power, admin_power_item_str
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackAdmin">
+    insert into tb_mlback_admin (admin_id, admin_accName, admin_password, 
+      admin_operaterName, admin_power, admin_power_item_str)
+    values (#{adminId,jdbcType=INTEGER}, #{adminAccname,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, 
+      #{adminOperatername,jdbcType=VARCHAR}, #{adminPower,jdbcType=INTEGER}, #{adminPowerItemStr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="adminId" parameterType="com.atguigu.bean.MlbackAdmin">
+    insert into tb_mlback_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminAccname != null">
+        admin_accName,
+      </if>
+      <if test="adminPassword != null">
+        admin_password,
+      </if>
+      <if test="adminOperatername != null">
+        admin_operaterName,
+      </if>
+      <if test="adminPower != null">
+        admin_power,
+      </if>
+      <if test="adminPowerItemStr != null">
+        admin_power_item_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminAccname != null">
+        #{adminAccname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPassword != null">
+        #{adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminOperatername != null">
+        #{adminOperatername,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPower != null">
+        #{adminPower,jdbcType=INTEGER},
+      </if>
+      <if test="adminPowerItemStr != null">
+        #{adminPowerItemStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackAdmin">
+    update tb_mlback_admin
+    <set>
+      <if test="adminAccname != null">
+        admin_accName = #{adminAccname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPassword != null">
+        admin_password = #{adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminOperatername != null">
+        admin_operaterName = #{adminOperatername,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPower != null">
+        admin_power = #{adminPower,jdbcType=INTEGER},
+      </if>
+      <if test="adminPowerItemStr != null">
+        admin_power_item_str = #{adminPowerItemStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackAdmin">
+    update tb_mlback_admin
+    set admin_accName = #{adminAccname,jdbcType=VARCHAR},
+      admin_password = #{adminPassword,jdbcType=VARCHAR},
+      admin_operaterName = #{adminOperatername,jdbcType=VARCHAR},
+      admin_power = #{adminPower,jdbcType=INTEGER},
+      admin_power_item_str = #{adminPowerItemStr,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 使用中 -->
+  <select id="selectMlbackAdmin" parameterType="com.atguigu.bean.MlbackAdmin" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_admin 
+    where admin_accName = #{adminAccname,jdbcType=VARCHAR} 
+    <if test="adminPassword != null">
+        and admin_password = #{adminPassword,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <update id="updateByAdminAccnameSelective" parameterType="com.atguigu.bean.MlbackAdmin">
+    update tb_mlback_admin
+    <set>
+      <if test="adminPassword != null">
+        admin_password = #{adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminOperatername != null">
+        admin_operaterName = #{adminOperatername,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPower != null">
+        admin_power = #{adminPower,jdbcType=INTEGER},
+      </if>
+    </set>
+    where admin_accName = #{adminAccname,jdbcType=VARCHAR}
+  </update>
+</mapper>

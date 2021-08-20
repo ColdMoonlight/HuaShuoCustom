@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackCouponDescTitleMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackCouponDescTitle">
+    <id column="coupondesctiele_id" jdbcType="INTEGER" property="coupondesctieleId" />
+    <result column="coupondesctiele_name" jdbcType="VARCHAR" property="coupondesctieleName" />
+    <result column="coupondesctiele_tieleDetail" jdbcType="VARCHAR" property="coupondesctieleTieledetail" />
+    <result column="coupondesctiele_status" jdbcType="INTEGER" property="coupondesctieleStatus" />
+    <result column="coupondesctiele_imgurl" jdbcType="VARCHAR" property="coupondesctieleImgurl" />
+    <result column="coupondesctiele_createTime" jdbcType="VARCHAR" property="coupondesctieleCreatetime" />
+    <result column="coupondesctiele_motifyTime" jdbcType="VARCHAR" property="coupondesctieleMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    coupondesctiele_id, coupondesctiele_name, coupondesctiele_tieleDetail, coupondesctiele_status, 
+    coupondesctiele_imgurl, coupondesctiele_createTime, coupondesctiele_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_coupondesctitle
+    where coupondesctiele_id = #{coupondesctieleId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackCouponDescTitle">
+    insert into tb_mlback_coupondesctitle (coupondesctiele_id, coupondesctiele_name, 
+      coupondesctiele_tieleDetail, coupondesctiele_status, coupondesctiele_imgurl, coupondesctiele_createTime, 
+      coupondesctiele_motifyTime)
+    values (#{coupondesctieleId,jdbcType=INTEGER}, #{coupondesctieleName,jdbcType=VARCHAR}, 
+      #{coupondesctieleTieledetail,jdbcType=VARCHAR}, #{coupondesctieleStatus,jdbcType=INTEGER}, 
+      #{coupondesctieleImgurl,jdbcType=VARCHAR}, #{coupondesctieleCreatetime,jdbcType=VARCHAR}, 
+      #{coupondesctieleMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackCouponDescTitle">
+    update tb_mlback_coupondesctitle
+    set coupondesctiele_name = #{coupondesctieleName,jdbcType=VARCHAR},
+      coupondesctiele_tieleDetail = #{coupondesctieleTieledetail,jdbcType=VARCHAR},
+      coupondesctiele_status = #{coupondesctieleStatus,jdbcType=INTEGER},
+      coupondesctiele_imgurl = #{coupondesctieleImgurl,jdbcType=VARCHAR},
+      coupondesctiele_createTime = #{coupondesctieleCreatetime,jdbcType=VARCHAR},
+      coupondesctiele_motifyTime = #{coupondesctieleMotifytime,jdbcType=VARCHAR}
+    where coupondesctiele_id = #{coupondesctieleId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="coupondesctieleId" parameterType="com.atguigu.bean.MlbackCouponDescTitle">
+    insert into tb_mlback_coupondesctitle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coupondesctieleId != null">
+        coupondesctiele_id,
+      </if>
+      <if test="coupondesctieleName != null">
+        coupondesctiele_name,
+      </if>
+      <if test="coupondesctieleTieledetail != null">
+        coupondesctiele_tieleDetail,
+      </if>
+      <if test="coupondesctieleStatus != null">
+        coupondesctiele_status,
+      </if>
+      <if test="coupondesctieleImgurl != null">
+        coupondesctiele_imgurl,
+      </if>
+      <if test="coupondesctieleCreatetime != null">
+        coupondesctiele_createTime,
+      </if>
+      <if test="coupondesctieleMotifytime != null">
+        coupondesctiele_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coupondesctieleId != null">
+        #{coupondesctieleId,jdbcType=INTEGER},
+      </if>
+      <if test="coupondesctieleName != null">
+        #{coupondesctieleName,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleTieledetail != null">
+        #{coupondesctieleTieledetail,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleStatus != null">
+        #{coupondesctieleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="coupondesctieleImgurl != null">
+        #{coupondesctieleImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleCreatetime != null">
+        #{coupondesctieleCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleMotifytime != null">
+        #{coupondesctieleMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_coupondesctitle
+    where coupondesctiele_id = #{coupondesctieleId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackCouponDescTitle">
+    update tb_mlback_coupondesctitle
+    <set>
+      <if test="coupondesctieleName != null">
+        coupondesctiele_name = #{coupondesctieleName,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleTieledetail != null">
+        coupondesctiele_tieleDetail = #{coupondesctieleTieledetail,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleStatus != null">
+        coupondesctiele_status = #{coupondesctieleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="coupondesctieleImgurl != null">
+        coupondesctiele_imgurl = #{coupondesctieleImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleCreatetime != null">
+        coupondesctiele_createTime = #{coupondesctieleCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="coupondesctieleMotifytime != null">
+        coupondesctiele_motifyTime = #{coupondesctieleMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupondesctiele_id = #{coupondesctieleId,jdbcType=INTEGER}
+  </update>
+
+  <!-- selectMlbackCouponDescTitleById -->
+  <select id="selectMlbackCouponDescTitleById" parameterType="com.atguigu.bean.MlbackCouponDescTitle" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupondesctitle 
+    where coupondesctiele_id = #{coupondesctieleId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlbackCouponDescTitleGetAll -->
+  <select id="selectMlbackCouponDescTitleGetAll" parameterType="com.atguigu.bean.MlbackCouponDescTitle" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupondesctitle order by coupondesctiele_id desc
+  </select>
+  
+  <!-- selectMlbackCouponDescTitleListByStatus -->
+  <select id="selectMlbackCouponDescTitleListByStatus" parameterType="com.atguigu.bean.MlbackCouponDescTitle" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupondesctitle where coupondesctiele_status = #{coupondesctieleStatus,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

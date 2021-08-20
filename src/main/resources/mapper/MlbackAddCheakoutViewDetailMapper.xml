@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackAddCheakoutViewDetailMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackAddCheakoutViewDetail">
+    <id column="addcheakoutviewDetail_id" jdbcType="INTEGER" property="addcheakoutviewdetailId" />
+    <result column="addcheakoutviewDetail_sessionid" jdbcType="VARCHAR" property="addcheakoutviewdetailSessionid" />
+    <result column="addcheakoutviewDetail_name" jdbcType="VARCHAR" property="addcheakoutviewdetailName" />
+    <result column="addcheakoutviewDetail_proid" jdbcType="INTEGER" property="addcheakoutviewdetailProid" />
+    <result column="addcheakoutviewDetail_proname" jdbcType="VARCHAR" property="addcheakoutviewdetailProname" />
+    <result column="addcheakoutviewDetail_proseo" jdbcType="VARCHAR" property="addcheakoutviewdetailProseo" />
+    <result column="addcheakoutviewDetail_actnum" jdbcType="INTEGER" property="addcheakoutviewdetailActnum" />
+    <result column="addcheakoutviewDetail_createTime" jdbcType="VARCHAR" property="addcheakoutviewdetailCreatetime" />
+    <result column="addcheakoutviewDetail_motifyTime" jdbcType="VARCHAR" property="addcheakoutviewdetailMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    addcheakoutviewDetail_id, addcheakoutviewDetail_sessionid, addcheakoutviewDetail_name, 
+    addcheakoutviewDetail_proid, addcheakoutviewDetail_proname, addcheakoutviewDetail_proseo, 
+    addcheakoutviewDetail_actnum, addcheakoutviewDetail_createTime, addcheakoutviewDetail_motifyTime
+  </sql>
+
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="addcheakoutviewdetailId" parameterType="com.atguigu.bean.MlbackAddCheakoutViewDetail">
+    insert into tb_mlback_addcheakoutviewdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addcheakoutviewdetailId != null">
+        addcheakoutviewDetail_id,
+      </if>
+      <if test="addcheakoutviewdetailSessionid != null">
+        addcheakoutviewDetail_sessionid,
+      </if>
+      <if test="addcheakoutviewdetailName != null">
+        addcheakoutviewDetail_name,
+      </if>
+      <if test="addcheakoutviewdetailProid != null">
+        addcheakoutviewDetail_proid,
+      </if>
+      <if test="addcheakoutviewdetailProname != null">
+        addcheakoutviewDetail_proname,
+      </if>
+      <if test="addcheakoutviewdetailProseo != null">
+        addcheakoutviewDetail_proseo,
+      </if>
+      <if test="addcheakoutviewdetailActnum != null">
+        addcheakoutviewDetail_actnum,
+      </if>
+      <if test="addcheakoutviewdetailCreatetime != null">
+        addcheakoutviewDetail_createTime,
+      </if>
+      <if test="addcheakoutviewdetailMotifytime != null">
+        addcheakoutviewDetail_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addcheakoutviewdetailId != null">
+        #{addcheakoutviewdetailId,jdbcType=INTEGER},
+      </if>
+      <if test="addcheakoutviewdetailSessionid != null">
+        #{addcheakoutviewdetailSessionid,jdbcType=VARCHAR},
+      </if>
+      <if test="addcheakoutviewdetailName != null">
+        #{addcheakoutviewdetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="addcheakoutviewdetailProid != null">
+        #{addcheakoutviewdetailProid,jdbcType=INTEGER},
+      </if>
+      <if test="addcheakoutviewdetailProname != null">
+        #{addcheakoutviewdetailProname,jdbcType=VARCHAR},
+      </if>
+      <if test="addcheakoutviewdetailProseo != null">
+        #{addcheakoutviewdetailProseo,jdbcType=VARCHAR},
+      </if>
+      <if test="addcheakoutviewdetailActnum != null">
+        #{addcheakoutviewdetailActnum,jdbcType=INTEGER},
+      </if>
+      <if test="addcheakoutviewdetailCreatetime != null">
+        #{addcheakoutviewdetailCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="addcheakoutviewdetailMotifytime != null">
+        #{addcheakoutviewdetailMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_addcheakoutviewdetail
+    where addcheakoutviewDetail_id = #{addcheakoutviewdetailId,jdbcType=INTEGER}
+  </delete>
+  <!-- selectMlbackAddCheakoutViewDetailByTimeAndActnum -->
+  <select id="selectMlbackAddCheakoutViewDetailByTimeAndActnum" parameterType="com.atguigu.bean.MlbackAddCheakoutViewDetail" resultMap="BaseResultMap">
+    select 
+    addcheakoutviewDetail_id, addcheakoutviewDetail_sessionid, addcheakoutviewDetail_name, 
+    addcheakoutviewDetail_proid, addcheakoutviewDetail_proname, addcheakoutviewDetail_proseo, 
+    addcheakoutviewDetail_actnum, addcheakoutviewDetail_createTime
+    from tb_mlback_addcheakoutviewdetail
+    where addcheakoutviewDetail_createTime between #{addcheakoutviewdetailCreatetime,jdbcType=VARCHAR} and #{addcheakoutviewdetailMotifytime,jdbcType=VARCHAR} 
+    <if test="addcheakoutviewdetailActnum != null">
+      and addcheakoutviewDetail_actnum = #{addcheakoutviewdetailActnum,jdbcType=INTEGER} 
+    </if>
+    order by addcheakoutviewDetail_proseo desc
+  </select>
+  
+</mapper>

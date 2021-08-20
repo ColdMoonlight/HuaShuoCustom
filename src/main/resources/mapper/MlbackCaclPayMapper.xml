@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackCaclPayMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackCaclPay">
+    <id column="tb_mlback_caclPay_id" jdbcType="INTEGER" property="tbMlbackCaclpayId" />
+    <result column="tb_mlback_caclPay_palteNum" jdbcType="VARCHAR" property="tbMlbackCaclpayPaltenum" />
+    <result column="tb_mlback_caclPay_orderId" jdbcType="INTEGER" property="tbMlbackCaclpayOrderid" />
+    <result column="tb_mlback_caclPay_createTime" jdbcType="VARCHAR" property="tbMlbackCaclpayCreatetime" />
+    <result column="tb_mlback_caclPay_motifyTime" jdbcType="VARCHAR" property="tbMlbackCaclpayMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tb_mlback_caclPay_id, tb_mlback_caclPay_palteNum, tb_mlback_caclPay_orderId, tb_mlback_caclPay_createTime, 
+    tb_mlback_caclPay_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_caclpay
+    where tb_mlback_caclPay_id = #{tbMlbackCaclpayId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackCaclPay">
+    insert into tb_mlback_caclpay (tb_mlback_caclPay_id, tb_mlback_caclPay_palteNum, 
+      tb_mlback_caclPay_orderId, tb_mlback_caclPay_createTime, 
+      tb_mlback_caclPay_motifyTime)
+    values (#{tbMlbackCaclpayId,jdbcType=INTEGER}, #{tbMlbackCaclpayPaltenum,jdbcType=VARCHAR}, 
+      #{tbMlbackCaclpayOrderid,jdbcType=INTEGER}, #{tbMlbackCaclpayCreatetime,jdbcType=VARCHAR}, 
+      #{tbMlbackCaclpayMotifytime,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackCaclPay">
+    update tb_mlback_caclpay
+    set tb_mlback_caclPay_palteNum = #{tbMlbackCaclpayPaltenum,jdbcType=VARCHAR},
+      tb_mlback_caclPay_orderId = #{tbMlbackCaclpayOrderid,jdbcType=INTEGER},
+      tb_mlback_caclPay_createTime = #{tbMlbackCaclpayCreatetime,jdbcType=VARCHAR},
+      tb_mlback_caclPay_motifyTime = #{tbMlbackCaclpayMotifytime,jdbcType=VARCHAR}
+    where tb_mlback_caclPay_id = #{tbMlbackCaclpayId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tbMlbackCaclpayId" parameterType="com.atguigu.bean.MlbackCaclPay">
+    insert into tb_mlback_caclpay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tbMlbackCaclpayId != null">
+        tb_mlback_caclPay_id,
+      </if>
+      <if test="tbMlbackCaclpayPaltenum != null">
+        tb_mlback_caclPay_palteNum,
+      </if>
+      <if test="tbMlbackCaclpayOrderid != null">
+        tb_mlback_caclPay_orderId,
+      </if>
+      <if test="tbMlbackCaclpayCreatetime != null">
+        tb_mlback_caclPay_createTime,
+      </if>
+      <if test="tbMlbackCaclpayMotifytime != null">
+        tb_mlback_caclPay_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tbMlbackCaclpayId != null">
+        #{tbMlbackCaclpayId,jdbcType=INTEGER},
+      </if>
+      <if test="tbMlbackCaclpayPaltenum != null">
+        #{tbMlbackCaclpayPaltenum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbMlbackCaclpayOrderid != null">
+        #{tbMlbackCaclpayOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="tbMlbackCaclpayCreatetime != null">
+        #{tbMlbackCaclpayCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="tbMlbackCaclpayMotifytime != null">
+        #{tbMlbackCaclpayMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackCaclPay">
+    update tb_mlback_caclpay
+    <set>
+      <if test="tbMlbackCaclpayPaltenum != null">
+        tb_mlback_caclPay_palteNum = #{tbMlbackCaclpayPaltenum,jdbcType=VARCHAR},
+      </if>
+      <if test="tbMlbackCaclpayOrderid != null">
+        tb_mlback_caclPay_orderId = #{tbMlbackCaclpayOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="tbMlbackCaclpayCreatetime != null">
+        tb_mlback_caclPay_createTime = #{tbMlbackCaclpayCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="tbMlbackCaclpayMotifytime != null">
+        tb_mlback_caclPay_motifyTime = #{tbMlbackCaclpayMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tb_mlback_caclPay_id = #{tbMlbackCaclpayId,jdbcType=INTEGER}
+  </update>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_caclpay
+    where tb_mlback_caclPay_id = #{tbMlbackCaclpayId,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 使用中selectMlbackCaclPayByParams -->
+  <select id="selectMlbackCaclPayByParams" parameterType="com.atguigu.bean.MlbackCaclPay" resultMap="BaseResultMap">
+  	select
+  	tb_mlback_caclPay_id, tb_mlback_caclPay_palteNum, tb_mlback_caclPay_orderId, tb_mlback_caclPay_createTime, 
+    tb_mlback_caclPay_motifyTime
+  	from tb_mlback_caclpay where tb_mlback_caclPay_palteNum = #{tbMlbackCaclpayPaltenum,jdbcType=VARCHAR}
+  </select>
+</mapper>

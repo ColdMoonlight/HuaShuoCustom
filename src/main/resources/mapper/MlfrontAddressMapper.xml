@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontAddressMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontAddress">
+    <id column="address_id" jdbcType="INTEGER" property="addressId" />
+    <result column="address_status" jdbcType="INTEGER" property="addressStatus" />
+    <result column="address_uid" jdbcType="INTEGER" property="addressUid" />
+    <result column="address_ip" jdbcType="VARCHAR" property="addressIp" />
+    <result column="address_email" jdbcType="VARCHAR" property="addressEmail" />
+    <result column="address_telephone" jdbcType="VARCHAR" property="addressTelephone" />
+    <result column="address_userFirstName" jdbcType="VARCHAR" property="addressUserfirstname" />
+    <result column="address_userLastName" jdbcType="VARCHAR" property="addressUserlastname" />
+    <result column="address_country_code" jdbcType="VARCHAR" property="addressCountryCode" />
+    <result column="address_country" jdbcType="VARCHAR" property="addressCountry" />
+    <result column="address_province" jdbcType="VARCHAR" property="addressProvince" />
+    <result column="address_provinceCode" jdbcType="VARCHAR" property="addressProvincecode" />
+    <result column="address_city" jdbcType="VARCHAR" property="addressCity" />
+    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+    <result column="address_post" jdbcType="VARCHAR" property="addressPost" />
+    <result column="address_createTime" jdbcType="VARCHAR" property="addressCreatetime" />
+    <result column="address_motifyTime" jdbcType="VARCHAR" property="addressMotifytime" />
+    <result column="address_formatTelephone" jdbcType="VARCHAR" property="addressFormatTelephone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    address_id, address_status, address_uid, address_ip, address_email, address_telephone, address_userFirstName, 
+    address_userLastName, address_country_code, address_country, address_province, address_provinceCode, 
+    address_city, address_detail, address_post, address_createTime, address_motifyTime,address_formatTelephone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_address
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontAddress">
+    insert into tb_mlfront_address (address_id, address_status, address_uid, address_ip, 
+      address_email, address_telephone, address_userFirstName, 
+      address_userLastName, address_country_code, 
+      address_country, address_province, address_provinceCode, 
+      address_city, address_detail, address_post, 
+      address_createTime, address_motifyTime,address_formatTelephone)
+    values (#{addressId,jdbcType=INTEGER}, #{addressStatus,jdbcType=INTEGER}, #{addressUid,jdbcType=INTEGER}, #{addressIp,jdbcType=VARCHAR}, 
+      #{addressEmail,jdbcType=VARCHAR}, #{addressTelephone,jdbcType=VARCHAR}, #{addressUserfirstname,jdbcType=VARCHAR}, 
+      #{addressUserlastname,jdbcType=VARCHAR}, #{addressCountryCode,jdbcType=VARCHAR}, 
+      #{addressCountry,jdbcType=VARCHAR}, #{addressProvince,jdbcType=VARCHAR}, #{addressProvincecode,jdbcType=VARCHAR}, 
+      #{addressCity,jdbcType=VARCHAR}, #{addressDetail,jdbcType=VARCHAR}, #{addressPost,jdbcType=VARCHAR}, 
+      #{addressCreatetime,jdbcType=VARCHAR}, #{addressMotifytime,jdbcType=VARCHAR}, #{addressFormatTelephone,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontAddress">
+    update tb_mlfront_address
+    set address_uid = #{addressUid,jdbcType=INTEGER},
+      address_status = #{addressStatus,jdbcType=INTEGER}, 
+      address_ip = #{addressIp,jdbcType=VARCHAR},
+      address_email = #{addressEmail,jdbcType=VARCHAR},
+      address_telephone = #{addressTelephone,jdbcType=VARCHAR},
+      address_userFirstName = #{addressUserfirstname,jdbcType=VARCHAR},
+      address_userLastName = #{addressUserlastname,jdbcType=VARCHAR},
+      address_country_code = #{addressCountryCode,jdbcType=VARCHAR},
+      address_country = #{addressCountry,jdbcType=VARCHAR},
+      address_province = #{addressProvince,jdbcType=VARCHAR},
+      address_provinceCode = #{addressProvincecode,jdbcType=VARCHAR},
+      address_city = #{addressCity,jdbcType=VARCHAR},
+      address_detail = #{addressDetail,jdbcType=VARCHAR},
+      address_post = #{addressPost,jdbcType=VARCHAR},
+      address_createTime = #{addressCreatetime,jdbcType=VARCHAR},
+      address_motifyTime = #{addressMotifytime,jdbcType=VARCHAR},
+      address_formatTelephone = #{addressFormatTelephone,jdbcType=VARCHAR}
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="addressId" parameterType="com.atguigu.bean.MlfrontAddress">
+    insert into tb_mlfront_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addressId != null">
+        address_id,
+      </if>
+      <if test="addressStatus != null">
+        address_status,
+      </if>
+      <if test="addressUid != null">
+        address_uid,
+      </if>
+      <if test="addressIp != null">
+        address_ip,
+      </if>
+      <if test="addressEmail != null">
+        address_email,
+      </if>
+      <if test="addressTelephone != null">
+        address_telephone,
+      </if>
+      <if test="addressUserfirstname != null">
+        address_userFirstName,
+      </if>
+      <if test="addressUserlastname != null">
+        address_userLastName,
+      </if>
+      <if test="addressCountryCode != null">
+        address_country_code,
+      </if>
+      <if test="addressCountry != null">
+        address_country,
+      </if>
+      <if test="addressProvince != null">
+        address_province,
+      </if>
+      <if test="addressProvincecode != null">
+        address_provinceCode,
+      </if>
+      <if test="addressCity != null">
+        address_city,
+      </if>
+      <if test="addressDetail != null">
+        address_detail,
+      </if>
+      <if test="addressPost != null">
+        address_post,
+      </if>
+      <if test="addressCreatetime != null">
+        address_createTime,
+      </if>
+      <if test="addressMotifytime != null">
+        address_motifyTime,
+      </if>
+      <if test="addressFormatTelephone != null">
+        address_formatTelephone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addressId != null">
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="addressStatus != null">
+        #{addressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addressUid != null">
+        #{addressUid,jdbcType=INTEGER},
+      </if>
+      <if test="addressIp != null">
+        #{addressIp,jdbcType=VARCHAR},
+      </if>
+      <if test="addressEmail != null">
+        #{addressEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="addressTelephone != null">
+        #{addressTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressUserfirstname != null">
+        #{addressUserfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressUserlastname != null">
+        #{addressUserlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCountryCode != null">
+        #{addressCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCountry != null">
+        #{addressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null">
+        #{addressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvincecode != null">
+        #{addressProvincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCity != null">
+        #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPost != null">
+        #{addressPost,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCreatetime != null">
+        #{addressCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="addressMotifytime != null">
+        #{addressMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="addressFormatTelephone != null">
+        #{addressFormatTelephone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_address
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontAddress">
+    update tb_mlfront_address
+    <set>
+      <if test="addressUid != null">
+        address_uid = #{addressUid,jdbcType=INTEGER},
+      </if>
+      <if test="addressStatus != null">
+        address_status = #{addressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addressIp != null">
+        address_ip = #{addressIp,jdbcType=VARCHAR},
+      </if>
+      <if test="addressEmail != null">
+        address_email = #{addressEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="addressTelephone != null">
+        address_telephone = #{addressTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressUserfirstname != null">
+        address_userFirstName = #{addressUserfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressUserlastname != null">
+        address_userLastName = #{addressUserlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCountryCode != null">
+        address_country_code = #{addressCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCountry != null">
+        address_country = #{addressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null">
+        address_province = #{addressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvincecode != null">
+        address_provinceCode = #{addressProvincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCity != null">
+        address_city = #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPost != null">
+        address_post = #{addressPost,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCreatetime != null">
+        address_createTime = #{addressCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="addressMotifytime != null">
+        address_motifyTime = #{addressMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="addressFormatTelephone != null">
+        address_formatTelephone = #{addressFormatTelephone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlfrontAddressByParam -->
+  <select id="selectMlfrontAddressByParam" parameterType="com.atguigu.bean.MlfrontAddress" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_address where address_status>=0 
+      <if test="addressId != null">
+        and address_id = #{addressId,jdbcType=INTEGER}
+      </if>
+      <if test="addressUid != null">
+        and address_uid = #{addressUid,jdbcType=INTEGER}
+      </if>
+      <if test="addressStatus != null">
+        and address_status = #{addressStatus,jdbcType=INTEGER}
+      </if>
+      <if test="addressIp != null">
+        and address_ip = #{addressIp,jdbcType=VARCHAR}
+      </if>
+      <if test="addressEmail != null">
+        and address_email = #{addressEmail,jdbcType=VARCHAR}
+      </if>
+      <if test="addressTelephone != null">
+        and address_telephone = #{addressTelephone,jdbcType=VARCHAR}
+      </if>
+      <if test="addressUserfirstname != null">
+        and address_userFirstName = #{addressUserfirstname,jdbcType=VARCHAR}
+      </if>
+      <if test="addressUserlastname != null">
+        and address_userLastName = #{addressUserlastname,jdbcType=VARCHAR}
+      </if>
+      <if test="addressCountryCode != null">
+        and address_country_code = #{addressCountryCode,jdbcType=VARCHAR}
+      </if>
+      <if test="addressCountry != null">
+        and address_country = #{addressCountry,jdbcType=VARCHAR}
+      </if>
+      <if test="addressProvince != null">
+        and address_province = #{addressProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="addressProvincecode != null">
+        and address_provinceCode = #{addressProvincecode,jdbcType=VARCHAR}
+      </if>
+      <if test="addressCity != null">
+        and address_city = #{addressCity,jdbcType=VARCHAR}
+      </if>
+      <if test="addressDetail != null">
+        and address_detail = #{addressDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="addressPost != null">
+        and address_post = #{addressPost,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <!-- updateByPrimaryKeySelective -->
+  <!-- updateByPrimaryKeySelective -->
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackProfbreviewAreaMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackProfbreviewArea">
+    <id column="profbreview_area_id" jdbcType="INTEGER" property="profbreviewAreaId" />
+    <result column="profbreview_area_pid" jdbcType="INTEGER" property="profbreviewAreaPid" />
+    <result column="profbreview_area_pseo" jdbcType="VARCHAR" property="profbreviewAreaPseo" />
+    <result column="profbreview_superCate_id" jdbcType="INTEGER" property="profbreviewSupercateId" />
+    <result column="profbreview_superCate_name" jdbcType="VARCHAR" property="profbreviewSupercateName" />
+    <result column="profbreview_area_status" jdbcType="INTEGER" property="profbreviewAreaStatus" />
+    <result column="profbreview_area_createTime" jdbcType="VARCHAR" property="profbreviewAreaCreatetime" />
+    <result column="profbreview_area_motifyTime" jdbcType="VARCHAR" property="profbreviewAreaMotifytime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.atguigu.bean.MlbackProfbreviewArea">
+    <result column="profbreview_area_desc" jdbcType="LONGVARCHAR" property="profbreviewAreaDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    profbreview_area_id, profbreview_area_pid, profbreview_area_pseo, profbreview_superCate_id, 
+    profbreview_superCate_name, profbreview_area_status, profbreview_area_createTime, profbreview_area_motifyTime
+  </sql>
+  <sql id="Blob_Column_List">
+    profbreview_area_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_mlback_profbreview_area
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_profbreview_area
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackProfbreviewArea">
+    insert into tb_mlback_profbreview_area (profbreview_area_id, profbreview_area_pid, 
+      profbreview_area_pseo, profbreview_superCate_id, 
+      profbreview_superCate_name, profbreview_area_status, 
+      profbreview_area_createTime, profbreview_area_motifyTime, 
+      profbreview_area_desc)
+    values (#{profbreviewAreaId,jdbcType=INTEGER}, #{profbreviewAreaPid,jdbcType=INTEGER}, 
+      #{profbreviewAreaPseo,jdbcType=VARCHAR}, #{profbreviewSupercateId,jdbcType=INTEGER}, 
+      #{profbreviewSupercateName,jdbcType=VARCHAR}, #{profbreviewAreaStatus,jdbcType=INTEGER}, 
+      #{profbreviewAreaCreatetime,jdbcType=VARCHAR}, #{profbreviewAreaMotifytime,jdbcType=VARCHAR}, 
+      #{profbreviewAreaDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="profbreviewAreaId" parameterType="com.atguigu.bean.MlbackProfbreviewArea">
+    insert into tb_mlback_profbreview_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="profbreviewAreaId != null">
+        profbreview_area_id,
+      </if>
+      <if test="profbreviewAreaPid != null">
+        profbreview_area_pid,
+      </if>
+      <if test="profbreviewAreaPseo != null">
+        profbreview_area_pseo,
+      </if>
+      <if test="profbreviewSupercateId != null">
+        profbreview_superCate_id,
+      </if>
+      <if test="profbreviewSupercateName != null">
+        profbreview_superCate_name,
+      </if>
+      <if test="profbreviewAreaStatus != null">
+        profbreview_area_status,
+      </if>
+      <if test="profbreviewAreaCreatetime != null">
+        profbreview_area_createTime,
+      </if>
+      <if test="profbreviewAreaMotifytime != null">
+        profbreview_area_motifyTime,
+      </if>
+      <if test="profbreviewAreaDesc != null">
+        profbreview_area_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="profbreviewAreaId != null">
+        #{profbreviewAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewAreaPid != null">
+        #{profbreviewAreaPid,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewAreaPseo != null">
+        #{profbreviewAreaPseo,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewSupercateId != null">
+        #{profbreviewSupercateId,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewSupercateName != null">
+        #{profbreviewSupercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaStatus != null">
+        #{profbreviewAreaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewAreaCreatetime != null">
+        #{profbreviewAreaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaMotifytime != null">
+        #{profbreviewAreaMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaDesc != null">
+        #{profbreviewAreaDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackProfbreviewArea">
+    update tb_mlback_profbreview_area
+    <set>
+      <if test="profbreviewAreaPid != null">
+        profbreview_area_pid = #{profbreviewAreaPid,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewAreaPseo != null">
+        profbreview_area_pseo = #{profbreviewAreaPseo,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewSupercateId != null">
+        profbreview_superCate_id = #{profbreviewSupercateId,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewSupercateName != null">
+        profbreview_superCate_name = #{profbreviewSupercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaStatus != null">
+        profbreview_area_status = #{profbreviewAreaStatus,jdbcType=INTEGER},
+      </if>
+      <if test="profbreviewAreaCreatetime != null">
+        profbreview_area_createTime = #{profbreviewAreaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaMotifytime != null">
+        profbreview_area_motifyTime = #{profbreviewAreaMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="profbreviewAreaDesc != null">
+        profbreview_area_desc = #{profbreviewAreaDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.atguigu.bean.MlbackProfbreviewArea">
+    update tb_mlback_profbreview_area
+    set profbreview_area_pid = #{profbreviewAreaPid,jdbcType=INTEGER},
+      profbreview_area_pseo = #{profbreviewAreaPseo,jdbcType=VARCHAR},
+      profbreview_superCate_id = #{profbreviewSupercateId,jdbcType=INTEGER},
+      profbreview_superCate_name = #{profbreviewSupercateName,jdbcType=VARCHAR},
+      profbreview_area_status = #{profbreviewAreaStatus,jdbcType=INTEGER},
+      profbreview_area_createTime = #{profbreviewAreaCreatetime,jdbcType=VARCHAR},
+      profbreview_area_motifyTime = #{profbreviewAreaMotifytime,jdbcType=VARCHAR},
+      profbreview_area_desc = #{profbreviewAreaDesc,jdbcType=LONGVARCHAR}
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackProfbreviewArea">
+    update tb_mlback_profbreview_area
+    set profbreview_area_pid = #{profbreviewAreaPid,jdbcType=INTEGER},
+      profbreview_area_pseo = #{profbreviewAreaPseo,jdbcType=VARCHAR},
+      profbreview_superCate_id = #{profbreviewSupercateId,jdbcType=INTEGER},
+      profbreview_superCate_name = #{profbreviewSupercateName,jdbcType=VARCHAR},
+      profbreview_area_status = #{profbreviewAreaStatus,jdbcType=INTEGER},
+      profbreview_area_createTime = #{profbreviewAreaCreatetime,jdbcType=VARCHAR},
+      profbreview_area_motifyTime = #{profbreviewAreaMotifytime,jdbcType=VARCHAR}
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+  </update>
+  <select id="selectMlbackProfbreviewAreabyPid" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    profbreview_area_id, profbreview_area_pid, profbreview_area_pseo, profbreview_superCate_id, 
+    profbreview_superCate_name, profbreview_area_status, profbreview_area_desc
+    from tb_mlback_profbreview_area
+    where profbreview_area_pid = #{profbreviewAreaPid,jdbcType=INTEGER}
+    <if test="profbreviewAreaStatus != null">
+        and profbreview_area_status = #{profbreviewAreaStatus,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="selectMlbackProfbreviewAreaGetAllSimple" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    profbreview_area_id, profbreview_area_pid, profbreview_area_pseo, profbreview_superCate_id, 
+    profbreview_superCate_name, profbreview_area_status
+    from tb_mlback_profbreview_area order by profbreview_area_pseo
+  </select>
+  
+  <select id="selectMlbackProfbreviewAreabyParam" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    profbreview_area_id, profbreview_area_pid, profbreview_area_pseo, profbreview_superCate_id, 
+    profbreview_superCate_name, profbreview_area_status, profbreview_area_desc
+    from tb_mlback_profbreview_area
+    where profbreview_area_id = #{profbreviewAreaId,jdbcType=INTEGER}
+    <if test="profbreviewAreaStatus != null">
+        and profbreview_area_status = #{profbreviewAreaStatus,jdbcType=INTEGER}
+    </if>
+    <if test="profbreviewSupercateId != null">
+        and profbreview_superCate_id = #{profbreviewSupercateId,jdbcType=INTEGER}
+    </if>
+    <if test="profbreviewAreaPid != null">
+        and profbreview_area_pid = #{profbreviewAreaPid,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+  <select id="selectMlbackProductBackLike" parameterType="com.atguigu.bean.MlbackProfbreviewArea" resultMap="BaseResultMap">
+    select 
+	profbreview_area_id, profbreview_area_pid, profbreview_area_pseo, profbreview_superCate_id, 
+    profbreview_superCate_name, profbreview_area_status, profbreview_area_desc
+    from tb_mlback_profbreview_area
+    where profbreview_area_pseo like concat(concat("%",#{profbreviewAreaPseo}),"%") 
+    AND profbreview_area_id>0 
+    <if test="profbreviewSupercateId != null">
+        and profbreview_superCate_id = #{profbreviewSupercateId,jdbcType=INTEGER}
+    </if>
+    order by profbreview_area_pseo
+  </select>
+</mapper>

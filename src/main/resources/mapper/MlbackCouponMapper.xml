@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackCouponMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackCoupon">
+    <id column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="coupon_name" jdbcType="VARCHAR" property="couponName" />
+    <result column="coupon_price" jdbcType="DECIMAL" property="couponPrice" />
+    <result column="coupon_priceoff" jdbcType="DECIMAL" property="couponPriceoff" />
+    <result column="coupon_price_baseline" jdbcType="DECIMAL" property="couponPriceBaseline" />
+    <result column="coupon_status" jdbcType="INTEGER" property="couponStatus" />
+    <result column="coupon_code" jdbcType="VARCHAR" property="couponCode" />
+    <result column="coupon_type" jdbcType="VARCHAR" property="couponType" />
+    <result column="coupon_luckdraw_type" jdbcType="INTEGER" property="couponLuckdrawType" />
+    <result column="coupon_luckdraw_sort" jdbcType="INTEGER" property="couponLuckdrawSort" />
+    <result column="coupon_luckdraw_weight" jdbcType="INTEGER" property="couponLuckdrawWeight" />
+    <result column="coupon_times" jdbcType="INTEGER" property="couponTimes" />
+    <result column="coupon_alltimes" jdbcType="INTEGER" property="couponAlltimes" />
+    <result column="coupon_createTime" jdbcType="VARCHAR" property="couponCreatetime" />
+    <result column="coupon_motifyTime" jdbcType="VARCHAR" property="couponMotifytime" />
+    <result column="coupon_startTime" jdbcType="VARCHAR" property="couponStarttime" />
+    <result column="coupon_endtime" jdbcType="VARCHAR" property="couponEndtime" />
+    <result column="coupon_imgUrl" jdbcType="VARCHAR" property="couponImgUrl" />
+    <result column="coupon_productonly_type" jdbcType="INTEGER" property="couponProductonlyType" />
+    <result column="coupon_productonly_pidStr" jdbcType="VARCHAR" property="couponProductonlyPidstr" />
+    <result column="coupon_productseonamesStronly_pid" jdbcType="VARCHAR" property="couponProductseonamesstronlyPid" />
+    <result column="coupon_productpronamesStronly_pid" jdbcType="VARCHAR" property="couponProductpronamesstronlyPid" />
+    <result column="coupon_apply_cateidstr" jdbcType="VARCHAR" property="couponApplyCateidstr" />
+    <result column="coupon_apply_cateSeostr" jdbcType="VARCHAR" property="couponApplyCateSeostr" />
+    <result column="coupon_prosfromapply_cateidstr" jdbcType="VARCHAR" property="couponProsFromApplyCateidstr" />
+    <result column="coupon_allexcept_pidstr" jdbcType="VARCHAR" property="couponAllExceptPidstr" />
+    <result column="coupon_allexcept_pseostr" jdbcType="VARCHAR" property="couponAllExceptPseostr" />
+    <result column="coupon_codeunique_emailif" jdbcType="INTEGER" property="couponCodeUniqueEmailIF" />
+    <result column="coupon_codeunique_email" jdbcType="VARCHAR" property="couponCodeUniqueEmail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    coupon_id, coupon_name, coupon_price, coupon_priceoff, coupon_price_baseline, coupon_status, 
+    coupon_code, coupon_type, coupon_luckdraw_type, coupon_luckdraw_sort, coupon_luckdraw_weight, coupon_times, 
+    coupon_alltimes, coupon_createTime, coupon_motifyTime, coupon_startTime, coupon_endtime, coupon_imgUrl,
+    coupon_productonly_type, coupon_productonly_pidStr, coupon_productseonamesStronly_pid, 
+    coupon_productpronamesStronly_pid,coupon_apply_cateidstr,coupon_apply_cateSeostr,
+    coupon_prosfromapply_cateidstr,coupon_allexcept_pidstr,coupon_allexcept_pseostr,
+    coupon_codeunique_emailif,coupon_codeunique_email
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_coupon
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackCoupon">
+    insert into tb_mlback_coupon (coupon_id, coupon_name, coupon_price, 
+      coupon_priceoff, coupon_price_baseline, coupon_status, 
+      coupon_code, coupon_type, coupon_luckdraw_type, 
+      coupon_luckdraw_weight, coupon_times, coupon_alltimes, 
+      coupon_createTime, coupon_motifyTime, coupon_startTime, 
+      coupon_endtime, coupon_imgUrl, coupon_productonly_type, coupon_luckdraw_sort, coupon_productonly_pidStr, 
+      coupon_productseonamesStronly_pid, coupon_productpronamesStronly_pid,
+      coupon_apply_cateidstr,coupon_apply_cateSeostr,coupon_prosfromapply_cateidstr,
+      coupon_allexcept_pidstr,coupon_allexcept_pseostr,coupon_codeunique_emailif,coupon_codeunique_email
+      )
+    values (#{couponId,jdbcType=INTEGER}, #{couponName,jdbcType=VARCHAR}, #{couponPrice,jdbcType=DECIMAL}, 
+      #{couponPriceoff,jdbcType=DECIMAL}, #{couponPriceBaseline,jdbcType=DECIMAL}, #{couponStatus,jdbcType=INTEGER}, 
+      #{couponCode,jdbcType=VARCHAR}, #{couponType,jdbcType=VARCHAR}, #{couponLuckdrawType,jdbcType=INTEGER}, #{couponLuckdrawSort,jdbcType=INTEGER}, 
+      #{couponLuckdrawWeight,jdbcType=INTEGER}, #{couponTimes,jdbcType=INTEGER}, #{couponAlltimes,jdbcType=INTEGER}, 
+      #{couponCreatetime,jdbcType=VARCHAR}, #{couponMotifytime,jdbcType=VARCHAR}, #{couponStarttime,jdbcType=VARCHAR}, 
+      #{couponEndtime,jdbcType=VARCHAR}, #{couponImgUrl,jdbcType=VARCHAR}, #{couponProductonlyType,jdbcType=INTEGER}, #{couponProductonlyPidstr,jdbcType=VARCHAR}, 
+      #{couponProductseonamesstronlyPid,jdbcType=VARCHAR}, #{couponProductpronamesstronlyPid,jdbcType=VARCHAR}, 
+      #{couponApplyCateidstr,jdbcType=VARCHAR}, #{couponApplyCateSeostr,jdbcType=VARCHAR},#{couponProsFromApplyCateidstr,jdbcType=VARCHAR},
+      #{couponAllExceptPidstr,jdbcType=VARCHAR},#{couponAllExceptPseostr,jdbcType=VARCHAR},
+      #{couponCodeUniqueEmailIF,jdbcType=INTEGER}, #{couponCodeUniqueEmail,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackCoupon">
+    update tb_mlback_coupon
+    set coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_price = #{couponPrice,jdbcType=DECIMAL},
+      coupon_priceoff = #{couponPriceoff,jdbcType=DECIMAL},
+      coupon_price_baseline = #{couponPriceBaseline,jdbcType=DECIMAL},
+      coupon_status = #{couponStatus,jdbcType=INTEGER},
+      coupon_code = #{couponCode,jdbcType=VARCHAR},
+      coupon_type = #{couponType,jdbcType=VARCHAR},
+      coupon_luckdraw_type = #{couponLuckdrawType,jdbcType=INTEGER},
+      coupon_luckdraw_sort = #{couponLuckdrawSort,jdbcType=INTEGER},
+      coupon_luckdraw_weight = #{couponLuckdrawWeight,jdbcType=INTEGER},
+      coupon_times = #{couponTimes,jdbcType=INTEGER},
+      coupon_alltimes = #{couponAlltimes,jdbcType=INTEGER},
+      coupon_createTime = #{couponCreatetime,jdbcType=VARCHAR},
+      coupon_motifyTime = #{couponMotifytime,jdbcType=VARCHAR},
+      coupon_startTime = #{couponStarttime,jdbcType=VARCHAR},
+      coupon_endtime = #{couponEndtime,jdbcType=VARCHAR},
+      coupon_imgUrl = #{couponImgUrl,jdbcType=VARCHAR},
+      coupon_productonly_type = #{couponProductonlyType,jdbcType=INTEGER},
+      coupon_productonly_pidStr = #{couponProductonlyPidstr,jdbcType=VARCHAR},
+      coupon_productseonamesStronly_pid = #{couponProductseonamesstronlyPid,jdbcType=VARCHAR},
+      coupon_productpronamesStronly_pid = #{couponProductpronamesstronlyPid,jdbcType=VARCHAR}, 
+      coupon_apply_cateidstr = #{couponApplyCateidstr,jdbcType=VARCHAR}, 
+      coupon_apply_cateSeostr = #{couponApplyCateSeostr,jdbcType=VARCHAR},
+      coupon_prosfromapply_cateidstr = #{couponProsFromApplyCateidstr,jdbcType=VARCHAR}, 
+      coupon_allexcept_pidstr = #{couponAllExceptPidstr,jdbcType=VARCHAR},
+      coupon_allexcept_pseostr = #{couponAllExceptPseostr,jdbcType=VARCHAR},
+      coupon_codeunique_emailif = #{couponCodeUniqueEmailIF,jdbcType=INTEGER}, 
+      coupon_codeunique_email = #{couponCodeUniqueEmail,jdbcType=VARCHAR}
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="couponId" parameterType="com.atguigu.bean.MlbackCoupon">
+    insert into tb_mlback_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="couponName != null">
+        coupon_name,
+      </if>
+      <if test="couponPrice != null">
+        coupon_price,
+      </if>
+      <if test="couponPriceoff != null">
+        coupon_priceoff,
+      </if>
+      <if test="couponPriceBaseline != null">
+        coupon_price_baseline,
+      </if>
+      <if test="couponStatus != null">
+        coupon_status,
+      </if>
+      <if test="couponCode != null">
+        coupon_code,
+      </if>
+      <if test="couponType != null">
+        coupon_type,
+      </if>
+      <if test="couponLuckdrawType != null">
+        coupon_luckdraw_type,
+      </if>
+      <if test="couponLuckdrawSort != null">
+        coupon_luckdraw_sort,
+      </if>
+      <if test="couponLuckdrawWeight != null">
+        coupon_luckdraw_weight,
+      </if>
+      <if test="couponTimes != null">
+        coupon_times,
+      </if>
+      <if test="couponAlltimes != null">
+        coupon_alltimes,
+      </if>
+      <if test="couponCreatetime != null">
+        coupon_createTime,
+      </if>
+      <if test="couponMotifytime != null">
+        coupon_motifyTime,
+      </if>
+      <if test="couponStarttime != null">
+        coupon_startTime,
+      </if>
+      <if test="couponEndtime != null">
+        coupon_endtime,
+      </if>
+      <if test="couponImgUrl != null">
+        coupon_imgUrl,
+      </if>
+      <if test="couponProductonlyType != null">
+        coupon_productonly_type,
+      </if>
+      <if test="couponProductonlyPidstr != null">
+        coupon_productonly_pidStr,
+      </if>
+      <if test="couponProductseonamesstronlyPid != null">
+        coupon_productseonamesStronly_pid,
+      </if>
+      <if test="couponProductpronamesstronlyPid != null">
+        coupon_productpronamesStronly_pid,
+      </if>
+      <if test="couponApplyCateidstr != null">
+        coupon_apply_cateidstr,
+      </if>
+      <if test="couponApplyCateSeostr != null">
+        coupon_apply_cateSeostr,
+      </if>
+      <if test="couponProsFromApplyCateidstr != null">
+        coupon_prosfromapply_cateidstr,
+      </if>
+      <if test="couponAllExceptPidstr != null">
+        coupon_allexcept_pidstr,
+      </if>
+      <if test="couponAllExceptPseostr != null">
+        coupon_allexcept_pseostr,
+      </if>
+      <if test="couponCodeUniqueEmailIF != null">
+        coupon_codeunique_emailif,
+      </if>
+      <if test="couponCodeUniqueEmail != null">
+        coupon_codeunique_email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponName != null">
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponPrice != null">
+        #{couponPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPriceoff != null">
+        #{couponPriceoff,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPriceBaseline != null">
+        #{couponPriceBaseline,jdbcType=DECIMAL},
+      </if>
+      <if test="couponStatus != null">
+        #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponCode != null">
+        #{couponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null">
+        #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponLuckdrawType != null">
+        #{couponLuckdrawType,jdbcType=INTEGER},
+      </if>
+      <if test="couponLuckdrawSort != null">
+        #{couponLuckdrawSort,jdbcType=INTEGER},
+      </if>
+      <if test="couponLuckdrawWeight != null">
+        #{couponLuckdrawWeight,jdbcType=INTEGER},
+      </if>
+      <if test="couponTimes != null">
+        #{couponTimes,jdbcType=INTEGER},
+      </if>
+      <if test="couponAlltimes != null">
+        #{couponAlltimes,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreatetime != null">
+        #{couponCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponMotifytime != null">
+        #{couponMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponStarttime != null">
+        #{couponStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponEndtime != null">
+        #{couponEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponImgUrl != null">
+        #{couponImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductonlyType != null">
+        #{couponProductonlyType,jdbcType=INTEGER},
+      </if>
+      <if test="couponProductonlyPidstr != null">
+        #{couponProductonlyPidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductseonamesstronlyPid != null">
+        #{couponProductseonamesstronlyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductpronamesstronlyPid != null">
+        #{couponProductpronamesstronlyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponApplyCateidstr != null">
+        #{couponApplyCateidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponApplyCateSeostr != null">
+        #{couponApplyCateSeostr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProsFromApplyCateidstr != null">
+        #{couponProsFromApplyCateidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAllExceptPidstr != null">
+        #{couponAllExceptPidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAllExceptPseostr != null">
+        #{couponAllExceptPseostr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponCodeUniqueEmailIF != null">
+        #{couponCodeUniqueEmailIF,jdbcType=INTEGER},
+      </if>
+      <if test="couponCodeUniqueEmail != null">
+        #{couponCodeUniqueEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_coupon
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackCoupon">
+    update tb_mlback_coupon
+    <set>
+      <if test="couponName != null">
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponPrice != null">
+        coupon_price = #{couponPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPriceoff != null">
+        coupon_priceoff = #{couponPriceoff,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPriceBaseline != null">
+        coupon_price_baseline = #{couponPriceBaseline,jdbcType=DECIMAL},
+      </if>
+      <if test="couponStatus != null">
+        coupon_status = #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponCode != null">
+        coupon_code = #{couponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null">
+        coupon_type = #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponLuckdrawType != null">
+        coupon_luckdraw_type = #{couponLuckdrawType,jdbcType=INTEGER},
+      </if>
+      <if test="couponLuckdrawSort != null">
+        coupon_luckdraw_sort = #{couponLuckdrawSort,jdbcType=INTEGER},
+      </if>
+      <if test="couponLuckdrawWeight != null">
+        coupon_luckdraw_weight = #{couponLuckdrawWeight,jdbcType=INTEGER},
+      </if>
+      <if test="couponTimes != null">
+        coupon_times = #{couponTimes,jdbcType=INTEGER},
+      </if>
+      <if test="couponAlltimes != null">
+        coupon_alltimes = #{couponAlltimes,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreatetime != null">
+        coupon_createTime = #{couponCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponMotifytime != null">
+        coupon_motifyTime = #{couponMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponStarttime != null">
+        coupon_startTime = #{couponStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponEndtime != null">
+        coupon_endtime = #{couponEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="couponImgUrl != null">
+        coupon_imgUrl = #{couponImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductonlyType != null">
+        coupon_productonly_type = #{couponProductonlyType,jdbcType=INTEGER},
+      </if>
+      <if test="couponProductonlyPidstr != null">
+        coupon_productonly_pidStr = #{couponProductonlyPidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductseonamesstronlyPid != null">
+        coupon_productseonamesStronly_pid = #{couponProductseonamesstronlyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProductpronamesstronlyPid != null">
+        coupon_productpronamesStronly_pid = #{couponProductpronamesstronlyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponApplyCateidstr != null">
+        coupon_apply_cateidstr = #{couponApplyCateidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponApplyCateSeostr != null">
+        coupon_apply_cateSeostr = #{couponApplyCateSeostr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponProsFromApplyCateidstr != null">
+        coupon_prosfromapply_cateidstr = #{couponProsFromApplyCateidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAllExceptPidstr != null">
+		coupon_allexcept_pidstr = #{couponAllExceptPidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAllExceptPseostr != null">
+		coupon_allexcept_pseostr = #{couponAllExceptPseostr,jdbcType=VARCHAR},
+      </if>
+      <if test="couponCodeUniqueEmailIF != null">
+        coupon_codeunique_emailif = #{couponCodeUniqueEmailIF,jdbcType=INTEGER},
+      </if>
+      <if test="couponCodeUniqueEmail != null">
+        coupon_codeunique_email = #{couponCodeUniqueEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </update>
+  <!-- deleteByPrimaryKey -->
+  <!-- selectMlbackCouponByConditionS使用中 -->
+  <select id="selectMlbackCouponByConditionS" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupon 
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+      <if test="couponName != null">
+        and coupon_name = #{couponName,jdbcType=VARCHAR}
+      </if>
+      <if test="couponPrice != null">
+        and coupon_price = #{couponPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="couponPriceoff != null">
+        and coupon_priceoff = #{couponPriceoff,jdbcType=DECIMAL}
+      </if>
+      <if test="couponPriceBaseline != null">
+        and coupon_price_baseline = #{couponPriceBaseline,jdbcType=DECIMAL}
+      </if>
+      <if test="couponStatus != null">
+        and coupon_status = #{couponStatus,jdbcType=INTEGER}
+      </if>
+      <if test="couponCode != null">
+        and coupon_code = #{couponCode,jdbcType=VARCHAR}
+      </if>
+      <if test="couponType != null">
+        and coupon_type = #{couponType,jdbcType=VARCHAR}
+      </if>
+      <if test="couponLuckdrawType != null">
+        and coupon_luckdraw_type = #{couponLuckdrawType,jdbcType=INTEGER}
+      </if>
+      <if test="couponLuckdrawSort != null">
+        and coupon_luckdraw_sort = #{couponLuckdrawSort,jdbcType=INTEGER}
+      </if>
+      <if test="couponLuckdrawWeight != null">
+        and coupon_luckdraw_weight = #{couponLuckdrawWeight,jdbcType=INTEGER}
+      </if>
+      <if test="couponProductonlyType != null">
+        and coupon_productonly_type = #{couponProductonlyType,jdbcType=INTEGER}
+      </if>
+  </select>
+  <!-- selectMlbackCouponGetAll -->
+  <select id="selectMlbackCouponGetAll" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupon order by coupon_id desc
+  </select>
+  <select id="selectMlbackCouponOrderByStatus" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupon order by coupon_status desc,coupon_id desc
+  </select>
+  <!-- selectMlbackCouponBackSearch -->
+  <select id="selectMlbackCouponBackSearch" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+  	select 
+    coupon_id, coupon_name, coupon_price, coupon_priceoff, coupon_price_baseline, coupon_status, 
+    coupon_code, coupon_type, coupon_luckdraw_type, coupon_luckdraw_sort, coupon_luckdraw_weight, coupon_times, 
+    coupon_alltimes,coupon_startTime, coupon_endtime, coupon_imgUrl,
+    coupon_productonly_type, coupon_productonly_pidStr, coupon_productseonamesStronly_pid, 
+    coupon_productpronamesStronly_pid
+  	from tb_mlback_coupon 
+  	where coupon_name like concat(concat("%",#{couponName}),"%")
+    order by coupon_id desc
+  </select>
+  <!-- selectMlbackCouponBYCode -->  
+  <select id="selectMlbackCouponBYCode" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupon 
+    where coupon_code = #{couponCode,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- selectMlbackCouponByLuckDrawType使用中 -->
+  <select id="selectMlbackCouponByLuckDrawType" parameterType="com.atguigu.bean.MlbackCoupon" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_coupon
+    where coupon_luckdraw_type = #{couponLuckdrawType,jdbcType=INTEGER}
+    order by coupon_luckdraw_sort ,coupon_id
+  </select>
+</mapper>

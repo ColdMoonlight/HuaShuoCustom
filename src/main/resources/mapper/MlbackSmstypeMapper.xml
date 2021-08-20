@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackSmstypeMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackSmstype">
+    <id column="smstype_id" jdbcType="INTEGER" property="smstypeId" />
+    <result column="smstype_name" jdbcType="VARCHAR" property="smstypeName" />
+    <result column="smstype_fronttime" jdbcType="INTEGER" property="smstypeFronttime" />
+    <result column="smstype_content" jdbcType="VARCHAR" property="smstypeContent" />
+    <result column="smstype_status" jdbcType="INTEGER" property="smstypeStatus" />
+    <result column="smstype_createTime" jdbcType="VARCHAR" property="smstypeCreatetime" />
+    <result column="smstype_motifyTime" jdbcType="VARCHAR" property="smstypeMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    smstype_id, smstype_name, smstype_fronttime, smstype_content, smstype_status, smstype_createTime, 
+    smstype_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlblack_smstype
+    where smstype_id = #{smstypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlblack_smstype
+    where smstype_id = #{smstypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackSmstype">
+    insert into tb_mlblack_smstype (smstype_id, smstype_name, smstype_fronttime, 
+      smstype_content, smstype_status, smstype_createTime, 
+      smstype_motifyTime)
+    values (#{smstypeId,jdbcType=INTEGER}, #{smstypeName,jdbcType=VARCHAR}, #{smstypeFronttime,jdbcType=INTEGER}, 
+      #{smstypeContent,jdbcType=VARCHAR}, #{smstypeStatus,jdbcType=INTEGER}, #{smstypeCreatetime,jdbcType=VARCHAR}, 
+      #{smstypeMotifytime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlbackSmstype">
+    insert into tb_mlblack_smstype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="smstypeId != null">
+        smstype_id,
+      </if>
+      <if test="smstypeName != null">
+        smstype_name,
+      </if>
+      <if test="smstypeFronttime != null">
+        smstype_fronttime,
+      </if>
+      <if test="smstypeContent != null">
+        smstype_content,
+      </if>
+      <if test="smstypeStatus != null">
+        smstype_status,
+      </if>
+      <if test="smstypeCreatetime != null">
+        smstype_createTime,
+      </if>
+      <if test="smstypeMotifytime != null">
+        smstype_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="smstypeId != null">
+        #{smstypeId,jdbcType=INTEGER},
+      </if>
+      <if test="smstypeName != null">
+        #{smstypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeFronttime != null">
+        #{smstypeFronttime,jdbcType=INTEGER},
+      </if>
+      <if test="smstypeContent != null">
+        #{smstypeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeStatus != null">
+        #{smstypeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="smstypeCreatetime != null">
+        #{smstypeCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeMotifytime != null">
+        #{smstypeMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackSmstype">
+    update tb_mlblack_smstype
+    <set>
+      <if test="smstypeName != null">
+        smstype_name = #{smstypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeFronttime != null">
+        smstype_fronttime = #{smstypeFronttime,jdbcType=INTEGER},
+      </if>
+      <if test="smstypeContent != null">
+        smstype_content = #{smstypeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeStatus != null">
+        smstype_status = #{smstypeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="smstypeCreatetime != null">
+        smstype_createTime = #{smstypeCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="smstypeMotifytime != null">
+        smstype_motifyTime = #{smstypeMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where smstype_id = #{smstypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackSmstype">
+    update tb_mlblack_smstype
+    set smstype_name = #{smstypeName,jdbcType=VARCHAR},
+      smstype_fronttime = #{smstypeFronttime,jdbcType=INTEGER},
+      smstype_content = #{smstypeContent,jdbcType=VARCHAR},
+      smstype_status = #{smstypeStatus,jdbcType=INTEGER},
+      smstype_createTime = #{smstypeCreatetime,jdbcType=VARCHAR},
+      smstype_motifyTime = #{smstypeMotifytime,jdbcType=VARCHAR}
+    where smstype_id = #{smstypeId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="selectMlbackSmstypeByName" parameterType="com.atguigu.bean.MlbackSmstype" resultMap="BaseResultMap">
+    select *
+    from tb_mlblack_smstype
+    where smstype_name = #{smstypeName,jdbcType=VARCHAR}
+  </select>
+</mapper>

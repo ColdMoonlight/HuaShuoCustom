@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackProductTogetherMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackProductTogether">
+    <id column="productTogether_id" jdbcType="INTEGER" property="producttogetherId" />
+    <result column="productTogether_name" jdbcType="VARCHAR" property="producttogetherName" />
+    <result column="productTogether_status" jdbcType="INTEGER" property="producttogetherStatus" />
+    <result column="productTogether_prosId_str" jdbcType="VARCHAR" property="producttogetherProsidStr" />
+    <result column="productTogether_prosName_str" jdbcType="VARCHAR" property="producttogetherProsnameStr" />
+    <result column="productTogether_prosSeo_str" jdbcType="VARCHAR" property="producttogetherProsseoStr" />
+    <result column="productTogether_prosImgUrl_str" jdbcType="VARCHAR" property="producttogetherProsimgurlStr" />
+    <result column="productTogether_superCate_id" jdbcType="INTEGER" property="producttogetherSupercateId" />
+    <result column="productTogether_superCate_name" jdbcType="VARCHAR" property="producttogetherSupercateName" />
+    <result column="productTogether_createTime" jdbcType="VARCHAR" property="producttogetherCreatetime" />
+    <result column="productTogether_motifyTime" jdbcType="VARCHAR" property="producttogetherMotifytime" />
+    <result column="productTogether_belong_proIdStr" jdbcType="VARCHAR" property="producttogetherBelongProIdStr" />
+    <result column="productTogether_belong_proNameStr" jdbcType="VARCHAR" property="producttogetherBelongProNameStr" />
+    <result column="productTogether_belong_proSeoNameStr" jdbcType="VARCHAR" property="producttogetherBelongProSeoNameStr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    productTogether_id, productTogether_name, productTogether_status, productTogether_prosId_str, 
+    productTogether_prosName_str, productTogether_prosSeo_str, productTogether_prosImgUrl_str, 
+    productTogether_superCate_id, productTogether_superCate_name, productTogether_createTime, 
+    productTogether_motifyTime,productTogether_belong_proIdStr,productTogether_belong_proNameStr,
+    productTogether_belong_proSeoNameStr
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_producttogether
+    where productTogether_id = #{producttogetherId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackProductTogether">
+    insert into tb_mlback_producttogether (productTogether_id, productTogether_name, 
+      productTogether_status, productTogether_prosId_str, 
+      productTogether_prosName_str, productTogether_prosSeo_str, 
+      productTogether_prosImgUrl_str, productTogether_superCate_id, 
+      productTogether_superCate_name, productTogether_createTime, 
+      productTogether_motifyTime,productTogether_belong_proIdStr,
+      productTogether_belong_proNameStr,productTogether_belong_proSeoNameStr)
+    values (#{producttogetherId,jdbcType=INTEGER}, #{producttogetherName,jdbcType=VARCHAR}, 
+      #{producttogetherStatus,jdbcType=INTEGER}, #{producttogetherProsidStr,jdbcType=VARCHAR}, 
+      #{producttogetherProsnameStr,jdbcType=VARCHAR}, #{producttogetherProsseoStr,jdbcType=VARCHAR}, 
+      #{producttogetherProsimgurlStr,jdbcType=VARCHAR}, #{producttogetherSupercateId,jdbcType=INTEGER}, 
+      #{producttogetherSupercateName,jdbcType=VARCHAR}, #{producttogetherCreatetime,jdbcType=VARCHAR}, 
+      #{producttogetherMotifytime,jdbcType=VARCHAR}, #{producttogetherBelongProIdStr,jdbcType=VARCHAR}, 
+      #{producttogetherBelongProNameStr,jdbcType=VARCHAR}, #{producttogetherBelongProSeoNameStr,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackProductTogether">
+    update tb_mlback_producttogether
+    set productTogether_name = #{producttogetherName,jdbcType=VARCHAR},
+      productTogether_status = #{producttogetherStatus,jdbcType=INTEGER},
+      productTogether_prosId_str = #{producttogetherProsidStr,jdbcType=VARCHAR},
+      productTogether_prosName_str = #{producttogetherProsnameStr,jdbcType=VARCHAR},
+      productTogether_prosSeo_str = #{producttogetherProsseoStr,jdbcType=VARCHAR},
+      productTogether_prosImgUrl_str = #{producttogetherProsimgurlStr,jdbcType=VARCHAR},
+      productTogether_superCate_id = #{producttogetherSupercateId,jdbcType=INTEGER},
+      productTogether_superCate_name = #{producttogetherSupercateName,jdbcType=VARCHAR},
+      productTogether_createTime = #{producttogetherCreatetime,jdbcType=VARCHAR},
+      productTogether_motifyTime = #{producttogetherMotifytime,jdbcType=VARCHAR},
+      productTogether_belong_proIdStr = #{producttogetherBelongProIdStr,jdbcType=VARCHAR},
+      productTogether_belong_proNameStr = #{producttogetherBelongProNameStr,jdbcType=VARCHAR},
+      productTogether_belong_proSeoNameStr = #{producttogetherBelongProSeoNameStr,jdbcType=VARCHAR}
+    where productTogether_id = #{producttogetherId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="producttogetherId" parameterType="com.atguigu.bean.MlbackProductTogether">
+    insert into tb_mlback_producttogether
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="producttogetherId != null">
+        productTogether_id,
+      </if>
+      <if test="producttogetherName != null">
+        productTogether_name,
+      </if>
+      <if test="producttogetherStatus != null">
+        productTogether_status,
+      </if>
+      <if test="producttogetherProsidStr != null">
+        productTogether_prosId_str,
+      </if>
+      <if test="producttogetherProsnameStr != null">
+        productTogether_prosName_str,
+      </if>
+      <if test="producttogetherProsseoStr != null">
+        productTogether_prosSeo_str,
+      </if>
+      <if test="producttogetherProsimgurlStr != null">
+        productTogether_prosImgUrl_str,
+      </if>
+      <if test="producttogetherSupercateId != null">
+        productTogether_superCate_id,
+      </if>
+      <if test="producttogetherSupercateName != null">
+        productTogether_superCate_name,
+      </if>
+      <if test="producttogetherCreatetime != null">
+        productTogether_createTime,
+      </if>
+      <if test="producttogetherMotifytime != null">
+        productTogether_motifyTime,
+      </if>
+      <if test="producttogetherBelongProIdStr != null">
+        productTogether_belong_proIdStr,
+      </if>
+      <if test="producttogetherBelongProNameStr != null">
+        productTogether_belong_proNameStr,
+      </if>
+      <if test="producttogetherBelongProSeoNameStr != null">
+        productTogether_belong_proSeoNameStr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="producttogetherId != null">
+        #{producttogetherId,jdbcType=INTEGER},
+      </if>
+      <if test="producttogetherName != null">
+        #{producttogetherName,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherStatus != null">
+        #{producttogetherStatus,jdbcType=INTEGER},
+      </if>
+      <if test="producttogetherProsidStr != null">
+        #{producttogetherProsidStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsnameStr != null">
+        #{producttogetherProsnameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsseoStr != null">
+        #{producttogetherProsseoStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsimgurlStr != null">
+        #{producttogetherProsimgurlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherSupercateId != null">
+        #{producttogetherSupercateId,jdbcType=INTEGER},
+      </if>
+      <if test="producttogetherSupercateName != null">
+        #{producttogetherSupercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherCreatetime != null">
+        #{producttogetherCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherMotifytime != null">
+        #{producttogetherMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProIdStr != null">
+        #{producttogetherBelongProIdStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProNameStr != null">
+        #{producttogetherBelongProNameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProSeoNameStr != null">
+        #{producttogetherBelongProSeoNameStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_producttogether
+    where productTogether_id = #{producttogetherId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackProductTogether">
+    update tb_mlback_producttogether
+    <set>
+      <if test="producttogetherName != null">
+        productTogether_name = #{producttogetherName,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherStatus != null">
+        productTogether_status = #{producttogetherStatus,jdbcType=INTEGER},
+      </if>
+      <if test="producttogetherProsidStr != null">
+        productTogether_prosId_str = #{producttogetherProsidStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsnameStr != null">
+        productTogether_prosName_str = #{producttogetherProsnameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsseoStr != null">
+        productTogether_prosSeo_str = #{producttogetherProsseoStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherProsimgurlStr != null">
+        productTogether_prosImgUrl_str = #{producttogetherProsimgurlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherSupercateId != null">
+        productTogether_superCate_id = #{producttogetherSupercateId,jdbcType=INTEGER},
+      </if>
+      <if test="producttogetherSupercateName != null">
+        productTogether_superCate_name = #{producttogetherSupercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherCreatetime != null">
+        productTogether_createTime = #{producttogetherCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherMotifytime != null">
+        productTogether_motifyTime = #{producttogetherMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProIdStr != null">
+        productTogether_belong_proIdStr = #{producttogetherBelongProIdStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProNameStr != null">
+        productTogether_belong_proNameStr = #{producttogetherBelongProNameStr,jdbcType=VARCHAR},
+      </if>
+      <if test="producttogetherBelongProSeoNameStr != null">
+        productTogether_belong_proSeoNameStr = #{producttogetherBelongProSeoNameStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where productTogether_id = #{producttogetherId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackProductTogetherGetAll -->
+  <select id="selectMlbackProductTogetherGetAll" parameterType="com.atguigu.bean.MlbackProductTogether" resultMap="BaseResultMap">
+    select * 
+    from tb_mlback_producttogether order by productTogether_id desc
+  </select>
+  <!-- selectMlbackProductTogetherById -->
+  <select id="selectMlbackProductTogetherById" parameterType="com.atguigu.bean.MlbackProductTogether" resultMap="BaseResultMap">
+    select *  
+    from tb_mlback_producttogether where productTogether_id = #{producttogetherId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 使用中selectMlbackProductTogetherBackSearch -->
+  <select id="selectMlbackProductTogetherBackSearch" parameterType="com.atguigu.bean.MlbackProductTogether" resultMap="BaseResultMap">
+  	select
+  	productTogether_id, productTogether_name, productTogether_status, productTogether_prosId_str, 
+    productTogether_prosName_str, productTogether_prosSeo_str, productTogether_prosImgUrl_str,productTogether_belong_proIdStr
+  	from tb_mlback_producttogether 
+    where productTogether_name like concat(concat("%",#{producttogetherName}),"%")
+     <if test="producttogetherSupercateId != null">
+     	and productTogether_superCate_id = #{producttogetherSupercateId,jdbcType=INTEGER}
+     </if>
+    order by productTogether_id desc
+  </select>
+  <!-- selectMlbackProTogetherDownLoadByParam -->
+  <select id="selectMlbackProTogetherDownLoadByParam" parameterType="com.atguigu.bean.MlbackProductTogether" resultMap="BaseResultMap">
+    select 
+    productTogether_id, productTogether_name, productTogether_status
+    from tb_mlback_producttogether 
+    where productTogether_id >=0
+      <if test="producttogetherStatus != null">
+        and productTogether_status = #{producttogetherStatus,jdbcType=INTEGER}
+      </if>
+    order by productTogether_id desc 
+  </select>
+  
+</mapper>

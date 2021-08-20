@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontCheckoutViewMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontCheckoutView">
+    <id column="checkoutView_id" jdbcType="INTEGER" property="checkoutviewId" />
+    <result column="checkoutView_uid" jdbcType="INTEGER" property="checkoutviewUid" />
+    <result column="checkoutView_ip" jdbcType="VARCHAR" property="checkoutviewIp" />
+    <result column="checkoutView_email" jdbcType="VARCHAR" property="checkoutviewEmail" />
+    <result column="checkoutView_telephone" jdbcType="VARCHAR" property="checkoutviewTelephone" />
+    <result column="checkoutView_userFirstName" jdbcType="VARCHAR" property="checkoutviewUserfirstname" />
+    <result column="checkoutView_userLastName" jdbcType="VARCHAR" property="checkoutviewUserlastname" />
+    <result column="checkoutView_country_code" jdbcType="VARCHAR" property="checkoutviewCountryCode" />
+    <result column="checkoutView_country" jdbcType="VARCHAR" property="checkoutviewCountry" />
+    <result column="checkoutView_province" jdbcType="VARCHAR" property="checkoutviewProvince" />
+    <result column="checkoutView_provinceCode" jdbcType="VARCHAR" property="checkoutviewProvincecode" />
+    <result column="checkoutView_city" jdbcType="VARCHAR" property="checkoutviewCity" />
+    <result column="checkoutView_addressDetail" jdbcType="VARCHAR" property="checkoutviewAddressdetail" />
+    <result column="checkoutView_post" jdbcType="VARCHAR" property="checkoutviewPost" />
+    <result column="checkoutView_createTime" jdbcType="VARCHAR" property="checkoutviewCreatetime" />
+    <result column="checkoutView_motifyTime" jdbcType="VARCHAR" property="checkoutviewMotifytime" />
+    <result column="checkoutView_order_id" jdbcType="VARCHAR" property="checkoutviewOrderId" />
+    <result column="checkoutView_order_proNum_str" jdbcType="VARCHAR" property="checkoutviewOrderPronumStr" />
+    <result column="checkoutView_order_proSeo_str" jdbcType="VARCHAR" property="checkoutviewOrderProseoStr" />
+    <result column="checkoutView_order_orderitemPskuCode" jdbcType="VARCHAR" property="checkoutviewOrderOrderitempskucode" />
+    <result column="checkoutView_orderitemPskuIdnamestr" jdbcType="VARCHAR" property="checkoutviewOrderitempskuidnamestr" />
+    <result column="checkoutView_orderitemPskuName" jdbcType="VARCHAR" property="checkoutviewOrderitempskuname" />
+    <result column="checkoutView_orderitemPskuMoneystr" jdbcType="VARCHAR" property="checkoutviewOrderitempskumoneystr" />
+    <result column="checkoutView_payinfoid" jdbcType="VARCHAR" property="checkoutviewPayinfoid" />
+    <result column="checkoutView_couponCode" jdbcType="VARCHAR" property="checkoutviewCouponCode" />
+    <result column="checkoutView_couponPrice" jdbcType="VARCHAR" property="checkoutviewCouponPrice" />
+    <result column="checkoutView_addressPrice" jdbcType="VARCHAR" property="checkoutviewAddressPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    checkoutView_id, checkoutView_uid, checkoutView_ip, checkoutView_email, checkoutView_telephone, 
+    checkoutView_userFirstName, checkoutView_userLastName, checkoutView_country_code, 
+    checkoutView_country, checkoutView_province, checkoutView_provinceCode, checkoutView_city, 
+    checkoutView_addressDetail, checkoutView_post, checkoutView_createTime, checkoutView_motifyTime, 
+    checkoutView_order_id, checkoutView_order_proNum_str, checkoutView_order_proSeo_str, 
+    checkoutView_order_orderitemPskuCode, checkoutView_orderitemPskuIdnamestr, checkoutView_orderitemPskuName, 
+    checkoutView_orderitemPskuMoneystr, checkoutView_payinfoid, checkoutView_couponCode, 
+    checkoutView_couponPrice,checkoutView_addressPrice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_checkoutview
+    where checkoutView_id = #{checkoutviewId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontCheckoutView">
+    insert into tb_mlfront_checkoutview (checkoutView_id, checkoutView_uid, 
+      checkoutView_ip, checkoutView_email, checkoutView_telephone, 
+      checkoutView_userFirstName, checkoutView_userLastName, 
+      checkoutView_country_code, checkoutView_country, 
+      checkoutView_province, checkoutView_provinceCode, 
+      checkoutView_city, checkoutView_addressDetail, 
+      checkoutView_post, checkoutView_createTime, 
+      checkoutView_motifyTime, checkoutView_order_id, 
+      checkoutView_order_proNum_str, checkoutView_order_proSeo_str, 
+      checkoutView_order_orderitemPskuCode, checkoutView_orderitemPskuIdnamestr, 
+      checkoutView_orderitemPskuName, checkoutView_orderitemPskuMoneystr, 
+      checkoutView_payinfoid, checkoutView_couponCode, checkoutView_couponPrice,checkoutView_addressPrice)
+    values (#{checkoutviewId,jdbcType=INTEGER}, #{checkoutviewUid,jdbcType=INTEGER}, 
+      #{checkoutviewIp,jdbcType=VARCHAR}, #{checkoutviewEmail,jdbcType=VARCHAR}, #{checkoutviewTelephone,jdbcType=VARCHAR}, 
+      #{checkoutviewUserfirstname,jdbcType=VARCHAR}, #{checkoutviewUserlastname,jdbcType=VARCHAR}, 
+      #{checkoutviewCountryCode,jdbcType=VARCHAR}, #{checkoutviewCountry,jdbcType=VARCHAR}, 
+      #{checkoutviewProvince,jdbcType=VARCHAR}, #{checkoutviewProvincecode,jdbcType=VARCHAR}, 
+      #{checkoutviewCity,jdbcType=VARCHAR}, #{checkoutviewAddressdetail,jdbcType=VARCHAR}, 
+      #{checkoutviewPost,jdbcType=VARCHAR}, #{checkoutviewCreatetime,jdbcType=VARCHAR}, 
+      #{checkoutviewMotifytime,jdbcType=VARCHAR}, #{checkoutviewOrderId,jdbcType=VARCHAR}, 
+      #{checkoutviewOrderPronumStr,jdbcType=VARCHAR}, #{checkoutviewOrderProseoStr,jdbcType=VARCHAR}, 
+      #{checkoutviewOrderOrderitempskucode,jdbcType=VARCHAR}, #{checkoutviewOrderitempskuidnamestr,jdbcType=VARCHAR}, 
+      #{checkoutviewOrderitempskuname,jdbcType=VARCHAR}, #{checkoutviewOrderitempskumoneystr,jdbcType=VARCHAR}, 
+      #{checkoutviewPayinfoid,jdbcType=VARCHAR}, #{checkoutviewCouponCode,jdbcType=VARCHAR}, 
+      #{checkoutviewCouponPrice,jdbcType=VARCHAR}, #{checkoutviewAddressPrice,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontCheckoutView">
+    update tb_mlfront_checkoutview
+    set checkoutView_uid = #{checkoutviewUid,jdbcType=INTEGER},
+      checkoutView_ip = #{checkoutviewIp,jdbcType=VARCHAR},
+      checkoutView_email = #{checkoutviewEmail,jdbcType=VARCHAR},
+      checkoutView_telephone = #{checkoutviewTelephone,jdbcType=VARCHAR},
+      checkoutView_userFirstName = #{checkoutviewUserfirstname,jdbcType=VARCHAR},
+      checkoutView_userLastName = #{checkoutviewUserlastname,jdbcType=VARCHAR},
+      checkoutView_country_code = #{checkoutviewCountryCode,jdbcType=VARCHAR},
+      checkoutView_country = #{checkoutviewCountry,jdbcType=VARCHAR},
+      checkoutView_province = #{checkoutviewProvince,jdbcType=VARCHAR},
+      checkoutView_provinceCode = #{checkoutviewProvincecode,jdbcType=VARCHAR},
+      checkoutView_city = #{checkoutviewCity,jdbcType=VARCHAR},
+      checkoutView_addressDetail = #{checkoutviewAddressdetail,jdbcType=VARCHAR},
+      checkoutView_post = #{checkoutviewPost,jdbcType=VARCHAR},
+      checkoutView_createTime = #{checkoutviewCreatetime,jdbcType=VARCHAR},
+      checkoutView_motifyTime = #{checkoutviewMotifytime,jdbcType=VARCHAR},
+      checkoutView_order_id = #{checkoutviewOrderId,jdbcType=VARCHAR},
+      checkoutView_order_proNum_str = #{checkoutviewOrderPronumStr,jdbcType=VARCHAR},
+      checkoutView_order_proSeo_str = #{checkoutviewOrderProseoStr,jdbcType=VARCHAR},
+      checkoutView_order_orderitemPskuCode = #{checkoutviewOrderOrderitempskucode,jdbcType=VARCHAR},
+      checkoutView_orderitemPskuIdnamestr = #{checkoutviewOrderitempskuidnamestr,jdbcType=VARCHAR},
+      checkoutView_orderitemPskuName = #{checkoutviewOrderitempskuname,jdbcType=VARCHAR},
+      checkoutView_orderitemPskuMoneystr = #{checkoutviewOrderitempskumoneystr,jdbcType=VARCHAR},
+      checkoutView_payinfoid = #{checkoutviewPayinfoid,jdbcType=VARCHAR},
+      checkoutView_couponCode = #{checkoutviewCouponCode,jdbcType=VARCHAR}, 
+      checkoutView_couponPrice = #{checkoutviewCouponPrice,jdbcType=VARCHAR}, 
+      checkoutView_addressPrice = #{checkoutviewAddressPrice,jdbcType=VARCHAR}  
+    where checkoutView_id = #{checkoutviewId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="checkoutviewId" parameterType="com.atguigu.bean.MlfrontCheckoutView">
+    insert into tb_mlfront_checkoutview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkoutviewId != null">
+        checkoutView_id,
+      </if>
+      <if test="checkoutviewUid != null">
+        checkoutView_uid,
+      </if>
+      <if test="checkoutviewIp != null">
+        checkoutView_ip,
+      </if>
+      <if test="checkoutviewEmail != null">
+        checkoutView_email,
+      </if>
+      <if test="checkoutviewTelephone != null">
+        checkoutView_telephone,
+      </if>
+      <if test="checkoutviewUserfirstname != null">
+        checkoutView_userFirstName,
+      </if>
+      <if test="checkoutviewUserlastname != null">
+        checkoutView_userLastName,
+      </if>
+      <if test="checkoutviewCountryCode != null">
+        checkoutView_country_code,
+      </if>
+      <if test="checkoutviewCountry != null">
+        checkoutView_country,
+      </if>
+      <if test="checkoutviewProvince != null">
+        checkoutView_province,
+      </if>
+      <if test="checkoutviewProvincecode != null">
+        checkoutView_provinceCode,
+      </if>
+      <if test="checkoutviewCity != null">
+        checkoutView_city,
+      </if>
+      <if test="checkoutviewAddressdetail != null">
+        checkoutView_addressDetail,
+      </if>
+      <if test="checkoutviewPost != null">
+        checkoutView_post,
+      </if>
+      <if test="checkoutviewCreatetime != null">
+        checkoutView_createTime,
+      </if>
+      <if test="checkoutviewMotifytime != null">
+        checkoutView_motifyTime,
+      </if>
+      <if test="checkoutviewOrderId != null">
+        checkoutView_order_id,
+      </if>
+      <if test="checkoutviewOrderPronumStr != null">
+        checkoutView_order_proNum_str,
+      </if>
+      <if test="checkoutviewOrderProseoStr != null">
+        checkoutView_order_proSeo_str,
+      </if>
+      <if test="checkoutviewOrderOrderitempskucode != null">
+        checkoutView_order_orderitemPskuCode,
+      </if>
+      <if test="checkoutviewOrderitempskuidnamestr != null">
+        checkoutView_orderitemPskuIdnamestr,
+      </if>
+      <if test="checkoutviewOrderitempskuname != null">
+        checkoutView_orderitemPskuName,
+      </if>
+      <if test="checkoutviewOrderitempskumoneystr != null">
+        checkoutView_orderitemPskuMoneystr,
+      </if>
+      <if test="checkoutviewPayinfoid != null">
+        checkoutView_payinfoid,
+      </if>
+      <if test="checkoutviewCouponCode != null">
+        checkoutView_couponCode,
+      </if>
+      <if test="checkoutviewCouponPrice != null">
+        checkoutView_couponPrice,
+      </if>
+      <if test="checkoutviewAddressPrice != null">
+        checkoutView_addressPrice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkoutviewId != null">
+        #{checkoutviewId,jdbcType=INTEGER},
+      </if>
+      <if test="checkoutviewUid != null">
+        #{checkoutviewUid,jdbcType=INTEGER},
+      </if>
+      <if test="checkoutviewIp != null">
+        #{checkoutviewIp,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewEmail != null">
+        #{checkoutviewEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewTelephone != null">
+        #{checkoutviewTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewUserfirstname != null">
+        #{checkoutviewUserfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewUserlastname != null">
+        #{checkoutviewUserlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCountryCode != null">
+        #{checkoutviewCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCountry != null">
+        #{checkoutviewCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewProvince != null">
+        #{checkoutviewProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewProvincecode != null">
+        #{checkoutviewProvincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCity != null">
+        #{checkoutviewCity,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewAddressdetail != null">
+        #{checkoutviewAddressdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewPost != null">
+        #{checkoutviewPost,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCreatetime != null">
+        #{checkoutviewCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewMotifytime != null">
+        #{checkoutviewMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderId != null">
+        #{checkoutviewOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderPronumStr != null">
+        #{checkoutviewOrderPronumStr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderProseoStr != null">
+        #{checkoutviewOrderProseoStr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderOrderitempskucode != null">
+        #{checkoutviewOrderOrderitempskucode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskuidnamestr != null">
+        #{checkoutviewOrderitempskuidnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskuname != null">
+        #{checkoutviewOrderitempskuname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskumoneystr != null">
+        #{checkoutviewOrderitempskumoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewPayinfoid != null">
+        #{checkoutviewPayinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCouponCode != null">
+        #{checkoutviewCouponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCouponPrice != null">
+        #{checkoutviewCouponPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewAddressPrice != null">
+        #{checkoutviewAddressPrice,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- delete -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_checkoutview
+    where checkoutView_id = #{checkoutviewId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontCheckoutView">
+    update tb_mlfront_checkoutview
+    <set>
+      <if test="checkoutviewUid != null">
+        checkoutView_uid = #{checkoutviewUid,jdbcType=INTEGER},
+      </if>
+      <if test="checkoutviewIp != null">
+        checkoutView_ip = #{checkoutviewIp,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewEmail != null">
+        checkoutView_email = #{checkoutviewEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewTelephone != null">
+        checkoutView_telephone = #{checkoutviewTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewUserfirstname != null">
+        checkoutView_userFirstName = #{checkoutviewUserfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewUserlastname != null">
+        checkoutView_userLastName = #{checkoutviewUserlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCountryCode != null">
+        checkoutView_country_code = #{checkoutviewCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCountry != null">
+        checkoutView_country = #{checkoutviewCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewProvince != null">
+        checkoutView_province = #{checkoutviewProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewProvincecode != null">
+        checkoutView_provinceCode = #{checkoutviewProvincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCity != null">
+        checkoutView_city = #{checkoutviewCity,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewAddressdetail != null">
+        checkoutView_addressDetail = #{checkoutviewAddressdetail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewPost != null">
+        checkoutView_post = #{checkoutviewPost,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCreatetime != null">
+        checkoutView_createTime = #{checkoutviewCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewMotifytime != null">
+        checkoutView_motifyTime = #{checkoutviewMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderId != null">
+        checkoutView_order_id = #{checkoutviewOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderPronumStr != null">
+        checkoutView_order_proNum_str = #{checkoutviewOrderPronumStr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderProseoStr != null">
+        checkoutView_order_proSeo_str = #{checkoutviewOrderProseoStr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderOrderitempskucode != null">
+        checkoutView_order_orderitemPskuCode = #{checkoutviewOrderOrderitempskucode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskuidnamestr != null">
+        checkoutView_orderitemPskuIdnamestr = #{checkoutviewOrderitempskuidnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskuname != null">
+        checkoutView_orderitemPskuName = #{checkoutviewOrderitempskuname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewOrderitempskumoneystr != null">
+        checkoutView_orderitemPskuMoneystr = #{checkoutviewOrderitempskumoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewPayinfoid != null">
+        checkoutView_payinfoid = #{checkoutviewPayinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCouponCode != null">
+        checkoutView_couponCode = #{checkoutviewCouponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewCouponPrice != null">
+        checkoutView_couponPrice = #{checkoutviewCouponPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutviewAddressPrice != null">
+        checkoutView_addressPrice = #{checkoutviewAddressPrice,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where checkoutView_id = #{checkoutviewId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlfrontCheckoutViewByPayinfoid -->
+  <select id="selectMlfrontCheckoutViewByPayinfoid" parameterType="com.atguigu.bean.MlfrontCheckoutView" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_checkoutview
+    where checkoutView_payinfoid = #{checkoutviewPayinfoid,jdbcType=VARCHAR} order by checkoutView_id desc
+  </select>
+</mapper>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontCouponLuckyDrawMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontCouponLuckyDraw">
+    <id column="couponLuckyDraw_id" jdbcType="INTEGER" property="couponluckydrawId" />
+    <result column="couponLuckyDraw_sessionId" jdbcType="VARCHAR" property="couponluckydrawSessionid" />
+    <result column="couponLuckyDraw_userId" jdbcType="INTEGER" property="couponluckydrawUserid" />
+    <result column="couponLuckyDraw_userEmail" jdbcType="VARCHAR" property="couponluckydrawUseremail" />
+    <result column="couponLuckyDraw_couponId" jdbcType="INTEGER" property="couponluckydrawCouponid" />
+    <result column="couponLuckyDraw_couponName" jdbcType="VARCHAR" property="couponluckydrawCouponname" />
+    <result column="couponLuckyDraw_couponPrice" jdbcType="DECIMAL" property="couponluckydrawCouponprice" />
+    <result column="couponLuckyDraw_couponPriceOff" jdbcType="DECIMAL" property="couponluckydrawCouponpriceoff" />
+    <result column="couponLuckyDraw_couponPriceBaseline" jdbcType="DECIMAL" property="couponluckydrawCouponpricebaseline" />
+    <result column="couponLuckyDraw_couponCode" jdbcType="VARCHAR" property="couponluckydrawCouponcode" />
+    <result column="couponLuckyDraw_couponType" jdbcType="VARCHAR" property="couponluckydrawCoupontype" />
+    <result column="couponLuckyDraw_createTime" jdbcType="VARCHAR" property="couponluckydrawCreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    couponLuckyDraw_id, couponLuckyDraw_sessionId, couponLuckyDraw_userId, couponLuckyDraw_userEmail, 
+    couponLuckyDraw_couponId, couponLuckyDraw_couponName, couponLuckyDraw_couponPrice, 
+    couponLuckyDraw_couponPriceOff, couponLuckyDraw_couponPriceBaseline, couponLuckyDraw_couponCode, 
+    couponLuckyDraw_couponType, couponLuckyDraw_createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_couponluckydraw
+    where couponLuckyDraw_id = #{couponluckydrawId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_couponluckydraw
+    where couponLuckyDraw_id = #{couponluckydrawId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontCouponLuckyDraw">
+    insert into tb_mlfront_couponluckydraw (couponLuckyDraw_id, couponLuckyDraw_sessionId, 
+      couponLuckyDraw_userId, couponLuckyDraw_userEmail, 
+      couponLuckyDraw_couponId, couponLuckyDraw_couponName, 
+      couponLuckyDraw_couponPrice, couponLuckyDraw_couponPriceOff, 
+      couponLuckyDraw_couponPriceBaseline, couponLuckyDraw_couponCode, 
+      couponLuckyDraw_couponType, couponLuckyDraw_createTime
+      )
+    values (#{couponluckydrawId,jdbcType=INTEGER}, #{couponluckydrawSessionid,jdbcType=VARCHAR}, 
+      #{couponluckydrawUserid,jdbcType=INTEGER}, #{couponluckydrawUseremail,jdbcType=VARCHAR}, 
+      #{couponluckydrawCouponid,jdbcType=INTEGER}, #{couponluckydrawCouponname,jdbcType=VARCHAR}, 
+      #{couponluckydrawCouponprice,jdbcType=DECIMAL}, #{couponluckydrawCouponpriceoff,jdbcType=DECIMAL}, 
+      #{couponluckydrawCouponpricebaseline,jdbcType=DECIMAL}, #{couponluckydrawCouponcode,jdbcType=VARCHAR}, 
+      #{couponluckydrawCoupontype,jdbcType=VARCHAR}, #{couponluckydrawCreatetime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlfrontCouponLuckyDraw">
+    insert into tb_mlfront_couponluckydraw
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponluckydrawId != null">
+        couponLuckyDraw_id,
+      </if>
+      <if test="couponluckydrawSessionid != null">
+        couponLuckyDraw_sessionId,
+      </if>
+      <if test="couponluckydrawUserid != null">
+        couponLuckyDraw_userId,
+      </if>
+      <if test="couponluckydrawUseremail != null">
+        couponLuckyDraw_userEmail,
+      </if>
+      <if test="couponluckydrawCouponid != null">
+        couponLuckyDraw_couponId,
+      </if>
+      <if test="couponluckydrawCouponname != null">
+        couponLuckyDraw_couponName,
+      </if>
+      <if test="couponluckydrawCouponprice != null">
+        couponLuckyDraw_couponPrice,
+      </if>
+      <if test="couponluckydrawCouponpriceoff != null">
+        couponLuckyDraw_couponPriceOff,
+      </if>
+      <if test="couponluckydrawCouponpricebaseline != null">
+        couponLuckyDraw_couponPriceBaseline,
+      </if>
+      <if test="couponluckydrawCouponcode != null">
+        couponLuckyDraw_couponCode,
+      </if>
+      <if test="couponluckydrawCoupontype != null">
+        couponLuckyDraw_couponType,
+      </if>
+      <if test="couponluckydrawCreatetime != null">
+        couponLuckyDraw_createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponluckydrawId != null">
+        #{couponluckydrawId,jdbcType=INTEGER},
+      </if>
+      <if test="couponluckydrawSessionid != null">
+        #{couponluckydrawSessionid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawUserid != null">
+        #{couponluckydrawUserid,jdbcType=INTEGER},
+      </if>
+      <if test="couponluckydrawUseremail != null">
+        #{couponluckydrawUseremail,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCouponid != null">
+        #{couponluckydrawCouponid,jdbcType=INTEGER},
+      </if>
+      <if test="couponluckydrawCouponname != null">
+        #{couponluckydrawCouponname,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCouponprice != null">
+        #{couponluckydrawCouponprice,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponpriceoff != null">
+        #{couponluckydrawCouponpriceoff,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponpricebaseline != null">
+        #{couponluckydrawCouponpricebaseline,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponcode != null">
+        #{couponluckydrawCouponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCoupontype != null">
+        #{couponluckydrawCoupontype,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCreatetime != null">
+        #{couponluckydrawCreatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontCouponLuckyDraw">
+    update tb_mlfront_couponluckydraw
+    <set>
+      <if test="couponluckydrawSessionid != null">
+        couponLuckyDraw_sessionId = #{couponluckydrawSessionid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawUserid != null">
+        couponLuckyDraw_userId = #{couponluckydrawUserid,jdbcType=INTEGER},
+      </if>
+      <if test="couponluckydrawUseremail != null">
+        couponLuckyDraw_userEmail = #{couponluckydrawUseremail,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCouponid != null">
+        couponLuckyDraw_couponId = #{couponluckydrawCouponid,jdbcType=INTEGER},
+      </if>
+      <if test="couponluckydrawCouponname != null">
+        couponLuckyDraw_couponName = #{couponluckydrawCouponname,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCouponprice != null">
+        couponLuckyDraw_couponPrice = #{couponluckydrawCouponprice,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponpriceoff != null">
+        couponLuckyDraw_couponPriceOff = #{couponluckydrawCouponpriceoff,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponpricebaseline != null">
+        couponLuckyDraw_couponPriceBaseline = #{couponluckydrawCouponpricebaseline,jdbcType=DECIMAL},
+      </if>
+      <if test="couponluckydrawCouponcode != null">
+        couponLuckyDraw_couponCode = #{couponluckydrawCouponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCoupontype != null">
+        couponLuckyDraw_couponType = #{couponluckydrawCoupontype,jdbcType=VARCHAR},
+      </if>
+      <if test="couponluckydrawCreatetime != null">
+        couponLuckyDraw_createTime = #{couponluckydrawCreatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where couponLuckyDraw_id = #{couponluckydrawId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontCouponLuckyDraw">
+    update tb_mlfront_couponluckydraw
+    set couponLuckyDraw_sessionId = #{couponluckydrawSessionid,jdbcType=VARCHAR},
+      couponLuckyDraw_userId = #{couponluckydrawUserid,jdbcType=INTEGER},
+      couponLuckyDraw_userEmail = #{couponluckydrawUseremail,jdbcType=VARCHAR},
+      couponLuckyDraw_couponId = #{couponluckydrawCouponid,jdbcType=INTEGER},
+      couponLuckyDraw_couponName = #{couponluckydrawCouponname,jdbcType=VARCHAR},
+      couponLuckyDraw_couponPrice = #{couponluckydrawCouponprice,jdbcType=DECIMAL},
+      couponLuckyDraw_couponPriceOff = #{couponluckydrawCouponpriceoff,jdbcType=DECIMAL},
+      couponLuckyDraw_couponPriceBaseline = #{couponluckydrawCouponpricebaseline,jdbcType=DECIMAL},
+      couponLuckyDraw_couponCode = #{couponluckydrawCouponcode,jdbcType=VARCHAR},
+      couponLuckyDraw_couponType = #{couponluckydrawCoupontype,jdbcType=VARCHAR},
+      couponLuckyDraw_createTime = #{couponluckydrawCreatetime,jdbcType=VARCHAR}
+    where couponLuckyDraw_id = #{couponluckydrawId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- selectMlfrontCouponLuckyDrawBySessionId使用中 -->
+  <select id="selectMlfrontCouponLuckyDrawBySessionId" parameterType="com.atguigu.bean.MlfrontCouponLuckyDraw" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_couponluckydraw 
+    where couponLuckyDraw_sessionId = #{couponluckydrawSessionid,jdbcType=VARCHAR} 
+    order by couponLuckyDraw_id desc
+  </select>
+  
+  
+  
+</mapper>

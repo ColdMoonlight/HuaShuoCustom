@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackSuperCateMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackSuperCate">
+    <constructor>
+      <idArg column="superCate_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="superCate_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_imgurl" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="superCate_seo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_sort_order" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="superCate_createTime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_motifyTime" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_metaTitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_metaKeyWords" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="superCate_metaDesc" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    superCate_id, superCate_name, superCate_imgurl, superCate_status, superCate_seo, 
+    superCate_sort_order, superCate_createTime, superCate_motifyTime, superCate_metaTitle, 
+    superCate_metaKeyWords, superCate_metaDesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_supercate
+    where superCate_id = #{supercateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_supercate
+    where superCate_id = #{supercateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackSuperCate">
+    insert into tb_mlback_supercate (superCate_id, superCate_name, superCate_imgurl, 
+      superCate_status, superCate_seo, superCate_sort_order, 
+      superCate_createTime, superCate_motifyTime, 
+      superCate_metaTitle, superCate_metaKeyWords, 
+      superCate_metaDesc)
+    values (#{supercateId,jdbcType=INTEGER}, #{supercateName,jdbcType=VARCHAR}, #{supercateImgurl,jdbcType=VARCHAR}, 
+      #{supercateStatus,jdbcType=INTEGER}, #{supercateSeo,jdbcType=VARCHAR}, #{supercateSortOrder,jdbcType=INTEGER}, 
+      #{supercateCreatetime,jdbcType=VARCHAR}, #{supercateMotifytime,jdbcType=VARCHAR}, 
+      #{supercateMetatitle,jdbcType=VARCHAR}, #{supercateMetakeywords,jdbcType=VARCHAR}, 
+      #{supercateMetadesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="supercateId" parameterType="com.atguigu.bean.MlbackSuperCate">
+    insert into tb_mlback_supercate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supercateId != null">
+        superCate_id,
+      </if>
+      <if test="supercateName != null">
+        superCate_name,
+      </if>
+      <if test="supercateImgurl != null">
+        superCate_imgurl,
+      </if>
+      <if test="supercateStatus != null">
+        superCate_status,
+      </if>
+      <if test="supercateSeo != null">
+        superCate_seo,
+      </if>
+      <if test="supercateSortOrder != null">
+        superCate_sort_order,
+      </if>
+      <if test="supercateCreatetime != null">
+        superCate_createTime,
+      </if>
+      <if test="supercateMotifytime != null">
+        superCate_motifyTime,
+      </if>
+      <if test="supercateMetatitle != null">
+        superCate_metaTitle,
+      </if>
+      <if test="supercateMetakeywords != null">
+        superCate_metaKeyWords,
+      </if>
+      <if test="supercateMetadesc != null">
+        superCate_metaDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supercateId != null">
+        #{supercateId,jdbcType=INTEGER},
+      </if>
+      <if test="supercateName != null">
+        #{supercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateImgurl != null">
+        #{supercateImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateStatus != null">
+        #{supercateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="supercateSeo != null">
+        #{supercateSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateSortOrder != null">
+        #{supercateSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="supercateCreatetime != null">
+        #{supercateCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMotifytime != null">
+        #{supercateMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetatitle != null">
+        #{supercateMetatitle,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetakeywords != null">
+        #{supercateMetakeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetadesc != null">
+        #{supercateMetadesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackSuperCate">
+    update tb_mlback_supercate
+    <set>
+      <if test="supercateName != null">
+        superCate_name = #{supercateName,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateImgurl != null">
+        superCate_imgurl = #{supercateImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateStatus != null">
+        superCate_status = #{supercateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="supercateSeo != null">
+        superCate_seo = #{supercateSeo,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateSortOrder != null">
+        superCate_sort_order = #{supercateSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="supercateCreatetime != null">
+        superCate_createTime = #{supercateCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMotifytime != null">
+        superCate_motifyTime = #{supercateMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetatitle != null">
+        superCate_metaTitle = #{supercateMetatitle,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetakeywords != null">
+        superCate_metaKeyWords = #{supercateMetakeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="supercateMetadesc != null">
+        superCate_metaDesc = #{supercateMetadesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where superCate_id = #{supercateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackSuperCate">
+    update tb_mlback_supercate
+    set superCate_name = #{supercateName,jdbcType=VARCHAR},
+      superCate_imgurl = #{supercateImgurl,jdbcType=VARCHAR},
+      superCate_status = #{supercateStatus,jdbcType=INTEGER},
+      superCate_seo = #{supercateSeo,jdbcType=VARCHAR},
+      superCate_sort_order = #{supercateSortOrder,jdbcType=INTEGER},
+      superCate_createTime = #{supercateCreatetime,jdbcType=VARCHAR},
+      superCate_motifyTime = #{supercateMotifytime,jdbcType=VARCHAR},
+      superCate_metaTitle = #{supercateMetatitle,jdbcType=VARCHAR},
+      superCate_metaKeyWords = #{supercateMetakeywords,jdbcType=VARCHAR},
+      superCate_metaDesc = #{supercateMetadesc,jdbcType=VARCHAR}
+    where superCate_id = #{supercateId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 使用中 -->
+  <select id="selectMlbackSuperCateGetAll" parameterType="com.atguigu.bean.MlbackSuperCate" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_supercate order by superCate_id desc
+  </select>
+  <!-- 使用中 -->
+  <select id="selectMlbackSuperCateById" parameterType="com.atguigu.bean.MlbackSuperCate" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_supercate
+    where superCate_id = #{supercateId,jdbcType=INTEGER}
+  </select>
+</mapper>

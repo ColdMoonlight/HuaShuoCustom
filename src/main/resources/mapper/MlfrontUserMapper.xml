@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontUserMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontUser">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_telephone" jdbcType="VARCHAR" property="userTelephone" />
+    <result column="user_address_country" jdbcType="VARCHAR" property="userAddressCountry" />
+    <result column="user_address_province" jdbcType="VARCHAR" property="userAddressProvince" />
+    <result column="user_address_city" jdbcType="VARCHAR" property="userAddressCity" />
+    <result column="user_address_streetaddress" jdbcType="VARCHAR" property="userAddressStreetaddress" />
+    <result column="user_address_postalcode" jdbcType="VARCHAR" property="userAddressPostalcode" />
+    <result column="user_firstName" jdbcType="VARCHAR" property="userFirstname" />
+    <result column="user_lastName" jdbcType="VARCHAR" property="userLastname" />
+    <result column="user_createTime" jdbcType="VARCHAR" property="userCreatetime" />
+    <result column="user_motifyTime" jdbcType="VARCHAR" property="userMotifytime" />
+    <result column="user_lastonlineTime" jdbcType="VARCHAR" property="userLastonlinetime" />
+    <result column="user_point" jdbcType="INTEGER" property="userPoint" />
+    <result column="user_couponidStr" jdbcType="VARCHAR" property="userCouponidstr" />
+    <result column="user_times" jdbcType="INTEGER" property="userTimes" />
+    <result column="user_vipLevel" jdbcType="INTEGER" property="userViplevel" />
+    <result column="user_str" jdbcType="VARCHAR" property="userStr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_email, user_password, user_telephone, user_address_country, user_address_province, 
+    user_address_city, user_address_streetaddress, user_address_postalcode, user_firstName, 
+    user_lastName, user_createTime, user_motifyTime, user_lastonlineTime, user_point, 
+    user_couponidStr, user_times, user_vipLevel, user_str
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontUser">
+    insert into tb_mlfront_user (user_id, user_email, user_password, 
+      user_telephone, user_address_country, user_address_province, 
+      user_address_city, user_address_streetaddress, 
+      user_address_postalcode, user_firstName, user_lastName, 
+      user_createTime, user_motifyTime, user_lastonlineTime, 
+      user_point, user_couponidStr, user_times, 
+      user_vipLevel, user_str)
+    values (#{userId,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{userTelephone,jdbcType=VARCHAR}, #{userAddressCountry,jdbcType=VARCHAR}, #{userAddressProvince,jdbcType=VARCHAR}, 
+      #{userAddressCity,jdbcType=VARCHAR}, #{userAddressStreetaddress,jdbcType=VARCHAR}, 
+      #{userAddressPostalcode,jdbcType=VARCHAR}, #{userFirstname,jdbcType=VARCHAR}, #{userLastname,jdbcType=VARCHAR}, 
+      #{userCreatetime,jdbcType=VARCHAR}, #{userMotifytime,jdbcType=VARCHAR}, #{userLastonlinetime,jdbcType=VARCHAR}, 
+      #{userPoint,jdbcType=INTEGER}, #{userCouponidstr,jdbcType=VARCHAR}, #{userTimes,jdbcType=INTEGER}, 
+      #{userViplevel,jdbcType=INTEGER}, #{userStr,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontUser">
+    update tb_mlfront_user
+    set user_email = #{userEmail,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_telephone = #{userTelephone,jdbcType=VARCHAR},
+      user_address_country = #{userAddressCountry,jdbcType=VARCHAR},
+      user_address_province = #{userAddressProvince,jdbcType=VARCHAR},
+      user_address_city = #{userAddressCity,jdbcType=VARCHAR},
+      user_address_streetaddress = #{userAddressStreetaddress,jdbcType=VARCHAR},
+      user_address_postalcode = #{userAddressPostalcode,jdbcType=VARCHAR},
+      user_firstName = #{userFirstname,jdbcType=VARCHAR},
+      user_lastName = #{userLastname,jdbcType=VARCHAR},
+      user_createTime = #{userCreatetime,jdbcType=VARCHAR},
+      user_motifyTime = #{userMotifytime,jdbcType=VARCHAR},
+      user_lastonlineTime = #{userLastonlinetime,jdbcType=VARCHAR},
+      user_point = #{userPoint,jdbcType=INTEGER},
+      user_couponidStr = #{userCouponidstr,jdbcType=VARCHAR},
+      user_times = #{userTimes,jdbcType=INTEGER},
+      user_vipLevel = #{userViplevel,jdbcType=INTEGER},
+      user_str = #{userStr,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" keyProperty="userId" useGeneratedKeys="true" parameterType="com.atguigu.bean.MlfrontUser">
+    insert into tb_mlfront_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="userTelephone != null">
+        user_telephone,
+      </if>
+      <if test="userAddressCountry != null">
+        user_address_country,
+      </if>
+      <if test="userAddressProvince != null">
+        user_address_province,
+      </if>
+      <if test="userAddressCity != null">
+        user_address_city,
+      </if>
+      <if test="userAddressStreetaddress != null">
+        user_address_streetaddress,
+      </if>
+      <if test="userAddressPostalcode != null">
+        user_address_postalcode,
+      </if>
+      <if test="userFirstname != null">
+        user_firstName,
+      </if>
+      <if test="userLastname != null">
+        user_lastName,
+      </if>
+      <if test="userCreatetime != null">
+        user_createTime,
+      </if>
+      <if test="userMotifytime != null">
+        user_motifyTime,
+      </if>
+      <if test="userLastonlinetime != null">
+        user_lastonlineTime,
+      </if>
+      <if test="userPoint != null">
+        user_point,
+      </if>
+      <if test="userCouponidstr != null">
+        user_couponidStr,
+      </if>
+      <if test="userTimes != null">
+        user_times,
+      </if>
+      <if test="userViplevel != null">
+        user_vipLevel,
+      </if>
+      <if test="userStr != null">
+        user_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userTelephone != null">
+        #{userTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCountry != null">
+        #{userAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressProvince != null">
+        #{userAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCity != null">
+        #{userAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressStreetaddress != null">
+        #{userAddressStreetaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressPostalcode != null">
+        #{userAddressPostalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userFirstname != null">
+        #{userFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastname != null">
+        #{userLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreatetime != null">
+        #{userCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userMotifytime != null">
+        #{userMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastonlinetime != null">
+        #{userLastonlinetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userPoint != null">
+        #{userPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userCouponidstr != null">
+        #{userCouponidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="userTimes != null">
+        #{userTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userViplevel != null">
+        #{userViplevel,jdbcType=INTEGER},
+      </if>
+      <if test="userStr != null">
+        #{userStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontUser">
+    update tb_mlfront_user
+    <set>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userTelephone != null">
+        user_telephone = #{userTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCountry != null">
+        user_address_country = #{userAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressProvince != null">
+        user_address_province = #{userAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCity != null">
+        user_address_city = #{userAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressStreetaddress != null">
+        user_address_streetaddress = #{userAddressStreetaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressPostalcode != null">
+        user_address_postalcode = #{userAddressPostalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userFirstname != null">
+        user_firstName = #{userFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastname != null">
+        user_lastName = #{userLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreatetime != null">
+        user_createTime = #{userCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userMotifytime != null">
+        user_motifyTime = #{userMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastonlinetime != null">
+        user_lastonlineTime = #{userLastonlinetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userPoint != null">
+        user_point = #{userPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userCouponidstr != null">
+        user_couponidStr = #{userCouponidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="userTimes != null">
+        user_times = #{userTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userViplevel != null">
+        user_vipLevel = #{userViplevel,jdbcType=INTEGER},
+      </if>
+      <if test="userStr != null">
+        user_str = #{userStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <!-- updatePwdByEmail -->
+  <update id="updatePwdByEmail" parameterType="com.atguigu.bean.MlfrontUser">
+    update tb_mlfront_user
+    <set>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where user_email = #{userEmail,jdbcType=VARCHAR}
+  </update>
+  <!-- selectMlfrontUserWhenFirst -->
+  <select id="selectMlfrontUserWhenFirst" parameterType="com.atguigu.bean.MlfrontUser" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_user where user_email = #{userEmail,jdbcType=VARCHAR}
+  </select>
+  <!-- selectMlfrontUserByConditionS-->
+  <select id="selectMlfrontUserByConditionS" parameterType="com.atguigu.bean.MlfrontUser" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_user
+    where user_id = #{userId,jdbcType=INTEGER}
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userTelephone != null">
+        user_telephone = #{userTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCountry != null">
+        user_address_country = #{userAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressProvince != null">
+        user_address_province = #{userAddressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressCity != null">
+        user_address_city = #{userAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressStreetaddress != null">
+        user_address_streetaddress = #{userAddressStreetaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddressPostalcode != null">
+        user_address_postalcode = #{userAddressPostalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userFirstname != null">
+        user_firstName = #{userFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastname != null">
+        user_lastName = #{userLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreatetime != null">
+        user_createTime = #{userCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userMotifytime != null">
+        user_motifyTime = #{userMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userLastonlinetime != null">
+        user_lastonlineTime = #{userLastonlinetime,jdbcType=VARCHAR},
+      </if>
+      <if test="userPoint != null">
+        user_point = #{userPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userCouponidstr != null">
+        user_couponidStr = #{userCouponidstr,jdbcType=VARCHAR},
+      </if>
+      <if test="userTimes != null">
+        user_times = #{userTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userViplevel != null">
+        user_vipLevel = #{userViplevel,jdbcType=INTEGER},
+      </if>
+      <if test="userStr != null">
+        user_str = #{userStr,jdbcType=VARCHAR},
+      </if>
+  </select>
+  <!-- selectMlfrontUserByDate使用中 -->
+  <select id="selectMlfrontUserByDate" parameterType="com.atguigu.bean.MlfrontUser" resultMap="BaseResultMap">
+    select 
+    user_id, user_email,user_telephone,user_firstName, user_lastName, user_createTime,user_lastonlineTime,user_times,user_str
+    from tb_mlfront_user  where user_createTime between #{userCreatetime,jdbcType=VARCHAR} and #{userMotifytime,jdbcType=VARCHAR} order by user_id desc
+  </select>
+  <!-- updatePwdByEmail -->
+  <!-- selectMlfrontUserSimpleByDate使用中 -->
+  <select id="selectMlfrontUserSimpleByDate" parameterType="com.atguigu.bean.MlfrontUser" resultMap="BaseResultMap">
+    select 
+    user_id, user_email,user_telephone, user_createTime
+    from tb_mlfront_user where user_createTime between #{userCreatetime,jdbcType=VARCHAR} and #{userMotifytime,jdbcType=VARCHAR} order by user_id desc
+  </select>
+  <!-- selectMlfrontUserBackHomeByDate使用中 -->
+  <select id="selectMlfrontUserBackHomeByDate" parameterType="com.atguigu.bean.MlfrontUser" resultMap="BaseResultMap">
+    select 
+    user_id, user_createTime
+    from tb_mlfront_user where user_createTime between #{userCreatetime,jdbcType=VARCHAR} and #{userMotifytime,jdbcType=VARCHAR} order by user_id desc
+  </select>
+  <!-- updatePwdByEmail -->
+  <!-- updatePwdByEmail -->
+</mapper>

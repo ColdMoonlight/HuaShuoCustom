@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackEmailRichTextMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackEmailRichText">
+    <id column="emailRichtext_id" jdbcType="INTEGER" property="emailrichtextId" />
+    <result column="emailRichtext_seoname" jdbcType="VARCHAR" property="emailrichtextSeoname" />
+    <result column="emailRichtext_title" jdbcType="VARCHAR" property="emailrichtextTitle" />
+    <result column="emailRichtext_sendFrom" jdbcType="VARCHAR" property="emailrichtextSendfrom" />
+    <result column="emailRichtext_template" jdbcType="VARCHAR" property="emailrichtextTemplate" />
+    <result column="emailRichtext_keynameStr" jdbcType="VARCHAR" property="emailrichtextKeynamestr" />
+    <result column="emailRichtext_valuenameStr" jdbcType="VARCHAR" property="emailrichtextValuenamestr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    emailRichtext_id, emailRichtext_seoname, emailRichtext_title, emailRichtext_sendFrom, 
+    emailRichtext_template, emailRichtext_keynameStr, emailRichtext_valuenameStr
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_emailrichtext
+    where emailRichtext_id = #{emailrichtextId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackEmailRichText">
+    insert into tb_mlback_emailrichtext (emailRichtext_id, emailRichtext_seoname, 
+      emailRichtext_title, emailRichtext_sendFrom, 
+      emailRichtext_template, emailRichtext_keynameStr, 
+      emailRichtext_valuenameStr)
+    values (#{emailrichtextId,jdbcType=INTEGER}, #{emailrichtextSeoname,jdbcType=VARCHAR}, 
+      #{emailrichtextTitle,jdbcType=VARCHAR}, #{emailrichtextSendfrom,jdbcType=VARCHAR}, 
+      #{emailrichtextTemplate,jdbcType=VARCHAR}, #{emailrichtextKeynamestr,jdbcType=VARCHAR}, 
+      #{emailrichtextValuenamestr,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackEmailRichText">
+    update tb_mlback_emailrichtext
+    set emailRichtext_seoname = #{emailrichtextSeoname,jdbcType=VARCHAR},
+      emailRichtext_title = #{emailrichtextTitle,jdbcType=VARCHAR},
+      emailRichtext_sendFrom = #{emailrichtextSendfrom,jdbcType=VARCHAR},
+      emailRichtext_template = #{emailrichtextTemplate,jdbcType=VARCHAR},
+      emailRichtext_keynameStr = #{emailrichtextKeynamestr,jdbcType=VARCHAR},
+      emailRichtext_valuenameStr = #{emailrichtextValuenamestr,jdbcType=VARCHAR}
+    where emailRichtext_id = #{emailrichtextId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="emailrichtextId" parameterType="com.atguigu.bean.MlbackEmailRichText">
+    insert into tb_mlback_emailrichtext
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emailrichtextId != null">
+        emailRichtext_id,
+      </if>
+      <if test="emailrichtextSeoname != null">
+        emailRichtext_seoname,
+      </if>
+      <if test="emailrichtextTitle != null">
+        emailRichtext_title,
+      </if>
+      <if test="emailrichtextSendfrom != null">
+        emailRichtext_sendFrom,
+      </if>
+      <if test="emailrichtextTemplate != null">
+        emailRichtext_template,
+      </if>
+      <if test="emailrichtextKeynamestr != null">
+        emailRichtext_keynameStr,
+      </if>
+      <if test="emailrichtextValuenamestr != null">
+        emailRichtext_valuenameStr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emailrichtextId != null">
+        #{emailrichtextId,jdbcType=INTEGER},
+      </if>
+      <if test="emailrichtextSeoname != null">
+        #{emailrichtextSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextTitle != null">
+        #{emailrichtextTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextSendfrom != null">
+        #{emailrichtextSendfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextTemplate != null">
+        #{emailrichtextTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextKeynamestr != null">
+        #{emailrichtextKeynamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextValuenamestr != null">
+        #{emailrichtextValuenamestr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_emailrichtext
+    where emailRichtext_id = #{emailrichtextId,jdbcType=INTEGER}
+  </delete>
+  <!-- insertSelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackEmailRichText">
+    update tb_mlback_emailrichtext
+    <set>
+      <if test="emailrichtextSeoname != null">
+        emailRichtext_seoname = #{emailrichtextSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextTitle != null">
+        emailRichtext_title = #{emailrichtextTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextSendfrom != null">
+        emailRichtext_sendFrom = #{emailrichtextSendfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextTemplate != null">
+        emailRichtext_template = #{emailrichtextTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextKeynamestr != null">
+        emailRichtext_keynameStr = #{emailrichtextKeynamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="emailrichtextValuenamestr != null">
+        emailRichtext_valuenameStr = #{emailrichtextValuenamestr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where emailRichtext_id = #{emailrichtextId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackEmailRichTextGetAll -->
+  <select id="selectMlbackEmailRichTextGetAll" parameterType="com.atguigu.bean.MlbackEmailRichText" resultMap="BaseResultMap">
+    select * 
+    from tb_mlback_emailrichtext order by emailRichtext_id desc
+  </select>
+  <!-- selectMlbackEmailRichTextListByName -->
+  <select id="selectMlbackEmailRichTextListByName" parameterType="com.atguigu.bean.MlbackEmailRichText" resultMap="BaseResultMap">
+    select * 
+    from tb_mlback_emailrichtext
+    where emailRichtext_seoname = #{emailrichtextSeoname,jdbcType=VARCHAR}
+  </select>
+</mapper>

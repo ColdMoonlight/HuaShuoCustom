@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackReviewImgMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackReviewImg">
+    <id column="reviewImg_id" jdbcType="INTEGER" property="reviewimgId" />
+    <result column="reviewImg_name" jdbcType="VARCHAR" property="reviewimgName" />
+    <result column="reviewImg_url" jdbcType="VARCHAR" property="reviewimgUrl" />
+    <result column="reviewsmallImg_url" jdbcType="VARCHAR" property="reviewsmallimgUrl" />
+    <result column="review_id" jdbcType="INTEGER" property="reviewId" />
+    <result column="reviewImg_sort_order" jdbcType="INTEGER" property="reviewimgSortOrder" />
+    <result column="reviewImg_createTime" jdbcType="VARCHAR" property="reviewimgCreatetime" />
+    <result column="reviewImg_motifyTime" jdbcType="VARCHAR" property="reviewimgMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    reviewImg_id, reviewImg_name, reviewImg_url, reviewsmallImg_url, review_id, reviewImg_sort_order, reviewImg_createTime, 
+    reviewImg_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_reviewimg
+    where reviewImg_id = #{reviewimgId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackReviewImg">
+    insert into tb_mlback_reviewimg (reviewImg_id, reviewImg_name, reviewImg_url,reviewsmallImg_url,  
+      review_id, reviewImg_sort_order, reviewImg_createTime, 
+      reviewImg_motifyTime)
+    values (#{reviewimgId,jdbcType=INTEGER}, #{reviewimgName,jdbcType=VARCHAR}, #{reviewimgUrl,jdbcType=VARCHAR}, #{reviewsmallimgUrl,jdbcType=VARCHAR}, 
+      #{reviewId,jdbcType=INTEGER}, #{reviewimgSortOrder,jdbcType=INTEGER}, #{reviewimgCreatetime,jdbcType=VARCHAR}, 
+      #{reviewimgMotifytime,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackReviewImg">
+    update tb_mlback_reviewimg
+    set reviewImg_name = #{reviewimgName,jdbcType=VARCHAR},
+      reviewImg_url = #{reviewimgUrl,jdbcType=VARCHAR},
+      reviewsmallImg_url = #{reviewsmallimgUrl,jdbcType=VARCHAR},
+      review_id = #{reviewId,jdbcType=INTEGER},
+      reviewImg_sort_order = #{reviewimgSortOrder,jdbcType=INTEGER},
+      reviewImg_createTime = #{reviewimgCreatetime,jdbcType=VARCHAR},
+      reviewImg_motifyTime = #{reviewimgMotifytime,jdbcType=VARCHAR}
+    where reviewImg_id = #{reviewimgId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlbackReviewImg">
+    insert into tb_mlback_reviewimg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reviewimgId != null">
+        reviewImg_id,
+      </if>
+      <if test="reviewimgName != null">
+        reviewImg_name,
+      </if>
+      <if test="reviewimgUrl != null">
+        reviewImg_url,
+      </if>
+      <if test="reviewsmallimgUrl != null">
+        reviewsmallImg_url,
+      </if>
+      <if test="reviewId != null">
+        review_id,
+      </if>
+      <if test="reviewimgSortOrder != null">
+        reviewImg_sort_order,
+      </if>
+      <if test="reviewimgCreatetime != null">
+        reviewImg_createTime,
+      </if>
+      <if test="reviewimgMotifytime != null">
+        reviewImg_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reviewimgId != null">
+        #{reviewimgId,jdbcType=INTEGER},
+      </if>
+      <if test="reviewimgName != null">
+        #{reviewimgName,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewimgUrl != null">
+        #{reviewimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewsmallimgUrl != null">
+         #{reviewsmallimgUrl,jdbcType=VARCHAR}, 
+      </if>
+      <if test="reviewId != null">
+        #{reviewId,jdbcType=INTEGER},
+      </if>
+      <if test="reviewimgSortOrder != null">
+        #{reviewimgSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="reviewimgCreatetime != null">
+        #{reviewimgCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewimgMotifytime != null">
+        #{reviewimgMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_reviewimg
+    where reviewImg_id = #{reviewimgId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackReviewImg">
+    update tb_mlback_reviewimg
+    <set>
+      <if test="reviewimgName != null">
+        reviewImg_name = #{reviewimgName,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewimgUrl != null">
+        reviewImg_url = #{reviewimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewsmallimgUrl != null">
+        reviewsmallImg_url = #{reviewsmallimgUrl,jdbcType=VARCHAR}, 
+      </if>
+      <if test="reviewId != null">
+        review_id = #{reviewId,jdbcType=INTEGER},
+      </if>
+      <if test="reviewimgSortOrder != null">
+        reviewImg_sort_order = #{reviewimgSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="reviewimgCreatetime != null">
+        reviewImg_createTime = #{reviewimgCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewimgMotifytime != null">
+        reviewImg_motifyTime = #{reviewimgMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reviewImg_id = #{reviewimgId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackReviewImgByReviewId -->
+  <select id="selectMlbackReviewImgByReviewId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_reviewimg 
+    where review_id = #{reviewId,jdbcType=INTEGER} order by reviewImg_sort_order
+  </select>
+  <!-- selectMlbackReviewImgByRIdAndImgSort -->
+  <select id="selectMlbackReviewImgByRIdAndImgSort" parameterType="com.atguigu.bean.MlbackReviewImg" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_reviewimg 
+    where review_id = #{reviewId,jdbcType=INTEGER} and reviewImg_sort_order = #{reviewimgSortOrder,jdbcType=INTEGER}
+  </select>
+  <!-- selectMlbackReviewImgByRIdAndImgSort -->
+  <delete id="deleteByreviewId" parameterType="java.lang.Integer">
+    delete from tb_mlback_reviewimg
+    where review_id = #{reviewId,jdbcType=INTEGER}
+  </delete>
+</mapper>

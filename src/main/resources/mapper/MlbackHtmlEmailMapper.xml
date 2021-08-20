@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackHtmlEmailMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackHtmlEmail">
+    <id column="htmlEmail_id" jdbcType="INTEGER" property="htmlemailId" />
+    <result column="htmlEmail_name" jdbcType="VARCHAR" property="htmlemailName" />
+    <result column="htmlEmail_status" jdbcType="INTEGER" property="htmlemailStatus" />
+    <result column="htmlEmail_headImgUrl" jdbcType="VARCHAR" property="htmlemailHeadimgurl" />
+    <result column="htmlEmail_title" jdbcType="VARCHAR" property="htmlemailTitle" />
+    <result column="htmlEmail_retrieve" jdbcType="VARCHAR" property="htmlemailRetrieve" />
+    <result column="htmlEmail_retrieveCode" jdbcType="VARCHAR" property="htmlemailRetrievecode" />
+    <result column="htmlEmail_five" jdbcType="VARCHAR" property="htmlemailFive" />
+    <result column="htmlEmail_six" jdbcType="VARCHAR" property="htmlemailSix" />
+    <result column="htmlEmail_seven" jdbcType="VARCHAR" property="htmlemailSeven" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    htmlEmail_id, htmlEmail_name, htmlEmail_status, htmlEmail_headImgUrl, htmlEmail_title, 
+    htmlEmail_retrieve, htmlEmail_retrieveCode, htmlEmail_five, htmlEmail_six, htmlEmail_seven
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_htmlemail
+    where htmlEmail_id = #{htmlemailId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackHtmlEmail">
+    insert into tb_mlback_htmlemail (htmlEmail_id, htmlEmail_name, htmlEmail_status, 
+      htmlEmail_headImgUrl, htmlEmail_title, htmlEmail_retrieve, 
+      htmlEmail_retrieveCode, htmlEmail_five, htmlEmail_six, 
+      htmlEmail_seven)
+    values (#{htmlemailId,jdbcType=INTEGER}, #{htmlemailName,jdbcType=VARCHAR}, #{htmlemailStatus,jdbcType=INTEGER}, 
+      #{htmlemailHeadimgurl,jdbcType=VARCHAR}, #{htmlemailTitle,jdbcType=VARCHAR}, #{htmlemailRetrieve,jdbcType=VARCHAR}, 
+      #{htmlemailRetrievecode,jdbcType=VARCHAR}, #{htmlemailFive,jdbcType=VARCHAR}, #{htmlemailSix,jdbcType=VARCHAR}, 
+      #{htmlemailSeven,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackHtmlEmail">
+    update tb_mlback_htmlemail
+    set htmlEmail_name = #{htmlemailName,jdbcType=VARCHAR},
+      htmlEmail_status = #{htmlemailStatus,jdbcType=INTEGER},
+      htmlEmail_headImgUrl = #{htmlemailHeadimgurl,jdbcType=VARCHAR},
+      htmlEmail_title = #{htmlemailTitle,jdbcType=VARCHAR},
+      htmlEmail_retrieve = #{htmlemailRetrieve,jdbcType=VARCHAR},
+      htmlEmail_retrieveCode = #{htmlemailRetrievecode,jdbcType=VARCHAR},
+      htmlEmail_five = #{htmlemailFive,jdbcType=VARCHAR},
+      htmlEmail_six = #{htmlemailSix,jdbcType=VARCHAR},
+      htmlEmail_seven = #{htmlemailSeven,jdbcType=VARCHAR}
+    where htmlEmail_id = #{htmlemailId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="htmlemailId" parameterType="com.atguigu.bean.MlbackHtmlEmail">
+    insert into tb_mlback_htmlemail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="htmlemailId != null">
+        htmlEmail_id,
+      </if>
+      <if test="htmlemailName != null">
+        htmlEmail_name,
+      </if>
+      <if test="htmlemailStatus != null">
+        htmlEmail_status,
+      </if>
+      <if test="htmlemailHeadimgurl != null">
+        htmlEmail_headImgUrl,
+      </if>
+      <if test="htmlemailTitle != null">
+        htmlEmail_title,
+      </if>
+      <if test="htmlemailRetrieve != null">
+        htmlEmail_retrieve,
+      </if>
+      <if test="htmlemailRetrievecode != null">
+        htmlEmail_retrieveCode,
+      </if>
+      <if test="htmlemailFive != null">
+        htmlEmail_five,
+      </if>
+      <if test="htmlemailSix != null">
+        htmlEmail_six,
+      </if>
+      <if test="htmlemailSeven != null">
+        htmlEmail_seven,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="htmlemailId != null">
+        #{htmlemailId,jdbcType=INTEGER},
+      </if>
+      <if test="htmlemailName != null">
+        #{htmlemailName,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailStatus != null">
+        #{htmlemailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="htmlemailHeadimgurl != null">
+        #{htmlemailHeadimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailTitle != null">
+        #{htmlemailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailRetrieve != null">
+        #{htmlemailRetrieve,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailRetrievecode != null">
+        #{htmlemailRetrievecode,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailFive != null">
+        #{htmlemailFive,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailSix != null">
+        #{htmlemailSix,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailSeven != null">
+        #{htmlemailSeven,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_htmlemail
+    where htmlEmail_id = #{htmlemailId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackHtmlEmail">
+    update tb_mlback_htmlemail
+    <set>
+      <if test="htmlemailName != null">
+        htmlEmail_name = #{htmlemailName,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailStatus != null">
+        htmlEmail_status = #{htmlemailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="htmlemailHeadimgurl != null">
+        htmlEmail_headImgUrl = #{htmlemailHeadimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailTitle != null">
+        htmlEmail_title = #{htmlemailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailRetrieve != null">
+        htmlEmail_retrieve = #{htmlemailRetrieve,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailRetrievecode != null">
+        htmlEmail_retrieveCode = #{htmlemailRetrievecode,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailFive != null">
+        htmlEmail_five = #{htmlemailFive,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailSix != null">
+        htmlEmail_six = #{htmlemailSix,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlemailSeven != null">
+        htmlEmail_seven = #{htmlemailSeven,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where htmlEmail_id = #{htmlemailId,jdbcType=INTEGER}
+  </update>
+
+  <!-- selectMlbackHtmlEmailListByName -->
+  <select id="selectMlbackHtmlEmailListByName" parameterType="com.atguigu.bean.MlbackHtmlEmail" resultMap="BaseResultMap">
+    select * 
+    from tb_mlback_htmlemail
+    where htmlEmail_name = #{htmlemailName,jdbcType=VARCHAR} and htmlEmail_status = #{htmlemailStatus,jdbcType=INTEGER}
+  </select>
+  <!-- selectMlbackHtmlEmailGetAll -->
+  <select id="selectMlbackHtmlEmailGetAll" parameterType="com.atguigu.bean.MlbackHtmlEmail" resultMap="BaseResultMap">
+    select * 
+    from tb_mlback_htmlemail order by htmlEmail_id desc
+  </select>
+  
+  
+  
+  
+</mapper>

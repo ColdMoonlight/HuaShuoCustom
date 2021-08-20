@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackProductImgMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackProductImg">
+    <id column="productImg_id" jdbcType="INTEGER" property="productimgId" />
+    <result column="productImg_name" jdbcType="VARCHAR" property="productimgName" />
+    <result column="productImg_url" jdbcType="VARCHAR" property="productimgUrl" />
+    <result column="productImg_smallturl" jdbcType="VARCHAR" property="productimgSmallturl" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="productImg_sort_order" jdbcType="INTEGER" property="productimgSortOrder" />
+    <result column="productImg_createTime" jdbcType="VARCHAR" property="productimgCreatetime" />
+    <result column="productImg_motifyTime" jdbcType="VARCHAR" property="productimgMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    productImg_id, productImg_name, productImg_url, productImg_smallturl, product_id, 
+    productImg_sort_order, productImg_createTime, productImg_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_productimg
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_productimg
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackProductImg">
+    insert into tb_mlback_productimg (productImg_id, productImg_name, productImg_url, 
+      productImg_smallturl, product_id, productImg_sort_order, 
+      productImg_createTime, productImg_motifyTime
+      )
+    values (#{productimgId,jdbcType=INTEGER}, #{productimgName,jdbcType=VARCHAR}, #{productimgUrl,jdbcType=VARCHAR}, 
+      #{productimgSmallturl,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, #{productimgSortOrder,jdbcType=INTEGER}, 
+      #{productimgCreatetime,jdbcType=VARCHAR}, #{productimgMotifytime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="productimgId" parameterType="com.atguigu.bean.MlbackProductImg">
+    insert into tb_mlback_productimg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productimgId != null">
+        productImg_id,
+      </if>
+      <if test="productimgName != null">
+        productImg_name,
+      </if>
+      <if test="productimgUrl != null">
+        productImg_url,
+      </if>
+      <if test="productimgSmallturl != null">
+        productImg_smallturl,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productimgSortOrder != null">
+        productImg_sort_order,
+      </if>
+      <if test="productimgCreatetime != null">
+        productImg_createTime,
+      </if>
+      <if test="productimgMotifytime != null">
+        productImg_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productimgId != null">
+        #{productimgId,jdbcType=INTEGER},
+      </if>
+      <if test="productimgName != null">
+        #{productimgName,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgUrl != null">
+        #{productimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgSmallturl != null">
+        #{productimgSmallturl,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productimgSortOrder != null">
+        #{productimgSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="productimgCreatetime != null">
+        #{productimgCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgMotifytime != null">
+        #{productimgMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackProductImg">
+    update tb_mlback_productimg
+    <set>
+      <if test="productimgName != null">
+        productImg_name = #{productimgName,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgUrl != null">
+        productImg_url = #{productimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgSmallturl != null">
+        productImg_smallturl = #{productimgSmallturl,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productimgSortOrder != null">
+        productImg_sort_order = #{productimgSortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="productimgCreatetime != null">
+        productImg_createTime = #{productimgCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="productimgMotifytime != null">
+        productImg_motifyTime = #{productimgMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackProductImg">
+    update tb_mlback_productimg
+    set productImg_name = #{productimgName,jdbcType=VARCHAR},
+      productImg_url = #{productimgUrl,jdbcType=VARCHAR},
+      productImg_smallturl = #{productimgSmallturl,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      productImg_sort_order = #{productimgSortOrder,jdbcType=INTEGER},
+      productImg_createTime = #{productimgCreatetime,jdbcType=VARCHAR},
+      productImg_motifyTime = #{productimgMotifytime,jdbcType=VARCHAR}
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- selectOne使用中 -->
+  <select id="selectMlbackProductImgByConditionS" parameterType="com.atguigu.bean.MlbackProductImg" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_productimg 
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+    <if test="productimgName != null">
+       and productImg_name = #{productimgName,jdbcType=VARCHAR}
+      </if>
+      <if test="productimgUrl != null">
+       and productImg_url = #{productimgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="productimgSmallturl != null">
+       and productImg_smallturl = #{productimgSmallturl,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null">
+       and product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="productimgSortOrder != null">
+       and productImg_sort_order = #{productimgSortOrder,jdbcType=INTEGER}
+      </if>
+      <if test="productimgCreatetime != null">
+       and productImg_createTime = #{productimgCreatetime,jdbcType=VARCHAR}
+      </if>
+      <if test="productimgMotifytime != null">
+       and productImg_motifyTime = #{productimgMotifytime,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <!-- selectAll使用中 -->
+  <select id="selectMlbackProductImgGetAll" parameterType="com.atguigu.bean.MlbackProductImg" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_productimg order by productImg_id desc
+  </select>
+  
+  <!-- selectByProductId使用中 -->
+  <select id="selectMlbackProductImgByProductId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_productimg 
+    where product_id = #{productId,jdbcType=INTEGER} order by productImg_sort_order
+  </select>
+  
+  <select id="selectMlbackProductImgByPIdAndImgSort" parameterType="com.atguigu.bean.MlbackProductImg" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_productimg
+    where product_id = #{productId,jdbcType=INTEGER} and productImg_sort_order = #{productimgSortOrder,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlbackProductImgByProductImgId使用中 -->
+  <select id="selectMlbackProductImgByProductImgId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_productimg 
+    where productImg_id = #{productimgId,jdbcType=INTEGER}
+  </select>
+</mapper>

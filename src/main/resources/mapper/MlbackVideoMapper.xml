@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackVideoMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackVideo">
+    <id column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
+    <result column="video_area" jdbcType="INTEGER" property="videoArea" />
+    <result column="video_orderth_num" jdbcType="INTEGER" property="videoOrderthNum" />
+    <result column="video_status" jdbcType="INTEGER" property="videoStatus" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="video_imgurl" jdbcType="VARCHAR" property="videoImgurl" />
+    <result column="video_proid" jdbcType="INTEGER" property="videoProid" />
+    <result column="video_proname" jdbcType="VARCHAR" property="videoProname" />
+    <result column="video_seoname" jdbcType="VARCHAR" property="videoSeoname" />
+    <result column="video_cateid" jdbcType="INTEGER" property="videoCateid" />
+    <result column="video_catename" jdbcType="VARCHAR" property="videoCatename" />
+    <result column="video_cateSeoname" jdbcType="VARCHAR" property="videoCateseoname" />
+    <result column="video_ifproORcateORpage" jdbcType="INTEGER" property="videoIfproorcateorpage" />
+    <result column="video_pagename" jdbcType="VARCHAR" property="videoPagename" />
+    <result column="video_pageSeoname" jdbcType="VARCHAR" property="videoPageseoname" />
+    <result column="video_pagewapimgurl" jdbcType="VARCHAR" property="videoPagewapimgurl" />
+    <result column="video_pagepcimgurl" jdbcType="VARCHAR" property="videoPagepcimgurl" />
+    <result column="video_createTime" jdbcType="VARCHAR" property="videoCreatetime" />
+    <result column="video_motifyTime" jdbcType="VARCHAR" property="videoMotifytime" />
+    <result column="video_startTime" jdbcType="VARCHAR" property="videoStarttime" />
+    <result column="video_endTime" jdbcType="VARCHAR" property="videoEndtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    video_id, video_name, video_area, video_orderth_num, video_status, video_url, video_imgurl, 
+    video_proid, video_proname, video_seoname, video_cateid, video_catename, video_cateSeoname, 
+    video_ifproORcateORpage, video_pagename, video_pageSeoname, video_pagewapimgurl, 
+    video_pagepcimgurl, video_createTime, video_motifyTime, video_startTime, video_endTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackVideo">
+    insert into tb_mlback_video (video_id, video_name, video_area, 
+      video_orderth_num, video_status, video_url, 
+      video_imgurl, video_proid, video_proname, 
+      video_seoname, video_cateid, video_catename, 
+      video_cateSeoname, video_ifproORcateORpage, 
+      video_pagename, video_pageSeoname, video_pagewapimgurl, 
+      video_pagepcimgurl, video_createTime, video_motifyTime, 
+      video_startTime, video_endTime)
+    values (#{videoId,jdbcType=INTEGER}, #{videoName,jdbcType=VARCHAR}, #{videoArea,jdbcType=INTEGER}, 
+      #{videoOrderthNum,jdbcType=INTEGER}, #{videoStatus,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{videoImgurl,jdbcType=VARCHAR}, #{videoProid,jdbcType=INTEGER}, #{videoProname,jdbcType=VARCHAR}, 
+      #{videoSeoname,jdbcType=VARCHAR}, #{videoCateid,jdbcType=INTEGER}, #{videoCatename,jdbcType=VARCHAR}, 
+      #{videoCateseoname,jdbcType=VARCHAR}, #{videoIfproorcateorpage,jdbcType=INTEGER}, 
+      #{videoPagename,jdbcType=VARCHAR}, #{videoPageseoname,jdbcType=VARCHAR}, #{videoPagewapimgurl,jdbcType=VARCHAR}, 
+      #{videoPagepcimgurl,jdbcType=VARCHAR}, #{videoCreatetime,jdbcType=VARCHAR}, #{videoMotifytime,jdbcType=VARCHAR}, 
+      #{videoStarttime,jdbcType=VARCHAR}, #{videoEndtime,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackVideo">
+    update tb_mlback_video
+    set video_name = #{videoName,jdbcType=VARCHAR},
+      video_area = #{videoArea,jdbcType=INTEGER},
+      video_orderth_num = #{videoOrderthNum,jdbcType=INTEGER},
+      video_status = #{videoStatus,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      video_imgurl = #{videoImgurl,jdbcType=VARCHAR},
+      video_proid = #{videoProid,jdbcType=INTEGER},
+      video_proname = #{videoProname,jdbcType=VARCHAR},
+      video_seoname = #{videoSeoname,jdbcType=VARCHAR},
+      video_cateid = #{videoCateid,jdbcType=INTEGER},
+      video_catename = #{videoCatename,jdbcType=VARCHAR},
+      video_cateSeoname = #{videoCateseoname,jdbcType=VARCHAR},
+      video_ifproORcateORpage = #{videoIfproorcateorpage,jdbcType=INTEGER},
+      video_pagename = #{videoPagename,jdbcType=VARCHAR},
+      video_pageSeoname = #{videoPageseoname,jdbcType=VARCHAR},
+      video_pagewapimgurl = #{videoPagewapimgurl,jdbcType=VARCHAR},
+      video_pagepcimgurl = #{videoPagepcimgurl,jdbcType=VARCHAR},
+      video_createTime = #{videoCreatetime,jdbcType=VARCHAR},
+      video_motifyTime = #{videoMotifytime,jdbcType=VARCHAR},
+      video_startTime = #{videoStarttime,jdbcType=VARCHAR},
+      video_endTime = #{videoEndtime,jdbcType=VARCHAR}
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="videoId" parameterType="com.atguigu.bean.MlbackVideo">
+    insert into tb_mlback_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoName != null">
+        video_name,
+      </if>
+      <if test="videoArea != null">
+        video_area,
+      </if>
+      <if test="videoOrderthNum != null">
+        video_orderth_num,
+      </if>
+      <if test="videoStatus != null">
+        video_status,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="videoImgurl != null">
+        video_imgurl,
+      </if>
+      <if test="videoProid != null">
+        video_proid,
+      </if>
+      <if test="videoProname != null">
+        video_proname,
+      </if>
+      <if test="videoSeoname != null">
+        video_seoname,
+      </if>
+      <if test="videoCateid != null">
+        video_cateid,
+      </if>
+      <if test="videoCatename != null">
+        video_catename,
+      </if>
+      <if test="videoCateseoname != null">
+        video_cateSeoname,
+      </if>
+      <if test="videoIfproorcateorpage != null">
+        video_ifproORcateORpage,
+      </if>
+      <if test="videoPagename != null">
+        video_pagename,
+      </if>
+      <if test="videoPageseoname != null">
+        video_pageSeoname,
+      </if>
+      <if test="videoPagewapimgurl != null">
+        video_pagewapimgurl,
+      </if>
+      <if test="videoPagepcimgurl != null">
+        video_pagepcimgurl,
+      </if>
+      <if test="videoCreatetime != null">
+        video_createTime,
+      </if>
+      <if test="videoMotifytime != null">
+        video_motifyTime,
+      </if>
+      <if test="videoStarttime != null">
+        video_startTime,
+      </if>
+      <if test="videoEndtime != null">
+        video_endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="videoName != null">
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoArea != null">
+        #{videoArea,jdbcType=INTEGER},
+      </if>
+      <if test="videoOrderthNum != null">
+        #{videoOrderthNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoStatus != null">
+        #{videoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImgurl != null">
+        #{videoImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoProid != null">
+        #{videoProid,jdbcType=INTEGER},
+      </if>
+      <if test="videoProname != null">
+        #{videoProname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoSeoname != null">
+        #{videoSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCateid != null">
+        #{videoCateid,jdbcType=INTEGER},
+      </if>
+      <if test="videoCatename != null">
+        #{videoCatename,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCateseoname != null">
+        #{videoCateseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoIfproorcateorpage != null">
+        #{videoIfproorcateorpage,jdbcType=INTEGER},
+      </if>
+      <if test="videoPagename != null">
+        #{videoPagename,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPageseoname != null">
+        #{videoPageseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPagewapimgurl != null">
+        #{videoPagewapimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPagepcimgurl != null">
+        #{videoPagepcimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreatetime != null">
+        #{videoCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoMotifytime != null">
+        #{videoMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoStarttime != null">
+        #{videoStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoEndtime != null">
+        #{videoEndtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackVideo">
+    update tb_mlback_video
+    <set>
+      <if test="videoName != null">
+        video_name = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoArea != null">
+        video_area = #{videoArea,jdbcType=INTEGER},
+      </if>
+      <if test="videoOrderthNum != null">
+        video_orderth_num = #{videoOrderthNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoStatus != null">
+        video_status = #{videoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImgurl != null">
+        video_imgurl = #{videoImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoProid != null">
+        video_proid = #{videoProid,jdbcType=INTEGER},
+      </if>
+      <if test="videoProname != null">
+        video_proname = #{videoProname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoSeoname != null">
+        video_seoname = #{videoSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCateid != null">
+        video_cateid = #{videoCateid,jdbcType=INTEGER},
+      </if>
+      <if test="videoCatename != null">
+        video_catename = #{videoCatename,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCateseoname != null">
+        video_cateSeoname = #{videoCateseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoIfproorcateorpage != null">
+        video_ifproORcateORpage = #{videoIfproorcateorpage,jdbcType=INTEGER},
+      </if>
+      <if test="videoPagename != null">
+        video_pagename = #{videoPagename,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPageseoname != null">
+        video_pageSeoname = #{videoPageseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPagewapimgurl != null">
+        video_pagewapimgurl = #{videoPagewapimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoPagepcimgurl != null">
+        video_pagepcimgurl = #{videoPagepcimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreatetime != null">
+        video_createTime = #{videoCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoMotifytime != null">
+        video_motifyTime = #{videoMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoStarttime != null">
+        video_startTime = #{videoStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoEndtime != null">
+        video_endTime = #{videoEndtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackVideoById -->
+  <select id="selectMlbackVideoById" parameterType="com.atguigu.bean.MlbackVideo" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_video 
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlbackVideoGetAll -->
+  <select id="selectMlbackVideoGetAll" parameterType="com.atguigu.bean.MlbackVideo" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_video order by video_area desc ,video_orderth_num desc,video_id desc
+  </select>
+  
+  <!-- selectMlbackvideoByVideoAreaCount -->
+  <select id="selectMlbackvideoByVideoAreaCount" parameterType="com.atguigu.bean.MlbackVideo" resultMap="BaseResultMap">
+    select video_id
+    from tb_mlback_video 
+    where video_area = #{videoArea,jdbcType=INTEGER}
+  </select>
+  
+   <!-- selectMlbackvideoByVideoArea -->
+  <select id="selectMlbackvideoByVideoArea" parameterType="com.atguigu.bean.MlbackVideo" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_video 
+    where video_area = #{videoArea,jdbcType=INTEGER}
+    order by video_orderth_num
+  </select>
+  
+</mapper>

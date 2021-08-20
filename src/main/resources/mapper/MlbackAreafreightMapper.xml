@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackAreafreightMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackAreafreight">
+    <id column="areafreight_id" jdbcType="INTEGER" property="areafreightId" />
+    <result column="areafreight_country_code" jdbcType="VARCHAR" property="areafreightCountryCode" />
+    <result column="areafreight_country" jdbcType="VARCHAR" property="areafreightCountry" />
+    <result column="areafreight_price" jdbcType="INTEGER" property="areafreightPrice" />
+    <result column="areafreight_status" jdbcType="INTEGER" property="areafreightStatus" />
+    <result column="areafreight_tel_prefix" jdbcType="INTEGER" property="areafreightTelPrefix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    areafreight_id, areafreight_country_code, areafreight_country, areafreight_price, areafreight_tel_prefix,
+    areafreight_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_areafreight
+    where areafreight_id = #{areafreightId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackAreafreight">
+    insert into tb_mlback_areafreight (areafreight_id, areafreight_country_code, 
+      areafreight_country, areafreight_price, areafreight_status,areafreight_tel_prefix
+      )
+    values (#{areafreightId,jdbcType=INTEGER}, #{areafreightCountryCode,jdbcType=VARCHAR}, 
+      #{areafreightCountry,jdbcType=VARCHAR}, #{areafreightPrice,jdbcType=INTEGER}, #{areafreightStatus,jdbcType=INTEGER}, #{areafreightTelPrefix,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackAreafreight">
+    update tb_mlback_areafreight
+    set areafreight_country_code = #{areafreightCountryCode,jdbcType=VARCHAR},
+      areafreight_country = #{areafreightCountry,jdbcType=VARCHAR},
+      areafreight_price = #{areafreightPrice,jdbcType=INTEGER},
+      areafreight_status = #{areafreightStatus,jdbcType=INTEGER},
+      areafreight_tel_prefix = #{areafreightTelPrefix,jdbcType=INTEGER}
+    where areafreight_id = #{areafreightId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="areafreightId" parameterType="com.atguigu.bean.MlbackAreafreight">
+    insert into tb_mlback_areafreight
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="areafreightId != null">
+        areafreight_id,
+      </if>
+      <if test="areafreightCountryCode != null">
+        areafreight_country_code,
+      </if>
+      <if test="areafreightCountry != null">
+        areafreight_country,
+      </if>
+      <if test="areafreightPrice != null">
+        areafreight_price,
+      </if>
+      <if test="areafreightStatus != null">
+        areafreight_status,
+      </if>
+      <if test="areafreightTelPrefix != null">
+        areafreight_tel_prefix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="areafreightId != null">
+        #{areafreightId,jdbcType=INTEGER},
+      </if>
+      <if test="areafreightCountryCode != null">
+        #{areafreightCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areafreightCountry != null">
+        #{areafreightCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="areafreightPrice != null">
+        #{areafreightPrice,jdbcType=INTEGER},
+      </if>
+      <if test="areafreightStatus != null">
+        #{areafreightStatus,jdbcType=INTEGER},
+      </if>
+      <if test="areafreightTelPrefix != null">
+        #{areafreightTelPrefix,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_areafreight
+    where areafreight_id = #{areafreightId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackAreafreight">
+    update tb_mlback_areafreight
+    <set>
+      <if test="areafreightCountryCode != null">
+        areafreight_country_code = #{areafreightCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areafreightCountry != null">
+        areafreight_country = #{areafreightCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="areafreightPrice != null">
+        areafreight_price = #{areafreightPrice,jdbcType=INTEGER},
+      </if>
+      <if test="areafreightStatus != null">
+        areafreight_status = #{areafreightStatus,jdbcType=INTEGER},
+      </if>
+      <if test="areafreightTelPrefix != null">
+        areafreight_tel_prefix = #{areafreightTelPrefix,jdbcType=INTEGER},
+      </if>
+    </set>
+    where areafreight_id = #{areafreightId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackAreafreightByParam使用中 -->
+  <select id="selectMlbackAreafreightByParam" parameterType="com.atguigu.bean.MlbackAreafreight" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_areafreight where areafreight_status>=0 
+      <if test="areafreightCountryCode != null">
+        and areafreight_country_code = #{areafreightCountryCode,jdbcType=VARCHAR}
+      </if>
+      <if test="areafreightCountry != null">
+        and areafreight_country = #{areafreightCountry,jdbcType=VARCHAR}
+      </if>
+      <if test="areafreightPrice != null">
+        and areafreight_price = #{areafreightPrice,jdbcType=INTEGER}
+      </if>
+      <if test="areafreightTelPrefix != null">
+        and areafreight_tel_prefix = #{areafreightTelPrefix,jdbcType=INTEGER}
+      </if>
+      <if test="areafreightId != null">
+        and areafreight_id = #{areafreightId,jdbcType=INTEGER}
+      </if>
+  </select>
+  <!-- selectMlbackAreafreightGetAll使用中 -->
+  <select id="selectMlbackAreafreightGetAll" parameterType="com.atguigu.bean.MlbackAreafreight" resultMap="BaseResultMap">
+    select 
+    areafreight_id, areafreight_country_code,areafreight_country, areafreight_price, areafreight_status, areafreight_tel_prefix
+    from tb_mlback_areafreight order by areafreight_country
+  </select>
+</mapper>

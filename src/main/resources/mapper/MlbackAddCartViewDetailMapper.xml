@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackAddCartViewDetailMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackAddCartViewDetail">
+    <id column="addcartViewDetail_id" jdbcType="INTEGER" property="addcartviewdetailId" />
+    <result column="addcartViewDetail_sessionid" jdbcType="VARCHAR" property="addcartviewdetailSessionid" />
+    <result column="addcartViewDetail_proid" jdbcType="INTEGER" property="addcartviewdetailProid" />
+    <result column="addcartViewDetail_proname" jdbcType="VARCHAR" property="addcartviewdetailProname" />
+    <result column="addcartViewDetail_proseo" jdbcType="VARCHAR" property="addcartviewdetailProseo" />
+    <result column="addcartViewDetail_actnum" jdbcType="INTEGER" property="addcartviewdetailActnum" />
+    <result column="addcartViewDetail_createTime" jdbcType="VARCHAR" property="addcartviewdetailCreatetime" />
+    <result column="addcartViewDetail_motifyTime" jdbcType="VARCHAR" property="addcartviewdetailMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    addcartViewDetail_id, addcartViewDetail_sessionid, addcartViewDetail_proid, addcartViewDetail_proname, 
+    addcartViewDetail_proseo, addcartViewDetail_actnum, addcartViewDetail_createTime, 
+    addcartViewDetail_motifyTime
+  </sql>
+
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="addcartviewdetailId" parameterType="com.atguigu.bean.MlbackAddCartViewDetail">
+    insert into tb_mlback_addcartviewdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addcartviewdetailId != null">
+        addcartViewDetail_id,
+      </if>
+      <if test="addcartviewdetailSessionid != null">
+        addcartViewDetail_sessionid,
+      </if>
+      <if test="addcartviewdetailProid != null">
+        addcartViewDetail_proid,
+      </if>
+      <if test="addcartviewdetailProname != null">
+        addcartViewDetail_proname,
+      </if>
+      <if test="addcartviewdetailProseo != null">
+        addcartViewDetail_proseo,
+      </if>
+      <if test="addcartviewdetailActnum != null">
+        addcartViewDetail_actnum,
+      </if>
+      <if test="addcartviewdetailCreatetime != null">
+        addcartViewDetail_createTime,
+      </if>
+      <if test="addcartviewdetailMotifytime != null">
+        addcartViewDetail_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addcartviewdetailId != null">
+        #{addcartviewdetailId,jdbcType=INTEGER},
+      </if>
+      <if test="addcartviewdetailSessionid != null">
+        #{addcartviewdetailSessionid,jdbcType=VARCHAR},
+      </if>
+      <if test="addcartviewdetailProid != null">
+        #{addcartviewdetailProid,jdbcType=INTEGER},
+      </if>
+      <if test="addcartviewdetailProname != null">
+        #{addcartviewdetailProname,jdbcType=VARCHAR},
+      </if>
+      <if test="addcartviewdetailProseo != null">
+        #{addcartviewdetailProseo,jdbcType=VARCHAR},
+      </if>
+      <if test="addcartviewdetailActnum != null">
+        #{addcartviewdetailActnum,jdbcType=INTEGER},
+      </if>
+      <if test="addcartviewdetailCreatetime != null">
+        #{addcartviewdetailCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="addcartviewdetailMotifytime != null">
+        #{addcartviewdetailMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_addcartviewdetail
+    where addcartViewDetail_id = #{addcartviewdetailId,jdbcType=INTEGER}
+  </delete>
+  <!-- selectMlbackAddCartViewDetailByTime -->
+  <select id="selectMlbackAddCartViewDetailByTimeAndActnum" parameterType="com.atguigu.bean.MlbackAddCartViewDetail" resultMap="BaseResultMap">
+    select 
+    addcartViewDetail_id, addcartViewDetail_sessionid, addcartViewDetail_proid, addcartViewDetail_proname, 
+    addcartViewDetail_proseo, addcartViewDetail_actnum, addcartViewDetail_createTime
+    from tb_mlback_addcartviewdetail
+    where addcartViewDetail_createTime between #{addcartviewdetailCreatetime,jdbcType=VARCHAR} and #{addcartviewdetailMotifytime,jdbcType=VARCHAR} 
+    <if test="addcartviewdetailActnum != null">
+      and addcartViewDetail_actnum = #{addcartviewdetailActnum,jdbcType=INTEGER} 
+    </if>
+    order by addcartViewDetail_proseo desc
+  </select>
+  
+</mapper>

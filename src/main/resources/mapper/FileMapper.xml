@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.dao.FileMapper" >
+
+<resultMap id="BaseResultMap" type="com.atguigu.bean.FileEntity">
+ 	<id column="category_id" jdbcType="INTEGER" property="fileId" />
+    <result column="titleOrig" jdbcType="VARCHAR" property="titleOrig" />
+    <result column="titleAlter" jdbcType="VARCHAR" property="titleAlter" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="uploadTime" jdbcType="VARCHAR" property="uploadTime" />
+  </resultMap>
+
+  <select id="findByid" parameterType="java.lang.Long">
+  	select * from tb_mlback_videoup where fileId=#{id}
+  </select>
+  
+  <insert id="saveFile" parameterType="com.atguigu.bean.FileEntity">
+  INSERT INTO `tb_mlback_videoup` (titleOrig,titleAlter,size, TYPE,path, uploadTime) VALUES (#{titleOrig}, #{titleAlter}, #{size}, #{type}, #{path},#{uploadTime})
+  </insert>
+  
+</mapper>

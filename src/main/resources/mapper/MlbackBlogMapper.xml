@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackBlogMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackBlog">
+    <id column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="blog_seoname" jdbcType="VARCHAR" property="blogSeoname" />
+    <result column="blog_name" jdbcType="VARCHAR" property="blogName" />
+    <result column="blog_meta_title" jdbcType="VARCHAR" property="blogMetaTitle" />
+    <result column="blog_meta_keyword" jdbcType="VARCHAR" property="blogMetaKeyword" />
+    <result column="blog_meta_desc" jdbcType="VARCHAR" property="blogMetaDesc" />
+    <result column="blog_bannerImg" jdbcType="VARCHAR" property="blogBannerimg" />
+    <result column="blog_author_createtime" jdbcType="VARCHAR" property="blogAuthorCreatetime" />
+    <result column="blog_status" jdbcType="INTEGER" property="blogStatus" />
+    <result column="blog_super_cateid" jdbcType="INTEGER" property="blogSuperCateid" />
+    <result column="blog_super_catename" jdbcType="VARCHAR" property="blogSuperCatename" />
+    <result column="blog_createtime" jdbcType="VARCHAR" property="blogCreatetime" />
+    <result column="blog_motifytime" jdbcType="VARCHAR" property="blogMotifytime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.atguigu.bean.MlbackBlog">
+    <result column="blog_contentrichtext" jdbcType="LONGVARCHAR" property="blogContentrichtext" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    blog_id, blog_seoname, blog_name, blog_meta_title, blog_meta_keyword, blog_meta_desc, 
+    blog_bannerImg, blog_author_createtime, blog_status, blog_super_cateid, blog_super_catename, blog_createtime, blog_motifytime
+  </sql>
+  <sql id="Blob_Column_List">
+    blog_contentrichtext
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_mlback_blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackBlog">
+    insert into tb_mlback_blog (blog_id, blog_seoname, blog_name, 
+      blog_meta_title, blog_meta_keyword, blog_meta_desc, 
+      blog_bannerImg, blog_author_createtime, blog_status, blog_super_cateid, blog_super_catename, 
+      blog_createtime, blog_motifytime, blog_contentrichtext
+      )
+    values (#{blogId,jdbcType=INTEGER}, #{blogSeoname,jdbcType=VARCHAR}, #{blogName,jdbcType=VARCHAR}, 
+      #{blogMetaTitle,jdbcType=VARCHAR}, #{blogMetaKeyword,jdbcType=VARCHAR}, #{blogMetaDesc,jdbcType=VARCHAR}, 
+      #{blogBannerimg,jdbcType=VARCHAR}, #{blogAuthorCreatetime,jdbcType=VARCHAR}, #{blogStatus,jdbcType=INTEGER},
+      #{blogSuperCateid,jdbcType=INTEGER}, #{blogSuperCatename,jdbcType=VARCHAR}, 
+      #{blogCreatetime,jdbcType=VARCHAR}, #{blogMotifytime,jdbcType=VARCHAR}, #{blogContentrichtext,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.atguigu.bean.MlbackBlog">
+    update tb_mlback_blog
+    set blog_seoname = #{blogSeoname,jdbcType=VARCHAR},
+      blog_name = #{blogName,jdbcType=VARCHAR},
+      blog_meta_title = #{blogMetaTitle,jdbcType=VARCHAR},
+      blog_meta_keyword = #{blogMetaKeyword,jdbcType=VARCHAR},
+      blog_meta_desc = #{blogMetaDesc,jdbcType=VARCHAR},
+      blog_bannerImg = #{blogBannerimg,jdbcType=VARCHAR},
+      blog_author_createtime = #{blogAuthorCreatetime,jdbcType=VARCHAR},
+      blog_status = #{blogStatus,jdbcType=INTEGER},
+      blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}, 
+      blog_super_catename = #{blogSuperCatename,jdbcType=VARCHAR}, 
+      blog_createtime = #{blogCreatetime,jdbcType=VARCHAR},
+      blog_motifytime = #{blogMotifytime,jdbcType=VARCHAR},
+      blog_contentrichtext = #{blogContentrichtext,jdbcType=LONGVARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackBlog">
+    update tb_mlback_blog
+    set blog_seoname = #{blogSeoname,jdbcType=VARCHAR},
+      blog_name = #{blogName,jdbcType=VARCHAR},
+      blog_meta_title = #{blogMetaTitle,jdbcType=VARCHAR},
+      blog_meta_keyword = #{blogMetaKeyword,jdbcType=VARCHAR},
+      blog_meta_desc = #{blogMetaDesc,jdbcType=VARCHAR},
+      blog_bannerImg = #{blogBannerimg,jdbcType=VARCHAR},
+      blog_author_createtime = #{blogAuthorCreatetime,jdbcType=VARCHAR},
+      blog_status = #{blogStatus,jdbcType=INTEGER},
+      blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}, 
+      blog_super_catename = #{blogSuperCatename,jdbcType=VARCHAR}, 
+      blog_createtime = #{blogCreatetime,jdbcType=VARCHAR},
+      blog_motifytime = #{blogMotifytime,jdbcType=VARCHAR}
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="blogId" parameterType="com.atguigu.bean.MlbackBlog">
+    insert into tb_mlback_blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        blog_id,
+      </if>
+      <if test="blogSeoname != null">
+        blog_seoname,
+      </if>
+      <if test="blogName != null">
+        blog_name,
+      </if>
+      <if test="blogMetaTitle != null">
+        blog_meta_title,
+      </if>
+      <if test="blogMetaKeyword != null">
+        blog_meta_keyword,
+      </if>
+      <if test="blogMetaDesc != null">
+        blog_meta_desc,
+      </if>
+      <if test="blogBannerimg != null">
+        blog_bannerImg,
+      </if>
+      <if test="blogAuthorCreatetime != null">
+        blog_author_createtime,
+      </if>
+      <if test="blogStatus != null">
+        blog_status,
+      </if>
+      <if test="blogSuperCateid != null">
+        blog_super_cateid,
+      </if>
+      <if test="blogSuperCatename != null">
+        blog_super_catename,
+      </if>
+      <if test="blogCreatetime != null">
+        blog_createtime,
+      </if>
+      <if test="blogMotifytime != null">
+        blog_motifytime,
+      </if>
+      <if test="blogContentrichtext != null">
+        blog_contentrichtext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="blogSeoname != null">
+        #{blogSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="blogName != null">
+        #{blogName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaTitle != null">
+        #{blogMetaTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaKeyword != null">
+        #{blogMetaKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaDesc != null">
+        #{blogMetaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="blogBannerimg != null">
+        #{blogBannerimg,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAuthorCreatetime != null">
+        #{blogAuthorCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogStatus != null">
+        #{blogStatus,jdbcType=INTEGER},
+      </if>
+      <if test="blogSuperCateid != null">
+        #{blogSuperCateid,jdbcType=INTEGER},
+      </if>
+      <if test="blogSuperCatename != null">
+        #{blogSuperCatename,jdbcType=VARCHAR},
+      </if>
+      <if test="blogCreatetime != null">
+        #{blogCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMotifytime != null">
+        #{blogMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogContentrichtext != null">
+        #{blogContentrichtext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_blog
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackBlog">
+    update tb_mlback_blog
+    <set>
+      <if test="blogSeoname != null">
+        blog_seoname = #{blogSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="blogName != null">
+        blog_name = #{blogName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaTitle != null">
+        blog_meta_title = #{blogMetaTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaKeyword != null">
+        blog_meta_keyword = #{blogMetaKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="blogMetaDesc != null">
+        blog_meta_desc = #{blogMetaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="blogBannerimg != null">
+        blog_bannerImg = #{blogBannerimg,jdbcType=VARCHAR},
+      </if>
+      <if test="blogAuthorCreatetime != null">
+        blog_author_createtime = #{blogAuthorCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogStatus != null">
+        blog_status = #{blogStatus,jdbcType=INTEGER},
+      </if>
+      <if test="blogCreatetime != null">
+        blog_createtime = #{blogCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogSuperCateid != null">
+        blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}, 
+      </if>
+      <if test="blogSuperCatename != null">
+      	blog_super_catename = #{blogSuperCatename,jdbcType=VARCHAR}, 
+      </if>
+      <if test="blogMotifytime != null">
+        blog_motifytime = #{blogMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="blogContentrichtext != null">
+        blog_contentrichtext = #{blogContentrichtext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackBlogGetAll使用中 -->
+  <select id="selectMlbackBlogGetAll" parameterType="com.atguigu.bean.MlbackBlog" resultMap="BaseResultMap">
+    select 
+    blog_id, blog_seoname, blog_name, blog_bannerImg, blog_author_createtime, blog_status,blog_super_cateid,blog_super_catename
+    from tb_mlback_blog order by blog_author_createtime desc
+  </select>
+  <!-- selectMlbackBlogByParam -->
+  <select id="selectMlbackBlogByParam" parameterType="com.atguigu.bean.MlbackBlog" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_blog
+    where blog_id >=0
+      <if test="blogId != null">
+        and blog_id = #{blogId,jdbcType=INTEGER}
+      </if>
+      <if test="blogSeoname != null">
+        and blog_seoname = #{blogSeoname,jdbcType=VARCHAR}
+      </if>
+      <if test="blogName != null">
+        and blog_name = #{blogName,jdbcType=VARCHAR}
+      </if>
+      <if test="blogStatus != null">
+        and blog_status = #{blogStatus,jdbcType=INTEGER}
+      </if>
+      <if test="blogSuperCateid != null">
+        and blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}
+      </if>
+      <if test="blogSuperCatename != null">
+        and blog_super_catename = #{blogSuperCatename,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <!-- selectMlbackBlogSimpleByParam -->
+  <select id="selectMlbackBlogSimpleByParam" parameterType="com.atguigu.bean.MlbackBlog" resultMap="BaseResultMap">
+    select
+    blog_id, blog_seoname, blog_name, 
+    blog_meta_title, blog_meta_keyword, blog_meta_desc, 
+    blog_bannerImg, blog_author_createtime, blog_status
+    from tb_mlback_blog
+    where blog_id >=0
+      <if test="blogId != null">
+        and blog_id = #{blogId,jdbcType=INTEGER}
+      </if>
+      <if test="blogSeoname != null">
+        and blog_seoname = #{blogSeoname,jdbcType=VARCHAR}
+      </if>
+      <if test="blogName != null">
+        and blog_name = #{blogName,jdbcType=VARCHAR}
+      </if>
+      <if test="blogStatus != null">
+        and blog_status = #{blogStatus,jdbcType=INTEGER}
+      </if>
+      <if test="blogSuperCateid != null">
+        and blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}
+      </if>
+      <if test="blogSuperCatename != null">
+        and blog_super_catename = #{blogSuperCatename,jdbcType=VARCHAR}
+      </if>
+      order by blog_id desc
+  </select>
+  <!-- selectMlbackBlogBack -->
+  <select id="selectMlbackBlogBack" parameterType="com.atguigu.bean.MlbackBlog" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_blog
+    where blog_id >=0 and blog_name like concat(concat("%",#{blogName}),"%")
+      <if test="blogSuperCateid != null">
+        and blog_super_cateid = #{blogSuperCateid,jdbcType=INTEGER}
+      </if>
+  </select>
+
+</mapper>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontPayInfoMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontPayInfo">
+    <id column="payInfo_id" jdbcType="INTEGER" property="payinfoId" />
+    <result column="payInfo_uid" jdbcType="INTEGER" property="payinfoUid" />
+    <result column="payInfo_ip" jdbcType="VARCHAR" property="payinfoIp" />
+    <result column="payInfo_oid" jdbcType="INTEGER" property="payinfoOid" />
+    <result column="payInfo_platform" jdbcType="VARCHAR" property="payinfoPlatform" />
+    <result column="payInfo_platformSerialCode" jdbcType="VARCHAR" property="payinfoPlatformserialcode" />
+    <result column="payInfo_money" jdbcType="DECIMAL" property="payinfoMoney" />
+    <result column="payInfo_status" jdbcType="INTEGER" property="payinfoStatus" />
+    <result column="payInfo_reason" jdbcType="VARCHAR" property="payinfoReason" />
+    <result column="payInfo_createTime" jdbcType="VARCHAR" property="payinfoCreatetime" />
+    <result column="payInfo_motifyTime" jdbcType="VARCHAR" property="payinfoMotifytime" />
+    <result column="payInfo_returnTime" jdbcType="VARCHAR" property="payinfoReturntime" />
+    <result column="payInfo_plateNum" jdbcType="VARCHAR" property="payinfoPlatenum" />
+    <result column="payInfo_uname" jdbcType="VARCHAR" property="payinfoUname" />
+    <result column="payInfo_uemail" jdbcType="VARCHAR" property="payinfoUemail" />
+    <result column="payInfo_TransIdnum" jdbcType="VARCHAR" property="payinfoTransidnum" />
+    <result column="payInfo_trans_status" jdbcType="VARCHAR" property="payinfoTransStatus" />
+    <result column="payInfo_EcppHSNum" jdbcType="VARCHAR" property="payinfoEcpphsnum" />
+    <result column="payInfo_EcppHSNumStatus" jdbcType="VARCHAR" property="payinfoEcpphsnumStatus" />
+    <result column="payInfo_SendNum" jdbcType="VARCHAR" property="payinfoSendnum" />
+    <result column="payInfo_IfSMS" jdbcType="INTEGER" property="payinfoIfSMS" />
+    <result column="payInfo_IfEmail" jdbcType="INTEGER" property="payinfoIfEmail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    payInfo_id, payInfo_uid, payInfo_ip, payInfo_oid, payInfo_platform, payInfo_platformSerialCode, 
+    payInfo_money, payInfo_status, payInfo_reason, payInfo_createTime, payInfo_motifyTime, payInfo_returnTime,
+    payInfo_plateNum, payInfo_uname, payInfo_uemail, payInfo_TransIdnum, payInfo_trans_status, 
+    payInfo_EcppHSNum, payInfo_EcppHSNumStatus, payInfo_SendNum, payInfo_IfSMS, payInfo_IfEmail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_payinfo
+    where payInfo_id = #{payinfoId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontPayInfo">
+    insert into tb_mlfront_payinfo (payInfo_id, payInfo_uid, payInfo_ip, 
+      payInfo_oid, payInfo_platform, payInfo_platformSerialCode, 
+      payInfo_money, payInfo_status, payInfo_reason, 
+      payInfo_createTime, payInfo_motifyTime, payInfo_returnTime, payInfo_plateNum, 
+      payInfo_uname, payInfo_uemail, payInfo_TransIdnum, 
+      payInfo_trans_status, payInfo_EcppHSNum,  payInfo_EcppHSNumStatus, payInfo_SendNum, payInfo_IfSMS, payInfo_IfEmail
+      )
+    values (#{payinfoId,jdbcType=INTEGER}, #{payinfoUid,jdbcType=INTEGER}, #{payinfoIp,jdbcType=VARCHAR}, 
+      #{payinfoOid,jdbcType=INTEGER}, #{payinfoPlatform,jdbcType=VARCHAR}, #{payinfoPlatformserialcode,jdbcType=VARCHAR}, 
+      #{payinfoMoney,jdbcType=DECIMAL}, #{payinfoStatus,jdbcType=INTEGER}, #{payinfoReason,jdbcType=VARCHAR}, 
+      #{payinfoCreatetime,jdbcType=VARCHAR}, #{payinfoMotifytime,jdbcType=VARCHAR}, #{payinfoReturntime,jdbcType=VARCHAR}, #{payinfoPlatenum,jdbcType=VARCHAR}, 
+      #{payinfoUname,jdbcType=VARCHAR}, #{payinfoUemail,jdbcType=VARCHAR}, #{payinfoTransidnum,jdbcType=VARCHAR}, 
+      #{payinfoTransStatus,jdbcType=VARCHAR}, #{payinfoEcpphsnum,jdbcType=VARCHAR}, #{payinfoEcpphsnumStatus,jdbcType=VARCHAR}, 
+      #{payinfoSendnum,jdbcType=VARCHAR}, #{payinfoIfSMS,jdbcType=INTEGER}, #{payinfoIfEmail,jdbcType=INTEGER})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontPayInfo">
+    update tb_mlfront_payinfo
+    set payInfo_uid = #{payinfoUid,jdbcType=INTEGER},
+      payInfo_ip = #{payinfoIp,jdbcType=VARCHAR},
+      payInfo_oid = #{payinfoOid,jdbcType=INTEGER},
+      payInfo_platform = #{payinfoPlatform,jdbcType=VARCHAR},
+      payInfo_platformSerialCode = #{payinfoPlatformserialcode,jdbcType=VARCHAR},
+      payInfo_money = #{payinfoMoney,jdbcType=DECIMAL},
+      payInfo_status = #{payinfoStatus,jdbcType=INTEGER},
+      payInfo_reason = #{payinfoReason,jdbcType=VARCHAR},
+      payInfo_createTime = #{payinfoCreatetime,jdbcType=VARCHAR},
+      payInfo_motifyTime = #{payinfoMotifytime,jdbcType=VARCHAR},
+      payInfo_returnTime = #{payinfoReturntime,jdbcType=VARCHAR},
+      payInfo_plateNum = #{payinfoPlatenum,jdbcType=VARCHAR},
+      payInfo_uname = #{payinfoUname,jdbcType=VARCHAR},
+      payInfo_uemail = #{payinfoUemail,jdbcType=VARCHAR},
+      payInfo_TransIdnum = #{payinfoTransidnum,jdbcType=VARCHAR},
+      payInfo_trans_status = #{payinfoTransStatus,jdbcType=VARCHAR},
+      payInfo_EcppHSNum = #{payinfoEcpphsnum,jdbcType=VARCHAR},
+      payInfo_EcppHSNumStatus = #{payinfoEcpphsnumStatus,jdbcType=VARCHAR}, 
+      payInfo_SendNum = #{payinfoSendnum,jdbcType=VARCHAR},
+      payInfo_IfSMS = #{payinfoIfSMS,jdbcType=INTEGER},
+      payInfo_IfEmail = #{payinfoIfEmail,jdbcType=INTEGER}
+    where payInfo_id = #{payinfoId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="payinfoId" parameterType="com.atguigu.bean.MlfrontPayInfo">
+    insert into tb_mlfront_payinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payinfoId != null">
+        payInfo_id,
+      </if>
+      <if test="payinfoUid != null">
+        payInfo_uid,
+      </if>
+      <if test="payinfoIp != null">
+        payInfo_ip,
+      </if>
+      <if test="payinfoOid != null">
+        payInfo_oid,
+      </if>
+      <if test="payinfoPlatform != null">
+        payInfo_platform,
+      </if>
+      <if test="payinfoPlatformserialcode != null">
+        payInfo_platformSerialCode,
+      </if>
+      <if test="payinfoMoney != null">
+        payInfo_money,
+      </if>
+      <if test="payinfoStatus != null">
+        payInfo_status,
+      </if>
+      <if test="payinfoReason != null">
+        payInfo_reason,
+      </if>
+      <if test="payinfoCreatetime != null">
+        payInfo_createTime,
+      </if>
+      <if test="payinfoMotifytime != null">
+        payInfo_motifyTime,
+      </if>
+      <if test="payinfoReturntime != null">
+        payInfo_returnTime,
+      </if>
+      <if test="payinfoPlatenum != null">
+        payInfo_plateNum,
+      </if>
+      <if test="payinfoUname != null">
+        payInfo_uname,
+      </if>
+      <if test="payinfoUemail != null">
+        payInfo_uemail,
+      </if>
+      <if test="payinfoTransidnum != null">
+        payInfo_TransIdnum,
+      </if>
+      <if test="payinfoTransStatus != null">
+        payInfo_trans_status,
+      </if>
+      <if test="payinfoEcpphsnum != null">
+        payInfo_EcppHSNum,
+      </if>
+      <if test="payinfoEcpphsnumStatus != null">
+        payInfo_EcppHSNumStatus,
+      </if>
+      <if test="payinfoSendnum != null">
+        payInfo_SendNum,
+      </if>
+      <if test="payinfoIfSMS != null">
+        payInfo_IfSMS,
+      </if>
+      <if test="payinfoIfEmail != null">
+        payInfo_IfEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payinfoId != null">
+        #{payinfoId,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoUid != null">
+        #{payinfoUid,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoIp != null">
+        #{payinfoIp,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoOid != null">
+        #{payinfoOid,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoPlatform != null">
+        #{payinfoPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoPlatformserialcode != null">
+        #{payinfoPlatformserialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoMoney != null">
+        #{payinfoMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payinfoStatus != null">
+        #{payinfoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoReason != null">
+        #{payinfoReason,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoCreatetime != null">
+        #{payinfoCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoMotifytime != null">
+        #{payinfoMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoReturntime != null">
+        #{payinfoReturntime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoPlatenum != null">
+        #{payinfoPlatenum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoUname != null">
+        #{payinfoUname,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoUemail != null">
+        #{payinfoUemail,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoTransidnum != null">
+        #{payinfoTransidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoTransStatus != null">
+        #{payinfoTransStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoEcpphsnum != null">
+        #{payinfoEcpphsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoEcpphsnumStatus != null">
+        #{payinfoEcpphsnumStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoSendnum != null">
+        #{payinfoSendnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoIfSMS != null">
+        #{payinfoIfSMS,jdbcType=INTEGER}
+      </if>
+      <if test="payinfoIfEmail != null">
+        #{payinfoIfEmail,jdbcType=INTEGER}
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_payinfo
+    where payInfo_id = #{payinfoId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontPayInfo">
+    update tb_mlfront_payinfo
+    <set>
+      <if test="payinfoUid != null">
+        payInfo_uid = #{payinfoUid,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoIp != null">
+        payInfo_ip = #{payinfoIp,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoOid != null">
+        payInfo_oid = #{payinfoOid,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoPlatform != null">
+        payInfo_platform = #{payinfoPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoPlatformserialcode != null">
+        payInfo_platformSerialCode = #{payinfoPlatformserialcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoMoney != null">
+        payInfo_money = #{payinfoMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payinfoStatus != null">
+        payInfo_status = #{payinfoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoReason != null">
+        payInfo_reason = #{payinfoReason,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoCreatetime != null">
+        payInfo_createTime = #{payinfoCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoMotifytime != null">
+        payInfo_motifyTime = #{payinfoMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoReturntime != null">
+        payInfo_returnTime = #{payinfoReturntime,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoPlatenum != null">
+        payInfo_plateNum = #{payinfoPlatenum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoUname != null">
+        payInfo_uname = #{payinfoUname,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoUemail != null">
+        payInfo_uemail = #{payinfoUemail,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoTransidnum != null">
+        payInfo_TransIdnum = #{payinfoTransidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoTransStatus != null">
+        payInfo_trans_status = #{payinfoTransStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoEcpphsnum != null">
+        payInfo_EcppHSNum = #{payinfoEcpphsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoEcpphsnumStatus != null">
+        payInfo_EcppHSNumStatus = #{payinfoEcpphsnumStatus,jdbcType=VARCHAR}, 
+      </if>
+      <if test="payinfoSendnum != null">
+        payInfo_SendNum = #{payinfoSendnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payinfoIfSMS != null">
+      	payInfo_IfSMS = #{payinfoIfSMS,jdbcType=INTEGER},
+      </if>
+      <if test="payinfoIfEmail != null">
+        payInfo_IfEmail = #{payinfoIfEmail,jdbcType=INTEGER},
+      </if>
+    </set>
+    where payInfo_id = #{payinfoId,jdbcType=INTEGER}
+  </update>
+  <!-- selectOneBy使用中selectMlfrontPayInfoById -->
+  <select id="selectMlfrontPayInfoById" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_payinfo 
+    where payInfo_id = #{payinfoId,jdbcType=INTEGER}
+  </select>
+  <!-- selectMlfrontPayInfoByDateAndStatus -->
+  <select id="selectMlfrontPayInfoByDateAndStatus" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_payinfo 
+    where payInfo_status = #{payinfoStatus,jdbcType=INTEGER} 
+    and payInfo_returnTime between #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR} order by payInfo_id desc
+  </select>
+  <!-- selectHighPayInfoListBySearch -->
+  <select id="selectHighPayInfoListBySearch" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select * from tb_mlfront_payinfo where payInfo_id>0
+    <if test="payinfoStatus != null">
+      and payInfo_status = #{payinfoStatus,jdbcType=INTEGER}
+    </if>
+    <if test="payinfoPlatenum != null">
+      and payInfo_plateNum = #{payinfoPlatenum,jdbcType=VARCHAR}
+    </if>
+    <if test="payinfoOid != null">
+      and payInfo_oid = #{payinfoOid,jdbcType=INTEGER}
+    </if>
+    order by payInfo_id desc
+  </select>
+  <!-- selectMlfrontPayInfoSuccessAll -->
+  <select id="selectMlfrontPayInfoSuccessAll" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select * from tb_mlfront_payinfo where payInfo_id>0
+    and payInfo_status!=0 AND payInfo_status!=6 
+    order by payInfo_returnTime desc, payInfo_id desc
+  </select>
+  <!-- selectMlfrontPayInfoByDate -->
+  <select id="selectMlfrontPayInfoByDate" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select
+    payInfo_id,payInfo_oid, 
+    payInfo_money, payInfo_status,payInfo_createTime
+    from tb_mlfront_payinfo 
+    where payInfo_id>0 
+    and payInfo_returnTime between #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR} order by payInfo_id desc
+  </select> 
+  
+  <!-- selectMlfrontPayInfoByDate -->
+  <select id="selectUnpayToSMSByDate" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select
+    payInfo_id,payInfo_oid, 
+    payInfo_money, payInfo_status,payInfo_createTime
+    from tb_mlfront_payinfo 
+    where payInfo_id>0 and payInfo_status = 0 and payInfo_IfSMS = 0
+    and payInfo_createTime between #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR} order by payInfo_oid desc,payInfo_id desc
+  </select> 
+  
+    <!-- selectMlfrontPayInfoByDateAndIfEmail -->
+  <select id="selectMlfrontPayInfoByDateAndIfEmail" parameterType="com.atguigu.bean.MlfrontPayInfo" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_payinfo 
+    where payInfo_returnTime between #{payinfoCreatetime,jdbcType=VARCHAR} and #{payinfoMotifytime,jdbcType=VARCHAR}
+    <if test="payinfoStatus != null">
+      and payInfo_status = #{payinfoStatus,jdbcType=INTEGER} 
+    </if>
+    <if test="payinfoIfEmail != null">
+      and payInfo_IfEmail = #{payinfoIfEmail,jdbcType=INTEGER}
+    </if>
+    <if test="payinfoIfSMS != null">
+      and payInfo_IfSMS = #{payinfoIfSMS,jdbcType=INTEGER}
+    </if>
+    order by payInfo_id desc
+  </select>
+  
+</mapper>

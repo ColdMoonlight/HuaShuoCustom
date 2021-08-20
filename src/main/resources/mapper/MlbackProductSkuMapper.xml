@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackProductSkuMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackProductSku">
+    <id column="productSku_id" jdbcType="INTEGER" property="productskuId" />
+    <result column="productSku_name" jdbcType="VARCHAR" property="productskuName" />
+    <result column="productSku_Code" jdbcType="VARCHAR" property="productskuCode" />
+    <result column="productSku_PSeoname" jdbcType="VARCHAR" property="productskuPSeoname" />
+    <result column="productSku_money" jdbcType="VARCHAR" property="productskuMoney" />
+    <result column="productSku_stock" jdbcType="INTEGER" property="productskuStock" />
+    <result column="productSku_pid" jdbcType="INTEGER" property="productskuPid" />
+    <result column="productSku_oneImg" jdbcType="VARCHAR" property="productskuOneImg" />
+    <result column="productSku_status" jdbcType="INTEGER" property="productskuStatus" />
+    <result column="productSku_createTime" jdbcType="VARCHAR" property="productskuCreatetime" />
+    <result column="productSku_motifyTime" jdbcType="VARCHAR" property="productskuMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    productSku_id, productSku_name, productSku_Code, productSku_PSeoname,
+    productSku_money, productSku_stock, productSku_pid, productSku_oneImg, productSku_status, 
+    productSku_createTime, productSku_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_product_sku
+    where productSku_id = #{productskuId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackProductSku">
+    insert into tb_mlback_product_sku (productSku_id, productSku_name, productSku_Code, productSku_PSeoname,
+      productSku_money, 
+      productSku_stock, productSku_pid, productSku_oneImg, 
+      productSku_status, productSku_createTime, 
+      productSku_motifyTime)
+    values (#{productskuId,jdbcType=INTEGER}, #{productskuName,jdbcType=VARCHAR}, #{productskuCode,jdbcType=VARCHAR}, #{productskuPSeoname,jdbcType=VARCHAR},
+      #{productskuMoney,jdbcType=VARCHAR}, 
+      #{productskuStock,jdbcType=INTEGER}, #{productskuPid,jdbcType=INTEGER}, #{productskuOneImg,jdbcType=VARCHAR}, 
+      #{productskuStatus,jdbcType=INTEGER}, #{productskuCreatetime,jdbcType=VARCHAR}, 
+      #{productskuMotifytime,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackProductSku">
+    update tb_mlback_product_sku
+    set productSku_name = #{productskuName,jdbcType=VARCHAR},
+      productSku_Code = #{productskuCode,jdbcType=VARCHAR},
+      productSku_PSeoname = #{productskuPSeoname,jdbcType=VARCHAR},
+      productSku_money = #{productskuMoney,jdbcType=VARCHAR},
+      productSku_stock = #{productskuStock,jdbcType=INTEGER},
+      productSku_pid = #{productskuPid,jdbcType=INTEGER},
+      productSku_oneImg = #{productskuOneImg,jdbcType=VARCHAR},
+      productSku_status = #{productskuStatus,jdbcType=INTEGER},
+      productSku_createTime = #{productskuCreatetime,jdbcType=VARCHAR},
+      productSku_motifyTime = #{productskuMotifytime,jdbcType=VARCHAR}
+    where productSku_id = #{productskuId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="productskuId" parameterType="com.atguigu.bean.MlbackProductSku">
+    insert into tb_mlback_product_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productskuId != null">
+        productSku_id,
+      </if>
+      <if test="productskuName != null">
+        productSku_name,
+      </if>
+      <if test="productskuCode != null">
+        productSku_Code,
+      </if>
+      <if test="productskuPSeoname != null">
+        productSku_PSeoname,
+      </if>
+      <if test="productskuMoney != null">
+        productSku_money,
+      </if>
+      <if test="productskuStock != null">
+        productSku_stock,
+      </if>
+      <if test="productskuPid != null">
+        productSku_pid,
+      </if>
+      <if test="productskuOneImg != null">
+        productSku_oneImg,
+      </if>
+      <if test="productskuStatus != null">
+        productSku_status,
+      </if>
+      <if test="productskuCreatetime != null">
+        productSku_createTime,
+      </if>
+      <if test="productskuMotifytime != null">
+        productSku_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productskuId != null">
+        #{productskuId,jdbcType=INTEGER},
+      </if>
+      <if test="productskuName != null">
+        #{productskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuCode != null">
+        #{productskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuPSeoname != null">
+        #{productskuPSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuMoney != null">
+        #{productskuMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuStock != null">
+        #{productskuStock,jdbcType=INTEGER},
+      </if>
+      <if test="productskuPid != null">
+        #{productskuPid,jdbcType=INTEGER},
+      </if>
+      <if test="productskuOneImg != null">
+        #{productskuOneImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuStatus != null">
+        #{productskuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productskuCreatetime != null">
+        #{productskuCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuMotifytime != null">
+        #{productskuMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_product_sku
+    where productSku_id = #{productskuId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackProductSku">
+    update tb_mlback_product_sku
+    <set>
+      <if test="productskuName != null">
+        productSku_name = #{productskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuCode != null">
+        productSku_Code = #{productskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuPSeoname != null">
+        productSku_PSeoname = #{productskuPSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuMoney != null">
+        productSku_money = #{productskuMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuStock != null">
+        productSku_stock = #{productskuStock,jdbcType=INTEGER},
+      </if>
+      <if test="productskuPid != null">
+        productSku_pid = #{productskuPid,jdbcType=INTEGER},
+      </if>
+      <if test="productskuOneImg != null">
+        productSku_oneImg = #{productskuOneImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuStatus != null">
+        productSku_status = #{productskuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productskuCreatetime != null">
+        productSku_createTime = #{productskuCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="productskuMotifytime != null">
+        productSku_motifyTime = #{productskuMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where productSku_id = #{productskuId,jdbcType=INTEGER}
+  </update>
+  <!-- insertSelective -->
+  <!-- selectMlbackProductSkuListByPId使用中 -->
+  <select id="selectMlbackProductSkuListByPId" parameterType="com.atguigu.bean.MlbackProductSku" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_product_sku
+    where productSku_pid = #{productskuPid,jdbcType=INTEGER}
+      <if test="productskuStatus != null">
+       and productSku_status = #{productskuStatus,jdbcType=INTEGER}
+      </if>
+      <if test="productskuName != null">
+       and productSku_name = #{productskuName,jdbcType=VARCHAR}
+      </if>
+       order by productSku_id
+  </select>
+  <!-- selectMlbackProductSkuListByPIdTogether使用中 -->
+  <select id="selectMlbackProductSkuListByPIdTogether" parameterType="com.atguigu.bean.MlbackProductSku" resultMap="BaseResultMap">
+    select 
+    productSku_id, productSku_name, productSku_Code, productSku_PSeoname,
+    productSku_money, productSku_stock, productSku_pid, productSku_status
+    from tb_mlback_product_sku
+    where productSku_stock >0 and productSku_pid = #{productskuPid,jdbcType=INTEGER} 
+      <if test="productskuStatus != null">
+       and productSku_status = #{productskuStatus,jdbcType=INTEGER}
+      </if>
+       order by productSku_name
+  </select>
+  <!-- selectMlProductSkuListByPskuCode使用中 -->
+  <select id="selectMlProductSkuListByPskuCode" parameterType="com.atguigu.bean.MlbackProductSku" resultMap="BaseResultMap">
+    select 
+    productSku_id, productSku_name, productSku_Code, productSku_PSeoname,
+    productSku_money, productSku_stock, productSku_pid, productSku_status
+    from tb_mlback_product_sku
+    where productSku_Code = #{productskuCode,jdbcType=VARCHAR}
+    <if test="productskuPSeoname != null">
+       and productSku_PSeoname = #{productskuPSeoname,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+</mapper>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontCartItemMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontCartItem">
+    <id column="cartItem_id" jdbcType="INTEGER" property="cartitemId" />
+    <result column="cartItem_uid" jdbcType="INTEGER" property="cartitemUid" />
+    <result column="cartItem_cart_id" jdbcType="INTEGER" property="cartitemCartId" />
+    <result column="cartitem_status" jdbcType="INTEGER" property="cartitemStatus" />
+    <result column="cartItem_product_id" jdbcType="INTEGER" property="cartitemProductId" />
+    <result column="cartItem_product_name" jdbcType="VARCHAR" property="cartitemProductName" />
+    <result column="cartItem_product_seo_name" jdbcType="VARCHAR" property="cartitemProductSeoName" />
+    <result column="cartItem_product_originalPrice" jdbcType="DECIMAL" property="cartitemProductOriginalprice" />
+    <result column="cartItem_product_mainimgurl" jdbcType="VARCHAR" property="cartitemProductMainimgurl" />
+    <result column="cartItem_product_actoff" jdbcType="INTEGER" property="cartitemProductActoff" />
+    <result column="cartItem_productsku_idStr" jdbcType="VARCHAR" property="cartitemProductskuIdstr" />
+    <result column="cartItem_productsku_idnameStr" jdbcType="VARCHAR" property="cartitemProductskuIdnamestr" />
+    <result column="cartItem_productsku_id" jdbcType="INTEGER" property="cartitemProductskuId" />
+    <result column="cartItem_productsku_name" jdbcType="VARCHAR" property="cartitemProductskuName" />
+    <result column="cartItem_productsku_code" jdbcType="VARCHAR" property="cartitemProductskuCode" />
+    <result column="cartItem_productsku_moneyStr" jdbcType="VARCHAR" property="cartitemProductskuMoneystr" />
+    <result column="cartItem_product_number" jdbcType="INTEGER" property="cartitemProductNumber" />
+    <result column="cartItem_createTime" jdbcType="VARCHAR" property="cartitemCreatetime" />
+    <result column="cartItem_motifyTime" jdbcType="VARCHAR" property="cartitemMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cartItem_id, cartItem_uid, cartItem_cart_id, cartitem_status, cartItem_product_id, 
+    cartItem_product_name, cartItem_product_seo_name, cartItem_product_originalPrice, cartItem_product_mainimgurl, 
+    cartItem_product_actoff, cartItem_productsku_idStr, cartItem_productsku_idnameStr, 
+    cartItem_productsku_id,cartItem_productsku_name,cartItem_productsku_code, cartItem_productsku_moneyStr, cartItem_product_number, 
+    cartItem_createTime, cartItem_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_cartitem
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontCartItem">
+    insert into tb_mlfront_cartitem (cartItem_id, cartItem_uid, cartItem_cart_id, 
+      cartitem_status, cartItem_product_id, cartItem_product_name, cartItem_product_seo_name,
+      cartItem_product_originalPrice, cartItem_product_mainimgurl, 
+      cartItem_product_actoff, cartItem_productsku_idStr, 
+      cartItem_productsku_idnameStr, cartItem_productsku_id,cartItem_productsku_name,cartItem_productsku_code, 
+      cartItem_productsku_moneyStr, cartItem_product_number, 
+      cartItem_createTime, cartItem_motifyTime)
+    values (#{cartitemId,jdbcType=INTEGER}, #{cartitemUid,jdbcType=INTEGER}, #{cartitemCartId,jdbcType=INTEGER}, 
+      #{cartitemStatus,jdbcType=INTEGER}, #{cartitemProductId,jdbcType=INTEGER}, #{cartitemProductName,jdbcType=VARCHAR}, #{cartitemProductSeoName,jdbcType=VARCHAR}, 
+      #{cartitemProductOriginalprice,jdbcType=DECIMAL}, #{cartitemProductMainimgurl,jdbcType=VARCHAR}, 
+      #{cartitemProductActoff,jdbcType=INTEGER}, #{cartitemProductskuIdstr,jdbcType=VARCHAR}, 
+      #{cartitemProductskuIdnamestr,jdbcType=VARCHAR}, #{cartitemProductskuId,jdbcType=INTEGER}, #{cartitemProductskuName,jdbcType=VARCHAR}, #{cartitemProductskuCode,jdbcType=VARCHAR}, 
+      #{cartitemProductskuMoneystr,jdbcType=VARCHAR}, #{cartitemProductNumber,jdbcType=INTEGER}, 
+      #{cartitemCreatetime,jdbcType=VARCHAR}, #{cartitemMotifytime,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontCartItem">
+    update tb_mlfront_cartitem
+    set cartItem_uid = #{cartitemUid,jdbcType=INTEGER},
+      cartItem_cart_id = #{cartitemCartId,jdbcType=INTEGER},
+      cartitem_status = #{cartitemStatus,jdbcType=INTEGER},
+      cartItem_product_id = #{cartitemProductId,jdbcType=INTEGER},
+      cartItem_product_name = #{cartitemProductName,jdbcType=VARCHAR},
+      cartItem_product_seo_name = #{cartitemProductSeoName,jdbcType=VARCHAR}, 
+      cartItem_product_originalPrice = #{cartitemProductOriginalprice,jdbcType=DECIMAL},
+      cartItem_product_mainimgurl = #{cartitemProductMainimgurl,jdbcType=VARCHAR},
+      cartItem_product_actoff = #{cartitemProductActoff,jdbcType=INTEGER},
+      cartItem_productsku_idStr = #{cartitemProductskuIdstr,jdbcType=VARCHAR},
+      cartItem_productsku_idnameStr = #{cartitemProductskuIdnamestr,jdbcType=VARCHAR},
+      cartItem_productsku_id = #{cartitemProductskuId,jdbcType=INTEGER},
+      cartItem_productsku_name = #{cartitemProductskuName,jdbcType=VARCHAR},
+      cartItem_productsku_code = #{cartitemProductskuCode,jdbcType=VARCHAR}, 
+      cartItem_productsku_moneyStr = #{cartitemProductskuMoneystr,jdbcType=VARCHAR},
+      cartItem_product_number = #{cartitemProductNumber,jdbcType=INTEGER},
+      cartItem_createTime = #{cartitemCreatetime,jdbcType=VARCHAR},
+      cartItem_motifyTime = #{cartitemMotifytime,jdbcType=VARCHAR}
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="cartitemId" parameterType="com.atguigu.bean.MlfrontCartItem">
+    insert into tb_mlfront_cartitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartitemId != null">
+        cartItem_id,
+      </if>
+      <if test="cartitemUid != null">
+        cartItem_uid,
+      </if>
+      <if test="cartitemCartId != null">
+        cartItem_cart_id,
+      </if>
+      <if test="cartitemStatus != null">
+        cartitem_status,
+      </if>
+      <if test="cartitemProductId != null">
+        cartItem_product_id,
+      </if>
+      <if test="cartitemProductName != null">
+        cartItem_product_name,
+      </if>
+      <if test="cartitemProductSeoName != null">
+        cartItem_product_seo_name,
+      </if>
+      <if test="cartitemProductOriginalprice != null">
+        cartItem_product_originalPrice,
+      </if>
+      <if test="cartitemProductMainimgurl != null">
+        cartItem_product_mainimgurl,
+      </if>
+      <if test="cartitemProductActoff != null">
+        cartItem_product_actoff,
+      </if>
+      <if test="cartitemProductskuIdstr != null">
+        cartItem_productsku_idStr,
+      </if>
+      <if test="cartitemProductskuIdnamestr != null">
+        cartItem_productsku_idnameStr,
+      </if>
+      <if test="cartitemProductskuId != null">
+        cartItem_productsku_id,
+      </if>
+      <if test="cartitemProductskuName != null">
+        cartItem_productsku_name,
+      </if>
+      <if test="cartitemProductskuCode != null">
+        cartItem_productsku_code,
+      </if>
+      <if test="cartitemProductskuMoneystr != null">
+        cartItem_productsku_moneyStr,
+      </if>
+      <if test="cartitemProductNumber != null">
+        cartItem_product_number,
+      </if>
+      <if test="cartitemCreatetime != null">
+        cartItem_createTime,
+      </if>
+      <if test="cartitemMotifytime != null">
+        cartItem_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartitemId != null">
+        #{cartitemId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemUid != null">
+        #{cartitemUid,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemCartId != null">
+        #{cartitemCartId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemStatus != null">
+        #{cartitemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductId != null">
+        #{cartitemProductId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductName != null">
+        #{cartitemProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductSeoName != null">
+        #{cartitemProductSeoName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductOriginalprice != null">
+        #{cartitemProductOriginalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cartitemProductMainimgurl != null">
+        #{cartitemProductMainimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductActoff != null">
+        #{cartitemProductActoff,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductskuIdstr != null">
+        #{cartitemProductskuIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuIdnamestr != null">
+        #{cartitemProductskuIdnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuId != null">
+        #{cartitemProductskuId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductskuName != null">
+        #{cartitemProductskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuCode != null">
+        #{cartitemProductskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuMoneystr != null">
+        #{cartitemProductskuMoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductNumber != null">
+        #{cartitemProductNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemCreatetime != null">
+        #{cartitemCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemMotifytime != null">
+        #{cartitemMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_cartitem
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontCartItem">
+    update tb_mlfront_cartitem
+    <set>
+      <if test="cartitemUid != null">
+        cartItem_uid = #{cartitemUid,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemCartId != null">
+        cartItem_cart_id = #{cartitemCartId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemStatus != null">
+        cartitem_status = #{cartitemStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductId != null">
+        cartItem_product_id = #{cartitemProductId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductName != null">
+        cartItem_product_name = #{cartitemProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductSeoName != null">
+        cartItem_product_seo_name = #{cartitemProductSeoName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductOriginalprice != null">
+        cartItem_product_originalPrice = #{cartitemProductOriginalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cartitemProductMainimgurl != null">
+        cartItem_product_mainimgurl = #{cartitemProductMainimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductActoff != null">
+        cartItem_product_actoff = #{cartitemProductActoff,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductskuIdstr != null">
+        cartItem_productsku_idStr = #{cartitemProductskuIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuIdnamestr != null">
+        cartItem_productsku_idnameStr = #{cartitemProductskuIdnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuId != null">
+        cartItem_productsku_id = #{cartitemProductskuId,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemProductskuName != null">
+        cartItem_productsku_name = #{cartitemProductskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuCode != null">
+        cartItem_productsku_code = #{cartitemProductskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductskuMoneystr != null">
+        cartItem_productsku_moneyStr = #{cartitemProductskuMoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductNumber != null">
+        cartItem_product_number = #{cartitemProductNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cartitemCreatetime != null">
+        cartItem_createTime = #{cartitemCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemMotifytime != null">
+        cartItem_motifyTime = #{cartitemMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlfrontCartItemGetAll -->
+  <select id="selectMlfrontCartItemGetAll" parameterType="com.atguigu.bean.MlfrontCartItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cartitem order by cartItem_id desc
+  </select>
+  <!-- selectMlfrontCartItemOne -->
+  <select id="selectMlfrontCartItemOne" parameterType="com.atguigu.bean.MlfrontCartItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cartitem
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+      <if test="cartitemUid != null">
+         and cartItem_uid = #{cartitemUid,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemCartId != null">
+         and cartItem_cart_id = #{cartitemCartId,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemStatus != null">
+        and cartItem_status = #{cartitemStatus,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemProductId != null">
+        and cartItem_product_id = #{cartitemProductId,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemProductName != null">
+        and cartItem_product_name = #{cartitemProductName,jdbcType=VARCHAR}
+      </if>
+      <if test="cartitemProductSeoName != null">
+        cartItem_product_seo_name = #{cartitemProductSeoName,jdbcType=VARCHAR},
+      </if>
+      <if test="cartitemProductOriginalprice != null">
+        and cartItem_product_originalPrice = #{cartitemProductOriginalprice,jdbcType=DECIMAL}
+      </if>
+      <if test="cartitemProductMainimgurl != null">
+        and cartItem_product_mainimgurl = #{cartitemProductMainimgurl,jdbcType=VARCHAR}
+      </if>
+      <if test="cartitemProductActoff != null">
+        and cartItem_product_actoff = #{cartitemProductActoff,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemProductskuIdstr != null">
+        and cartItem_productsku_idStr = #{cartitemProductskuIdstr,jdbcType=VARCHAR}
+      </if>
+      <if test="cartitemProductskuIdnamestr != null">
+        and cartItem_productsku_idnameStr = #{cartitemProductskuIdnamestr,jdbcType=VARCHAR}
+      </if>
+      <if test="cartitemProductskuId != null">
+        and cartItem_productsku_id = #{cartitemProductskuId,jdbcType=INTEGER}
+      </if>
+      <if test="cartitemProductskuName != null">
+        and cartItem_productsku_name = #{cartitemProductskuName,jdbcType=VARCHAR}
+      </if>
+      <if test="cartitemProductskuCode != null">
+        and cartItem_productsku_code = #{cartitemProductskuCode,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <!-- selectMlfrontCartItemById -->
+  <select id="selectMlfrontCartItemById" parameterType="com.atguigu.bean.MlfrontCartItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cartitem
+    where cartItem_id = #{cartitemId,jdbcType=INTEGER}
+  </select>
+  <!-- selectMlfrontCartItemGetAllHundred -->
+  <select id="selectMlfrontCartItemGetAllHundred" parameterType="com.atguigu.bean.MlfrontCartItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_cartitem order by cartItem_id desc limit 50
+  </select>
+  
+</mapper>

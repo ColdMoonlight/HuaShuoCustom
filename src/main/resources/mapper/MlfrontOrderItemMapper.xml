@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlfrontOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlfrontOrderItem">
+    <id column="orderItem_id" jdbcType="INTEGER" property="orderitemId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_uid" jdbcType="INTEGER" property="orderUid" />
+    <result column="order_cartItemId" jdbcType="INTEGER" property="orderCartitemid" />
+    <result column="orderItem_pid" jdbcType="INTEGER" property="orderitemPid" />
+    <result column="orderItem_pName" jdbcType="VARCHAR" property="orderitemPname" />
+    <result column="orderItem_pSeo" jdbcType="VARCHAR" property="orderitemPseo" />
+    <result column="orderItem_product_originalPrice" jdbcType="DECIMAL" property="orderitemProductOriginalprice" />
+    <result column="orderItem_product_mainimgURL" jdbcType="VARCHAR" property="orderitemProductMainimgurl" />
+    <result column="orderItem_product_accoff" jdbcType="INTEGER" property="orderitemProductAccoff" />
+    <result column="orderItem_pSku_idStr" jdbcType="VARCHAR" property="orderitemPskuIdstr" />
+    <result column="orderItem_pSku_idnameStr" jdbcType="VARCHAR" property="orderitemPskuIdnamestr" />
+    <result column="orderItem_pSku_id" jdbcType="INTEGER" property="orderitemPskuId" />
+    <result column="orderItem_pSku_name" jdbcType="VARCHAR" property="orderitemPskuName" />
+    <result column="orderItem_pSku_code" jdbcType="VARCHAR" property="orderitemPskuCode" />
+    <result column="orderItem_pSku_moneyStr" jdbcType="VARCHAR" property="orderitemPskuMoneystr" />
+    <result column="orderItem_pSku_number" jdbcType="INTEGER" property="orderitemPskuNumber" />
+    <result column="orderItem_pSku_reaMoney" jdbcType="VARCHAR" property="orderitemPskuReamoney" />
+    <result column="orderItem_createTime" jdbcType="VARCHAR" property="orderitemCreatetime" />
+    <result column="orderItem_motifyTime" jdbcType="VARCHAR" property="orderitemMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderItem_id, order_id, order_uid, order_cartItemId, orderItem_pid, orderItem_pName, 
+    orderItem_pSeo, orderItem_product_originalPrice, orderItem_product_mainimgURL, orderItem_product_accoff, 
+    orderItem_pSku_idStr, orderItem_pSku_idnameStr, orderItem_pSku_id, orderItem_pSku_name, 
+    orderItem_pSku_code, orderItem_pSku_moneyStr, orderItem_pSku_number, orderItem_pSku_reaMoney, 
+    orderItem_createTime, orderItem_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlfront_orderitem
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlfrontOrderItem">
+    insert into tb_mlfront_orderitem (orderItem_id, order_id, order_uid, 
+      order_cartItemId, orderItem_pid, orderItem_pName, 
+      orderItem_pSeo, orderItem_product_originalPrice, 
+      orderItem_product_mainimgURL, orderItem_product_accoff, 
+      orderItem_pSku_idStr, orderItem_pSku_idnameStr, 
+      orderItem_pSku_id, orderItem_pSku_name, orderItem_pSku_code, 
+      orderItem_pSku_moneyStr, orderItem_pSku_number, 
+      orderItem_pSku_reaMoney, orderItem_createTime, 
+      orderItem_motifyTime)
+    values (#{orderitemId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{orderUid,jdbcType=INTEGER}, 
+      #{orderCartitemid,jdbcType=INTEGER}, #{orderitemPid,jdbcType=INTEGER}, #{orderitemPname,jdbcType=VARCHAR}, 
+      #{orderitemPseo,jdbcType=VARCHAR}, #{orderitemProductOriginalprice,jdbcType=DECIMAL}, 
+      #{orderitemProductMainimgurl,jdbcType=VARCHAR}, #{orderitemProductAccoff,jdbcType=INTEGER}, 
+      #{orderitemPskuIdstr,jdbcType=VARCHAR}, #{orderitemPskuIdnamestr,jdbcType=VARCHAR}, 
+      #{orderitemPskuId,jdbcType=INTEGER}, #{orderitemPskuName,jdbcType=VARCHAR}, #{orderitemPskuCode,jdbcType=VARCHAR}, 
+      #{orderitemPskuMoneystr,jdbcType=VARCHAR}, #{orderitemPskuNumber,jdbcType=INTEGER}, 
+      #{orderitemPskuReamoney,jdbcType=VARCHAR}, #{orderitemCreatetime,jdbcType=VARCHAR}, 
+      #{orderitemMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlfrontOrderItem">
+    update tb_mlfront_orderitem
+    set order_id = #{orderId,jdbcType=INTEGER},
+      order_uid = #{orderUid,jdbcType=INTEGER},
+      order_cartItemId = #{orderCartitemid,jdbcType=INTEGER},
+      orderItem_pid = #{orderitemPid,jdbcType=INTEGER},
+      orderItem_pName = #{orderitemPname,jdbcType=VARCHAR},
+      orderItem_pSeo = #{orderitemPseo,jdbcType=VARCHAR},
+      orderItem_product_originalPrice = #{orderitemProductOriginalprice,jdbcType=DECIMAL},
+      orderItem_product_mainimgURL = #{orderitemProductMainimgurl,jdbcType=VARCHAR},
+      orderItem_product_accoff = #{orderitemProductAccoff,jdbcType=INTEGER},
+      orderItem_pSku_idStr = #{orderitemPskuIdstr,jdbcType=VARCHAR},
+      orderItem_pSku_idnameStr = #{orderitemPskuIdnamestr,jdbcType=VARCHAR},
+      orderItem_pSku_id = #{orderitemPskuId,jdbcType=INTEGER},
+      orderItem_pSku_name = #{orderitemPskuName,jdbcType=VARCHAR},
+      orderItem_pSku_code = #{orderitemPskuCode,jdbcType=VARCHAR},
+      orderItem_pSku_moneyStr = #{orderitemPskuMoneystr,jdbcType=VARCHAR},
+      orderItem_pSku_number = #{orderitemPskuNumber,jdbcType=INTEGER},
+      orderItem_pSku_reaMoney = #{orderitemPskuReamoney,jdbcType=VARCHAR},
+      orderItem_createTime = #{orderitemCreatetime,jdbcType=VARCHAR},
+      orderItem_motifyTime = #{orderitemMotifytime,jdbcType=VARCHAR}
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlfrontOrderItem">
+    insert into tb_mlfront_orderitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderitemId != null">
+        orderItem_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderUid != null">
+        order_uid,
+      </if>
+      <if test="orderCartitemid != null">
+        order_cartItemId,
+      </if>
+      <if test="orderitemPid != null">
+        orderItem_pid,
+      </if>
+      <if test="orderitemPname != null">
+        orderItem_pName,
+      </if>
+      <if test="orderitemPseo != null">
+        orderItem_pSeo,
+      </if>
+      <if test="orderitemProductOriginalprice != null">
+        orderItem_product_originalPrice,
+      </if>
+      <if test="orderitemProductMainimgurl != null">
+        orderItem_product_mainimgURL,
+      </if>
+      <if test="orderitemProductAccoff != null">
+        orderItem_product_accoff,
+      </if>
+      <if test="orderitemPskuIdstr != null">
+        orderItem_pSku_idStr,
+      </if>
+      <if test="orderitemPskuIdnamestr != null">
+        orderItem_pSku_idnameStr,
+      </if>
+      <if test="orderitemPskuId != null">
+        orderItem_pSku_id,
+      </if>
+      <if test="orderitemPskuName != null">
+        orderItem_pSku_name,
+      </if>
+      <if test="orderitemPskuCode != null">
+        orderItem_pSku_code,
+      </if>
+      <if test="orderitemPskuMoneystr != null">
+        orderItem_pSku_moneyStr,
+      </if>
+      <if test="orderitemPskuNumber != null">
+        orderItem_pSku_number,
+      </if>
+      <if test="orderitemPskuReamoney != null">
+        orderItem_pSku_reaMoney,
+      </if>
+      <if test="orderitemCreatetime != null">
+        orderItem_createTime,
+      </if>
+      <if test="orderitemMotifytime != null">
+        orderItem_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderitemId != null">
+        #{orderitemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderUid != null">
+        #{orderUid,jdbcType=INTEGER},
+      </if>
+      <if test="orderCartitemid != null">
+        #{orderCartitemid,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPid != null">
+        #{orderitemPid,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPname != null">
+        #{orderitemPname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPseo != null">
+        #{orderitemPseo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemProductOriginalprice != null">
+        #{orderitemProductOriginalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderitemProductMainimgurl != null">
+        #{orderitemProductMainimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemProductAccoff != null">
+        #{orderitemProductAccoff,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuIdstr != null">
+        #{orderitemPskuIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuIdnamestr != null">
+        #{orderitemPskuIdnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuId != null">
+        #{orderitemPskuId,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuName != null">
+        #{orderitemPskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuCode != null">
+        #{orderitemPskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuMoneystr != null">
+        #{orderitemPskuMoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuNumber != null">
+        #{orderitemPskuNumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuReamoney != null">
+        #{orderitemPskuReamoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemCreatetime != null">
+        #{orderitemCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemMotifytime != null">
+        #{orderitemMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlfront_orderitem
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlfrontOrderItem">
+    update tb_mlfront_orderitem
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderUid != null">
+        order_uid = #{orderUid,jdbcType=INTEGER},
+      </if>
+      <if test="orderCartitemid != null">
+        order_cartItemId = #{orderCartitemid,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPid != null">
+        orderItem_pid = #{orderitemPid,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPname != null">
+        orderItem_pName = #{orderitemPname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPseo != null">
+        orderItem_pSeo = #{orderitemPseo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemProductOriginalprice != null">
+        orderItem_product_originalPrice = #{orderitemProductOriginalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderitemProductMainimgurl != null">
+        orderItem_product_mainimgURL = #{orderitemProductMainimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemProductAccoff != null">
+        orderItem_product_accoff = #{orderitemProductAccoff,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuIdstr != null">
+        orderItem_pSku_idStr = #{orderitemPskuIdstr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuIdnamestr != null">
+        orderItem_pSku_idnameStr = #{orderitemPskuIdnamestr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuId != null">
+        orderItem_pSku_id = #{orderitemPskuId,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuName != null">
+        orderItem_pSku_name = #{orderitemPskuName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuCode != null">
+        orderItem_pSku_code = #{orderitemPskuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuMoneystr != null">
+        orderItem_pSku_moneyStr = #{orderitemPskuMoneystr,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemPskuNumber != null">
+        orderItem_pSku_number = #{orderitemPskuNumber,jdbcType=INTEGER},
+      </if>
+      <if test="orderitemPskuReamoney != null">
+        orderItem_pSku_reaMoney = #{orderitemPskuReamoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemCreatetime != null">
+        orderItem_createTime = #{orderitemCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderitemMotifytime != null">
+        orderItem_motifyTime = #{orderitemMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- selectMlfrontOrderItemAllHundred -->
+  <select id="selectMlfrontOrderItemAllHundred" parameterType="com.atguigu.bean.MlfrontOrderItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_orderitem order by orderItem_id desc limit 50
+  </select>
+  
+  <!-- selectMlfrontOrderItemByOrderId -->
+  <select id="selectMlfrontOrderItemByOrderId" parameterType="com.atguigu.bean.MlfrontOrderItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_orderitem 
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- selectMlfrontOrderItemByOrderId -->
+  <select id="selectMlfrontOrderItemByParam" parameterType="com.atguigu.bean.MlfrontOrderItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_orderitem 
+    where orderItem_product_accoff >0
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=INTEGER}
+      </if>
+      <if test="orderUid != null">
+        and order_uid = #{orderUid,jdbcType=INTEGER}
+      </if>
+      <if test="orderCartitemid != null">
+        and order_cartItemId = #{orderCartitemid,jdbcType=INTEGER}
+      </if>
+      <if test="orderitemPid != null">
+        and orderItem_pid = #{orderitemPid,jdbcType=INTEGER}
+      </if>
+      <if test="orderitemPname != null">
+        and orderItem_pName = #{orderitemPname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemPseo != null">
+        and orderItem_pSeo = #{orderitemPseo,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemProductOriginalprice != null">
+        and orderItem_product_originalPrice = #{orderitemProductOriginalprice,jdbcType=DECIMAL}
+      </if>
+      <if test="orderitemProductMainimgurl != null">
+        and orderItem_product_mainimgURL = #{orderitemProductMainimgurl,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemPskuIdstr != null">
+        and orderItem_pSku_idStr = #{orderitemPskuIdstr,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemPskuIdnamestr != null">
+        and orderItem_pSku_idnameStr = #{orderitemPskuIdnamestr,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemPskuId != null">
+        and orderItem_pSku_id = #{orderitemPskuId,jdbcType=INTEGER}
+      </if>
+      <if test="orderitemPskuName != null">
+        and orderItem_pSku_name = #{orderitemPskuName,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemPskuCode != null">
+        and orderItem_pSku_code = #{orderitemPskuCode,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemCreatetime != null">
+        and orderItem_createTime = #{orderitemCreatetime,jdbcType=VARCHAR}
+      </if>
+      <if test="orderitemMotifytime != null">
+        and orderItem_motifyTime = #{orderitemMotifytime,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <select id="selectMlfrontOrderItemById" parameterType="com.atguigu.bean.MlfrontOrderItem" resultMap="BaseResultMap">
+    select *
+    from tb_mlfront_orderitem 
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

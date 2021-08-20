@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackActShowProMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackActShowPro">
+    <id column="actShowPro_id" jdbcType="INTEGER" property="actshowproId" />
+    <result column="actShowPro_name" jdbcType="VARCHAR" property="actshowproName" />
+    <result column="actShowPro_actNum" jdbcType="INTEGER" property="actshowproActnum" />
+    <result column="actShowPro_proId" jdbcType="INTEGER" property="actshowproProid" />
+    <result column="actShowPro_proName" jdbcType="VARCHAR" property="actshowproProname" />
+    <result column="actShowPro_seoname" jdbcType="VARCHAR" property="actshowproSeoname" />
+    <result column="actShowPro_cateId" jdbcType="INTEGER" property="actshowproCateid" />
+    <result column="actShowPro_cateName" jdbcType="VARCHAR" property="actshowproCatename" />
+    <result column="actShowPro_cateSeoName" jdbcType="VARCHAR" property="actshowproCateseoname" />
+    <result column="actShowPro_pageSeoname" jdbcType="VARCHAR" property="actshowproPageseoname" />
+    <result column="actShowPro_ifproORcate" jdbcType="INTEGER" property="actshowproIfproorcate" />
+    <result column="actShowPro_imgwapurl" jdbcType="VARCHAR" property="actshowproImgwapurl" />
+    <result column="actShowPro_imgpcurl" jdbcType="VARCHAR" property="actshowproImgpcurl" />
+    <result column="actShowPro_status" jdbcType="INTEGER" property="actshowproStatus" />
+    <result column="actShowPro_orderth" jdbcType="INTEGER" property="actshowproOrderth" />
+    <result column="actShowPro_createTime" jdbcType="VARCHAR" property="actshowproCreatetime" />
+    <result column="actShowPro_motifyTime" jdbcType="VARCHAR" property="actshowproMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    actShowPro_id, actShowPro_name, actShowPro_actNum, actShowPro_proId, actShowPro_proName, 
+    actShowPro_seoname, actShowPro_cateId, actShowPro_cateName, actShowPro_cateSeoName, 
+    actShowPro_pageSeoname, actShowPro_ifproORcate, actShowPro_imgwapurl, actShowPro_imgpcurl, 
+    actShowPro_status, actShowPro_orderth, actShowPro_createTime, actShowPro_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_actshowpro
+    where actShowPro_id = #{actshowproId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackActShowPro">
+    insert into tb_mlback_actshowpro (actShowPro_id, actShowPro_name, actShowPro_actNum, 
+      actShowPro_proId, actShowPro_proName, actShowPro_seoname, 
+      actShowPro_cateId, actShowPro_cateName, actShowPro_cateSeoName, 
+      actShowPro_pageSeoname, actShowPro_ifproORcate, 
+      actShowPro_imgwapurl, actShowPro_imgpcurl, 
+      actShowPro_status, actShowPro_orderth, actShowPro_createTime, 
+      actShowPro_motifyTime)
+    values (#{actshowproId,jdbcType=INTEGER}, #{actshowproName,jdbcType=VARCHAR}, #{actshowproActnum,jdbcType=INTEGER}, 
+      #{actshowproProid,jdbcType=INTEGER}, #{actshowproProname,jdbcType=VARCHAR}, #{actshowproSeoname,jdbcType=VARCHAR}, 
+      #{actshowproCateid,jdbcType=INTEGER}, #{actshowproCatename,jdbcType=VARCHAR}, #{actshowproCateseoname,jdbcType=VARCHAR}, 
+      #{actshowproPageseoname,jdbcType=VARCHAR}, #{actshowproIfproorcate,jdbcType=INTEGER}, 
+      #{actshowproImgwapurl,jdbcType=VARCHAR}, #{actshowproImgpcurl,jdbcType=VARCHAR}, 
+      #{actshowproStatus,jdbcType=INTEGER}, #{actshowproOrderth,jdbcType=INTEGER}, #{actshowproCreatetime,jdbcType=VARCHAR}, 
+      #{actshowproMotifytime,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackActShowPro">
+    update tb_mlback_actshowpro
+    set actShowPro_name = #{actshowproName,jdbcType=VARCHAR},
+      actShowPro_actNum = #{actshowproActnum,jdbcType=INTEGER},
+      actShowPro_proId = #{actshowproProid,jdbcType=INTEGER},
+      actShowPro_proName = #{actshowproProname,jdbcType=VARCHAR},
+      actShowPro_seoname = #{actshowproSeoname,jdbcType=VARCHAR},
+      actShowPro_cateId = #{actshowproCateid,jdbcType=INTEGER},
+      actShowPro_cateName = #{actshowproCatename,jdbcType=VARCHAR},
+      actShowPro_cateSeoName = #{actshowproCateseoname,jdbcType=VARCHAR},
+      actShowPro_pageSeoname = #{actshowproPageseoname,jdbcType=VARCHAR},
+      actShowPro_ifproORcate = #{actshowproIfproorcate,jdbcType=INTEGER},
+      actShowPro_imgwapurl = #{actshowproImgwapurl,jdbcType=VARCHAR},
+      actShowPro_imgpcurl = #{actshowproImgpcurl,jdbcType=VARCHAR},
+      actShowPro_status = #{actshowproStatus,jdbcType=INTEGER},
+      actShowPro_orderth = #{actshowproOrderth,jdbcType=INTEGER},
+      actShowPro_createTime = #{actshowproCreatetime,jdbcType=VARCHAR},
+      actShowPro_motifyTime = #{actshowproMotifytime,jdbcType=VARCHAR}
+    where actShowPro_id = #{actshowproId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="actshowproId"  parameterType="com.atguigu.bean.MlbackActShowPro">
+    insert into tb_mlback_actshowpro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="actshowproId != null">
+        actShowPro_id,
+      </if>
+      <if test="actshowproName != null">
+        actShowPro_name,
+      </if>
+      <if test="actshowproActnum != null">
+        actShowPro_actNum,
+      </if>
+      <if test="actshowproProid != null">
+        actShowPro_proId,
+      </if>
+      <if test="actshowproProname != null">
+        actShowPro_proName,
+      </if>
+      <if test="actshowproSeoname != null">
+        actShowPro_seoname,
+      </if>
+      <if test="actshowproCateid != null">
+        actShowPro_cateId,
+      </if>
+      <if test="actshowproCatename != null">
+        actShowPro_cateName,
+      </if>
+      <if test="actshowproCateseoname != null">
+        actShowPro_cateSeoName,
+      </if>
+      <if test="actshowproPageseoname != null">
+        actShowPro_pageSeoname,
+      </if>
+      <if test="actshowproIfproorcate != null">
+        actShowPro_ifproORcate,
+      </if>
+      <if test="actshowproImgwapurl != null">
+        actShowPro_imgwapurl,
+      </if>
+      <if test="actshowproImgpcurl != null">
+        actShowPro_imgpcurl,
+      </if>
+      <if test="actshowproStatus != null">
+        actShowPro_status,
+      </if>
+      <if test="actshowproOrderth != null">
+        actShowPro_orderth,
+      </if>
+      <if test="actshowproCreatetime != null">
+        actShowPro_createTime,
+      </if>
+      <if test="actshowproMotifytime != null">
+        actShowPro_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="actshowproId != null">
+        #{actshowproId,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproName != null">
+        #{actshowproName,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproActnum != null">
+        #{actshowproActnum,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproProid != null">
+        #{actshowproProid,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproProname != null">
+        #{actshowproProname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproSeoname != null">
+        #{actshowproSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproCateid != null">
+        #{actshowproCateid,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproCatename != null">
+        #{actshowproCatename,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproCateseoname != null">
+        #{actshowproCateseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproPageseoname != null">
+        #{actshowproPageseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproIfproorcate != null">
+        #{actshowproIfproorcate,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproImgwapurl != null">
+        #{actshowproImgwapurl,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproImgpcurl != null">
+        #{actshowproImgpcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproStatus != null">
+        #{actshowproStatus,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproOrderth != null">
+        #{actshowproOrderth,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproCreatetime != null">
+        #{actshowproCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproMotifytime != null">
+        #{actshowproMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_actshowpro
+    where actShowPro_id = #{actshowproId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackActShowPro">
+    update tb_mlback_actshowpro
+    <set>
+      <if test="actshowproName != null">
+        actShowPro_name = #{actshowproName,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproActnum != null">
+        actShowPro_actNum = #{actshowproActnum,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproProid != null">
+        actShowPro_proId = #{actshowproProid,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproProname != null">
+        actShowPro_proName = #{actshowproProname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproSeoname != null">
+        actShowPro_seoname = #{actshowproSeoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproCateid != null">
+        actShowPro_cateId = #{actshowproCateid,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproCatename != null">
+        actShowPro_cateName = #{actshowproCatename,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproCateseoname != null">
+        actShowPro_cateSeoName = #{actshowproCateseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproPageseoname != null">
+        actShowPro_pageSeoname = #{actshowproPageseoname,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproIfproorcate != null">
+        actShowPro_ifproORcate = #{actshowproIfproorcate,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproImgwapurl != null">
+        actShowPro_imgwapurl = #{actshowproImgwapurl,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproImgpcurl != null">
+        actShowPro_imgpcurl = #{actshowproImgpcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproStatus != null">
+        actShowPro_status = #{actshowproStatus,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproOrderth != null">
+        actShowPro_orderth = #{actshowproOrderth,jdbcType=INTEGER},
+      </if>
+      <if test="actshowproCreatetime != null">
+        actShowPro_createTime = #{actshowproCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="actshowproMotifytime != null">
+        actShowPro_motifyTime = #{actshowproMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where actShowPro_id = #{actshowproId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackActShowProById -->
+  <select id="selectMlbackActShowProById" parameterType="com.atguigu.bean.MlbackActShowPro" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_actshowpro 
+    where actShowPro_id = #{actshowproId,jdbcType=INTEGER}
+  </select>
+  <!-- selectMlbackActShowProGetAll -->
+  <select id="selectMlbackActShowProGetAll" parameterType="com.atguigu.bean.MlbackActShowPro" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_actshowpro order by actShowPro_id desc
+  </select>
+  
+   <!-- selectMlbackActShowProByActnum -->
+  <select id="selectMlbackActShowProByActnum" parameterType="com.atguigu.bean.MlbackActShowPro" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_actshowpro 
+    where actShowPro_actNum = #{actshowproActnum,jdbcType=INTEGER} and actShowPro_status = #{actshowproStatus,jdbcType=INTEGER}
+    order by actShowPro_orderth
+  </select>
+</mapper>

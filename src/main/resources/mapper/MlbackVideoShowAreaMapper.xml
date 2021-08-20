@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlbackVideoShowAreaMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlbackVideoShowArea">
+    <id column="videoShowArea_id" jdbcType="INTEGER" property="videoshowareaId" />
+    <result column="videoShowArea_name" jdbcType="VARCHAR" property="videoshowareaName" />
+    <result column="videoShowArea_areanum" jdbcType="INTEGER" property="videoshowareaAreanum" />
+    <result column="videoShowArea_orderth_num" jdbcType="INTEGER" property="videoshowareaOrderthNum" />
+    <result column="videoShowArea_wapstatus" jdbcType="INTEGER" property="videoshowareaWapstatus" />
+    <result column="videoShowArea_pcstatus" jdbcType="INTEGER" property="videoshowareaPcstatus" />
+    <result column="videoShowArea_wapimgurl" jdbcType="VARCHAR" property="videoshowareaWapimgurl" />
+    <result column="videoShowArea_pcimgurl" jdbcType="VARCHAR" property="videoshowareaPcimgurl" />
+    <result column="videoShowArea_createTime" jdbcType="VARCHAR" property="videoshowareaCreatetime" />
+    <result column="videoShowArea_motifyTime" jdbcType="VARCHAR" property="videoshowareaMotifytime" />
+    <result column="videoShowArea_startTime" jdbcType="VARCHAR" property="videoshowareaStarttime" />
+    <result column="videoShowArea_endTime" jdbcType="VARCHAR" property="videoshowareaEndtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    videoShowArea_id, videoShowArea_name, videoShowArea_areanum, videoShowArea_orderth_num, 
+    videoShowArea_wapstatus, videoShowArea_pcstatus, videoShowArea_wapimgurl, videoShowArea_pcimgurl, 
+    videoShowArea_createTime, videoShowArea_motifyTime, videoShowArea_startTime, videoShowArea_endTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_mlback_videoshowarea
+    where videoShowArea_id = #{videoshowareaId,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.atguigu.bean.MlbackVideoShowArea">
+    insert into tb_mlback_videoshowarea (videoShowArea_id, videoShowArea_name, 
+      videoShowArea_areanum, videoShowArea_orderth_num, 
+      videoShowArea_wapstatus, videoShowArea_pcstatus, 
+      videoShowArea_wapimgurl, videoShowArea_pcimgurl, 
+      videoShowArea_createTime, videoShowArea_motifyTime, 
+      videoShowArea_startTime, videoShowArea_endTime
+      )
+    values (#{videoshowareaId,jdbcType=INTEGER}, #{videoshowareaName,jdbcType=VARCHAR}, 
+      #{videoshowareaAreanum,jdbcType=INTEGER}, #{videoshowareaOrderthNum,jdbcType=INTEGER}, 
+      #{videoshowareaWapstatus,jdbcType=INTEGER}, #{videoshowareaPcstatus,jdbcType=INTEGER}, 
+      #{videoshowareaWapimgurl,jdbcType=VARCHAR}, #{videoshowareaPcimgurl,jdbcType=VARCHAR}, 
+      #{videoshowareaCreatetime,jdbcType=VARCHAR}, #{videoshowareaMotifytime,jdbcType=VARCHAR}, 
+      #{videoshowareaStarttime,jdbcType=VARCHAR}, #{videoshowareaEndtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlbackVideoShowArea">
+    update tb_mlback_videoshowarea
+    set videoShowArea_name = #{videoshowareaName,jdbcType=VARCHAR},
+      videoShowArea_areanum = #{videoshowareaAreanum,jdbcType=INTEGER},
+      videoShowArea_orderth_num = #{videoshowareaOrderthNum,jdbcType=INTEGER},
+      videoShowArea_wapstatus = #{videoshowareaWapstatus,jdbcType=INTEGER},
+      videoShowArea_pcstatus = #{videoshowareaPcstatus,jdbcType=INTEGER},
+      videoShowArea_wapimgurl = #{videoshowareaWapimgurl,jdbcType=VARCHAR},
+      videoShowArea_pcimgurl = #{videoshowareaPcimgurl,jdbcType=VARCHAR},
+      videoShowArea_createTime = #{videoshowareaCreatetime,jdbcType=VARCHAR},
+      videoShowArea_motifyTime = #{videoshowareaMotifytime,jdbcType=VARCHAR},
+      videoShowArea_startTime = #{videoshowareaStarttime,jdbcType=VARCHAR},
+      videoShowArea_endTime = #{videoshowareaEndtime,jdbcType=VARCHAR}
+    where videoShowArea_id = #{videoshowareaId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="videoshowareaId" parameterType="com.atguigu.bean.MlbackVideoShowArea">
+    insert into tb_mlback_videoshowarea
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoshowareaId != null">
+        videoShowArea_id,
+      </if>
+      <if test="videoshowareaName != null">
+        videoShowArea_name,
+      </if>
+      <if test="videoshowareaAreanum != null">
+        videoShowArea_areanum,
+      </if>
+      <if test="videoshowareaOrderthNum != null">
+        videoShowArea_orderth_num,
+      </if>
+      <if test="videoshowareaWapstatus != null">
+        videoShowArea_wapstatus,
+      </if>
+      <if test="videoshowareaPcstatus != null">
+        videoShowArea_pcstatus,
+      </if>
+      <if test="videoshowareaWapimgurl != null">
+        videoShowArea_wapimgurl,
+      </if>
+      <if test="videoshowareaPcimgurl != null">
+        videoShowArea_pcimgurl,
+      </if>
+      <if test="videoshowareaCreatetime != null">
+        videoShowArea_createTime,
+      </if>
+      <if test="videoshowareaMotifytime != null">
+        videoShowArea_motifyTime,
+      </if>
+      <if test="videoshowareaStarttime != null">
+        videoShowArea_startTime,
+      </if>
+      <if test="videoshowareaEndtime != null">
+        videoShowArea_endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoshowareaId != null">
+        #{videoshowareaId,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaName != null">
+        #{videoshowareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaAreanum != null">
+        #{videoshowareaAreanum,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaOrderthNum != null">
+        #{videoshowareaOrderthNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaWapstatus != null">
+        #{videoshowareaWapstatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaPcstatus != null">
+        #{videoshowareaPcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaWapimgurl != null">
+        #{videoshowareaWapimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaPcimgurl != null">
+        #{videoshowareaPcimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaCreatetime != null">
+        #{videoshowareaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaMotifytime != null">
+        #{videoshowareaMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaStarttime != null">
+        #{videoshowareaStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaEndtime != null">
+        #{videoshowareaEndtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- deleteByPrimaryKey -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_mlback_videoshowarea
+    where videoShowArea_id = #{videoshowareaId,jdbcType=INTEGER}
+  </delete>
+  <!-- updateByPrimaryKeySelective -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlbackVideoShowArea">
+    update tb_mlback_videoshowarea
+    <set>
+      <if test="videoshowareaName != null">
+        videoShowArea_name = #{videoshowareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaAreanum != null">
+        videoShowArea_areanum = #{videoshowareaAreanum,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaOrderthNum != null">
+        videoShowArea_orderth_num = #{videoshowareaOrderthNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaWapstatus != null">
+        videoShowArea_wapstatus = #{videoshowareaWapstatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaPcstatus != null">
+        videoShowArea_pcstatus = #{videoshowareaPcstatus,jdbcType=INTEGER},
+      </if>
+      <if test="videoshowareaWapimgurl != null">
+        videoShowArea_wapimgurl = #{videoshowareaWapimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaPcimgurl != null">
+        videoShowArea_pcimgurl = #{videoshowareaPcimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaCreatetime != null">
+        videoShowArea_createTime = #{videoshowareaCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaMotifytime != null">
+        videoShowArea_motifyTime = #{videoshowareaMotifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaStarttime != null">
+        videoShowArea_startTime = #{videoshowareaStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="videoshowareaEndtime != null">
+        videoShowArea_endTime = #{videoshowareaEndtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where videoShowArea_id = #{videoshowareaId,jdbcType=INTEGER}
+  </update>
+  <!-- selectMlbackVideoShowAreaById -->
+  <select id="selectMlbackVideoShowAreaById" parameterType="com.atguigu.bean.MlbackVideoShowArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_videoshowarea 
+    where videoShowArea_id = #{videoshowareaId,jdbcType=INTEGER}
+  </select>
+  
+   <!-- selectMlbackVideoShowAreaGetAll -->
+  <select id="selectMlbackVideoShowAreaGetAll" parameterType="com.atguigu.bean.MlbackVideoShowArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_videoshowarea order by videoShowArea_id desc
+  </select>
+  
+   <!-- selectMlbackVideoShowAreawapListByArea -->
+  <select id="selectMlbackVideoShowAreawapListByArea" parameterType="com.atguigu.bean.MlbackVideoShowArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_videoshowarea where videoShowArea_wapstatus = #{videoshowareaWapstatus,jdbcType=INTEGER} and videoShowArea_areanum = #{videoshowareaAreanum,jdbcType=INTEGER} order by videoShowArea_orderth_num 
+  </select>
+  <!-- selectMlbackVideoShowAreapcListByArea -->
+  <select id="selectMlbackVideoShowAreapcListByArea" parameterType="com.atguigu.bean.MlbackVideoShowArea" resultMap="BaseResultMap">
+    select *
+    from tb_mlback_videoshowarea where videoShowArea_pcstatus = #{videoshowareaPcstatus,jdbcType=INTEGER} and videoShowArea_areanum = #{videoshowareaAreanum,jdbcType=INTEGER} order by videoShowArea_orderth_num 
+  </select>
+  <!-- deleteByPrimaryKey -->
+</mapper>

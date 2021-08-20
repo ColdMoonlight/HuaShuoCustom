@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.MlPaypalStateprovinceMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.MlPaypalStateprovince">
+    <id column="stateprovince_id" jdbcType="INTEGER" property="stateprovinceId" />
+    <result column="stateprovince_name_code" jdbcType="VARCHAR" property="stateprovinceNameCode" />
+    <result column="stateprovince_name" jdbcType="VARCHAR" property="stateprovinceName" />
+    <result column="stateprovince_country_code" jdbcType="VARCHAR" property="stateprovinceCountryCode" />
+    <result column="stateprovince_country" jdbcType="VARCHAR" property="stateprovinceCountry" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stateprovince_id, stateprovince_name_code, stateprovince_name, stateprovince_country_code, 
+    stateprovince_country
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_paypal_stateprovince
+    where stateprovince_id = #{stateprovinceId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.atguigu.bean.MlPaypalStateprovince">
+    insert into tb_paypal_stateprovince (stateprovince_id, stateprovince_name_code, 
+      stateprovince_name, stateprovince_country_code, 
+      stateprovince_country)
+    values (#{stateprovinceId,jdbcType=INTEGER}, #{stateprovinceNameCode,jdbcType=VARCHAR}, 
+      #{stateprovinceName,jdbcType=VARCHAR}, #{stateprovinceCountryCode,jdbcType=VARCHAR}, 
+      #{stateprovinceCountry,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.MlPaypalStateprovince">
+    update tb_paypal_stateprovince
+    set stateprovince_name_code = #{stateprovinceNameCode,jdbcType=VARCHAR},
+      stateprovince_name = #{stateprovinceName,jdbcType=VARCHAR},
+      stateprovince_country_code = #{stateprovinceCountryCode,jdbcType=VARCHAR},
+      stateprovince_country = #{stateprovinceCountry,jdbcType=VARCHAR}
+    where stateprovince_id = #{stateprovinceId,jdbcType=INTEGER}
+  </update>
+  
+  <!--insertSelective-->
+  <insert id="insertSelective" parameterType="com.atguigu.bean.MlPaypalStateprovince">
+    insert into tb_paypal_stateprovince
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stateprovinceId != null">
+        stateprovince_id,
+      </if>
+      <if test="stateprovinceNameCode != null">
+        stateprovince_name_code,
+      </if>
+      <if test="stateprovinceName != null">
+        stateprovince_name,
+      </if>
+      <if test="stateprovinceCountryCode != null">
+        stateprovince_country_code,
+      </if>
+      <if test="stateprovinceCountry != null">
+        stateprovince_country,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stateprovinceId != null">
+        #{stateprovinceId,jdbcType=INTEGER},
+      </if>
+      <if test="stateprovinceNameCode != null">
+        #{stateprovinceNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceName != null">
+        #{stateprovinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceCountryCode != null">
+        #{stateprovinceCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceCountry != null">
+        #{stateprovinceCountry,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--deleteByPrimaryKey-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_paypal_stateprovince
+    where stateprovince_id = #{stateprovinceId,jdbcType=INTEGER}
+  </delete>
+  <!--updateByPrimaryKeySelective-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.MlPaypalStateprovince">
+    update tb_paypal_stateprovince
+    <set>
+      <if test="stateprovinceNameCode != null">
+        stateprovince_name_code = #{stateprovinceNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceName != null">
+        stateprovince_name = #{stateprovinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceCountryCode != null">
+        stateprovince_country_code = #{stateprovinceCountryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stateprovinceCountry != null">
+        stateprovince_country = #{stateprovinceCountry,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stateprovince_id = #{stateprovinceId,jdbcType=INTEGER}
+  </update>
+  <!--selectMlPaypalStateprovinceByCountryCode-->
+  <select id="selectMlPaypalStateprovinceByCountryCode" parameterType="com.atguigu.bean.MlPaypalStateprovince" resultMap="BaseResultMap">
+    select *
+    from tb_paypal_stateprovince  where stateprovince_country_code = #{stateprovinceCountryCode,jdbcType=VARCHAR} order by stateprovince_name ASC
+  </select>
+  <!--selectMlPaypalStateprovinceByCountryCodeAndProvince-->
+  <select id="selectMlPaypalStateprovinceByCountryCodeAndProvince" parameterType="com.atguigu.bean.MlPaypalStateprovince" resultMap="BaseResultMap">
+    select stateprovince_id, stateprovince_name_code, stateprovince_name, stateprovince_country_code, stateprovince_country
+    from tb_paypal_stateprovince  where stateprovince_country_code = #{stateprovinceCountryCode,jdbcType=VARCHAR} and stateprovince_name = #{stateprovinceName,jdbcType=VARCHAR}
+  </select>
+  
+  <!--selectMlPaypalStateprovinceByCountryCodeAndProvinceCode-->
+  <select id="selectMlPaypalStateprovinceByCountryCodeAndProvinceCode" parameterType="com.atguigu.bean.MlPaypalStateprovince" resultMap="BaseResultMap">
+    select stateprovince_id, stateprovince_name_code, stateprovince_name, stateprovince_country_code, stateprovince_country
+    from tb_paypal_stateprovince  where stateprovince_country_code = #{stateprovinceCountryCode,jdbcType=VARCHAR} and stateprovince_name_code = #{stateprovinceNameCode,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>
