@@ -3847,7 +3847,7 @@ footer li {
 .ml-ap-item,
 .main-body-item,
 .lazyload {
-	background-image: url('../img/loading.gif');
+	background-image: url('../../custom/loading.gif');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;

@@ -6,19 +6,17 @@
 <!--[if IE 9 ]><html class="ie9 no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
 <head>
-<c:choose>
-<c:when test="${sessionScope.mlbackProductMetaTitle==null}"><title>Product Details</title></c:when>
-<c:otherwise><title>${ sessionScope.mlbackProductMetaTitle }</title></c:otherwise>
-</c:choose>
-	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
+	<jsp:include page="../common/config-front.jsp"></jsp:include>
+	<title>${ sessionScope.mlbackProductMetaTitle }</title>
     <meta name="keyword" content="${sessionScope.mlbackProductMetaKeywords}">
     <meta id="ml-des" name="description" content="${sessionScope.mlbackProductMeteDesc}">
+	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://www.megalook.com/<%=request.getParameter("productSeo") %>.html" hreflang="en-us" />
-	<link rel="canonical" href="https://www.megalook.com/<%=request.getParameter("productSeo") %>.html" />
+    <link rel="alternate" href="${ map.website_domain }/<%=request.getParameter("productSeo") %>.html" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/<%=request.getParameter("productSeo") %>.html" />
 	<!-- socail media -->
-	<meta name="twitter:site" content="@megalookhair">
+	<meta name="twitter:site" content="@${ map.website_name }">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="${ sessionScope.mlbackProductMetaTitle }">
 	<meta name="twitter:description" content="${sessionScope.mlbackProductMeteDesc}">
@@ -29,7 +27,7 @@
 		"@context": "http://schema.org/",
 		"@type": "Product",
 		"name": "${ sessionScope.mlbackProductMetaTitle }",
-		"url": "https://www.megalook.com/<%=request.getParameter("productSeo") %>.html",
+		"url": "${ map.website_domain}/<%=request.getParameter("productSeo") %>.html",
 		"sku": "${sessionScope.productDetailId}",
 		"image": [ <c:forEach items="${ mbackProductImgResList }" var="pro" varStatus="status"><c:if test="${status.count < 2}">"${ pro.productimgUrl }"</c:if><c:if test="${status.count > 2}">,"${ pro.productimgUrl }"</c:if></c:forEach> ],
 		"description": "${sessionScope.mlbackProductMeteDesc}",
@@ -130,6 +128,7 @@
 		@media only screen and (max-width: 1023px) { .product-coupons.wap { display: flex; opacity: 1; visibility: visible; } }
 		@media only screen and (min-width: 1024px) { .product-coupons.pc { display: flex; opacity: 1; visibility: visible; } }
 		@media only screen and (min-width: 1299px) { .product-media-container {position: absolute;} .product-media-container.product-media-fixed {position: fixed;} }
+		.product-share-modal { display: flex; align-items: center; z-index: 999999999!important; }
 	</style>
 </head>
 <body>
@@ -268,6 +267,22 @@
 	<!-- main end -->
 	<!-- footer nav -->
 	<jsp:include page="../layout/footer/footer.jsp" flush="true"></jsp:include>
+	
+	<div class="modal product-share-modal hide">
+		<div class="modal-close icon close"></div>
+		<div class="modal-container">
+			<div class="modal-header"><p>Product Share</p></div>
+			<div class="modal-body">
+				<div class="product-share">
+					<c:if test="${ map.sh_youtube != null }"><a class="share-item youtube" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="${ map.sh_youtube }" title="${ map.website_name } youtube"></a></c:if>
+					<c:if test="${ map.sh_instagram != null }"><a class="share-item instagram" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="${ map.sh_instagram }" title="${ map.website_name } instagram"></a></c:if>
+					<c:if test="${ map.sh_facebook != null }"><div class="share-item share-click facebook" data-url="${ map.sh_facebook }" title="share on facebook"></div></c:if>
+					<c:if test="${ map.sh_pinterest != null }"><div class="share-item share-click pinterest" data-url="${ map.sh_pinterest }" title="share on pinterest"></div></c:if>
+					<c:if test="${ map.sh_whatsapp != null }"><div class="share-item share-click whatsapp" data-url="${ map.sh_whatsapp }" title="share on whatsapp"></div></c:if>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- common script -->
 	<script src="${APP_PATH}/static/common/jquery.min.js"></script>

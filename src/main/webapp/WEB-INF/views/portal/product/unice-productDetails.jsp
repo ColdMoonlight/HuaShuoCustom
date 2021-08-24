@@ -4,18 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<c:choose>
-<c:when test="${sessionScope.mlbackProductMetaTitle==null}"><title>Product Details</title></c:when>
-<c:otherwise><title>${ sessionScope.mlbackProductMetaTitle }</title></c:otherwise>
-</c:choose>
-	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
+	<jsp:include page="../common/config-front.jsp"></jsp:include>
+	<title>${ sessionScope.mlbackProductMetaTitle }</title>
     <meta name="keyword" content="${sessionScope.mlbackProductMetaKeyWords}">
     <meta id="ml-des" name="description" content="${sessionScope.mlbackProductMeteDesc}">
-	<script>
-		var productId = '${sessionScope.productDetailId}';
-		var productSeo;
-		var productName;
-	</script>
+	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
+	<script> var productId = '${sessionScope.productDetailId}'; var productSeo; var productName; </script>
 	<jsp:include page="../common/header.jsp" flush="true"></jsp:include>
 	<jsp:include page="../common/swiper.jsp" flush="true"></jsp:include>
 	<style>
@@ -50,11 +44,11 @@
 			            <div class="swiper-button-prev"></div>
 					</div>
 					<div class="product-share">
-						<a class="share-item youtube" style="background-image: url('${APP_PATH}/static/pc/img/follow-us.png');" href="https://www.youtube.com/channel/UCbbrYL1KabTMlXFmQhFWtmw?view_as=subscriber" title="megalook youtube"></a>
-						<a class="share-item instagram" style="background-image: url('${APP_PATH}/static/pc/img/follow-us.png');" href="https://www.instagram.com/megalookhair/" title="megalook instagram"></a>
-						<div class="share-item share-click facebook" data-url="https://www.facebook.com/sharer/sharer.php?u=" title="share on facebook"></div>
-						<div class="share-item share-click pinterest" data-url="https://www.pinterest.com/pin/create/button/?url=" title="share on pinterest"></div>
-						<div class="share-item share-click whatsapp" data-url="https://api.whatsapp.com/send?text=" title="share on whatsapp"></div>
+						<c:if test="${ map.sh_youtube != null }"><a class="share-item youtube" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="${ map.sh_youtube }" title="${ map.website_name } youtube"></a></c:if>
+						<c:if test="${ map.sh_instagram != null }"><a class="share-item instagram" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="${ map.sh_instagram }" title="${ map.website_name } instagram"></a></c:if>
+						<c:if test="${ map.sh_facebook != null }"><div class="share-item share-click facebook" data-url="${ map.sh_facebook }" title="share on facebook"></div></c:if>
+						<c:if test="${ map.sh_pinterest != null }"><div class="share-item share-click pinterest" data-url="${ map.sh_pinterest }" title="share on pinterest"></div></c:if>
+						<c:if test="${ map.sh_whatsapp != null }"><div class="share-item share-click whatsapp" data-url="${ map.sh_whatsapp }" title="share on whatsapp"></div></c:if>
 					</div>
 				</div>
 				<div class="product-details">

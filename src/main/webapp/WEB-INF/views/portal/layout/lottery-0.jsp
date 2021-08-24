@@ -67,7 +67,7 @@
   display: block;
 }
 .lottery-title > span:nth-of-type(1) {
-  background-image: url(${APP_PATH}/static/pc/img/lottery/lottery-logo.png);
+  background-image: url(${APP_PATH}/static/custom/lottery/lottery-logo.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -226,7 +226,7 @@
   }
   .lottery-email {
     padding: 1.25rem 0 1.75rem 0;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/lottery-wap.jpg);
+    background-image: url(${APP_PATH}/static/custom/lottery/lottery-wap.jpg);
   }
   .lottery-title > span:nth-of-type(1) {
     padding-top: 30px;
@@ -282,7 +282,7 @@
   .lottery-startgame {
     top: 90px;
     left: 90px;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/start-game-pc.png);
+    background-image: url(${APP_PATH}/static/custom/lottery/start-game-pc.png);
   }
   .lottery-game-list > .lottery-game-item:nth-of-type(1) {
     top: 10px;
@@ -318,7 +318,7 @@
   }
   .lottery-other {
     padding: 30px;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/lottery-success-wap.jpg);
+    background-image: url(${APP_PATH}/static/custom/lottery/lottery-success-wap.jpg);
   }
   .card-op > .btn,
   .lottery-card {
@@ -334,7 +334,7 @@
   .lottery-email {
     height: 300px;
     padding-top: 2rem;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/lottery-pc.jpg);
+    background-image: url(${APP_PATH}/static/custom/lottery/lottery-pc.jpg);
   }
   .lottery-title > span:nth-of-type(1) {
     padding-top: 50px;
@@ -389,7 +389,7 @@
   .lottery-startgame {
     top: 130px;
     left: 160px;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/start-game-pc.png);
+    background-image: url(${APP_PATH}/static/custom/lottery/start-game-pc.png);
   }
   .lottery-game-list > .lottery-game-item:nth-of-type(1) {
     top: 10px;
@@ -425,7 +425,7 @@
   }
   .lottery-other {
     padding: 60px 0;
-    background-image: url(${APP_PATH}/static/pc/img/lottery/lottery-success-pc.jpg);
+    background-image: url(${APP_PATH}/static/custom/lottery/lottery-success-pc.jpg);
   }
   .card-op > .btn,
   .lottery-card {

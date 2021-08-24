@@ -5,7 +5,7 @@
 		var productNameStr = productData.productName,
 			productMetaDescStr = productData.productMetaDesc,
 			productSeoStr = productData.productSeo,
-			urlStr = 'https://www.megalook.com/' + productSeoStr + '.html',
+			urlStr = '${map.website_domain}/' + productSeoStr + '.html',
 			imageStr = productData.productMainimgurl,
 			amountStr =  accuracyCal(productData.productOriginalprice, productData.productActoffoff),
 			productIdStr = productData.productId;
@@ -649,7 +649,7 @@
 		});
 
 		pintrk('track', 'pagevisit', {
-			em: ml.pinterest_email,
+			em: '${ map.pin_email}',
 			value: fbprice * $('.product-qty .product-num').val(),
 			order_quantity: $('.product-qty .product-num').val(),
 			currency: 'USD',
@@ -745,7 +745,7 @@
 					currency: 'USD'
 				});
 				pintrk('track', 'addtocart', {
-					em: ml.pinterest_email,
+					em: '${ map.pin_email}',
 					value: reqData.cartitemProductOriginalprice * $('.product-qty .product-num').val(),
 					order_quantity: $('.product-qty .product-num').val(),
 					currency: 'USD',
@@ -776,7 +776,7 @@
 			value: accuracyCal((reqData.cartitemProductOriginalprice + parseFloat(reqData.cartitemProductskuMoneystr)), reqData.cartitemProductActoff),
 			currency: "USD"
 		}), pintrk('track', 'checkout', {
-			em: ml.pinterest_email,
+			em: '${ map.pin_email}',
 			value: accuracyCal((reqData.cartitemProductOriginalprice + parseFloat(reqData.cartitemProductskuMoneystr)), reqData.cartitemProductActoff) * $('.product-qty .product-num').val(),
 			order_quantity: $('.product-qty .product-num').val(),
 			currency: 'USD',
@@ -975,21 +975,10 @@
 		}
 	});
 	$('.product-share-btn').on('click', function() {
-		var productShareModalHtml = '<div class="product-share">' +
-			'<a class="share-item youtube" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="https://www.youtube.com/channel/UCbbrYL1KabTMlXFmQhFWtmw?view_as=subscriber" title="megalook youtube"></a>' +
-			'<a class="share-item instagram" style="background-image: url(${APP_PATH}/static/pc/img/follow-us.png);" href="https://www.instagram.com/megalookhair/" title="megalook instagram"></a>' +
-			'<div class="share-item share-click facebook" data-url="https://www.facebook.com/sharer/sharer.php?u=" title="share on facebook"></div>' +
-			'<div class="share-item share-click pinterest" data-url="https://www.pinterest.com/pin/create/button/?url=" title="share on pinterest"></div>' +
-			'<div class="share-item share-click whatsapp" data-url="https://api.whatsapp.com/send?text=" title="share on whatsapp"></div>' +
-		'</div>';
-		createModal({
-			header: {
-				html: '<p>Product Share</p>'
-			},
-   			body: {
-   				html: productShareModalHtml,
-   			}
-   		});
+		$('.product-share-modal').addClass('active').removeClass('hide');
+	});
+	$('.product-share-modal .modal-close').on('click', function() {
+		$('.product-share-modal').removeClass('active').addClass('hide');
 	});
 </script>
 <script>

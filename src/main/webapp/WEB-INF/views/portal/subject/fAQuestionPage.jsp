@@ -3,23 +3,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>FAQ | megalook.com</title>
-	<meta name="keywords" content="Megalook Hair FAQ,Megalook FAST HELP SERVICE" />
-	<meta name="description" content="Megalook Hair offers FAST HELP SERVICE For U.">
+	<jsp:include page="../common/config-front.jsp"></jsp:include>
+    <title>FAQ</title>
+	<meta name="keywords" content="FAQ,FAST HELP SERVICE" />
+	<meta name="description" content="Our offers FAST HELP SERVICE For U.">
 	<!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://megalook.com/FAQ.html" hreflang="en-us" />
-	<link rel="canonical" href="https://megalook.com/FAQ.html" />
+    <link rel="alternate" href="${ map.website_domain }/FAQ.html" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/FAQ.html" />
 	<!-- socail meta -->
-	<meta name="twitter:site" content="@megalookhair">
+	<meta name="twitter:site" content="@${ map.website_name }">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Megalook FAST HELP SERVICE | megalook.com">
-	<meta name="twitter:description" content="Megalook Hair offers FAST HELP SERVICE For U.">
+	<meta name="twitter:title" content="FAST HELP SERVICE">
+	<meta name="twitter:description" content="Our offers FAST HELP SERVICE For U.">
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="Megalook FAST HELP SERVICE | megalook.com">
-	<meta property="og:url" content="https://megalook.com/FAQ.html">
+	<meta property="og:title" content="FAST HELP SERVICE">
+	<meta property="og:url" content="${ map.website_domain }/FAQ.html">
 	<meta property="og:site_name" content="Megalook Hair">
-	<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
+	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
 	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
 	<jsp:include page="../common/header.jsp" flush="true"></jsp:include>
 	<style type="text/css">

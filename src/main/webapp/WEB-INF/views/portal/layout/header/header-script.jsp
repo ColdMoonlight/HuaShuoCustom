@@ -595,7 +595,7 @@
 	$('#iphone-share .share').on('click', function() {
 		var $iphoneAdvice = $('.iphone-advice');
 		if (!$iphoneAdvice.length) {
-			$iphoneAdvice = $('<div class="iphone-advice"><img src="${APP_PATH}/static/pc/img/iphone-advice.gif" /><span class="icon close"></span></div>');
+			$iphoneAdvice = $('<div class="iphone-advice"><img src="${APP_PATH}/static/custom/iphone-advice.gif" /><span class="icon close"></span></div>');
 			$(document.body).append($iphoneAdvice);
 			addFixed();
 		}

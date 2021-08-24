@@ -5,23 +5,24 @@
 <!--[if IE 9 ]><html class="ie9 no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
 	<head>
-		<title>Megalook Hair, Virgin Remy Human Hair Wigs, Lace Front Wigs, Best Wigs | megalook.com</title>
-		<meta name="keywords" content="Lace Front Wigs, Human Hair Extensions,Brazilian Virgin Hair,Affordable Human Hair" />
-		<meta name="description" content="Megalook Hair Official Website Sells Best Virgin Hair, Full Lace Wig, Transparent Lace Wig, 360 Lace Wig, Frontal Lace Wig, Closure Lace Wig, Bundles with Closure, Bundles with Frontal, Free Wig Making Service. Hottest Products, Free Gifts, Free & Fast Shipping. No Shedding, No Tangles, Save Big! Lowest Price For U.">
+		<jsp:include page="WEB-INF/views/portal/common/config-front.jsp" flush="true"></jsp:include>
+		<title>${ map.index_title }</title>
+		<meta name="keywords" content="${ map.index_keywords }" />
+		<meta name="description" content="${ map.index_description }">
 	    <!-- google rule -->
 		<meta name="robots" content="INDEX,FOLLOW">
-	    <link rel="alternate" href="https://www.megalook.com/" hreflang="en-us" />
-		<link rel="canonical" href="https://www.megalook.com/" />
+	    <link rel="alternate" href="${ map.website_domain }/" hreflang="en-us" />
+		<link rel="canonical" href="${ map.website_domain }/" />
 		<!-- socail meta -->
-		<meta name="twitter:site" content="@megalookhair">
+		<meta name="twitter:site" content="@${ map.website_name }">
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:title" content="Megalook Hair, Virgin Remy Human Hair Wigs, Lace Front Wigs, Best Wigs | megalook.com">
-		<meta name="twitter:description" content="Megalook Hair Official Website Sells Best Virgin Hair, Full Lace Wig, Transparent Lace Wig, 360 Lace Wig, Frontal Lace Wig, Closure Lace Wig, Bundles with Closure, Bundles with Frontal, Free Wig Making Service. Hottest Products, Free Gifts, Free & Fast Shipping. No Shedding, No Tangles, Save Big! Lowest Price For U.">
+		<meta name="twitter:title" content="${ map.index_title }">
+		<meta name="twitter:description" content="${ map.index_description }">
 		<meta property="og:type" content="website">
-		<meta property="og:title" content="Megalook Hair, Virgin Remy Human Hair Wigs, Lace Front Wigs, Best Wigs | megalook.com">
-		<meta property="og:url" content="https://www.megalook.com/">
-		<meta property="og:site_name" content="Megalook Hair">
-		<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
+		<meta property="og:title" content="${ map.index_title }">
+		<meta property="og:url" content="${ map.website_domain }/">
+		<meta property="og:site_name" content="${ map.website_name }">
+		<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
 		<jsp:include page="WEB-INF/views/portal/common/processor.jsp" flush="true"></jsp:include>
 		<jsp:include page="WEB-INF/views/portal/common/header.jsp" flush="true"></jsp:include>
 		<jsp:include page="WEB-INF/views/portal/common/swiper.jsp" flush="true"></jsp:include>

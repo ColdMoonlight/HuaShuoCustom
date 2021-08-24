@@ -6,7 +6,7 @@
 		<div class="ml-search">
 			<div class="container">
 				<a class="logo" href="javascript:goToIndex();">
-					<img src="${APP_PATH }/static/common/dblogo.png" alt="megalook" title="megalook">
+					<img src="${APP_PATH }/static/custom/dblogo.png" alt="${ map.website_name }" title="${ map.website_name }">
 				</a>
 				<div class="search-box">
 					<div class="search-inputgroup">
@@ -42,7 +42,7 @@
 			<span class="icon person" title="login/register"></span>
 			<a href="TEL:(501)7226336" class="icon phone"></a>
 			<a class="logo" href="javascript:goToIndex();">
-				<img src="${APP_PATH}/static/common/dblogo.png" alt="megalook" title="megalook">
+				<img src="${APP_PATH}/static/custom/dblogo.png" alt="${ map.website_name } title="${ map.website_name }">
 			</a>
 			<span class="icon iphone-unshare"></span>
 			<span class="icon share iphone-share hide" id="iphone-share"></span>

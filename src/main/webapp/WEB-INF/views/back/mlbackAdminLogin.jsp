@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="javax.servlet.*,java.text.*" %>
 <% pageContext.setAttribute("APP_PATH" , request.getContextPath()); %>
 <!DOCTYPE html>
 <html>
 	<head>
+		<jsp:include page="../portal/common/config-front.jsp" flush="true"></jsp:include>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Login</title>
 		<jsp:include page="common/backheader.jsp" flush="true"></jsp:include>
@@ -28,7 +31,7 @@
 	<body class="c-app">
 		<div class="container">
 			<div class="header">
-				<img src="${APP_PATH }/static/common/dblogo.png" />
+				<img src="${APP_PATH }/static/custom/dblogo.png" />
 			</div>
 			<div class="row login-box">
 				<div class="col-md-8 col-lg-8 login-bg md-down-none">
@@ -110,7 +113,7 @@
 				</div>
 			</div>
 			<div class="footer">
-				<p class="text-center">© 2020-~ MegaLook.com. All rights reserved.</p>
+				<p class="text-center">Copyright © <% Date dNow = new Date( ); SimpleDateFormat fDate = new SimpleDateFormat("yyyy"); out.print(fDate.format(dNow)); %> <span style="text-transform: capitalize;">${ map.website_name }</span>, All Rights Reserved</p>
 			</div>
 		</div>
 
