@@ -120,23 +120,6 @@
 			});
 		}
 
-		function pushInfoToFb(reqData) {
-			$.ajax({
-				url: "${APP_PATH}/MlfrontPayInfo/successPageThenSendDataToFacebook",
-				data: JSON.stringify(reqData),
-				dataType: 'json',
-				contentType: 'application/json',
-				type: "post",
-				success: function (data) {
-					if (data.code == 100) {
-						console.log('push fb-info successful!!!');
-					} else {
-						console.log('push fb-info failure!!!');
-					}
-				}
-			});
-		}
-
 		function renerPaymentInfo(data) {
 			$('.payment-order .total-money').html('$' + data.payinfoMoney);
 
@@ -282,7 +265,7 @@
 							'shipping': 0,
 							'items': payinfoOrderArr
 						});
-						pushInfoToFb(resDataPayInfoOne);
+
 						!isFirst && snaptr('track', 'PURCHASE', {
 							'currency': 'USD',
 							'price': String(orderData.payinfoMoney),
