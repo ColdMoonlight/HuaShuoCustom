@@ -41,11 +41,11 @@
         <to type="forward">/MlbackBlog/toBlogDetailPageByhtml?blogSeoname=$1</to>
     </rule>
     <rule>
-    <!-- products/piano-highlight-transparent-13x4-lace-front-wig -->
+    <!--shopify的产品链接格式	products/piano-highlight-transparent-13x4-lace-front-wig -->
     <from>^/products/([a-z0-9A-Z-]{8,80})</from>
         <to type="forward">/MlbackProduct/tofbProductDetailPageByhtml?productSeo=$1</to>
     </rule>
-    <!-- https://megalookwig.com/collections/5x5-closure-wig -->
+    <!--shopify的类目链接格式	 https://megalookwig.com/collections/5x5-closure-wig -->
     <rule>
         <from>^/collections/([a-z0-9A-Z-]{2,60})</from>
         <to type="forward">/MlbackCategory/toprolistBycategorySeoPage?categorySeo=$1</to>
