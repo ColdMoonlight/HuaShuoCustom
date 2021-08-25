@@ -4,13 +4,14 @@
 <html>
 
 <head>
-    <title>Personal Info | megalook.com</title>
-	<meta name="keywords" content="Lace Front Wigs, Human Hair Extensions,Brazilian Virgin Hair,Affordable Human Hair" />
-	<meta name="description" content="Megalook Hair Official Website Sells Best Virgin Hair, Full Lace Wig, Transparent Lace Wig, 360 Lace Wig, Frontal Lace Wig, Closure Lace Wig, Bundles with Closure, Bundles with Frontal, Free Wig Making Service. Hottest Products, Free Gifts, Free & Fast Shipping. No Shedding, No Tangles, Save Big! Lowest Price For U.">
+	<jsp:include page="../common/config-front.jsp"></jsp:include>
+    <title>Personal Info</title>
+	<meta name="keywords" content="${ map.index_keywords }" />
+	<meta name="description" content="${ map.index_description }">
 	<!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://megalook.com/MlfrontUser/toPersonInfoPage" hreflang="en-us" />
-	<link rel="canonical" href="https://megalook.com/MlfrontUser/toPersonInfoPage" />
+    <link rel="alternate" href="${ map.website_domain }/MlfrontUser/toPersonInfoPage" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/MlfrontUser/toPersonInfoPage" />
 	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
 	<jsp:include page="../common/header.jsp" flush="true"></jsp:include>
 	<style>

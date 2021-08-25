@@ -20,7 +20,7 @@
     .lottery-logo {
         width: 100%;
         height: 3rem;
-        background-image: url('${APP_PATH}/static/pc/img/lottery/sector-logo.png');
+        background-image: url('${APP_PATH}/static/custom/lottery/sector-logo.png');
         background-repeat: no-repeat;
         background-size: contain;
         background-position: top center;
@@ -249,7 +249,7 @@
 		font-weight: 500;
 		font-size: 1.6rem;
     	color: #fff;
-		background-image: url('${APP_PATH}/static/pc/img/lottery/lottery-result-coupon.png');
+		background-image: url('${APP_PATH}/static/custom/lottery/lottery-result-coupon.png');
 		background-repeat: no-repeat;
 		background-position: center;
 	}
@@ -283,7 +283,7 @@
 			left: 0;
 			width: 100vw;
 			height: 100vh;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-bg-wap.jpg');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-bg-wap.jpg');
 		}
 		.lottery-container {
 			flex-direction: column;
@@ -292,7 +292,7 @@
        	.lottery-circle {
 	        width: 300px;
 	        height: 300px;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-circle-wap.png');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-circle-wap.png');
 	    }
 	    .lottery-start {
 			width: 77.6px;
@@ -300,7 +300,7 @@
 			
 	        margin-top: -56.2px;
 	        margin-left: -38.8px;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-start-wap.png');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-start-wap.png');
 	    }
 		.lottery-circle-item {
 			width: 90px;
@@ -391,7 +391,7 @@
     		top: 50%;
     		width: 30px;
     		height: 100px;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-bg-pc.jpg');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-bg-pc.jpg');
     	}
     	.lottery-pc-show {
     		position: absolute;
@@ -441,7 +441,7 @@
        	.lottery-circle {
 	        width: 450px;
 	        height: 450px;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-circle-pc.png');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-circle-pc.png');
 	    }
 	    .lottery-start {
 	        width: 110px;
@@ -449,7 +449,7 @@
 			
 	        margin-top: -79.8px;
 	        margin-left: -55px;
-        	background-image: url('${APP_PATH}/static/pc/img/lottery/sector-start-pc.png');
+        	background-image: url('${APP_PATH}/static/custom/lottery/sector-start-pc.png');
 	    }
 		.lottery-circle-item {
 			width: 125px;

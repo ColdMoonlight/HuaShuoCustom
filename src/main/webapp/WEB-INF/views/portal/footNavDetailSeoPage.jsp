@@ -5,21 +5,22 @@
 <!--[if IE 9 ]><html class="ie9 no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
 <head>
-	<title><%=request.getParameter("footnavSeo").replace("-"," ") %> | megalook.com</title>
+	<jsp:include page="common/config-front.jsp"></jsp:include>
+	<title><%=request.getParameter("footnavSeo").replace("-"," ") %></title>
 	<jsp:include page="common/processor.jsp" flush="true"></jsp:include>
-	<meta name="keywords" content="Lace Front Wigs, Human Hair Extensions,Brazilian Virgin Hair,Affordable Human Hair">
-	<meta name="description" content="Megalook Hair Official Website Sells Best Virgin Hair, Full Lace Wig, Transparent Lace Wig, 360 Lace Wig, Frontal Lace Wig, Closure Lace Wig, Bundles with Closure, Bundles with Frontal, Free Wig Making Service. Hottest Products, Free Gifts, Free & Fast Shipping. No Shedding, No Tangles, Save Big! Lowest Price For U.">
+	<meta name="keywords" content="${ map.index_keywords }">
+	<meta name="description" content="${ map.index_description }">
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://www.megalook.com/pages/<%=request.getParameter("footnavSeo") %>.html" hreflang="en-us" />
-	<link rel="canonical" href="https://www.megalook.com/pages/<%=request.getParameter("footnavSeo") %>.html" />
+    <link rel="alternate" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html" />
 	<!-- social media -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="<%=request.getParameter("footnavSeo").replace("-"," ") %>">
-	<meta property="og:url" content="https://www.megalook.com/pages/<%=request.getParameter("footnavSeo") %>.html">
-	<meta property="og:site_name" content="Megalook Hair">
-	<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
-	<meta name="twitter:site" content="@megalookhair">
+	<meta property="og:url" content="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html">
+	<meta property="og:site_name" content="${ map.website_name }">
+	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
+	<meta name="twitter:site" content="${ map.website_name }">
 	<meta name="twitter:card" content="summary">
 	<jsp:include page="common/header.jsp" flush="true"></jsp:include>
 </head>

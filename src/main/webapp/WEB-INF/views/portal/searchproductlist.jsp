@@ -5,21 +5,22 @@
 <!--[if IE 9 ]><html class="ie9 no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
 <head>
-    <title>Search Product List | megalook.com</title>
+	<jsp:include page="common/config-front.jsp"></jsp:include>
+    <title>${ map.search_product_title }</title>
+	<meta name="keywords" content="${ map.search_product_keywords }" />
+	<meta name="description" content="${ map.search_product_description }">
 	<jsp:include page="common/processor.jsp" flush="true"></jsp:include>
-	<meta name="keywords" content="Lace Front Wigs, Human Hair Extensions,Brazilian Virgin Hair,Affordable Human Hair" />
-	<meta name="description" content="Megalook Hair Official Website Sells Best Virgin Hair, Full Lace Wig, Transparent Lace Wig, 360 Lace Wig, Frontal Lace Wig, Closure Lace Wig, Bundles with Closure, Bundles with Frontal, Free Wig Making Service. Hottest Products, Free Gifts, Free & Fast Shipping. No Shedding, No Tangles, Save Big! Lowest Price For U.">
 	<!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://www.megalook.com/MlbackProduct/toSearchPage?<%=request.getQueryString()%>" hreflang="en-us" />
-	<link rel="canonical" href="https://www.megalook.com/MlbackProduct/toSearchPage?<%=request.getQueryString()%>" />
+    <link rel="alternate" href="${ map.website_domain }/MlbackProduct/toSearchPage?<%=request.getQueryString()%>" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/MlbackProduct/toSearchPage?<%=request.getQueryString()%>" />
 	<!-- socail media -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Search results for &quot;${sessionScope.productName}&quot;">
-	<meta property="og:url" content="https://www.megalook.com/MlbackProduct/toSearchPage?<%=request.getQueryString()%>">
-	<meta property="og:site_name" content="Megalook Hair">
-	<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
-	<meta name="twitter:site" content="@megalookhair">
+	<meta property="og:url" content="${ map.website_domain }/MlbackProduct/toSearchPage?<%=request.getQueryString()%>">
+	<meta property="og:site_name" content="${ map.website_name }">
+	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
+	<meta name="twitter:site" content="@${ map.website_name }">
 	<meta name="twitter:card" content="summary">
 	<jsp:include page="common/header.jsp" flush="true"></jsp:include>
 	<script> var productName='${sessionScope.productName}'; </script>

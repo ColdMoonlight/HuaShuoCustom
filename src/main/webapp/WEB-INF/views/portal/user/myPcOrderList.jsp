@@ -4,11 +4,12 @@
 <html>
 
 <head>
+	<jsp:include page="../common/config-front.jsp"></jsp:include>
     <title>My Order List</title>
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://megalook.com/MlfrontUser/tomyOrderPage" hreflang="en-us" />
-	<link rel="canonical" href="https://megalook.com/MlfrontUser/tomyOrderPage" />
+    <link rel="alternate" href="${ map.website_domain }/MlfrontUser/tomyOrderPage" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/MlfrontUser/tomyOrderPage" />
 	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
 	<jsp:include page="../common/header.jsp" flush="true"></jsp:include>
 	<style>

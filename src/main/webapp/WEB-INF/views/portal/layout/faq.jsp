@@ -646,7 +646,7 @@
 								<span class="icon plus"></span>
 							</div>
 							<div class="bot">
-								<p class="text1">Normally, your order can delivery within 2-4 business days, if weekend or holiday or Customized wig，it maybe have a 2-4days delay. If want to track order status, please go to this page: https://www.megalook.com/</p>
+								<p class="text1">Normally, your order can delivery within 2-4 business days, if weekend or holiday or Customized wig，it maybe have a 2-4days delay. If want to track order status, please go to this page: ${ map.website_domain }/</p>
 								<div class="helpful">
 									<span class="text">Helpful(<span class="data">23</span>)</span>
 									<a class="link" href="mailto:team@megalookemail.com?subject=Question%20for%20Can%20I%20ask%20for%20small/large%20cap?&amp;body=Hi,%20I%20still%20have%20question%20about%20this,%20"">Still have problem?</a>

@@ -6,27 +6,25 @@
 <!--[if IE 9 ]><html class="ie9 no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"> <!--<![endif]-->
 <head>
-<c:choose>
-<c:when test="${sessionScope.categoryMetaTitle==null}"><title>Product List</title></c:when>
-<c:otherwise><title>${sessionScope.categoryMetaTitle}</title></c:otherwise>
-</c:choose>
-<meta name="keyword" content="${sessionScope.categoryMetaKeyWords}">
-<meta name="description" content="${sessionScope.categoryMetaDesc}">
-<!-- google rule -->
-<meta name="robots" content="INDEX,FOLLOW">
-<link rel="alternate" href="https://www.megalook.com/search/<%=request.getParameter("categorySeo") %>.html" hreflang="en-us" />
-<link rel="canonical" href="https://www.megalook.com/search/<%=request.getParameter("categorySeo") %>.html" />
-<!-- socail meta -->
-<meta name="twitter:site" content="@megalookhair">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="${ sessionScope.categoryMetaTitle }">
-<meta name="twitter:description" content="${sessionScope.categoryMetaDesc}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="${ sessionScope.categoryMetaTitle }">
-<meta property="og:url" content="https://www.megalook.com/search/<%=request.getParameter("categorySeo") %>.html">
-<meta property="og:site_name" content="Megalook Hair">
-<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
+	<jsp:include page="common/config-front.jsp"></jsp:include>
+	<title>${sessionScope.categoryMetaTitle}</title>
+	<meta name="keyword" content="${sessionScope.categoryMetaKeyWords}">
+	<meta name="description" content="${sessionScope.categoryMetaDesc}">
 	<jsp:include page="common/processor.jsp" flush="true"></jsp:include>
+	<!-- google rule -->
+	<meta name="robots" content="INDEX,FOLLOW">
+	<link rel="alternate" href="${ map.website_domain }/search/<%=request.getParameter("categorySeo") %>.html" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/search/<%=request.getParameter("categorySeo") %>.html" />
+	<!-- socail meta -->
+	<meta name="twitter:site" content="@${ map.website_name }">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="${ sessionScope.categoryMetaTitle }">
+	<meta name="twitter:description" content="${sessionScope.categoryMetaDesc}">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="${ sessionScope.categoryMetaTitle }">
+	<meta property="og:url" content="${ map.website_domain }/search/<%=request.getParameter("categorySeo") %>.html">
+	<meta property="og:site_name" content="${ map.website_name }">
+	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
 	<script> var categorySeo = '${sessionScope.categorySeo}'; </script>
 	<jsp:include page="common/header.jsp" flush="true"></jsp:include>
 	<jsp:include page="common/swiper.jsp" flush="true"></jsp:include>

@@ -5,7 +5,7 @@
 		var productNameStr = productData.productName,
 			productMetaDescStr = productData.productMetaDesc,
 			productSeoStr = productData.productSeo,
-			urlStr = 'https://www.megalook.com/' + productSeoStr + '.html',
+			urlStr = '${ map.website_domain }/' + productSeoStr + '.html',
 			imageStr = productData.productMainimgurl,
 			amountStr =  accuracyCal(productData.productOriginalprice, productData.productActoffoff),
 			productIdStr = productData.productId;
@@ -659,7 +659,7 @@
 		});
 
 		pintrk('track', 'pagevisit', {
-			em: ml.pinterest_email,
+			em: '${ map.pin_email}',
 			value: fbprice * $('.product-qty .product-num').val(),
 			order_quantity: $('.product-qty .product-num').val(),
 			currency: 'USD',
@@ -749,7 +749,7 @@
 					currency: 'USD'
 				});
 				pintrk('track', 'addtocart', {
-					em: ml.pinterest_email,
+					em: '${ map.pin_email}',
 					value: reqData.cartitemProductOriginalprice * $('.product-qty .product-num').val(),
 					order_quantity: $('.product-qty .product-num').val(),
 					currency: 'USD',
@@ -775,7 +775,7 @@
 			value: accuracyCal((reqData.cartitemProductOriginalprice + parseFloat(reqData.cartitemProductskuMoneystr)), reqData.cartitemProductActoff),
 			currency: "USD"
 		}), pintrk('track', 'checkout', {
-			em: ml.pinterest_email,
+			em: '${ map.pin_email}',
 			value: accuracyCal((reqData.cartitemProductOriginalprice + parseFloat(reqData.cartitemProductskuMoneystr)), reqData.cartitemProductActoff) * $('.product-qty .product-num').val(),
 			order_quantity: $('.product-qty .product-num').val(),
 			currency: 'USD',

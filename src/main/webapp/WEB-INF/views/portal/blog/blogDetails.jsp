@@ -8,18 +8,18 @@
     <meta id="ml-des" name="description" content="${sessionScope.blogMeteDesc}">
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="https://megalook.com/blog/<%=request.getParameter("blogSeoname") %>.html" hreflang="en-us" />
-	<link rel="canonical" href="https://megalook.com/blog/<%=request.getParameter("blogSeoname") %>.html" />
+    <link rel="alternate" href="${ map.website_domain }/blog/<%=request.getParameter("blogSeoname") %>.html" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/blog/<%=request.getParameter("blogSeoname") %>.html" />
 	<!-- socail meta -->
-	<meta name="twitter:site" content="@megalookhair">
+	<meta name="twitter:site" content="@${ map.website_name }">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="${sessionScope.blogMetaTitle}">
 	<meta name="twitter:description" content="${sessionScope.blogMeteDesc}">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="${sessionScope.blogMetaTitle}">
-	<meta property="og:url" content="https://megalook.com/blog/<%=request.getParameter("blogSeoname") %>.html">
-	<meta property="og:site_name" content="Megalook Hair">
-	<meta property="og:image" content="https://www.megalook.com/static/apple/micon1.png" />
+	<meta property="og:url" content="${ map.website_domain }/blog/<%=request.getParameter("blogSeoname") %>.html">
+	<meta property="og:site_name" content="${ map.website_name }">
+	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
 	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
 	<jsp:include page="../common/header.jsp" flush="true"></jsp:include>
 	<style>
