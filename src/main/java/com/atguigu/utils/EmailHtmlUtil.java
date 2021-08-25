@@ -31,7 +31,8 @@ public class EmailHtmlUtil {
 		
 		String content = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.content");
 		
-		sendHtmlUnCheckoutEmil("mingyueqingl@163.com", content) ;
+		String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+		sendHtmlUnCheckoutEmil(trackingEmails1, content) ;
         
     }  
 	
@@ -64,7 +65,8 @@ public class EmailHtmlUtil {
             //设置发件人
 //          msg.setFrom(new InternetAddress("发件人邮箱"));
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
-            msg.setFrom(new InternetAddress("MegaLookTeam"+" <"+sendEmail+">"));
+            String MegaLook = (String) PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+            msg.setFrom(new InternetAddress(MegaLook+"Team"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
 //            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse("licindy770@gmail.com", false));

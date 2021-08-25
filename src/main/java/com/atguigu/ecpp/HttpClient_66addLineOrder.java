@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.utils.DateUtil;
+import com.atguigu.utils.PropertiesUtil;
 import com.atguigu.vo.ecppItem;
 import com.atguigu.vo.order;
 
@@ -43,7 +44,8 @@ public class HttpClient_66addLineOrder {
 		
 		order ecppOrderResult = getParams();
 		
-		String token="Lujia2015200708";
+		String token = (String) PropertiesUtil.getProperty("megalook.properties", "ecppToken");
+		//String token = "Lujia2015200708";
 		
 		String soapXML = getXML(token,ecppOrderResult);
 		

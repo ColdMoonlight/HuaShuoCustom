@@ -17,10 +17,10 @@
 	
 	
 	<!-- Spring的配置文件，这里主要配置和业务逻辑有关的 -->
+	
 	<!-- scanner redis properties -->
+	<!-- 
 	<context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true"  />
- 
- 
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<property name="maxIdle" value="${redis.maxIdle}" />
 		<property name="maxTotal" value="${redis.maxActive}" />
@@ -28,28 +28,28 @@
 	</bean>
  
 	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
-        <!-- IP地址 -->
+        IP地址
         <property name="hostName" value="${redis.host}" />
-        <!-- 端口号 -->
+        端口号
         <property name="port" value="${redis.port}" />
-         <!-- 密码 -->
+         密码
         <property name="password" value="${redis.pass}" />
 		<property name="poolConfig" ref="poolConfig" />
 	</bean>
  
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
 		<property name="connectionFactory" ref="connectionFactory" />
-		<!-- 如果不配置Serializer，那么存储的时候智能使用String，如果用User类型存储，那么会提示错误User can't cast 
-			to String！！！ -->
+		如果不配置Serializer，那么存储的时候智能使用String，如果用User类型存储，那么会提示错误User can't cast 
+			to String！！！
 		<property name="keySerializer">
 			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 		</property>
 		<property name="valueSerializer">
-			<!-- <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" /> -->
+			<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" /> 注释
 			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 		</property>
 	</bean>
-	
+	 -->
 
 	<!-- Spring的配置文件，这里主要配置和业务逻辑有关的 -->
 	<!--=================== 数据源，事务控制，xxx ================-->

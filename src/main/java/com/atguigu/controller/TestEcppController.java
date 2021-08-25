@@ -28,6 +28,7 @@ import com.atguigu.service.MlfrontOrderItemService;
 import com.atguigu.service.MlfrontOrderService;
 import com.atguigu.service.MlfrontPayInfoService;
 import com.atguigu.utils.DateUtil;
+import com.atguigu.utils.PropertiesUtil;
 import com.atguigu.vo.ecppItem;
 import com.atguigu.vo.order;
 
@@ -99,7 +100,8 @@ public class TestEcppController {
 		
 		order ecppOrderResult = getEcppNeedOrder(mlfrontPayInfoIOne,mlfrontOrderResOne,mlfrontOrderItemEcppNeedList,mlfrontAddressToPay);
 		
-		String token="Lujia2015200708";
+		String token = (String) PropertiesUtil.getProperty("megalook.properties", "ecppToken");
+		//String token="Lujia2015200708";
 		
 		String soapXML = getXML(token,ecppOrderResult);
 		
