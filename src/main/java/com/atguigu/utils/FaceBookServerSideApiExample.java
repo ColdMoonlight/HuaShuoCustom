@@ -20,8 +20,8 @@ public class FaceBookServerSideApiExample {
 //	public static final String ACCESS_TOKEN = "<ACCESS_TOKEN>";
 //	  public static final String PIXEL_ID = "<ADS_PIXEL_ID>";
 	
-	public static final String ACCESS_TOKEN = "EAALqAx5gd40BAGNZA2z9W0yATVUL9xoPdbbRWElEqCLH7KjZB5G5dls0pydZB6wAZBOpsmw1F3TVetMZAaoWAvY0pOYKSG4OVzZBYVhYXukTZBS5NQvwZBKRWt3u2Ov4dbAOElsutYIYX98NSbT4fC4hlXLkwlIrNoWGexSiVqxSdAa8z0DV9OhjeSppbnQAxPYZD";
-	public static final String PIXEL_ID = "667403967094866";
+	public static final String ACCESS_TOKEN = (String)PropertiesUtil.getProperty("megalook.properties", "FBTOKEN1");
+	public static final String PIXEL_ID = (String)PropertiesUtil.getProperty("megalook.properties", "FBPIXELID1");
 
 
 	  public static void main(String[] args) {

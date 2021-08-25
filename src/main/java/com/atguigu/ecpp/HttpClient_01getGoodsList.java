@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.atguigu.utils.PropertiesUtil;
+
 /**
  * 
  * <p>Title: HttpClient.java</p>
@@ -34,7 +36,8 @@ public class HttpClient_01getGoodsList {
 		connection.setDoOutput(true);
 
 		//第四步：组织SOAP数据，发送请求
-		String token = "Lujia2015200708";
+		String token = (String) PropertiesUtil.getProperty("megalook.properties", "ecppToken");
+		//String token = "Lujia2015200708";
 		Integer p = 1 ; 
 		String soapXML = getXML(token,p);
 		OutputStream os = connection.getOutputStream();

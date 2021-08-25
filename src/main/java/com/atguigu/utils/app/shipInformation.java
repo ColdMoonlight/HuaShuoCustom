@@ -4,11 +4,13 @@ import java.util.List;
 import com.atguigu.ship.Classes.Checkpoint;
 import com.atguigu.ship.Classes.ConnectionAPI;
 import com.atguigu.ship.Classes.Tracking;
+import com.atguigu.utils.PropertiesUtil;
 
 public class shipInformation {
 	
 //	afterShip的真实物流url环境
-	private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	//private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	private final static String ConnectionAPIid = (String)PropertiesUtil.getProperty("megalook.properties", "shipConnectionAPIid");
 	
 	/**
 	 * @Description: 01绑定物流单号进入app
@@ -28,10 +30,17 @@ public class shipInformation {
 		tracking.setTitle(payinfoPlateNum);//订单号
 		tracking.setOrderID(payinfoPlateNum);//Ecpp的订单号
 		
+		String trackingCustomerName = (String)PropertiesUtil.getProperty("megalook.properties", "trackingCustomerName");
+		String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+		String trackingSmses = (String)PropertiesUtil.getProperty("megalook.properties", "trackingSmses");
 		
-		tracking.setCustomerName("shaohua");
-		tracking.addEmails("mingyueqingl@163.com");
-		tracking.addSmses("+8617600209637");
+		tracking.setCustomerName(trackingCustomerName);
+		tracking.addEmails(trackingEmails1);
+		tracking.addSmses(trackingSmses);
+		
+//		tracking.setCustomerName("shaohua");
+//		tracking.addEmails("mingyueqingl@163.com");
+//		tracking.addSmses("+8617600209637");
 
 		//Even add customer fields
 		tracking.addCustomFields("product_name","iPhone Case");

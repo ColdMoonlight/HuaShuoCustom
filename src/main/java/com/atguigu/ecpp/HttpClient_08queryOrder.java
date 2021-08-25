@@ -16,6 +16,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.atguigu.utils.PropertiesUtil;
 import com.atguigu.vo.EcppTrackItem;
 
 /**
@@ -43,7 +44,8 @@ public class HttpClient_08queryOrder {
 		connection.setDoOutput(true);
 
 		//第四步：组织SOAP数据，发送请求
-		String token = "Lujia2015200708";
+		String token = (String) PropertiesUtil.getProperty("megalook.properties", "ecppToken");
+		//String token = "Lujia2015200708";
 		String order_sn = "HS20072100189"; 
 		String soapXML = getXML(token,order_sn);
 		OutputStream os = connection.getOutputStream();

@@ -26,6 +26,7 @@ import com.atguigu.service.MlbackProductService;
 import com.atguigu.service.MlfrontPayInfoService;
 import com.atguigu.service.MlfrontUserService;
 import com.atguigu.utils.DateUtil;
+import com.atguigu.utils.PropertiesUtil;
 
 @Controller
 @RequestMapping("/ExcleDownload")
@@ -289,7 +290,9 @@ public class ExcleDownloadController {
 	        row.createCell(2).setCellValue(mlbackProductOne.getProductName()+"");
 	        row.createCell(3).setCellValue(mlbackProductOne.getProductMetaTitle()+"");
 	        row.createCell(4).setCellValue(mlbackProductOne.getProductMetaDesc()+"");
-	        row.createCell(5).setCellValue("https://www.megalook.com/"+mlbackProductOne.getProductSeo()+".html");
+	        String webLink = (String)PropertiesUtil.getProperty("megalook.properties", "weblink");
+	        row.createCell(5).setCellValue(webLink + mlbackProductOne.getProductSeo() + ".html");
+	        //row.createCell(5).setCellValue("https://www.megalook.com/"+mlbackProductOne.getProductSeo()+".html");
 	        
 	        BigDecimal oneTotalprice = new BigDecimal(0);
 	        oneTotalprice=oneTotalprice.add(mlbackProductOne.getProductOriginalprice());

@@ -32,6 +32,7 @@ import com.atguigu.service.MlfrontPayInfoService;
 import com.atguigu.ship.Classes.Checkpoint;
 import com.atguigu.ship.Classes.Tracking;
 import com.atguigu.utils.EncryptUtil;
+import com.atguigu.utils.PropertiesUtil;
 import com.atguigu.utils.SMSUtilshtml;
 import com.atguigu.utils.URLLocationUtils;
 import com.atguigu.utils.app.shipInformation;
@@ -56,7 +57,9 @@ public class MlfrontOrderListController {
 	MlfrontAddressService mlfrontAddressService;
 	
 //	afterShip的真实物流url环境
-	private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	//private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	
+	private final static String ConnectionAPIid = (String)PropertiesUtil.getProperty("megalook.properties", "shipConnectionAPIid");
 	
 	/**
 	 * 1.0	zsh	200720
@@ -336,10 +339,14 @@ public class MlfrontOrderListController {
 							
 							String secretOrderIdStr = EncryptUtil.XORencode(checkRecoverOrderIdStr,"megalook");
 							
-							String SendStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
-//							System.out.println("本单号位checkRecoverOrderIdStr："+checkRecoverOrderIdStr+",本条弃购链接为SendStr:"+SendStr);
-							String SendSecretStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
-//							System.out.println("本单号位checkRecoverOrderIdStr："+checkRecoverOrderIdStr+",本条弃购链接为SendSecretStr:"+SendSecretStr);
+							
+							String title = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+							
+							String SendStr = "【"+title+"】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
+							String SendSecretStr = "【"+title+"】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
+							
+							//String SendStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
+							//String SendSecretStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
 							
 							//这里要解密
 //							String unSecretOrderIdStr = EncryptUtil.XORdecode(secretOrderIdStr,"megalook");
@@ -467,9 +474,12 @@ public class MlfrontOrderListController {
 					String websiteStr = getNowWeb(rep,res,session);
 					String secretOrderIdStr = EncryptUtil.XORencode(checkRecoverOrderIdStr,"megalook");
 					
-					String SendStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
-//					System.out.println("本单号位checkRecoverOrderIdStr："+checkRecoverOrderIdStr+",本条弃购链接为SendStr:"+SendStr);
-					String SendSecretStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
+					String title = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+					String SendStr = "【"+title+"】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
+					String SendSecretStr = "【"+title+"】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
+					
+					//String SendStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+checkRecoverOrderIdStr+".html";
+					//String SendSecretStr = "【MegaLook】Dear "+userName+","+Content+"."+websiteStr+"SMS/"+secretOrderIdStr+".html";
 //					System.out.println("本单号位checkRecoverOrderIdStr："+checkRecoverOrderIdStr+",本条弃购链接为SendSecretStr:"+SendSecretStr);
 					
 					try {
