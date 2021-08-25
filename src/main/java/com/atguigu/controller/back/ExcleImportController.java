@@ -25,6 +25,7 @@ import com.atguigu.service.DownPayCheckDateService;
 import com.atguigu.service.MlfrontPayInfoService;
 import com.atguigu.service.MlfrontReviewService;
 import com.atguigu.utils.DateUtil;
+import com.atguigu.utils.PropertiesUtil;
 import com.atguigu.utils.URLLocationUtils;
 
 @Controller
@@ -89,14 +90,16 @@ public class ExcleImportController {
 	    cell.setCellValue("ReviewFrom");
 	    cell = row.createCell(9);
 	    
+	    String MegaLook = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+	    String megalook = (String)PropertiesUtil.getProperty("megalook.properties", "megalook");
         row = sheet.createRow(1);
-        row.createCell(0).setCellValue("MegaLookCustomer");//ReviewUname
+        row.createCell(0).setCellValue(MegaLook+"Customer");//ReviewUname
         row.createCell(1).setCellValue(252);//ReviewPid
         row.createCell(2).setCellValue("2019-07-02 15:23:43");//ReviewCreatetime
         row.createCell(3).setCellValue("2019-07-02 15:23:43");//ReviewMotifytime
         row.createCell(4).setCellValue("613-Color-13x4-Body-Wave-Lace-Wig");//ReviewPseoname
         row.createCell(5).setCellValue("0不展示/1展示");//ReviewStatus
-        row.createCell(6).setCellValue("i like megalook's hair,very like");//ReviewDetailstr
+        row.createCell(6).setCellValue("i like "+megalook+"'s hair,very like");//ReviewDetailstr
         row.createCell(7).setCellValue("1/2/3/4/5星评论");//ReviewProstarnum
         row.createCell(8).setCellValue("0-self/1-customer/2-ins瀑布流/3-ins首页");//ReviewFrom
         

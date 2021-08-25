@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.atguigu.utils.DateUtil;
+import com.atguigu.utils.PropertiesUtil;
 
 /**
  * 
@@ -36,7 +37,8 @@ public class HttpClient_05querySupplier {
 		connection.setDoOutput(true);
 
 		//第四步：组织SOAP数据，发送请求
-		String token = "Lujia2015200708";
+		String token = (String) PropertiesUtil.getProperty("megalook.properties", "ecppToken");
+		//String token = "Lujia2015200708";
 		String startime = DateUtil.strTime14s();
 		String endtime = DateUtil.strTime14s();
 		Integer p = 1;

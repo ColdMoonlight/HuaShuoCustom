@@ -87,10 +87,11 @@ public class EmailRichTextUtilshtmlCustomer {
 //          msg.setFrom(new InternetAddress("service@megalook.com"));//megalook
 //          msg.setFrom(new InternetAddress("sales@megalook.com"));//huashuohair
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
-            msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
+            String MegaLook = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+            msg.setFrom(new InternetAddress(MegaLook+"Hair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
-            msg.setSubject("Welcome to Register Megalook.");
+            msg.setSubject("Welcome to Register "+MegaLook+".");
             
             Multipart mp = new MimeMultipart("related"); 
             BodyPart bodyPart = new MimeBodyPart(); 
@@ -195,8 +196,8 @@ public class EmailRichTextUtilshtmlCustomer {
     		String email = (String) PropertiesUtil.getProperty("megalook.properties", "delvery.email");
     		String whatsapp = (String) PropertiesUtil.getProperty("megalook.properties", "delvery.whatsapp");
     		String Telephone = (String) PropertiesUtil.getProperty("megalook.properties", "delvery.Telephone");
-            
-            String content="Hi gorgeous girl.Here is Megalook Hair, We have received your order and confirmed your payment.<br>  "+
+    		String MegaLook = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+            String content="Hi gorgeous girl.Here is "+MegaLook+" Hair, We have received your order and confirmed your payment.<br>  "+
             "Order ID :<b>"+mlfrontPayInfoIOne.getPayinfoPlatenum()+"</b> <br>"+
             "Date Added :"+mlfrontOrderItemList.get(0).getOrderitemMotifytime()+" <br>"+
             "Order Status : Payment completed, order processing... <br><br>"+
@@ -224,12 +225,14 @@ public class EmailRichTextUtilshtmlCustomer {
 //          msg.setFrom(new InternetAddress("service@megalook.com"));//megalook
 //          msg.setFrom(new InternetAddress("sales@megalook.com"));//huashuohair
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
-            msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
+            msg.setFrom(new InternetAddress(MegaLook+"Hair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
             msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(addressEmail, false));
-            msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("mingyueqingl@163.com", false));
-            msg.setSubject("Order Confirmation From Megalook Hair.");
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(trackingEmails1, false));
+            //msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("mingyueqingl@163.com", false));
+            msg.setSubject("Order Confirmation From "+MegaLook+" Hair.");
             
             Multipart mp = new MimeMultipart("related");
             BodyPart bodyPart = new MimeBodyPart();
@@ -297,12 +300,16 @@ public class EmailRichTextUtilshtmlCustomer {
 //          msg.setFrom(new InternetAddress("service@megalook.com"));//megalook
 //          msg.setFrom(new InternetAddress("sales@megalook.com"));//huashuohair
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
-            msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
+            String MegaLook = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+            msg.setFrom(new InternetAddress(MegaLook+"Hair"+" <"+sendEmail+">"));
+            //msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
             msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(payinfoAddressEmail, false));
-            msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("mingyueqingl@163.com", false));
-            msg.setSubject("Order preparing from Megalook hair.");
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(trackingEmails1, false));
+            //msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("mingyueqingl@163.com", false));
+            msg.setSubject("Order preparing from "+MegaLook+" hair.");
             
             Multipart mp = new MimeMultipart("related"); 
             BodyPart bodyPart = new MimeBodyPart(); 
@@ -355,10 +362,11 @@ public class EmailRichTextUtilshtmlCustomer {
 //          msg.setFrom(new InternetAddress("service@megalook.com"));//megalook
 //          msg.setFrom(new InternetAddress("sales@megalook.com"));//huashuohair
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
-            msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
+            String MegaLook = (String)PropertiesUtil.getProperty("megalook.properties", "MegaLook");
+            msg.setFrom(new InternetAddress(MegaLook+"Hair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
-            msg.setSubject("Customer help from Megalook hair.");
+            msg.setSubject("Customer help from "+MegaLook+" hair.");
             
             Multipart mp = new MimeMultipart("related"); 
             BodyPart bodyPart = new MimeBodyPart(); 

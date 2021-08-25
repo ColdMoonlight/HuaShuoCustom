@@ -96,7 +96,9 @@ public class EmailNewUtilshtml {
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
             msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mingyueqingl@163.com", false));
+            
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(trackingEmails1, false));
 //            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse("licindy770@gmail.com", false));
             msg.setSubject("new costomer of "+ mlfrontUserafterIn.getUserId() +" Register Success.");
             
@@ -214,7 +216,8 @@ public class EmailNewUtilshtml {
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
             msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mingyueqingl@163.com", false));
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(trackingEmails1, false));
 //            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse("licindy770@gmail.com", false));
             msg.setSubject("You received an order of ID is : "+mlfrontPayInfoIOne.getPayinfoPlatenum());
             
@@ -287,7 +290,8 @@ public class EmailNewUtilshtml {
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
             msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mingyueqingl@163.com", false));
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(trackingEmails1, false));
 //            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse("licindy770@gmail.com", false));
             String sub="The order of Id is "+payinfoPlateNum+" has Verifyed ";
             msg.setSubject(sub);
@@ -344,10 +348,12 @@ public class EmailNewUtilshtml {
 //          msg.setFrom(new InternetAddress("发件人邮箱"));
 //          msg.setFrom(new InternetAddress("service@megalook.com"));//megalook
 //          msg.setFrom(new InternetAddress("sales@megalook.com"));//huashuohair
+            
             String sendEmail = (String) PropertiesUtil.getProperty("megalook.properties", "sendNewEmil.username");
             msg.setFrom(new InternetAddress("MegaLookHair"+" <"+sendEmail+">"));
             //设置收件人,to为收件人,cc为抄送,bcc为密送
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mingyueqingl@163.com", false));
+            String trackingEmails1 = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails1");
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(trackingEmails1, false));
 //            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse("licindy770@gmail.com", false));
             String sub="The gifts from Megalook ";
             msg.setSubject(sub);

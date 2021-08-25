@@ -65,12 +65,13 @@ public class FaceBookServerSideApiUtil {
 	        .value(moneyStrF);
 
 	    Event purchaseEvent = new Event();
+	    String weblink = (String)PropertiesUtil.getProperty("megalook.properties", "weblink");
 	    purchaseEvent.eventName("Purchase")
 	    	.eventId(mlfrontPayInfoOne.getPayinfoId()+"")
 	        .eventTime(System.currentTimeMillis() / 1000L)
 	        .userData(userData)
 	        .customData(customData)
-	        .eventSourceUrl("https://www.megalook.com/Success.html")
+	        .eventSourceUrl(weblink+"Success.html")
 	        .actionSource(ActionSource.website);
 	    //.actionSource(ActionSource.website);
 

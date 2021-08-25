@@ -13,6 +13,7 @@ import com.atguigu.ship.Classes.Checkpoint;
 import com.atguigu.ship.Classes.ConnectionAPI;
 import com.atguigu.ship.Classes.Courier;
 import com.atguigu.ship.Classes.Tracking;
+import com.atguigu.utils.PropertiesUtil;
 
 /**
  * TestAfterShip
@@ -23,7 +24,8 @@ import com.atguigu.ship.Classes.Tracking;
 public class TestAfterShipController {
 	
 //	afterShip的真实物流url环境
-	private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	//private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	private final static String ConnectionAPIid = (String)PropertiesUtil.getProperty("megalook.properties", "shipConnectionAPIid");
 	
 	/**
 	 * 	zsh	20200103
@@ -63,13 +65,29 @@ public class TestAfterShipController {
 		ConnectionAPI connection = new ConnectionAPI(connectionAPIStr);
 		
 		//First we have to create a Tracking
-		Tracking tracking1 = new Tracking("395035200671");
-	
+		String newTracking = (String)PropertiesUtil.getProperty("megalook.properties", "newTracking");
+		String trackingTitle = (String)PropertiesUtil.getProperty("megalook.properties", "trackingTitle");
+		String trackingEmails = (String)PropertiesUtil.getProperty("megalook.properties", "trackingEmails");
+		String trackingSmses = (String)PropertiesUtil.getProperty("megalook.properties", "trackingSmses");
+		
+		Tracking tracking1 = new Tracking(newTracking);
+		
 		//Then we can add information;
 		//tracking1.setSlug("fedex");
-		tracking1.setTitle("ML202007231730");
-		tracking1.addEmails("1020064691@qq.com");
-		tracking1.addSmses("+8617600209637");
+		
+		tracking1.setTitle(trackingTitle);
+		tracking1.addEmails(trackingEmails);
+		tracking1.addSmses(trackingSmses);
+		
+		
+//		Tracking tracking1 = new Tracking("395035200671");
+//	
+//		//Then we can add information;
+//		//tracking1.setSlug("fedex");
+//		
+//		tracking1.setTitle("ML202007231730");
+//		tracking1.addEmails("1020064691@qq.com");
+//		tracking1.addSmses("+8617600209637");
 	
 		//Even add customer fields
 		tracking1.addCustomFields("product_name","iPhone Case");

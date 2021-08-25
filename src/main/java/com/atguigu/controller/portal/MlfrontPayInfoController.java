@@ -102,8 +102,8 @@ public class MlfrontPayInfoController {
 	MlbackProductSkuService mlbackProductSkuService;
 	
 //	afterShip的真实物流url环境
-	private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
-	
+	//private final static String ConnectionAPIid = "7b04f01f-4f04-4b37-bbb9-5b159af73ee1";
+	private final static String ConnectionAPIid = (String)PropertiesUtil.getProperty("megalook.properties", "shipConnectionAPIid");
 	/**
 	 * 1.0	UseNow	0505
 	 * toPaySuccessPage列表页面
@@ -344,9 +344,12 @@ public class MlfrontPayInfoController {
 	    	
 	    	FBPIXELID = mlbackOrderStateEmailOne.getOrderstateemailTwo();
 	    }else{
-	    	FBTOKEN="EAALqAx5gd40BALlNPxpfAAYGY7gMZAyXWivriYgfZATE9ZAn9WUhKo7al9P8GJ1TlBNYeTRJQUb8TS3xZAtsu0edh6VPgZB9Ft0336BIpIrgaZBPGDqSDAZBY9txCnwidE9TepgffqUZAFMzS5q9cUqqVWdyEfd3wFzZBQWtUCuZB2dhkZBeAbaf6540kVnStkaRr8ZD";
+	    	FBTOKEN = (String)PropertiesUtil.getProperty("megalook.properties", "FBTOKEN");
 	    	
-	    	FBPIXELID="246433859565492";
+	    	//FBTOKEN="EAALqAx5gd40BALlNPxpfAAYGY7gMZAyXWivriYgfZATE9ZAn9WUhKo7al9P8GJ1TlBNYeTRJQUb8TS3xZAtsu0edh6VPgZB9Ft0336BIpIrgaZBPGDqSDAZBY9txCnwidE9TepgffqUZAFMzS5q9cUqqVWdyEfd3wFzZBQWtUCuZB2dhkZBeAbaf6540kVnStkaRr8ZD";
+	    	FBPIXELID = (String)PropertiesUtil.getProperty("megalook.properties", "FBPIXELID");
+	    	
+	    	//FBPIXELID="246433859565492";
 	    	
 	    	//FBTOKEN="EAALqAx5gd40BAPV1KA216p6vR2AouIFRWpzHxjBfxKQDJzF8ySF41nULUJ5qbRyu5RKJeAW0XNLZAEzQNf9fEWGDT394VOr81Ve89S6qkJu3Bc95XxTTiAwZAq1ZCnHlSfJXwDOQPGaaDM3qg5P6Q5sLDIGCZAhBovLozLk9xrZCASZBCud3s171RMniKNKFAZD";
 	    	
@@ -986,13 +989,14 @@ public class MlfrontPayInfoController {
 	
 	//ToCustomerVerifyEmail
 	private String getToCustomerVerifyEmail(String payinfoPlateNum) {
+		String MegaLook = (String) PropertiesUtil.getProperty("megalook.properties", "MegaLook");
 		String Message ="";
 		Message =Message+"Hi gorgeous girl ,"+"<br><br>";
-		Message=Message+"This is Megalook Hair  <br>. ";
+		Message=Message+"This is " + MegaLook + " Hair  <br>. ";
 		Message=Message+"We have received your order # ("+payinfoPlateNum+")  and confirmed your payment. <br><br><br>";
 		Message=Message+"The hair you ordered is in stock and is expected to be shipped within 24-48 hours .<br><br>";
 		Message=Message+"We will send the parcel tracking number to you through email & SMS after delivery, and you can also view it on the PayPal bill.<br><br><br>";
-		Message=Message+"Please don't hesitate to call me if you need help. We still here behind Megalook Hair.<br><br>";
+		Message=Message+"Please don't hesitate to call me if you need help. We still here behind " + MegaLook + " Hair.<br><br>";
 		Message=Message+"Best Regards,<br>";
 		Message=Message+"-----------------------------------<br>";
 		String team = (String) PropertiesUtil.getProperty("megalook.properties", "delvery.team");
