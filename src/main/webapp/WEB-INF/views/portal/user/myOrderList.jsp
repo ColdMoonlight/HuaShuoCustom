@@ -119,7 +119,7 @@
 						'<div class="user-orderitem-body">';
 					for (var i = 0; i < orderItemSize[key]; i+=1) {
 						var item = map.orderItemMap[map.orderMap[orderList[key].orderId][i]];
-						var itemLink = item.orderitemPseo ? ('${APP_PATH}/'+ item.orderitemPseo + '.html') : 'javascript:;';
+						var itemLink = item.orderitemPseo ? ('${APP_PATH}/products/'+ item.orderitemPseo) : 'javascript:;';
 						htmlStr += '<div class="user-orderitem-item">' +
 								'<div class="lazyload" data-src="' + item.orderitemProductMainimgurl + '"></div>' +
 								'<div class="user-orderitem-text">' +

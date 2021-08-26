@@ -170,16 +170,16 @@
 		               <img src="${APP_PATH }/static/pc/img/wh/ab_11.jpg">
 		           </h3>
 		           <div class="clearfix wholesale-type">
-		               <a class="wholesale-type_link" href="${APP_PATH }/search/4x4-Closure-Wig.html">
+		               <a class="wholesale-type_link" href="${APP_PATH }/collections/4x4-Closure-Wig">
 		                   <img src="${APP_PATH }/static/pc/img/wh/a01.jpg">
 		               </a>
-		               <a class="wholesale-type_link" href="${APP_PATH }/search/13x4-Lace-Frontal-Wig.html">
+		               <a class="wholesale-type_link" href="${APP_PATH }/collections/13x4-Lace-Frontal-Wig">
 		                   <img src="${APP_PATH }/static/pc/img/wh/a02.jpg">
 		               </a>
-					   <a class="wholesale-type_link" href="${APP_PATH }/search/360-Lace-Frontal-Wig.html">
+					   <a class="wholesale-type_link" href="${APP_PATH }/collections/360-Lace-Frontal-Wig">
 					       <img src="${APP_PATH }/static/pc/img/wh/a03.jpg">
 					   </a>
-					   <a class="wholesale-type_link" href="${APP_PATH }/search/HAIR-WEAVE-CLOSURE.html">
+					   <a class="wholesale-type_link" href="${APP_PATH }/collections/HAIR-WEAVE-CLOSURE">
 					       <img src="${APP_PATH }/static/pc/img/wh/a04.jpg">
 					   </a>
 		           </div>

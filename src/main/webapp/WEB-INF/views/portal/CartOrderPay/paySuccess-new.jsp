@@ -103,7 +103,7 @@
 
 			var paymentProductHtml = '';
 			data.list.forEach(function (item, idx) {
-				var productLink = item.orderitemPseo ? ('${APP_PATH}/' + item.orderitemPseo + '.html') : 'javascript:;';
+				var productLink = item.orderitemPseo ? ('${APP_PATH}/products/' + item.orderitemPseo) : 'javascript:;';
 				payinfoProductArr.push({
 					'id': item.orderitemPid,
 					'quantity': item.orderitemPskuNumber,

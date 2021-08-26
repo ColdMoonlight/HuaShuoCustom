@@ -34,7 +34,7 @@
 						'<div class="video-recommend-name">'+ data.productName +'</div>'+
 						'<div class="video-recommend-dprice"><span class="">Regular Price :</span><span class="value">$'+ data.productOriginalprice.toFixed(2) +'</span></div>'+
 						'<div class="video-recommend-nprice"><span class="name">Sale Price :</span><span class="value">$'+ (data.productOriginalprice && data.productActoffoff ? accuracyCal(data.productOriginalprice, data.productActoffoff) : 0.00) +'</span></div>'+
-						'<a class="btn btn-pink" href="'+ (data.productSeo ? ('${APP_PATH}/' + data.productSeo +'.html') : 'jvascrtip:;') +'">Buy Now</a>'+
+						'<a class="btn btn-pink" href="'+ (data.productSeo ? ('${APP_PATH}/products/' + data.productSeo) : 'jvascript:;') +'">Buy Now</a>'+
 					'</div>'+
 				'</div>' +
 			'</div>';
@@ -77,18 +77,18 @@
 			var secondNavSeo;
 			// product
 			if (data1[i].catalogIfproorcateorpage == 0) {				
-				secondNavSeo = data1[i].catalogSeoname;
+				secondNavSeo = 'products/' + data1[i].catalogSeoname;
 			}
 			// collection
 			if (data1[i].catalogIfproorcateorpage == 1) {
-				secondNavSeo = 'search/' + data1[i].catalogCateseoname;
+				secondNavSeo = 'collections/' + data1[i].catalogCateseoname;
 			}
 			// subject
 			if (data1[i].catalogIfproorcateorpage == 2) {
 				secondNavSeo = data1[i].catalogPageseoname;
 			}
 			menuHhtml += '<li class="menu-item label ' + labelClass + '">';
-			menuHhtml += '<a href="' + (data1[i].catalogIfinto ? '${APP_PATH}/' + secondNavSeo + '.html' : 'javascript:;') + '">' + data1[i].catalogName + '</a>';
+			menuHhtml += '<a href="' + (data1[i].catalogIfinto ? '${APP_PATH}/' + secondNavSeo : 'javascript:;') + '">' + data1[i].catalogName + '</a>';
 			if (data2 && data2.length > 0 && data2[i] && data2[i].length > 0) {
 				var subMenuHtml = '',
 					isWrap = true,
@@ -105,11 +105,11 @@
 
 							// product
 							if (data2[i][j][k].catalogIfproorcateorpage == 0) {			
-								thirdNavSeo = data2[i][j][k].catalogSeoname;
+								thirdNavSeo = 'products/' + data2[i][j][k].catalogSeoname;
 							}
 							// collection
 							if (data2[i][j][k].catalogIfproorcateorpage == 1) {
-								thirdNavSeo = 'search/'+ data2[i][j][k].catalogCateseoname;
+								thirdNavSeo = 'collections/'+ data2[i][j][k].catalogCateseoname;
 							}
 							// subject
 							if (data2[i][j][k].catalogIfproorcateorpage == 2) {
@@ -118,11 +118,11 @@
 						
 							if (k == 0) {
 								subMenuHtml += '<dt>' +
-									'<a href="'+ (data2[i][j][k].catalogIfinto ? '${APP_PATH}/' + thirdNavSeo + '.html' : 'javascript:;') +'">' + data2[i][j][k].catalogName + '</a>' +
+									'<a href="'+ (data2[i][j][k].catalogIfinto ? '${APP_PATH}/' + thirdNavSeo : 'javascript:;') +'">' + data2[i][j][k].catalogName + '</a>' +
 									(thirdMenuLen > 1 ? '<div class="operate wap-op-two"><i class="icon plus"></i></div>' : '') + '</dt>';
 							} else {
 								isWrap = false;
-								subMenuHtml += '<dd><a href="'+ (data2[i][j][k].catalogIfinto ? '${APP_PATH}/' + thirdNavSeo + '.html' : 'javascript:;') +'">' + data2[i][j][k].catalogName + '</a></dd>';
+								subMenuHtml += '<dd><a href="'+ (data2[i][j][k].catalogIfinto ? '${APP_PATH}/' + thirdNavSeo : 'javascript:;') +'">' + data2[i][j][k].catalogName + '</a></dd>';
 							}
 						}
 						subMenuHtml += '</dl>';
@@ -451,17 +451,17 @@
 	function renderHeaderAd(data) {
 		var adSeo, adLink;
 		if (data.slideIfproorcateorpage == 0) {				
-			adSeo = data.slideSeoname;
+			adSeo = 'products/' + data.slideSeoname;
 		}
 		// collection
 		if (data.slideIfproorcateorpage == 1) {
-			adSeo = 'search/' + data.slideCateseoname;
+			adSeo = 'collections/' + data.slideCateseoname;
 		}
 		// subject
 		if (data.slideIfproorcateorpage == 2) {
 			adSeo = data.slidePageseoname;
 		}
-		adLink = data.slideIfinto ? '${APP_PATH}/' + adSeo + '.html' : 'javascript:;';
+		adLink = data.slideIfinto ? '${APP_PATH}/' + adSeo : 'javascript:;';
 		data.slideWapstatus && $('.wap-header .ml-ad').html('<a class="lazyload" style="background-size: cover;" href="'+ adLink +'" data-src="'+ data.slideWapimgurl +'"></a>');
 		data.slidePcstatus && $('.pc-header .ml-ad').html('<a class="lazyload" href="'+ adLink +'" data-src="'+ data.slidePcimgurl +'"></a>');
 		// lazyload

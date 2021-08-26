@@ -13,8 +13,8 @@
 	<jsp:include page="../common/processor.jsp" flush="true"></jsp:include>
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="${ map.website_domain }/<%=request.getParameter("productSeo") %>.html" hreflang="en-us" />
-	<link rel="canonical" href="${ map.website_domain }/<%=request.getParameter("productSeo") %>.html" />
+    <link rel="alternate" href="${ map.website_domain }/products/<%=request.getParameter("productSeo") %>" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/products/<%=request.getParameter("productSeo") %>" />
 	<!-- socail media -->
 	<meta name="twitter:site" content="@${ map.website_name }">
 	<meta name="twitter:card" content="summary">
@@ -27,7 +27,7 @@
 		"@context": "http://schema.org/",
 		"@type": "Product",
 		"name": "${ sessionScope.mlbackProductMetaTitle }",
-		"url": "${ map.website_domain}/<%=request.getParameter("productSeo") %>.html",
+		"url": "${ map.website_domain}/products/<%=request.getParameter("productSeo") %>",
 		"sku": "${sessionScope.productDetailId}",
 		"image": [ <c:forEach items="${ mbackProductImgResList }" var="pro" varStatus="status"><c:if test="${status.count < 2}">"${ pro.productimgUrl }"</c:if><c:if test="${status.count > 2}">,"${ pro.productimgUrl }"</c:if></c:forEach> ],
 		"description": "${sessionScope.mlbackProductMeteDesc}",

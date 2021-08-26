@@ -33,17 +33,6 @@
 			<div class="search-product-banner"></div>
 			<div class="search-product-title hide"></div>
 			<div class="product-list"><div id="init-loading"></div></div>
-			<div class="customer-introduce">
-	            <div class="customer-introduce-bg" style="background-image: url('${APP_PATH}/static/pc/img/send-us-email.jpg')">
-	            	<div class="customer-introduce-info">
-		                <div class="customer-introduce-text1">Tired of Looking Suitable Hair, Or Still Didn't find the wig/style you wanted?</div>
-		                <div class="customer-introduce-text1">Or you have great idea/picture about the Hair /style you wanted.</div>
-		                <div class="customer-introduce-text2">Just Email us!</div>
-		                <div class="customer-introduce-text3">We will try our best meet your demand! </div>
-	              	</div>
-	            </div>
-	            <a class="customer-introduce-btn" href="mailto:team@megalookemail.com?subject=Product%20%20Inquiry%20---New%20Idea%20For%20The%20Hair&amp;body=Hi,%20Megalook%20Team,%20i%20Browser%20your%20website%20and%20didn't%20find%20the%20exact%20hair%20i%20want,%20here%20is%20some%20information%20about%20the%20hair%20i%20want%20,pls%20check%20and%20reply,%20thanks%20!">Send Us Your Idea &gt;</a>
-	       	</div>
 		</div>
 	<!-- main end -->
 	<!-- footer nav -->
@@ -81,7 +70,7 @@
 			var htmlStr = '', productData = descPrdouct(data.extend.mlbackProductResList);
 			if(productData.length > 0) {
 				productData.forEach(function(item) {
-					var productLink = '${APP_PATH}/'+ item.productSeo +'.html';
+					var productLink = '${APP_PATH}/products/'+ item.productSeo;
 					htmlStr += '<div class="product-item-box"><div class="product-item" data-productid="'+ item.productId +'">' +
 					    '<span class="product-discount-label'+ (item.productDiscoutimgShow ? ' show' : '') +'" style="background-image: url('+ (item.productDiscoutimgurl || '') +');"></span>' +
 						'<div class="product-img">' +

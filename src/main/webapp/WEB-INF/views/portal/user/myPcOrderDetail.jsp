@@ -107,7 +107,7 @@
 				var len = orderItemList.length;
 				for (var i = 0, len; i < len; i+=1) {
 					var item = orderItemList[i];
-					var itemLink = item.orderitemPseo ? ('${APP_PATH}/'+ item.orderitemPseo + '.html') : 'javascript:;';
+					var itemLink = item.orderitemPseo ? ('${APP_PATH}/products/'+ item.orderitemPseo) : 'javascript:;';
 					htmlStr += '<div class="user-orderitem-item">' +
 							'<div class="lazyload" data-src="' + item.orderitemProductMainimgurl + '"></div>' +
 							'<div class="user-orderitem-text">' +

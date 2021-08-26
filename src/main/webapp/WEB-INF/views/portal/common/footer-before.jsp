@@ -588,7 +588,7 @@ function generateSwiperSlideProduct(data) {
 	var $productSwiper = $('<div class="swiper-container"><div class="swiper-wrapper"></div><div class="swiper-btn swiper-button-next"></div><div class="swiper-btn swiper-button-prev"></div></div>');
 
 	data.forEach(function(item, idx) {
-		var productLink = item.productSeo ? '${APP_PATH}/' + item.productSeo + '.html' : 'javascript:;';
+		var productLink = item.productSeo ? '${APP_PATH}/products/' + item.productSeo : 'javascript:;';
 		htmlStr += '<div class="swiper-slide product-item" data-productid="'+ item.productId +'">' +
 		    '<span class="product-discount-label'+ (item.productDiscoutimgShow ? ' show' : '') +'" style="background-image: url('+ (item.productDiscoutimgurl || '') +');"></span>' +
 			'<div class="product-img">' +

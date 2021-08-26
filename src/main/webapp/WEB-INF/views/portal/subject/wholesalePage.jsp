@@ -277,42 +277,42 @@
 			<p class="wholesale-p">Megalook Hair Factory has been sourcing hair raw material professionally for 16 years. We source raw materials from all over the world, such as India, Malaysia, Brazil, Peru, and also China. Our hair products are 100% cuticle aligned virgin human hair that can be bleached 613 blond and easily be permed and styled by yourself.</p>
 			<div class="wholesale-body">
 				<div class="wholesale-item wholesale-product-list">					
-					<a class="wholesale-product-item" href="${APP_PATH}/B-13x4-Straight-Transparent-Lace-Wig.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-13x4-Straight-Transparent-Lace-Wig">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-1.jpg">
 						<p class="wholesale-product-content">Wholesale 180% Density 13x4 Transparent Lace Frontal Wig</p>
 						<p class="wholesale-product-hover-content">Wholesale 180% Density 13x4 Transparent Lace Frontal Wig</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/B-3-Bundles-Straight-Wave-Hair-Weave.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-3-Bundles-Straight-Wave-Hair-Weave">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-2.jpg">
 						<p class="wholesale-product-content">Wholesale 10 A grade human hair 10-40 inch Available</p>
 						<p class="wholesale-product-hover-content">Wholesale 10 A grade human hair 10-40 inch Available</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/B-Piano-Color-13x4-Straight-Hair-Wig.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-Piano-Color-13x4-Straight-Hair-Wig">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-3.jpg">
 						<p class="wholesale-product-content">Wholesale Highlight Transparent Lace Frontal Wig</p>
 						<p class="wholesale-product-hover-content">Wholesale Highlight Transparent Lace Frontal Wig</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/search/Closure-Frontal.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/collections/Closure-Frontal">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-4.jpg">
 						<p class="wholesale-product-content">Wholesale Transparent lace Frontal EAR TO EAR 13X4 lace</p>
 						<p class="wholesale-product-hover-content">Wholesale Transparent lace Frontal EAR TO EAR 13X4 lace</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/search/B-3-Bundle-with-4x4-Closure.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/collections/B-3-Bundle-with-4x4-Closure">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-5.jpg">
 						<p class="wholesale-product-content">Wholesale Transparent 4x4 5x5 Swiss Lace Closure</p>
 						<p class="wholesale-product-hover-content">Wholesale Transparent 4x4 5x5 Swiss Lace Closure</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/B-3-Bundles-613-Straight-Wave-Hair-Weave.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-3-Bundles-613-Straight-Wave-Hair-Weave">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-6.jpg">
 						<p class="wholesale-product-content">Wholesale 10-32 inch Blond Human Hair Weaves</p>
 						<p class="wholesale-product-hover-content">Wholesale 10-32 inch Blond Human Hair Weaves</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/B-3-Bundles-Body-Wave-Hair-Weave.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-3-Bundles-Body-Wave-Hair-Weave">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-7.jpg">
 						<p class="wholesale-product-content">Wholesale Double Drawn-32 inch Human Hair Weaves</p>
 						<p class="wholesale-product-hover-content">Wholesale Double Drawn-32 inch Human Hair Weaves</p>
 					</a>
-					<a class="wholesale-product-item" href="${APP_PATH}/B-13x4-Full-Wave-Lace-Wig.html">
+					<a class="wholesale-product-item" href="${APP_PATH}/products/B-13x4-Full-Wave-Lace-Wig">
 						<img class="wholesale-product-img" src="${APP_PATH}/static/pc/img/wholesale/product-8.jpg">
 						<p class="wholesale-product-content">Wholesale 250% Density Human Hair Wigs can customized length</p>
 						<p class="wholesale-product-hover-content">Wholesale 250% Density Human Hair Wigs can customized length</p>

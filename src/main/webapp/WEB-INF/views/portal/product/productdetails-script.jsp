@@ -5,7 +5,7 @@
 		var productNameStr = productData.productName,
 			productMetaDescStr = productData.productMetaDesc,
 			productSeoStr = productData.productSeo,
-			urlStr = '${map.website_domain}/' + productSeoStr + '.html',
+			urlStr = '${map.website_domain}/products/' + productSeoStr,
 			imageStr = productData.productMainimgurl,
 			amountStr =  accuracyCal(productData.productOriginalprice, productData.productActoffoff),
 			productIdStr = productData.productId;
@@ -1103,7 +1103,7 @@ function renderTogetherData(data) {
 	if (data.mlbackProductTogetherRes && len && productSkuDatas.length && productDatas.length == productSkuDatas.length && productSkuProps.length == productSkuDatas.length) {
 		var imgsHtml = '', otherHtml = '';
 		productDatas.forEach(function(item, idx) {
-			var productLink = '${APP_PATH}/' + item.productSeo + '.html';
+			var productLink = '${APP_PATH}/products/' + item.productSeo;
 			imgsHtml += '<div class="product-together-img-item show">' +
 				'<a class="lazyload" href="'+ productLink +'" data-src="'+ item.productMainimgurl +'"></a>' +
 				(len > 1 && idx < len - 1 ? '<div class="product-together-plus show">+</div>' : '') +
