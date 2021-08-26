@@ -233,13 +233,16 @@ public class MlbackPageAreaController {
 							//判断是0产品-1类-2页面
 							if(ifproORcateORpage==0){
 								//0pro
-								pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackSlideRes.getSlideSeoname()+".html");
+								//pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackSlideRes.getSlideSeoname()+".html");
+								pageAreaDetailOne.setPageAreaDetaiLinklUrl("products/"+mlbackSlideRes.getSlideSeoname());
 							}else if(ifproORcateORpage==1){
 								//1cate
-								pageAreaDetailOne.setPageAreaDetaiLinklUrl("search/"+mlbackSlideRes.getSlideCateseoname()+".html");
+								//pageAreaDetailOne.setPageAreaDetaiLinklUrl("search/"+mlbackSlideRes.getSlideCateseoname()+".html");
+								pageAreaDetailOne.setPageAreaDetaiLinklUrl("collections/"+mlbackSlideRes.getSlideCateseoname());
 							}else{
 								//2page
-								pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackSlideRes.getSlidePageseoname()+".html");
+								//pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackSlideRes.getSlidePageseoname()+".html");
+								pageAreaDetailOne.setPageAreaDetaiLinklUrl("products/"+mlbackSlideRes.getSlidePageseoname());
 							}
 						}
 					pageAreaDetailFollrList.add(pageAreaDetailOne);
@@ -267,13 +270,16 @@ public class MlbackPageAreaController {
 						
 						if(ifproORcateORpage==0){
 							//0-pro
-							pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackActShowProRes.getActshowproSeoname()+".html");
+							//pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackActShowProRes.getActshowproSeoname()+".html");
+							pageAreaDetailOne.setPageAreaDetaiLinklUrl("products/"+mlbackActShowProRes.getActshowproSeoname());
 						}else if(ifproORcateORpage==1){
 							//1-cate
-							pageAreaDetailOne.setPageAreaDetaiLinklUrl("search/"+mlbackActShowProRes.getActshowproCateseoname()+".html");
+							//pageAreaDetailOne.setPageAreaDetaiLinklUrl("search/"+mlbackActShowProRes.getActshowproCateseoname()+".html");
+							pageAreaDetailOne.setPageAreaDetaiLinklUrl("collections/"+mlbackActShowProRes.getActshowproCateseoname());
 						}else{
 							//2-page
-							pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackActShowProRes.getActshowproPageseoname()+".html");
+							//pageAreaDetailOne.setPageAreaDetaiLinklUrl(mlbackActShowProRes.getActshowproPageseoname()+".html");
+							pageAreaDetailOne.setPageAreaDetaiLinklUrl("products/"+mlbackActShowProRes.getActshowproPageseoname());
 						}
 					}
 					pageAreaDetailFollrList.add(pageAreaDetailOne);
@@ -318,7 +324,8 @@ public class MlbackPageAreaController {
 								pageAreaDetailReturn.setMlbackProduct(mlbackProductReqOne);
 								pageAreaDetailReturn.setPageAreaDetailIfinto(1);
 								pageAreaDetailReturn.setPageAreaDetailType(2);
-								pageAreaDetailReturn.setPageAreaDetaiLinklUrl("search/"+cateSeo+".html");
+								//pageAreaDetailReturn.setPageAreaDetaiLinklUrl("search/"+cateSeo+".html");
+								pageAreaDetailReturn.setPageAreaDetaiLinklUrl("collections/"+cateSeo);
 								pageAreaDetailFollrList.add(pageAreaDetailReturn);
 							}
 						}else{
@@ -327,7 +334,8 @@ public class MlbackPageAreaController {
 								pageAreaDetailReturn.setMlbackProduct(mlbackProductReqOne);
 								pageAreaDetailReturn.setPageAreaDetailIfinto(1);
 								pageAreaDetailReturn.setPageAreaDetailType(2);
-								pageAreaDetailReturn.setPageAreaDetaiLinklUrl("search/"+cateSeo+".html");
+								//pageAreaDetailReturn.setPageAreaDetaiLinklUrl("search/"+cateSeo+".html");
+								pageAreaDetailReturn.setPageAreaDetaiLinklUrl("collections/"+cateSeo);
 								pageAreaDetailFollrList.add(pageAreaDetailReturn);
 							}
 						}
