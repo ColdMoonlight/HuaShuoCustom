@@ -5,7 +5,7 @@
 		var productNameStr = productData.productName,
 			productMetaDescStr = productData.productMetaDesc,
 			productSeoStr = productData.productSeo,
-			urlStr = '${ map.website_domain }/' + productSeoStr + '.html',
+			urlStr = '${ map.website_domain }/products/' + productSeoStr,
 			imageStr = productData.productMainimgurl,
 			amountStr =  accuracyCal(productData.productOriginalprice, productData.productActoffoff),
 			productIdStr = productData.productId;

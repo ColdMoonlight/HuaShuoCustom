@@ -344,7 +344,7 @@
 			orderProductIdArr.push(item.orderitemPid);
 			orderItemIdArr.push(item.orderitemId);
 			orderProductNumArr.push(item.orderitemPskuNumber);
-			var productLink = item.orderitemPseo ? ('${APP_PATH}/'+ item.orderitemPseo +'.html') : 'javascript:;';
+			var productLink = item.orderitemPseo ? ('${APP_PATH}/products/'+ item.orderitemPseo) : 'javascript:;';
 			$orderList.append($('<div class="order-item">' +
 				'<a href="'+ productLink +'" class="order-img lazyload" data-src="'+ item.orderitemProductMainimgurl +'"></a>' +
 				'<div class="order-product">' +

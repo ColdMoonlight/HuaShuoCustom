@@ -1016,7 +1016,7 @@
 			var htmlStr = '';
 			if (cSeo.length) {
 				cSeo.forEach(function(item, idx) {
-					htmlStr += '<a class="collection-item" href="${APP_PATH}/search/' + item + '.html" target="_blank">' + item + '</a>';
+					htmlStr += '<a class="collection-item" href="${APP_PATH}/collections/' + item + '" target="_blank">' + item + '</a>';
 				});
 			} else {
 				htmlStr = '<p class="text-align: center; font-style: italic;">Empty here...</p>';

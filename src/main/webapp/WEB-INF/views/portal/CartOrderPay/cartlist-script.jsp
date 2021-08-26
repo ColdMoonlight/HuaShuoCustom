@@ -88,7 +88,7 @@
 					'<span class="value">'+ skuNameArr[idx] +'</span>' +
 				'</div>';
 			});
-			var productLink = item.cartitemProductSeoName ? ('${APP_PATH}/'+ item.cartitemProductSeoName +'.html') : 'javascript:;';
+			var productLink = item.cartitemProductSeoName ? ('${APP_PATH}/products/'+ item.cartitemProductSeoName) : 'javascript:;';
 			var definePrice = 0, nowPrice = 0;
 			if (item.cartitemProductOriginalprice && item.cartitemProductActoff) {
 				definePrice = (item.cartitemProductOriginalprice || 0)  + (parseFloat(item.cartitemProductskuMoneystr) || 0);

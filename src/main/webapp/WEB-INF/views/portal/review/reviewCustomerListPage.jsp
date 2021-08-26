@@ -150,7 +150,7 @@
 		function renderInsReview($el, reviewData, imgData) {
 			var htmlStr = '';
 			reviewData.forEach(function (item, idx) {
-				var itemLink = '${APP_PATH}/' + item.reviewPseoname + '.html';
+				var itemLink = '${APP_PATH}/products/' + item.reviewPseoname;
 				htmlStr += '<div class="ins-item shadow-radius">' +
 					'<div class="lazyload" data-src="' + (imgData[idx][0] && imgData[idx][0].reviewimgUrl) + '"></div>' +
 					'<div class="ins-stars">' + generateStarEl(item.reviewProstarnum) + '</div>' +

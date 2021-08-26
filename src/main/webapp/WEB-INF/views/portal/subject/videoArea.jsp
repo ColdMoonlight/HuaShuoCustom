@@ -83,7 +83,7 @@
 				}
 				// collection
 				if (item.videoIfproorcateorpage == 1) {
-					itemSeo = 'search/' + item.videoCateseoname;
+					itemSeo = 'collections/' + item.videoCateseoname;
 					itemName = item.videoCatename;
 				}
 				// subject
@@ -91,7 +91,7 @@
 					itemSeo = item.videoPageseoname;
 					itemName = item.videoPagename;
 				}
-				itemLink = itemSeo ? itemSeo + '.html' : 'javascript:;';
+				itemLink = itemSeo ? itemSeo : 'javascript:;';
 				htmlStr += '<div class="video-list-item shadow-radius" data-tag="'+ item.videoIfproorcateorpage +'" data-id="'+ item.videoProid +'" data-name="'+ itemName +'" data-link="'+ itemLink +'" data-video="'+ item.videoUrl +'">' +
 						'<div class="video-list-item-img lazyload" data-src="'+ item.videoImgurl +'"></div>' +
 						'<div class="video-list-item-name">'+ item.videoName +'</div>' +

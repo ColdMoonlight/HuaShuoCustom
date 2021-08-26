@@ -467,7 +467,7 @@
 			if (selectedId.length) {
 				var htmlStr = '';
 				selectedId.forEach(function(item, idx) {
-					var link = '${APP_PATH}/' + selectedSeo[idx] + '.html';
+					var link = '${APP_PATH}/products/' + selectedSeo[idx];
 					htmlStr += '<div class="product-item">' +
 						'<a href="'+ link +'" target="blank"><img class="product-img" src="'+ selectedImg[idx] + '" /></a>' +
 						'<a class="product-name" href="'+ link +'" target="blank">' + selectedName[idx] + '</a>' +
@@ -483,7 +483,7 @@
 			if (belongId.length) {
 				var htmlStr = '';
 				belongId.forEach(function(item, idx) {
-					var link = '${APP_PATH}/' + belongSeo[idx] + '.html';
+					var link = '${APP_PATH}/products/' + belongSeo[idx];
 					htmlStr += '<div class="product-item">' +
 						'<a class="product-name" href="'+ link +'" target="blank">' + belongName[idx] + '</a>' +
 					'</div>';

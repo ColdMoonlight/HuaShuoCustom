@@ -1188,7 +1188,7 @@
 				htmlStr += '<div class="order-item">' +
 						'<img src="'+ item.orderitemProductMainimgurl +'">' +
 						'<div class="order-product-base">' +
-							'<a class="order-product-link" href="${APP_PATH}/'+ item.orderitemPseo +'.html" target="_blank">'+ item.orderitemPname +'</a>' +
+							'<a class="order-product-link" href="${APP_PATH}/products/'+ item.orderitemPseo +'" target="_blank">'+ item.orderitemPname +'</a>' +
 							'<div class="order-product-option">'+ genSkus(item) +'</div>' +
 							'<div class="order-product-sku"><span>SKU: '+ item.orderitemPskuCode +'</span>------------- <span style="color:#6b6464;">('+ item.orderitemProductOriginalprice +'+'+ item.orderitemPskuMoneystr +')*'+ (parseFloat(item.orderitemProductAccoff)/100).toFixed(2) + '</span></div>' +
 						'</div>' +
@@ -1229,7 +1229,7 @@
 					checkoutViewAllPrice += parseInt(productNumArr[idx], 10) * parseFloat(productPriceArr[idx]);
 					htmlStr += '<div class="order-item">' +
 							'<div class="order-product-base">' +
-								'<a class="order-product-link" href="${APP_PATH}/'+ productSeoArr[idx] +'.html" target="_blank">'+ productSeoArr[idx] +'</a>' +
+								'<a class="order-product-link" href="${APP_PATH}/products/'+ productSeoArr[idx] +'" target="_blank">'+ productSeoArr[idx] +'</a>' +
 								'<div class="order-product-option">'+ genSkus(idx) +'</div>' +
 								'<div class="order-product-sku">SKU: '+ skuCodeArr[idx] +'</div>' +
 							'</div>' +
