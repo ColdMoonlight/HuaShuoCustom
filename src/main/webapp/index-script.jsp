@@ -68,7 +68,7 @@
 		if (data.length) {
 			htmlStr += '<div class="ml-ap ap-'+ idx +'">';
 			data.forEach(function(item, index) {
-				htmlStr += '<a class="ml-ap-item" href="'+ (data[0].pageAreaDetailIfinto ? '${APP_PATH}/' + data[index].pageAreaDetaiLinklUrl : 'javascript:;') +'">' +
+				htmlStr += '<a class="ml-ap-item" href="'+ (data[0].pageAreaDetailIfinto ? '${APP_PATH}/products/' + data[index].pageAreaDetaiLinklUrl : 'javascript:;') +'">' +
 					'<img class="lazyload" data-src="'+ data[index].pageAreaDetaiImglUrl +'" />' +
 				'</a>';
 			});
@@ -89,7 +89,7 @@
 				'<div class="swiper-container"><div class="swiper-wrapper">';
 					data.forEach(function(data) {
 						var item = data.mlbackProduct;
-						var productLink = item.productSeo ? '${APP_PATH}/' + item.productSeo + '.html' : 'javascript:;';
+						var productLink = item.productSeo ? '${APP_PATH}/products/' + item.productSeo : 'javascript:;';
 						htmlStr += '<div class="swiper-slide product-item" data-productid="'+ item.productId +'">' +
 						    '<span class="product-discount-label'+ (item.productDiscoutimgShow ? ' show' : '') +'" style="background-image: url('+ (item.productDiscoutimgurl || '') +');"></span>' +
 							'<div class="product-img">' +
@@ -234,7 +234,7 @@
 					'<div class="customer-voice-name">'+ data.productName +'</div>'+
 					'<div class="customer-voice-dprice"><span class="name">Regular Price :</span><span class="value">$'+ data.productOriginalprice.toFixed(2) +'</span></div>'+
 					'<div class="customer-voice-nprice"><span class="name">Sale Price :</span><span class="value">$'+ (data.productOriginalprice && data.productActoffoff ? accuracyCal(data.productOriginalprice, data.productActoffoff) : 0) +'</span></div>'+
-					'<a class="btn btn-pink" href="'+ (data.productSeo ? ('${APP_PATH}/' + data.productSeo +'.html') : 'jvascrtip:;') +'">Buy Now</a>'+
+					'<a class="btn btn-pink" href="'+ (data.productSeo ? ('${APP_PATH}/products/' + data.productSeo) : 'jvascrtip:;') +'">Buy Now</a>'+
 				'</div>';
 			var customerVoiceModal = createModal({
 				header: {
