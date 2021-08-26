@@ -10,7 +10,7 @@
 					if (blockData[key2].footnavClickType == '1') {
 						footnavUrl = "${APP_PATH}/" + blockData[key2].footnavClickUrl;
 					} else {
-						footnavUrl = "${APP_PATH}/pages/" + blockData[key2].footnavSeo + ".html";
+						footnavUrl = "${APP_PATH}/pages/" + blockData[key2].footnavSeo;
 					}
 					footerData[key].children.push({
 						"name": blockData[key2].footnavName,
