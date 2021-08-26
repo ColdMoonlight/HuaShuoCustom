@@ -46,7 +46,7 @@ public class MlbackCoupon {
 
     private String couponEndtime;//失效时间
     
-    /**使用产品范围0全部,1单品,2某一类产品,3全局(除了xxxx)*/
+    /**使用产品范围0全部,1单品,2某一类产品,3全局(除了xxxxx)*/
     private Integer couponProductonlyType;//优惠码是否支持单品
 
     private String couponProductonlyPidstr;//优惠码支持单品的时候,所绑定的产品
