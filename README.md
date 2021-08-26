@@ -7,6 +7,10 @@ HuaShuoCustom
 #https://www.shein.com/
 ##超级站
 #https://www.fashionnova.com
+##超级站
+www.africanmall.com
+
+
 ##假发站
 #https://shop.luvmehair.com/
 
