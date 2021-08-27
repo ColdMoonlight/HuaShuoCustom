@@ -12,12 +12,12 @@
 	<meta name="description" content="${ map.index_description }">
     <!-- google rule -->
 	<meta name="robots" content="INDEX,FOLLOW">
-    <link rel="alternate" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html" hreflang="en-us" />
-	<link rel="canonical" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html" />
+    <link rel="alternate" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>" hreflang="en-us" />
+	<link rel="canonical" href="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>" />
 	<!-- social media -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="<%=request.getParameter("footnavSeo").replace("-"," ") %>">
-	<meta property="og:url" content="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>.html">
+	<meta property="og:url" content="${ map.website_domain }/pages/<%=request.getParameter("footnavSeo") %>">
 	<meta property="og:site_name" content="${ map.website_name }">
 	<meta property="og:image" content="${ map.website_domain }/static/apple/micon1.png" />
 	<meta name="twitter:site" content="${ map.website_name }">
