@@ -176,31 +176,17 @@
 			<version>3.9</version>
 		</dependency>
 		<!-- LOGGING begin -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-web</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- common-logging 实际调用slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -213,12 +199,38 @@
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j2_version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j2_version}</version>
+		</dependency>
+		
+		<!--用于与slf4j保持桥接-->  
+        <dependency>  
+            <groupId>org.apache.logging.log4j</groupId>  
+            <artifactId>log4j-slf4j-impl</artifactId>  
+            <version>${log4j2_version}</version>  
+        </dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>${log4j2_version}</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-			<dependency>
-			    <groupId>javax.mail</groupId>
-			    <artifactId>mail</artifactId>
-			    <version>1.4.7</version>
-			</dependency>
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
 		<!-- LOGGING end -->
         <dependency>
 		    <groupId>com.paypal.sdk</groupId>
