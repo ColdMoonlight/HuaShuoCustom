@@ -40,16 +40,7 @@
         <from>^/Blog/([a-z0-9A-Z-]{5,60}).html</from>
         <to type="forward">/MlbackBlog/toBlogDetailPageByhtml?blogSeoname=$1</to>
     </rule>
-    <rule>
-    <!-- products/piano-highlight-transparent-13x4-lace-front-wig -->
-    <from>^/products/([a-z0-9A-Z-]{8,80})</from>
-        <to type="forward">/MlbackProduct/tofbProductDetailPageByhtml?productSeo=$1</to>
-    </rule>
-    <!-- https://megalookwig.com/collections/5x5-closure-wig -->
-    <rule>
-        <from>^/collections/([a-z0-9A-Z-]{2,60})</from>
-        <to type="forward">/MlbackCategory/toprolistBycategorySeoPage?categorySeo=$1</to>
-    </rule>
+
     <rule>
         <from>^/Blog.html</from>
         <to>/MlbackBlog/toMlbackBlogList</to>
@@ -87,7 +78,7 @@
         <to>/</to>
     </rule>
     <rule>
-        <from>^/Customer/Wholesale.html</from>
+        <from>^/Customer/Wholesale</from>
         <to>/PortalHome/WholesalePage</to>
     </rule>
     <rule>
@@ -111,4 +102,20 @@
         <from>^/Policy/TermsConditionsPage.html</from>
         <to>/MlbackFootNav/toTermsConditionsPage</to>
     </rule>
+    <!--begin		 新规则 			begin-->
+    <rule>
+    	<!--shopify的产品链接格式	products/piano-highlight-transparent-13x4-lace-front-wig -->
+    <from>^/products/([a-z0-9A-Z-]{8,180})</from>
+        <to type="forward">/MlbackProduct/tofbProductDetailPageByhtml?productSeo=$1</to>
+    </rule>
+    	<!--shopify的类目链接格式	 https://megalookwig.com/collections/5x5-closure-wig -->
+    <rule>
+        <from>^/collections/([a-z0-9A-Z-]{2,160})</from>
+        <to type="forward">/MlbackCategory/toprolistBycategorySeoPage?categorySeo=$1</to>
+    </rule>
+    <rule>
+        <from>^/pages/([a-z0-9A-Z-]{6,60})</from>
+        <to type="forward">/MlbackFootNav/toFootNavDetailByfootSeoPage?footnavSeo=$1</to>
+    </rule>
+    <!--end		  新规则 			end-->
 </urlrewrite>
